@@ -66,7 +66,9 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Cập nhật giá bán | UC1.5 Use case name dòng 144; UC1.5 Triggers dòng 148; UC1.5 Main flow dòng 154 | Trùng nguyên văn | Giữ |
 | Từ khóa | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Nhập mã, tên hoặc số điện thoại | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tìm theo mã hoặc tên sản phẩm... | Figma 60:2, 60:510, 60:1231 | Trùng nguyên văn | Giữ |
 | Nhập mã hoặc tên | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Danh mục: | Figma 293:5, 293:180, 293:502 | Trùng nguyên văn | Giữ |
 | Danh mục | UC1 BR-UC1-01 dòng 6; UC1.1 Business rules dòng 42; UC2.1 Main flow dòng 205 | Trùng nguyên văn | Giữ |
 | Tất cả | UC4 Main flow dòng 613; UC4 3a.1. dòng 621 | Trùng nguyên văn | Giữ |
 | Trạng thái | UC2 BR-UC2-07 dòng 187; UC2.2 Main flow dòng 246; UC2 BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác” dòng 267 | Trùng nguyên văn | Giữ |

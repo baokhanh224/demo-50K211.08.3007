@@ -121,3 +121,7 @@ CSDL SQLite của lượt thử ban đầu được giữ nguyên trong thư m�
 ### Kiểm tra riêng lỗi thao tác khi mạng chậm
 
 Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằng transport của trình duyệt kiểm thử; nút Thêm sản phẩm và Lưu phiếu nhập đều bị khóa, sau phản hồi có đúng 1 dòng và nút lưu bật lại. Không lưu thêm phiếu trong kiểm tra này. Đã kiểm tra typecheck/build trên nguồn mới; migration helper có 2 test đạt và db:init local chạy được.
+
+### Vị trí tìm kiếm và danh mục sản phẩm
+
+Đã sửa theo Figma 60:2 và triển khai commit 65df1a6. Typecheck/build đạt. Kiểm tra thực qua UI cục bộ và https://quynh-nhu-demo.vercel.app/?view=products đạt: kích thước/đồng hàng các bộ lọc, thứ tự bộ lọc → nhóm thao tác → bảng; tìm theo tên kết hợp danh mục và bỏ lọc đều hoạt động; 7 tài sản Figma tải đủ. Không ghi dữ liệu nghiệp vụ trong kiểm tra này.

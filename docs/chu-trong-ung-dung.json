@@ -498,686 +498,714 @@
   },
   {
     "file": "components/masters.tsx",
-    "line": 106,
+    "line": 103,
     "chu": "Danh sách",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 109,
+    "line": 106,
     "chu": "Thêm",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 109,
+    "chu": "Sửa",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
     "line": 112,
-    "chu": "Sửa",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 115,
     "chu": "Xóa",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 119,
+    "line": 116,
     "chu": "Cập nhật giá bán",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 127,
+    "line": 131,
     "chu": "Từ khóa",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 130,
+    "line": 134,
     "chu": "Nhập mã, tên hoặc số điện thoại",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 131,
+    "line": 135,
+    "chu": "Tìm theo mã hoặc tên sản phẩm...",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 135,
     "chu": "Nhập mã hoặc tên",
     "loai": "TemplateHead",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 138,
+    "line": 143,
+    "chu": "Danh mục:",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 144,
     "chu": "Danh mục",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 143,
+    "line": 145,
     "chu": "Tất cả",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 153,
+    "line": 151,
+    "chu": "Danh mục",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 156,
+    "chu": "Tất cả",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 166,
     "chu": "Trạng thái",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 158,
+    "line": 171,
     "chu": "Tất cả",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 159,
+    "line": 172,
     "chu": "Đang hợp tác",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 160,
+    "line": 173,
     "chu": "Ngừng hợp tác",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 165,
-    "chu": "Tìm kiếm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
     "line": 178,
+    "chu": "Tìm kiếm",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 192,
     "chu": "Danh mục",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 179,
+    "line": 193,
     "chu": "Đơn vị tính",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 180,
+    "line": 194,
     "chu": "Giá nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 181,
+    "line": 195,
     "chu": "Giá bán",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 182,
+    "line": 196,
     "chu": "Số lượng tồn",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 186,
+    "line": 200,
     "chu": "Số điện thoại",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 187,
+    "line": 201,
     "chu": "Địa chỉ",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 190,
+    "line": 204,
     "chu": "Danh mục",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 191,
+    "line": 205,
     "chu": "Trạng thái",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 208,
+    "line": 222,
     "chu": "Chọn",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 245,
+    "line": 259,
     "chu": "Đang hợp tác",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 261,
+    "line": 275,
     "chu": "Hiển thị",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 271,
+    "line": 285,
     "chu": "Thông tin",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 287,
+    "line": 301,
     "chu": "Danh mục",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 291,
+    "line": 305,
     "chu": "Mã vạch",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 295,
+    "line": 309,
     "chu": "Giá nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 299,
+    "line": 313,
     "chu": "Số lượng tồn",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 303,
+    "line": 317,
     "chu": "Mức tồn tối thiểu",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 307,
+    "line": 321,
     "chu": "Có quản lý hạn sử dụng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 308,
+    "line": 322,
     "chu": "Có",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 308,
+    "line": 322,
     "chu": "Không",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 314,
+    "line": 328,
     "chu": "Số điện thoại",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 318,
+    "line": 332,
     "chu": "Địa chỉ",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 328,
-    "chu": "Trạng thái",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 338,
-    "chu": "Danh sách đơn vị bán",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
     "line": 342,
-    "chu": "Đơn vị",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 343,
-    "chu": "Tỷ lệ quy đổi",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 344,
-    "chu": "Giá bán",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 357,
-    "chu": "Lịch sử thay đổi giá bán",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 362,
-    "chu": "Đơn vị",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 363,
-    "chu": "Giá cũ",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 364,
-    "chu": "Giá mới",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 365,
-    "chu": "Thời điểm thay đổi",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 380,
-    "chu": "Chưa có lịch sử thay đổi giá bán",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 386,
-    "chu": "Lịch sử mua hàng",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 391,
-    "chu": "Mã hóa đơn",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 392,
-    "chu": "Ngày giờ bán",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 393,
-    "chu": "Tổng tiền",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 394,
     "chu": "Trạng thái",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 409,
-    "chu": "Chưa có lịch sử mua hàng",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 414,
-    "chu": "Đóng",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 446,
-    "chu": "Đang hợp tác",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 454,
-    "chu": "Bạn có chắc chắn muốn hủy không?",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 461,
-    "chu": "Bạn có chắc chắn muốn hủy sửa khách hàng không?",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 462,
-    "chu": "Bạn có chắc chắn muốn hủy thêm khách hàng không?",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 484,
-    "chu": "Sửa",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 484,
-    "chu": "Thêm",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 495,
-    "chu": "Tự động tạo",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 506,
-    "chu": "Danh mục",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 511,
-    "chu": "Chọn danh mục",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 520,
-    "chu": "Đơn vị tính",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 527,
-    "chu": "Giá nhập",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 535,
-    "chu": "Giá bán",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 544,
-    "chu": "Mã vạch",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 550,
-    "chu": "Mức tồn tối thiểu",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 562,
-    "chu": "Có quản lý hạn sử dụng",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/masters.tsx",
-    "line": 566,
+    "line": 352,
     "chu": "Danh sách đơn vị bán",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 568,
-    "chu": "Đơn vị tính là đơn vị cơ sở, tỷ lệ quy đổi bằng 1.",
+    "line": 356,
+    "chu": "Đơn vị",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 573,
+    "line": 357,
+    "chu": "Tỷ lệ quy đổi",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 358,
+    "chu": "Giá bán",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 371,
+    "chu": "Lịch sử thay đổi giá bán",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 376,
     "chu": "Đơn vị",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 377,
+    "chu": "Giá cũ",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 378,
+    "chu": "Giá mới",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 379,
+    "chu": "Thời điểm thay đổi",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 394,
+    "chu": "Chưa có lịch sử thay đổi giá bán",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 574,
-    "chu": "Tỷ lệ quy đổi về đơn vị cơ sở",
+    "line": 400,
+    "chu": "Lịch sử mua hàng",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 405,
+    "chu": "Mã hóa đơn",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 406,
+    "chu": "Ngày giờ bán",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 407,
+    "chu": "Tổng tiền",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 408,
+    "chu": "Trạng thái",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 423,
+    "chu": "Chưa có lịch sử mua hàng",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 575,
+    "line": 428,
+    "chu": "Đóng",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 460,
+    "chu": "Đang hợp tác",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 468,
+    "chu": "Bạn có chắc chắn muốn hủy không?",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 475,
+    "chu": "Bạn có chắc chắn muốn hủy sửa khách hàng không?",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 476,
+    "chu": "Bạn có chắc chắn muốn hủy thêm khách hàng không?",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 498,
+    "chu": "Sửa",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 498,
+    "chu": "Thêm",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 509,
+    "chu": "Tự động tạo",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 520,
+    "chu": "Danh mục",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 525,
+    "chu": "Chọn danh mục",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 534,
+    "chu": "Đơn vị tính",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 541,
+    "chu": "Giá nhập",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 549,
     "chu": "Giá bán",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 602,
+    "line": 558,
+    "chu": "Mã vạch",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 564,
+    "chu": "Mức tồn tối thiểu",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 576,
+    "chu": "Có quản lý hạn sử dụng",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 580,
+    "chu": "Danh sách đơn vị bán",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 582,
+    "chu": "Đơn vị tính là đơn vị cơ sở, tỷ lệ quy đổi bằng 1.",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 587,
+    "chu": "Đơn vị",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 588,
+    "chu": "Tỷ lệ quy đổi về đơn vị cơ sở",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 589,
+    "chu": "Giá bán",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/masters.tsx",
+    "line": 616,
     "chu": "Xóa",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 615,
+    "line": 629,
     "chu": "Thêm đơn vị bán",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 623,
+    "line": 637,
     "chu": "Số điện thoại",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 639,
+    "line": 653,
     "chu": "Địa chỉ",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 647,
+    "line": 661,
     "chu": "Danh mục",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 674,
+    "line": 688,
     "chu": "Khác",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 680,
+    "line": 694,
     "chu": "Tên danh mục mới",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 691,
+    "line": 705,
     "chu": "Trạng thái",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 696,
+    "line": 710,
     "chu": "Đang hợp tác",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 697,
+    "line": 711,
     "chu": "Ngừng hợp tác",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 707,
+    "line": 721,
     "chu": "Mô tả",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 717,
+    "line": 731,
     "chu": "Hủy",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 719,
+    "line": 733,
     "chu": "Lưu",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 732,
+    "line": 746,
     "chu": "Bạn có chắc chắn muốn hủy cập nhật giá bán không?",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 740,
+    "line": 754,
     "chu": "Tiếp tục",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 753,
+    "line": 767,
     "chu": "Cập nhật giá bán",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 757,
+    "line": 771,
     "chu": "Đơn vị bán",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 770,
+    "line": 784,
     "chu": "Giá nhập:",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 771,
+    "line": 785,
     "chu": "Giá bán hiện tại:",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 775,
+    "line": 789,
     "chu": "Giá bán mới",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 781,
+    "line": 795,
     "chu": "Hủy",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/masters.tsx",
-    "line": 783,
+    "line": 797,
     "chu": "Lưu",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
@@ -1212,357 +1240,357 @@
   },
   {
     "file": "components/receipts.tsx",
-    "line": 91,
+    "line": 97,
     "chu": "Bạn có chắc chắn muốn hủy nhập hàng không?",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 98,
+    "line": 104,
     "chu": "Nhập hàng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 100,
+    "line": 106,
     "chu": "Thông tin phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 103,
+    "line": 109,
     "chu": "Nhà cung cấp",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 111,
+    "line": 117,
     "chu": "Chọn nhà cung cấp",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 120,
+    "line": 126,
     "chu": "Ngày nhập:",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 124,
+    "line": 130,
     "chu": "Nhập sản phẩm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 127,
+    "line": 133,
     "chu": "Đơn vị nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 138,
+    "line": 144,
     "chu": "Chọn đơn vị nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 147,
+    "line": 153,
     "chu": "Số lượng nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 154,
+    "line": 160,
     "chu": "Giá nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 161,
+    "line": 167,
     "chu": "Hạn sử dụng",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 171,
+    "line": 177,
     "chu": "Thêm sản phẩm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 175,
+    "line": 181,
     "chu": "Danh sách sản phẩm nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 180,
+    "line": 186,
     "chu": "Sản phẩm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 181,
+    "line": 187,
     "chu": "Đơn vị nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 182,
+    "line": 188,
     "chu": "Số lượng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 183,
+    "line": 189,
     "chu": "Giá nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 184,
+    "line": 190,
     "chu": "Hạn sử dụng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 185,
+    "line": 191,
     "chu": "Thành tiền",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 207,
+    "line": 213,
     "chu": "Xóa",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 222,
+    "line": 228,
     "chu": "Chưa có sản phẩm nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 225,
+    "line": 231,
     "chu": "Tổng tiền phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 236,
+    "line": 242,
     "chu": "Không thể lưu phiếu nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 238,
+    "line": 244,
     "chu": "Hủy",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 240,
+    "line": 246,
     "chu": "Lưu phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 276,
+    "line": 282,
     "chu": "Tra cứu lịch sử nhập hàng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 278,
+    "line": 284,
     "chu": "Danh sách phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 282,
+    "line": 288,
     "chu": "Từ khóa",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 283,
+    "line": 289,
     "chu": "Mã phiếu nhập, Tên nhà cung cấp",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 289,
+    "line": 295,
     "chu": "Từ ngày",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 295,
+    "line": 301,
     "chu": "Đến ngày",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 301,
+    "line": 307,
     "chu": "Tìm kiếm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 308,
+    "line": 314,
     "chu": "Mã phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 309,
+    "line": 315,
     "chu": "Ngày nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 310,
+    "line": 316,
     "chu": "Nhà cung cấp",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 311,
+    "line": 317,
     "chu": "Tổng tiền",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 335,
+    "line": 341,
     "chu": "Không tìm thấy phiếu nhập",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 340,
+    "line": 346,
     "chu": "Chi tiết phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 341,
+    "line": 347,
     "chu": "Đóng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 344,
+    "line": 350,
     "chu": "Ngày nhập:",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 344,
+    "line": 350,
     "chu": "· Nhà cung cấp:",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 350,
+    "line": 356,
     "chu": "Chi tiết phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 351,
+    "line": 357,
     "chu": "Sản phẩm",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 352,
+    "line": 358,
     "chu": "Đơn vị nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 353,
+    "line": 359,
     "chu": "Số lượng nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 354,
+    "line": 360,
     "chu": "Giá nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 355,
+    "line": 361,
     "chu": "Hạn sử dụng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 356,
+    "line": 362,
     "chu": "Số lượng còn",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 357,
+    "line": 363,
     "chu": "Thành tiền",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/receipts.tsx",
-    "line": 378,
+    "line": 384,
     "chu": "Tổng tiền phiếu nhập",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true

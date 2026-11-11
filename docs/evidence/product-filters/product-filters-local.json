@@ -1,0 +1,79 @@
+{
+  "origin": "http://localhost:3005",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "boxes": [
+    {
+      "x": 295,
+      "y": 190,
+      "width": 320,
+      "height": 40
+    },
+    {
+      "x": 625,
+      "y": 190,
+      "width": 157,
+      "height": 40
+    },
+    {
+      "x": 792,
+      "y": 190,
+      "width": 111,
+      "height": 40
+    },
+    {
+      "x": 295,
+      "y": 246,
+      "width": 1100,
+      "height": 40
+    }
+  ],
+  "assets": [
+    {
+      "src": "/figma/35b85.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/b4dfe.svg",
+      "loaded": true,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "src": "/figma/bb29d.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/9fda3.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/b3751.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/a04e9.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/dbe96.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    }
+  ],
+  "searchAndCategory": true,
+  "resetFilters": true
+}

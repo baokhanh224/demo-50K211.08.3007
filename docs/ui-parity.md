@@ -224,3 +224,9 @@ Bốn frame đã có context, ảnh chuẩn 1440×900 và ảnh thật từ prod
 ## Phần còn lại
 
 Chưa hoàn thành parity 195 frame UC6/4/5/1/2/3, gồm bố cục/đủ trạng thái, khôi phục hạn mặc định sản phẩm và tự điền nhập hàng, dữ liệu mẫu giống Figma, bố cục báo cáo. Kiểm thử nghiệp vụ hiện có không thay cho kiểm tra từng frame. Đã kiểm tra Vercel, redeploy giữ dữ liệu và hai trình duyệt trên domain công khai; xem BAO-CAO-KIEM-THU.md. Những kiểm tra nghiệp vụ này không xác nhận khớp ảnh cho các frame chưa so.
+
+## Sửa vị trí bộ lọc sản phẩm — 11/11/2026
+
+Frame nguồn 60:2, phần 60:70–60:109: đã đọc design context và ảnh, xuất trực tiếp 7 icon SVG từ Figma. Sửa thứ tự bộ lọc trước nhóm nút, tìm kiếm 320×40, danh mục 157×40, nút tìm 111×40, gap 10; nhóm thao tác ở hàng sau cách 16, căn phải. Nhãn Danh mục: nằm trong bộ lọc, bỏ tiêu đề phụ Danh sách sản phẩm không có trong frame này.
+
+Đã kiểm tra hình và đo geometry trên localhost và Vercel 1440×900; tìm kết hợp Milo/danh mục cho 1 dòng, xóa bộ lọc về 7 dòng; cả 7 icon tải thành công đúng kích thước 16px/14px. Chứng cứ docs/evidence/product-filters. Commit triển khai 65df1a6 đạt Vercel success. Đối chiếu này chỉ áp dụng bộ lọc/nhóm nút; không đánh dấu khớp toàn bộ frame hoặc bảng sản phẩm/sidebar.
