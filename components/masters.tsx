@@ -98,43 +98,56 @@ export default function Masters({ kind }: any) {
       kind === "customers" ? ["Quay lại", "Hủy"] : "Quay lại",
     );
   }
-  return (
-    <>
-      <h1>{c.title}</h1>
-      <section className="card">
+  const toolbar = (
         <div className="card-head">
-          <h2>Danh sách {c.singular}</h2>
+          {kind !== "products" && <h2>Danh sách {c.singular}</h2>}
           <div className="row">
             <Button variant="primary" onClick={() => setForm({})}>
-              <span aria-hidden="true">＋</span>Thêm {c.singular}
+              {kind === "products" ? <img src="/figma/9fda3.svg" width="16" height="16" alt="" /> : <span aria-hidden="true">＋</span>}Thêm {c.singular}
             </Button>
             <Button disabled={!selected} onClick={() => setForm(selected)}>
-              Sửa
+              {kind === "products" && <img src="/figma/b3751.svg" width="16" height="16" alt="" />}Sửa
             </Button>
             <Button disabled={!selected} variant="danger" onClick={remove}>
-              Xóa
+              {kind === "products" && <img src="/figma/a04e9.svg" width="16" height="16" alt="" />}Xóa
             </Button>
             {kind === "products" && (
               <Button disabled={!selected} onClick={() => setPrice(selected)}>
-                Cập nhật giá bán
+                <img src="/figma/dbe96.svg" width="16" height="16" alt="" />Cập nhật giá bán
               </Button>
             )}
           </div>
         </div>
+  );
+  return (
+    <>
+      <h1>{c.title}</h1>
+      <section className={"card" + (kind === "products" ? " product-list-card" : "")}>
+        {kind !== "products" && toolbar}
         <form className="filters" onSubmit={search}>
           <div className="field search">
+            {kind === "products" && <img src="/figma/35b85.svg" width="16" height="16" alt="" />}
             <input
               aria-label="Từ khóa"
               placeholder={
                 kind === "customers"
                   ? "Nhập mã, tên hoặc số điện thoại"
-                  : `Nhập mã hoặc tên ${c.singular}`
+                  : kind === "products" ? "Tìm theo mã hoặc tên sản phẩm..." : `Nhập mã hoặc tên ${c.singular}`
               }
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
           </div>
-          {kind !== "customers" && (
+          {kind === "products" ? (
+            <div className="product-category-filter">
+              <label htmlFor="product-category">Danh mục:</label>
+              <select id="product-category" aria-label="Danh mục" value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Tất cả</option>
+                {data.categories.map((x: any) => <option key={x.id} value={x.id}>{x.name}</option>)}
+              </select>
+              <img src="/figma/b4dfe.svg" width="14" height="14" alt="" />
+            </div>
+          ) : kind !== "customers" && (
             <Field label="Danh mục">
               <select
                 value={category}
@@ -162,9 +175,10 @@ export default function Masters({ kind }: any) {
             </Field>
           )}
           <Button type="submit" variant="primary">
-            Tìm kiếm
+            {kind === "products" && <img src="/figma/bb29d.svg" width="16" height="16" alt="" />}Tìm kiếm
           </Button>
         </form>
+        {kind === "products" && toolbar}
         <Notice text={error} />
         <div className="table-wrap">
           <table>

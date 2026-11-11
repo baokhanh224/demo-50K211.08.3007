@@ -1005,3 +1005,22 @@ tbody tr.clickable:hover {
 
 .customer-actions { margin-top:16px; gap:10px; }
 .payment-customer h3 { font-size:16px; margin-bottom:8px; }
+
+/* Figma UC1.4 60:69–60:109: product filters first, action toolbar second. */
+.product-list-card { border:0; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+.product-list-card > .filters { gap:10px; align-items:center; margin:0 0 16px; }
+.product-list-card > .filters .search { flex:0 0 320px; width:320px; min-width:0; height:40px; position:relative; }
+.product-list-card > .filters .search img { position:absolute; left:12px; top:12px; pointer-events:none; }
+.product-list-card > .filters .search input { height:40px; padding:0 12px 0 36px; border-color:#e2e8f0; border-radius:8px; font-size:13px; }
+.product-category-filter { display:flex; align-items:center; gap:6px; height:40px; padding:0 12px; border:1px solid #e2e8f0; border-radius:8px; background:white; position:relative; }
+.product-category-filter label { font-size:13px; color:#64748b; white-space:nowrap; }
+.product-category-filter select { appearance:none; height:38px; border:0; padding:0 20px 0 0; border-radius:0; background:transparent; font-size:13px; font-weight:600; max-width:190px; }
+.product-category-filter > img { position:absolute; right:12px; pointer-events:none; }
+.product-list-card > .filters > .btn { display:flex; align-items:center; gap:6px; height:40px; padding:0 16px; border-radius:8px; font-size:13px; font-weight:500; }
+.product-list-card > .card-head { justify-content:flex-end; margin:0 0 16px; }
+.product-list-card > .card-head .row { gap:10px; }
+.product-list-card > .card-head .btn { display:flex; align-items:center; gap:6px; height:40px; padding:0 16px; font-size:13px; font-weight:500; border-radius:8px; }
+.product-list-card > .card-head .btn:disabled { opacity:1; color:#94a3b8; background:#f1f5f9; border-color:#e2e8f0; }
+.product-category-filter { flex:0 0 157px; width:157px; }
+.product-category-filter select { flex:1; width:0; max-width:none; }
+.product-list-card > .filters > .btn { width:111px; flex:0 0 111px; }
