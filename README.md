@@ -2,11 +2,8 @@
 
 Bản demo tiếng Việt cho Chủ cửa hàng. Next.js 16 + TypeScript + PostgreSQL 17 + Prisma 6. Dùng yêu cầu mới về go-live; không dùng SQLite. Dữ liệu nằm trong PostgreSQL, tồn tại độc lập với quá trình chạy và redeploy ứng dụng.
 
-- Tài khoản kiểm tra: **chucuahang**
-- Mật khẩu: **QuynhNhu@123**
 - Sau đăng nhập mở **Tạo giao dịch bán hàng**. Có **Đăng xuất**.
-- CSDL Neon đã tạo: dự án `quynh-nhu-demo`, khu vực Singapore, ID `curly-pine-28788367`. Xem bằng tài khoản đã kết nối tại https://console.neon.tech/app/projects/curly-pine-28788367 . Chuỗi kết nối được giữ riêng, không nằm trong mã nguồn hoặc gói bàn giao.
-- Mã nguồn GitHub: https://github.com/baokhanh224/50K211.08.3007/tree/codex/quynh-nhu-demo/demo-quynh-nhu (repository riêng tư, thư mục `demo-quynh-nhu`, nhánh `codex/quynh-nhu-demo`).
+- Mã nguồn GitHub: https://github.com/baokhanh224/demo-50K211.08.3007 (repository công khai, mã nguồn tại thư mục gốc, nhánh `main`).
 - Trạng thái URL công khai: xem `BAO-CAO-KIEM-THU.md`; không coi localhost là URL go-live.
 
 ## Chạy từ đầu
@@ -14,14 +11,14 @@ Bản demo tiếng Việt cho Chủ cửa hàng. Next.js 16 + TypeScript + Postg
 Cần Node.js 22.12 trở lên hoặc Node.js 24, npm và một PostgreSQL riêng cho demo.
 
 1. Giải nén mã nguồn, mở terminal tại thư mục có `package.json`.
-2. Tạo CSDL trên Neon, chọn **Connect**, chép chuỗi PostgreSQL vào `DATABASE_URL` trong `.env`. Với dự án Neon đã tạo ở trên, dùng chính CSDL đó. Tạo `.env` từ mẫu:
+2. Tạo CSDL trên Neon, chọn **Connect**, chép chuỗi PostgreSQL vào `DATABASE_URL` trong `.env`. Giữ nguyên CSDL hiện có nếu đang cập nhật website. Tạo `.env` từ mẫu:
 
    ```bash
    cp .env.example .env
    node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
    ```
 
-   Dùng kết quả lệnh Node cho `SESSION_SECRET` trong `.env`. Không đưa `.env` lên GitHub. Thay mẫu `DATABASE_URL` bằng chuỗi thật của bạn, có `sslmode=require`.
+   Dùng kết quả lệnh Node cho `SESSION_SECRET` trong `.env`. Với CSDL mới, tự đặt `DEMO_USERNAME` và `DEMO_PASSWORD` trước khi seed. Với CSDL đã có tài khoản, seed giữ nguyên tài khoản và mật khẩu. Không đưa `.env` lên GitHub. Thay mẫu `DATABASE_URL` bằng chuỗi thật của bạn, có `sslmode=require`.
 3. Chạy:
 
    ```bash
@@ -31,7 +28,7 @@ Cần Node.js 22.12 trở lên hoặc Node.js 24, npm và một PostgreSQL riên
    npm run dev
    ```
 
-4. Mở http://localhost:3000 và dùng tài khoản trên. Khởi động bản production:
+4. Mở http://localhost:3000 và dùng tài khoản đã tự cấu hình hoặc tệp bàn giao riêng. Khởi động bản production:
 
    ```bash
    npm run build
@@ -60,7 +57,7 @@ Các bước tài khoản chỉ cần làm nếu chưa kết nối các dịch v
    ```
 
    Đăng nhập GitHub bằng tài khoản có quyền đọc repository riêng tư. Hồ sơ Word/Figma gốc của repository được giữ nguyên. `.env`, khóa kết nối và `node_modules` không được đưa lên GitHub.
-2. Đăng nhập https://vercel.com, chọn **Add New → Project → Import** repository `50K211.08.3007`, chọn framework **Next.js**, **Root Directory = demo-quynh-nhu**. Dùng nhánh `codex/quynh-nhu-demo` làm nhánh production trong **Settings → Git → Production Branch**; nếu đã hợp nhất PR vào `main` thì dùng `main`. Cấu hình `vercel.json` dùng build `npm run vercel-build`, khu vực `sin1`.
+2. Đăng nhập https://vercel.com, chọn **Add New → Project → Import** repository `demo-50K211.08.3007`, chọn framework **Next.js**, **Root Directory = .** và nhánh production `main`. Cấu hình `vercel.json` dùng build `npm run vercel-build`, khu vực `sin1`.
 3. Trong **Environment Variables**, đặt `DATABASE_URL` và `SESSION_SECRET` cho Production và Preview. Dùng chuỗi Neon thật và khóa ngẫu nhiên ít nhất 32 ký tự. Không đặt các biến này dưới tiền tố `NEXT_PUBLIC_`.
 4. Chọn **Deploy**. Migration chạy trong build; build không chạy seed, nên redeploy giữ dữ liệu. Nếu dùng một CSDL mới chưa có mẫu, chạy `npm run db:seed` một lần từ máy đã đặt đúng `.env`, hoặc thực hiện nút khôi phục sau khi đã có tài khoản mẫu.
 5. Trong **Settings → Deployment Protection**, cấu hình Production cho phép giảng viên/người ngoài truy cập, sau đó mở domain production bằng cửa sổ ẩn danh và đăng nhập. Không bàn giao đường dẫn yêu cầu đăng nhập Vercel.
@@ -181,3 +178,21 @@ Thay ảnh QR mẫu bằng VietQR theo số tiền giỏ hàng (yêu cầu mới
 API đã đăng nhập tính lại giá và tổng từ sản phẩm trên server; tổng không khớp giỏ thì không hiển thị QR. Đổi giỏ hoặc phương thức sẽ bỏ xác nhận đã nhận tiền. QR có số tiền VND nguyên, tài khoản nhận và nội dung tham chiếu giỏ; mã tham chiếu chưa phải mã hóa đơn. Ảnh do `img.vietqr.io` cung cấp: trình duyệt gửi ngân hàng, số tài khoản, tên chủ tài khoản, số tiền và nội dung chuyển khoản đến dịch vụ này. Mất mạng/dịch vụ lỗi có nút Thử lại.
 
 Ứng dụng không nhận webhook ngân hàng, không tự xác nhận tiền về. Nhân viên kiểm tra số tiền thực nhận trước khi đánh dấu “Đã nhận đủ tiền chuyển khoản”. Cần quét bằng ứng dụng ngân hàng để kiểm tra người nhận và số tiền thực tế trước buổi demo.
+
+## Đợt rà soát chữ và giao diện ngày 11/11/2026
+
+Nguồn chữ: `docs/nguon-chu-word.json`, `docs/nguon-chu-figma.json`; danh mục 199 frame: `docs/figma-frames.json`. Chạy `python scripts/extract-word-copy.py` để trích lại Word đã lưu nguyên văn và `npx tsx scripts/audit-copy.ts` để quét chữ mã nguồn/lập bảng đối chiếu. Không coi bảng các câu chưa có nguồn là đã hoàn tất rà soát.
+
+`tests/chu.spec.ts` kiểm tra 4 trạng thái đăng nhập, lỗi trường bắt buộc UC1 và nhãn tra cứu hóa đơn/thêm nhanh khách hàng UC6. Ảnh nguồn Figma UC7 lưu 1440×900 trong `tests/figma-baseline`. Pixelmatch bỏ qua vùng giá trị mật khẩu động, ngưỡng hồi quy 0,2% toàn ảnh; sai lệch còn lại ghi trong `docs/ui-parity.md`, không tuyên bố giống tuyệt đối từng pixel. Các frame chưa đối chiếu được ghi riêng.
+
+### Quyết định bổ sung của nhóm — đợt rà soát
+
+- UC7 lấy nguyên văn chữ và màu/kích thước từ 4 frame Figma. Lỗi xác thực hệ thống mô phỏng bằng `?demo=authError`, chỉ tác động một lần trong tab trình duyệt; không ảnh hưởng tab/người dùng khác.
+- Tài khoản kiểm thử và ID dự án CSDL không được ghi trong tài liệu công khai. Tệp tài khoản bàn giao riêng ngoài repository. Các test lấy `DEMO_USERNAME`/`DEMO_PASSWORD` từ môi trường.
+- Mã KH0001, HD0001 giữ nhất quán; Figma UC5 có KH001/HD001 được coi là dữ liệu minh họa.
+- VietQR động theo yêu cầu trước tiếp tục dùng cấu hình tài khoản nhận, không quay về ảnh mẫu nhận tiền sai số tiền.
+
+### Điểm đặc tả chưa quy định — đợt rà soát
+
+- Nhãn lỗi API hết phiên vẫn được ghi trong bảng chữ bổ sung; chưa có tuyên bố đã rà soát xong tất cả câu ngoài nguồn.
+- Chưa có URL Vercel do người dùng cung cấp cho đợt kiểm tra mới; không thực hiện reset hoặc test ghi trên một URL đoán.

@@ -1,0 +1,1088 @@
+Quản lý sản phẩm
+Chức năng Quản lý sản phẩm cho phép Chủ cửa hàng thêm mới, sửa, xóa, tra cứu sản phẩm và cập nhật giá bán của sản phẩm trong hệ thống.
+Business rules
+[BẢNG]
+ID | Business rules
+BR-UC1-01 | “Tên sản phẩm”, “Danh mục”, “Đơn vị tính”, “Giá nhập”, “Giá bán” không được để trống
+BR-UC1-02 | “Mã sản phẩm” do hệ thống tự động sinh theo định dạng SP + 4 chữ số tăng dần (SP0001, SP0002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi sản phẩm đã bị xóa
+BR-UC1-03 | “Giá nhập” và “Giá bán” phải là số lớn hơn 0
+BR-UC1-04 | “Hạn sử dụng” (nếu có) phải sau ngày hiện tại
+BR-UC1-05 | “Mã sản phẩm” không được chỉnh sửa
+BR-UC1-06 | “Giá bán” không được chỉnh sửa tại chức năng này (sử dụng chức năng Cập nhật giá bán)
+BR-UC1-07 | Sản phẩm còn tồn kho (số lượng lớn hơn 0) hoặc đã phát sinh giao dịch thì không được xóa
+BR-UC1-08 | Tìm kiếm theo “Mã sản phẩm” hoặc “Tên sản phẩm” không phân biệt chữ hoa, chữ thường và cho phép khớp một phần từ khóa
+BR-UC1-09 | “Giá bán mới” không được để trống và phải là số lớn hơn 0
+BR-UC1-10 | Mỗi lần thay đổi giá bán phải được ghi lịch sử gồm giá cũ, giá mới và thời điểm thay đổi
+[/BẢNG]
+Thêm sản phẩm
+[BẢNG]
+Use case ID | UC_1.1
+Use case name | Thêm sản phẩm
+Description | Là Chủ cửa hàng, tôi muốn thêm sản phẩm mới vào hệ thống
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng nhấn nút “Thêm sản phẩm”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý sản phẩm
+Post-conditions | Sản phẩm mới được lưu vào hệ thống với mã sản phẩm duy nhất do hệ thống tự động tạo
+Hệ thống hiển thị sản phẩm mới trong danh sách sản phẩm
+Main flow | Chủ cửa hàng nhấn nút “Thêm sản phẩm”
+Hệ thống hiển thị form thêm sản phẩm (trường Mã sản phẩm do hệ thống tự động tạo, không cho nhập)
+Chủ cửa hàng nhập thông tin sản phẩm (Tên sản phẩm, Danh mục, Đơn vị tính, Giá nhập, Giá bán, Hạn sử dụng, Mô tả)
+Chủ cửa hàng nhấn nút “Lưu”
+Hệ thống kiểm tra thông tin sản phẩm theo thứ tự: (1) trường bắt buộc, (2) định dạng dữ liệu, (3) Giá nhập và Giá bán lớn hơn 0, (4) Hạn sử dụng (nếu có) sau ngày hiện tại
+Hệ thống tự động sinh mã sản phẩm, lưu sản phẩm mới và hiển thị thông báo “Thêm sản phẩm thành công!”
+Hệ thống cập nhật danh sách sản phẩm
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”
+4a.1. Hệ thống đóng form, không lưu dữ liệu và quay lại danh sách sản phẩm
+Exception flows | 5a. Chủ cửa hàng bỏ trống trường bắt buộc
+5a.1. Hệ thống hiển thị thông báo “Không được để trống!” ngay dưới trường bị bỏ trống và quay lại bước 3
+5b. Dữ liệu không đúng định dạng hoặc không hợp lệ (Giá nhập/Giá bán không lớn hơn 0; Hạn sử dụng không sau ngày hiện tại)
+5b.1. Hệ thống hiển thị thông báo “Dữ liệu không hợp lệ!” tại trường bị sai và quay lại bước 3
+Business rules | BR-UC1-01: “Tên sản phẩm”, “Danh mục”, “Đơn vị tính”, “Giá nhập”, “Giá bán” không được để trống
+BR-UC1-02: “Mã sản phẩm” do hệ thống tự động sinh theo định dạng SP + 4 chữ số tăng dần (SP0001, SP0002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi sản phẩm đã bị xóa
+BR-UC1-03: “Giá nhập” và “Giá bán” phải là số lớn hơn 0
+BR-UC1-04: “Hạn sử dụng” (nếu có) phải sau ngày hiện tại
+Non-functional requirement | N/A
+[/BẢNG]
+Sửa sản phẩm
+[BẢNG]
+Use case ID | UC_1.2
+Use case name | Sửa sản phẩm
+Description | Là Chủ cửa hàng, tôi muốn sửa thông tin của sản phẩm đã có trong hệ thống
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn một sản phẩm và nhấn nút “Sửa”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý sản phẩm
+Sản phẩm cần sửa đã tồn tại trong hệ thống
+Post-conditions | Thành công: thông tin sản phẩm được cập nhật trong hệ thống; hệ thống hiển thị thông tin mới của sản phẩm trong danh sách sản phẩm 
+Hủy hoặc thất bại: thông tin sản phẩm trong hệ thống không thay đổi 
+Main flow | Chủ cửa hàng chọn sản phẩm cần sửa và nhấn nút “Sửa”
+Hệ thống hiển thị form sửa sản phẩm kèm thông tin hiện tại trong đó trường Mã sản phẩm và Giá bán bị khóa, không cho chỉnh sửa 
+Chủ cửa hàng chỉnh sửa thông tin sản phẩm(trừ Mã sản phẩm, Giá bán) 
+Chủ cửa hàng nhấn nút “Lưu”
+Hệ thống kiểm tra thông tin sản phẩm theo thứ tự: (1) trường bắt buộc, (2) định dạng và giá trị hợp lệ của dữ liệu, (3) sự tồn tại của sản phẩm
+Hệ thống cập nhật sản phẩm và hiển thị thông báo “Cập nhật sản phẩm thành công!”
+Hệ thống cập nhật danh sách sản phẩm
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”
+4a.1. Hệ thống kiểm tra dữ liệu đã thay đổi so với ban đầu hay chưa. Nếu chưa thay đổi: hệ thống đóng form, giữ nguyên dữ liệu cũ và quay lại danh sách sản phẩm; use case kết thúc
+4a.2. Nếu dữ liệu đã thay đổi: hệ thống hiển thị thông báo “Bạn có chắc chắn muốn hủy không?” với hai nút “Xác nhận” và “Quay lại”
+4a.3. Nếu Chủ cửa hàng nhấn “Xác nhận”: hệ thống đóng form, không lưu thông tin đã sửa, giữ nguyên dữ liệu cũ và quay lại danh sách sản phẩm; use case kết thúc
+4a.4. Nếu Chủ cửa hàng nhấn “Quay lại”: hệ thống đóng thông báo, giữ nguyên form và quay lại bước 3
+
+Exception flows | 5a. Chủ cửa hàng bỏ trống trường bắt buộc
+5a.1. Hệ thống hiển thị thông báo “Không được để trống!” ngay dưới trường bị bỏ trống và quay lại bước 3
+5b. Dữ liệu không đúng định dạng hoặc không hợp lệ (Giá nhập không lớn hơn 0; Hạn sử dụng không sau ngày hiện tại)
+5b.1. Hệ thống hiển thị thông báo “Dữ liệu không hợp lệ!” tại trường bị sai và quay lại bước 3
+5c. Sản phẩm không còn tồn tại trong hệ thống
+5c.1. Hệ thống hiển thị thông báo “Sản phẩm không tồn tại!” và kết thúc
+Business rules | BR-UC1-03: “Giá nhập” và “Giá bán” phải là số lớn hơn 0
+BR-UC1-04: “Hạn sử dụng” (nếu có) phải sau ngày hiện tại
+BR-UC1-05: “Mã sản phẩm” không được chỉnh sửa
+BR-UC1-06: “Giá bán” không được chỉnh sửa tại chức năng này (sử dụng chức năng Cập nhật giá bán)
+Non-functional requirement | N/A
+[/BẢNG]
+Xóa sản phẩm
+[BẢNG]
+Use case ID | UC_1.3
+Use case name | Xóa sản phẩm
+Description | Là Chủ cửa hàng, tôi muốn xóa sản phẩm không còn kinh doanh khỏi hệ thống
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn một sản phẩm và nhấn nút “Xóa”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý sản phẩm
+Sản phẩm cần xóa đã tồn tại trong hệ thống
+Post-conditions | Thành công: sản phẩm bị xóa khỏi hệ thống; hệ thống không còn hiển thị sản phẩm trong danh sách sản phẩm
+Hủy hoặc không đủ điều kiện xóa: sản phẩm vẫn còn trong hệ thống, dữ liệu không thay đổi
+Main flow | Chủ cửa hàng chọn sản phẩm cần xóa và nhấn nút “Xóa”
+Hệ thống hiển thị hộp thoại xác nhận “Bạn có chắc chắn muốn xóa sản phẩm này?”
+Chủ cửa hàng nhấn nút “Xác nhận”
+Hệ thống kiểm tra điều kiện xóa sản phẩm
+Hệ thống xóa sản phẩm và hiển thị thông báo “Xóa sản phẩm thành công!”
+Hệ thống cập nhật danh sách sản phẩm
+Alternative flows | 3a. Chủ cửa hàng nhấn nút “Quay lại”
+3a.1. Hệ thống đóng hộp thoại, không xóa sản phẩm và quay lại danh sách sản phẩm và kết thúc
+Exception flows | 4a. Sản phẩm còn tồn kho hoặc đã phát sinh giao dịch
+4a.1. Hệ thống hiển thị thông báo “Không thể xóa sản phẩm đã có tồn kho hoặc giao dịch!”, không xóa sản phẩm và giữ nguyên danh sách sản phẩm và kết thúc
+Business rules | BR-UC1-07: Sản phẩm còn tồn kho (số lượng lớn hơn 0) hoặc đã phát sinh giao dịch thì không được xóa
+Non-functional requirement | N/A
+[/BẢNG]
+Activity diagram – Xóa sản phẩm
+Hình 3.3  Activity diagram Xóa sản phẩm
+Tra cứu sản phẩm
+[BẢNG]
+Use case ID | UC_1.4
+Use case name | Tra cứu sản phẩm
+Description | Là Chủ cửa hàng, tôi muốn tra cứu sản phẩm theo từ khóa hoặc bộ lọc
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng nhập từ khóa hoặc chọn bộ lọc trên màn hình Quản lý sản phẩm
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý sản phẩm
+Post-conditions | Có kết quả: hệ thống hiển thị danh sách sản phẩm phù hợp với điều kiện tra cứu (hoặc toàn bộ danh sách nếu không nhập điều kiện); nếu Chủ cửa hàng chọn một sản phẩm thì hệ thống hiển thị thông tin chi tiết của sản phẩm đó
+Không tìm thấy: hệ thống hiển thị thông báo không tìm thấy sản phẩm, không hiển thị danh sách
+Main flow | Chủ cửa hàng nhập từ khóa (Mã sản phẩm hoặc Tên sản phẩm) hoặc chọn bộ lọc (Danh mục)
+Chủ cửa hàng nhấn nút “Tìm kiếm”
+Hệ thống kiểm tra điều kiện tra cứu (có nhập từ khóa hoặc chọn bộ lọc hay không)
+Hệ thống tìm các sản phẩm theo điều kiện đã nhập (khi nhập cả từ khóa và bộ lọc, sản phẩm phải thỏa đồng thời cả hai)
+Hệ thống hiển thị danh sách sản phẩm phù hợp
+Nếu Chủ cửa hàng không chọn sản phẩm nào trong danh sách thì kết thúc
+Alternative flows | 3a. Chủ cửa hàng không nhập từ khóa và không chọn bộ lọc
+3a.1. Hệ thống hiển thị toàn bộ danh sách sản phẩm và chuyển sang bước 6
+5a. Chủ cửa hàng chọn một sản phẩm trong danh sách kết quả
+5a.1. Hệ thống hiển thị thông tin chi tiết của sản phẩm được chọn; use case kết thúc
+Exception flows | 4a. Không có sản phẩm nào phù hợp với điều kiện tra cứu
+4a.1. Hệ thống hiển thị thông báo “Không tìm thấy sản phẩm!” và kết thúc
+Business rules | BR-UC1-08: Tìm kiếm theo “Mã sản phẩm” hoặc “Tên sản phẩm” không phân biệt chữ hoa, chữ thường và cho phép khớp một phần từ khóa
+Non-functional requirement | N/A
+[/BẢNG]
+Cập nhật giá bán
+[BẢNG]
+Use case ID | UC_1.5
+Use case name | Cập nhật giá bán
+Description | Là Chủ cửa hàng, tôi muốn cập nhật giá bán của sản phẩm
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn một sản phẩm và nhấn nút “Cập nhật giá bán”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý sản phẩm
+Sản phẩm cần cập nhật giá đã tồn tại trong hệ thống
+Post-conditions | Giá bán mới được lưu và áp dụng cho sản phẩm
+Lịch sử thay đổi giá bán được ghi nhận
+Main flow | Chủ cửa hàng chọn sản phẩm và nhấn nút “Cập nhật giá bán”
+Hệ thống hiển thị giá nhập và giá bán hiện tại của sản phẩm
+Chủ cửa hàng nhập giá bán mới
+Chủ cửa hàng nhấn nút “Lưu”
+Hệ thống kiểm tra giá bán mới theo thứ tự: (1) không để trống, (2) là số lớn hơn 0, (3) so sánh với giá nhập
+Hệ thống lưu giá bán mới, ghi lịch sử thay đổi giá và hiển thị thông báo “Cập nhật giá bán thành công!”
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”
+4a.1. Hệ thống kiểm tra dữ liệu đã thay đổi hay chưa. Nếu chưa nhập giá bán mới: hệ thống đóng form, giữ nguyên giá bán cũ và quay lại danh sách sản phẩm; use case kết thúc
+4a.2. Nếu đã nhập giá bán mới: hệ thống hiển thị thông báo “Bạn có chắc chắn muốn hủy cập nhật giá bán không?” với hai nút “Xác nhận” và “Quay lại”
+4a.3. Nếu Chủ cửa hàng nhấn “Xác nhận”: hệ thống đóng form, giữ nguyên giá bán cũ và quay lại danh sách sản phẩm; use case kết thúc
+4a.4. Nếu Chủ cửa hàng nhấn “Quay lại”: hệ thống đóng thông báo, giữ nguyên form và quay lại bước 3
+5c. Giá bán mới hợp lệ nhưng thấp hơn giá nhập (kiểm tra sau 5a, 5b)
+5c.1. Hệ thống hiển thị cảnh báo “Giá bán thấp hơn giá nhập. Bạn có muốn tiếp tục?” với hai lựa chọn “Tiếp tục” và “Quay lại”
+5c.2. Nếu Chủ cửa hàng chọn “Tiếp tục”, chuyển sang bước 6; nếu chọn “Quay lại”, quay lại bước 3
+Exception flows | 5a. Chủ cửa hàng bỏ trống trường “Giá bán mới”
+5a.1. Hệ thống hiển thị thông báo “Không được để trống!” ngay dưới trường bị bỏ trống và quay lại bước 3
+5b. Giá bán mới không phải số lớn hơn 0
+5b.1. Hệ thống hiển thị thông báo “Giá bán không hợp lệ!” và quay lại bước 3
+Business rules | BR-UC1-09: “Giá bán mới” không được để trống và phải là số lớn hơn 0
+BR-UC1-10: Mỗi lần thay đổi giá bán phải được ghi lịch sử gồm giá cũ, giá mới và thời điểm thay đổi
+Non-functional requirement | N/A
+[/BẢNG]
+Quản lý nhà cung cấp
+Chức năng Quản lý nhà cung cấp cho phép Chủ cửa hàng thêm mới, sửa, xóa, tìm kiếm nhà cung cấp trong hệ thống.
+ Business rules
+[BẢNG]
+ID | Business rules
+ BR-UC2-01 | “Mã nhà cung cấp” do hệ thống tự động sinh theo định dạng NCC + 3 chữ số tăng dần (NCC001, NCC002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi nhà cung cấp đã bị xóa
+    BR-UC2-02 | “Mã nhà cung cấp” không được chỉnh sửa
+BR-UC2-03 | “Tên nhà cung cấp” không được để trống
+BR-UC2-04 | “Số điện thoại” không được để trống và phải gồm đúng 10 chữ số từ 0 đến 9
+    BR-UC2-05 | Nhà cung cấp đã phát sinh giao dịch nhập hàng thì không được xóa
+    BR-UC2-06 | Tìm kiếm theo “Mã nhà cung cấp” hoặc “Tên nhà cung cấp” không phân biệt chữ hoa, chữ thường và cho phép khớp một phần từ khóa
+BR-UC2-07 | “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác”
+ BR-UC2-08 | “Email” (nếu có) phải đúng định dạng địa chỉ email hợp lệ, bao gồm phần tên hộp thư, ký tự @ và tên miền 
+    BR-UC2-09 | Nhà cung cấp mới có trạng thái mặc định là “Đang hợp tác”
+    BR-UC2-10 | Một nhà cung cấp có thể cung cấp một hoặc nhiều danh mục sản phẩm
+    BR-UC2-11 | Tên danh mục mới không được để trống và không được trùng với danh mục đã tồn tại trong hệ thống
+[/BẢNG]
+Thêm nhà cung cấp
+[BẢNG]
+Use case ID | UC_2.1
+Use case name | Thêm nhà cung cấp
+Description | Là Chủ cửa hàng, tôi muốn thêm nhà cung cấp mới vào hệ thống
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng nhấn nút “Thêm nhà cung cấp”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý nhà cung cấp
+Post-conditions | Nhà cung cấp mới được lưu vào hệ thống
+Hệ thống hiển thị nhà cung cấp mới trong danh sách nhà cung cấp
+Main flow | 1. Chủ cửa hàng nhấn nút “Thêm nhà cung cấp”2. Hệ thống hiển thị form thêm nhà cung cấp gồm các trường (“Mã nhà cung cấp”, “Tên nhà cung cấp”, “Số điện thoại”, “Email”, “Địa chỉ”, “Danh mục” , “Mô tả”), trường Mã nhà cung cấp do hệ thống tự động tạo, không cho nhập3. Chủ cửa hàng nhập thông tin nhà cung cấp4. Chủ cửa hàng nhấn nút “Lưu”5. Hệ thống kiểm tra thông tin nhà cung cấp theo thứ tự:  (1) trường bắt buộc, (2) định dạng dữ liệu
+6. Hệ thống tự động sinh mã nhà cung cấp, lưu nhà cung cấp mới và hiển thị thông báo “Thêm nhà cung cấp thành công!”7. Hệ thống cập nhật danh sách nhà cung cấp
+Alternative flows |   3a. Nếu không tìm thấy danh mục cần chọn, Chủ cửa hàng chọn “Khác” và nhập tên danh mục mới
+  3a.1. Hệ thống ghi nhận tạm thời tên danh mục mới vào trường “Danh mục 
+4a. Chủ cửa hàng nhấn nút “Hủy”
+4a.1. Nếu chủ cửa hàng chưa nhập thông tin: Hệ thống đóng form và quay lại danh sách nhà cung cấp; use case kết thúc
+4a.2. Nếu chủ cửa hàng đã nhập thông tin: Hệ thống hiển thị thông báo “Bạn có chắc chắn muốn hủy không?” với hai nút “Xác nhận” và “Quay lại”
+4a.3. Nếu Chủ cửa hàng nhấn “Xác nhận”: hệ thống đóng form, không lưu thông tin đã nhập và quay lại danh sách nhà cung cấp; use case kết thúc
+4a.4. Nếu Chủ cửa hàng nhấn “Quay lại”: hệ thống đóng thông báo, giữ nguyên form và quay lại bước 3
+
+Exception flows | 5a. Chủ cửa hàng bỏ trống trường bắt buộc
+5a.1. Hệ thống hiển thị thông báo “Không được để trống!” ngay dưới trường bị bỏ trống và quay lại bước 3
+5b. Dữ liệu nhập không đúng định dạng
+5b.1. Hệ thống hiển thị thông báo “Dữ liệu không hợp lệ!” ngay dưới trường bị sai và quay lại bước 3
+5c. Danh mục mới được nhập đã tồn tại trong hệ thống
+5c.1. Hệ thống hiển thị thông báo “Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!” ngay dưới trường nhập tên danh mục và quay lại bước 3
+5d. Chủ cửa hàng chọn “Khác” nhưng để trống ô nhập tên danh mục mới
+5d.1. Hệ thống hiển thị thông báo “Vui lòng nhập tên danh mục mới!” ngay dưới trường nhập tên danh mục và quay lại bước 3
+Business rules | BR-UC2-01: “Mã nhà cung cấp” do hệ thống tự động sinh theo định dạng NCC + 3 chữ số tăng dần (NCC001, NCC002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi nhà cung cấp đã bị xóa
+BR-UC2-02: “Mã nhà cung cấp” không được chỉnh sửa
+BR-UC2-03: “Tên nhà cung cấp” không được để trống
+BR-UC2-04: “Số điện thoại” không được để trống và phải gồm đúng 10 chữ số từ 0 đến 9
+BR-UC2-08: “Email” (nếu có) phải đúng định dạng địa chỉ email hợp lệ, bao gồm phần tên hộp thư, ký tự @ và tên miền 
+BR-UC2-09: Nhà cung cấp mới có trạng thái mặc định là “Đang hợp tác”
+BR-UC2-10: Một nhà cung cấp có thể cung cấp một hoặc nhiều danh mục sản phẩm
+BR-UC2-11: Tên danh mục mới không được để trống và không được trùng với danh mục đã tồn tại trong hệ thống
+Non-functional requirement | N/A
+[/BẢNG]
+Sửa thông tin nhà cung cấp
+[BẢNG]
+Use case ID | UC_2.2
+Use case name | Sửa thông tin nhà cung cấp
+Description | Là chủ cửa hàng, tôi muốn sửa thông tin nhà cung cấp đã có trong hệ thống
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn một nhà cung cấp và nhấn nút “Sửa”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý nhà cung cấp
+Thông tin nhà cung cấp cần sửa đã tồn tại trong hệ thống
+Post-conditions | Thành công: Thông tin nhà cung cấp được cập nhật trong hệ thống; hệ thống hiển thị thông tin mới của nhà cung cấp trong danh sách nhà cung cấp 
+Hủy hoặc thất bại: Thông tin nhà cung cấp trong hệ thống không thay đổi 
+Main flow | 1. Chủ cửa hàng chọn một nhà cung cấp cần sửa và nhấn nút “Sửa”2. Hệ thống hiển thị form sửa nhà cung cấp kèm thông tin hiện tại gồm các trường (“Mã nhà cung cấp”, “Tên nhà cung cấp”, “Số điện thoại”, “Email”, “Địa chỉ”, “Danh mục” , “Mô tả”, “Trạng thái”); trong đó trường Mã nhà cung cấp bị khóa, không cho chỉnh sửa 3. Chủ cửa hàng chỉnh sửa thông tin nhà cung cấp (trừ Mã nhà cung cấp) 4. Chủ cửa hàng nhấn nút “Lưu” 5. Hệ thống kiểm tra thông tin nhà cung cấp theo thứ tự: (1) trường bắt buộc, (2) định dạng và giá trị hợp lệ của dữ liệu
+ 6. Hệ thống cập nhật thông tin nhà cung cấp và hiển thị thông báo “Cập nhật thông tin nhà cung cấp thành công!” 7. Hệ thống cập nhật danh sách nhà cung cấp
+Alternative flows |   3a. Nếu không tìm thấy danh mục cần chọn, Chủ cửa hàng chọn “Khác” và nhập tên danh mục mới
+  3a.1. Hệ thống ghi nhận tạm thời tên danh mục mới vào trường “Danh mục”
+  4a. Chủ cửa hàng nhấn nút “Hủy” 
+4a.1. Hệ thống kiểm tra dữ liệu đã thay đổi so với ban đầu hay chưa. Nếu chưa thay đổi: hệ thống đóng form, giữ nguyên dữ liệu cũ và quay lại danh sách nhà cung cấp; use case kết thúc
+4a.2. Nếu dữ liệu đã thay đổi: hệ thống hiển thị thông báo “Bạn có chắc chắn muốn hủy không?” với hai nút “Xác nhận” và “Quay lại”
+4a.3. Nếu Chủ cửa hàng nhấn “Xác nhận”: hệ thống đóng form, không lưu thông tin đã sửa, giữ nguyên dữ liệu cũ và quay lại danh sách nhà cung cấp; use case kết thúc
+4a.4. Nếu Chủ cửa hàng nhấn “Quay lại”: hệ thống đóng thông báo, giữ nguyên form và quay lại bước 3
+Exception flows | 5a. Chủ cửa hàng bỏ trống trường bắt buộc
+5a.1. Hệ thống hiển thị thông báo “Không được để trống!” ngay dưới trường bị bỏ trống và quay lại bước 3
+5b. Dữ liệu nhập không đúng định dạng
+5b.1. Hệ thống hiển thị thông báo “Dữ liệu không hợp lệ!” tại trường bị sai và quay lại bước 3
+5c. Chủ cửa hàng nhập tên danh mục mới đã tồn tại trong hệ thống
+5c.1. Hệ thống hiển thị thông báo “Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!” ngay dưới trường nhập tên danh mục và quay lại bước 3
+5d. Chủ cửa hàng chọn “Khác” nhưng để trống ô nhập tên danh mục mới
+5d.1. Hệ thống hiển thị thông báo “Vui lòng nhập tên danh mục mới!” ngay dưới trường nhập tên danh mục và quay lại bước 3
+Business rules | BR-UC2-01: “Mã nhà cung cấp” do hệ thống tự động sinh theo định dạng NCC + 3 chữ số tăng dần (NCC001, NCC002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi nhà cung cấp đã bị xóa
+BR-UC2-02: “Mã nhà cung cấp” không được chỉnh sửa
+BR-UC2-03: “Tên nhà cung cấp” không được để trống
+BR-UC2-04:“Số điện thoại” không được để trống và phải gồm đúng 10 chữ số từ 0 đến 9
+BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác”
+BR-UC2-08: “Email” (nếu có) phải đúng định dạng địa chỉ email hợp lệ, bao gồm phần tên hộp thư, ký tự @ và tên miền 
+BR-UC2-10: Một nhà cung cấp có thể cung cấp một hoặc nhiều danh mục sản phẩm
+BR-UC2-11: Tên danh mục mới không được để trống và không được trùng với danh mục đã tồn tại trong hệ thống
+Non-functional requirement | N/A
+[/BẢNG]
+ Xóa nhà cung cấp
+[BẢNG]
+Use case ID | UC_2.3
+Use case name | Xóa nhà cung cấp
+Description | Là Chủ cửa hàng, tôi muốn xóa nhà cung cấp không còn hợp tác kinh doanh khỏi hệ thống
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn một nhà cung cấp và nhấn nút “Xóa”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình quản lý nhà cung cấp
+Nhà cung cấp cần xóa đã tồn tại trong hệ thống
+Post-conditions | Thành công: Nhà cung cấp bị xóa khỏi hệ thống; hệ thống không còn hiển thị nhà cung cấp trong danh sách nhà cung cấp
+Hủy hoặc không đủ điều kiện xóa: Nhà cung cấp vẫn còn trong hệ thống, dữ liệu không thay đổi
+Main flow | 1. Chủ cửa hàng chọn một nhà cung cấp cần xóa và nhấn nút “Xóa”.
+2. Hệ thống hiển thị hộp thoại xác nhận “Bạn có chắc chắn muốn xóa nhà cung cấp này?”
+3. Chủ cửa hàng nhấn nút “Xác nhận”4. Hệ thống kiểm tra điều kiện xóa nhà cung cấp5. Hệ thống xóa nhà cung cấp và hiển thị thông báo “Xóa nhà cung cấp thành công!”
+6. Hệ thống cập nhật danh sách nhà cung cấp.
+Alternative flows | 3a. Chủ cửa hàng nhấn nút “Quay lại”3a.1. Hệ thống đóng hộp thoại, không xóa nhà cung cấp và quay lại danh sách nhà cung cấp và kết thúc
+Exception flows | 4a. Nhà cung cấp cần xóa đã phát sinh giao dịch nhập hàng
+4a.1. Hệ thống hiển thị thông báo: “Không thể xóa nhà cung cấp đã phát sinh giao dịch nhập hàng!” và kết thúc
+Business rules | BR-UC2-06: Nhà cung cấp đã phát sinh giao dịch nhập hàng thì không được xóa
+Non-functional requirement | N/A
+[/BẢNG]
+ 
+Tìm kiếm nhà cung cấp
+[BẢNG]
+Use case ID | UC_2.4
+Use case name | Tìm kiếm nhà cung cấp
+Description | Là Chủ cửa hàng, tôi muốn tìm kiếm nhà cung cấp theo từ khóa hoặc bộ lọc
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn chức năng tìm kiếm trên màn hình Quản lý nhà cung cấp 
+
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Chủ cửa hàng đang ở màn hình Quản lý nhà cung cấp
+Post-conditions | Có kết quả: Hệ thống hiển thị danh sách nhà cung cấp phù hợp với điều kiện tìm kiếm (hoặc toàn bộ danh sách nếu không nhập điều kiện); nếu Chủ cửa hàng chọn một nhà cung cấp thì hệ thống hiển thị thông tin chi tiết của nhà cung cấp đó
+Không tìm thấy: Hệ thống hiển thị thông báo không tìm thấy nhà cung cấp, không hiển thị danh sách
+Main flow | 1. Chủ cửa hàng nhập từ khóa (Mã nhà cung cấp hoặc Tên nhà cung cấp) hoặc chọn bộ lọc (Danh mục,Trạng thái)2. Chủ cửa hàng nhấn nút “Tìm kiếm”
+3. Hệ thống kiểm tra điều kiện tìm kiếm (có nhập từ khóa hoặc chọn bộ lọc hay không)4. Hệ thống tìm kiếm các nhà cung cấp theo điều kiện đã nhập (khi nhập cả từ khóa và bộ lọc, nhà cung cấp phải thỏa đồng thời cả hai)5. Hệ thống hiển thị danh sách nhà cung cấp phù hợp
+6. Chủ cửa hàng không chọn nhà cung cấp nào trong danh sách kết quả; use case kết thúc.  
+
+Alternative flows | 3a. Chủ cửa hàng không nhập từ khóa và không chọn bộ lọc
+3a.1. Hệ thống hiển thị toàn bộ danh sách nhà cung cấp và chuyển sang bước 6
+5a. Chủ cửa hàng chọn một nhà cung cấp trong danh sách kết quả
+5a.1. Hệ thống hiển thị thông tin chi tiết của nhà cung cấp được chọn; use case kết thúc
+Exception flows | 4a. Không có nhà cung cấp nào phù hợp với điều kiện tìm kiếm
+4a.1. Hệ thống hiển thị thông báo “Không tìm thấy nhà cung cấp!” và kết thúc
+Business rules | BR-UC2-06: Tìm kiếm theo “Mã nhà cung cấp” hoặc “Tên nhà cung cấp” không phân biệt chữ hoa, chữ thường và cho phép khớp một phần từ khóa
+Non-functional requirement | N/A
+[/BẢNG]
+Báo cáo thống kê doanh thu
+Nhóm chức năng này hỗ trợ chủ cửa hàng (chủ tiệm tạp hóa Quỳnh Như) thực hiện việc tìm kiếm, lọc dữ liệu, theo dõi trực quan xu hướng kinh doanh qua biểu đồ, xuất báo cáo ra file, kiểm soát tình hình xuất - nhập - tồn kho và thống kê các mặt hàng bán chạy hoặc bán chậm nhằm đưa ra quyết định nhập hàng chính xác.
+ Business rules
+[BẢNG]
+ID | Business rules
+BR-UC3 - 01 | Khoảng thời gian báo cáo phải hợp lệ: “Từ ngày” không lớn hơn “Đến ngày” và không vượt quá ngày hiện tại.
+BR-UC3 - 02  | Chỉ cho phép lựa chọn loại báo cáo và các tiêu chí lọc được hệ thống hỗ trợ.
+BR-UC3 - 03 | Số liệu báo cáo phải được tổng hợp từ dữ liệu nghiệp vụ đã ghi nhận trong hệ thống, không được tự tạo hoặc tự ước lượng dữ liệu còn thiếu.
+BR-UC3 - 04 | Khi không có dữ liệu phù hợp, hệ thống phải hiển thị kết quả trống kèm thông báo “Không có dữ liệu phù hợp”.
+BR-UC3 - 05 | Doanh thu thuần = Tổng tiền các hóa đơn đã thanh toán trong kỳ (không tính hóa đơn đã hủy) + Tổng tiền hàng đổi mới − Tổng tiền hàng khách trả lại. Giao dịch đổi/trả được tính vào kỳ có ngày lập phiếu đổi/trả. Số lượng bán thuần được tính tương tự theo số lượng.
+BR-UC3 - 06 | Lợi nhuận gộp = (Doanh thu thuần − Tổng giá vốn hàng đã bán).Giá vốn của mỗi sản phẩm = Số lượng bán thuần × Giá nhập bình quân tại thời điểm bán.
+BR-UC3 - 07 | Tồn cuối kỳ = (Tồn đầu kỳ + Tổng nhập − Tổng xuất + Điều chỉnh tăng − Điều chỉnh giảm). Hàng trả khách được tính vào nhập,  hàng đổi mới được tính vào xuất. Mỗi giao dịch đổi/trả chỉ được ghi nhận một lần để tránh nhầm lẫn.
+BR-UC3 - 08 | Giá trị hàng tồn kho = Tồn cuối kỳ × Giá nhập bình quân của sản phẩm.
+ 
+BR-UC3 - 09 | Sản phẩm bán chạy được xếp hạng theo tổng số lượng bán thuần hoặc doanh thu thuần trong khoảng thời gian được chọn. Hiển thị 10 sản phẩm bán chạy đầu bảng, xếp theo thứ tự giảm dần.
+BR-UC3 - 10 | Sản phẩm bán chậm được xác định theo số lượng bán thuần thấp nhất hoặc bằng 0 trong kỳ, chỉ xét các sản phẩm có số lượng tồn kho lớn hơn 0. Hiển thị 10 sản phẩm bán chậm đầu bảng, xếp theo thứ tự tăng dần. 
+BR-UC3 - 11 | Nội dung tệp báo cáo xuất ra phải phù hợp với loại báo cáo, tiêu chí lọc và dữ liệu báo cáo đã được hiển thị trên hệ thống.
+[/BẢNG]
+ 
+Xem báo cáo kinh doanh
+[BẢNG]
+Use case ID | UC_3.1
+Use case name | Xem báo cáo kinh doanh
+Description | Là Chủ cửa hàng, tôi muốn xem báo cáo doanh thu, lợi nhuận và thống kê sản phẩm bán chạy/chậm để theo dõi tình hình kinh doanh và hỗ trợ quyết định nhập hàng.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng ấn chọn chức năng “Báo cáo kinh doanh” trong mục “Báo cáo thống kê”
+Pre-conditions |     Chủ cửa hàng đã đăng nhập vào hệ thống.
+Post-conditions | Hệ thống hiển thị kết quả báo cáo theo loại báo cáo và tiêu chí đã chọn.
+Nếu không có dữ liệu phù hợp, hệ thống thông báo “Không có dữ liệu phù hợp”.
+Main flow | 1. Chủ cửa hàng chọn chức năng “Báo cáo kinh doanh”.
+2. Hệ thống hiển thị giao diện các loại báo cáo và bộ lọc.
+3. Chủ cửa hàng chọn loại báo cáo: “Doanh thu”, “Lợi nhuận” hoặc “Sản phẩm bán chạy/chậm”.
+4. Chủ cửa hàng chọn khoảng thời gian (“Từ ngày”, “Đến ngày”), có thể chọn thêm sản phẩm hoặc nhóm sản phẩm (để trống là xem tất cả). Với báo cáo “Sản phẩm bán chạy/chậm”, Chủ cửa hàng chọn thêm tiêu chí xếp hạng (số lượng bán thuần hoặc doanh thu thuần)
+5. Chủ cửa hàng nhấn “Xem báo cáo”.
+6. Hệ thống kiểm tra tính hợp lệ của các tiêu chí lọc.
+7. Hệ thống truy xuất dữ liệu bán hàng, đổi trả, sản phẩm và giá vốn tương ứng.
+8. Hệ thống tổng hợp và tính toán số liệu theo loại báo cáo đã chọn.
+9. Hệ thống hiển thị kết quả: báo cáo “Doanh thu” gồm tổng doanh thu thuần, số hóa đơn, bảng số liệu và biểu đồ xu hướng; báo cáo “Lợi nhuận” gồm doanh thu thuần, tổng giá vốn, lợi nhuận gộp và biểu đồ; báo cáo “Sản phẩm bán chạy/chậm” gồm hai bảng xếp hạng.
+10. Chủ cửa hàng xem kết quả báo cáo.
+
+Alternative flows | 4a. Sử dụng bộ lọc thời gian nhanh:
+4a.1. Chủ cửa hàng chọn khoảng thời gian có sẵn như “Hôm nay”, “Hôm qua”, “7 ngày qua”, “Tháng này”, “Tháng trước”.
+4a.2. Hệ thống tự động xác định khoảng thời gian tương ứng.
+4a.3. Use case tiếp tục ở bước 5.
+10a. Chủ cửa hàng muốn xuất báo cáo đang xem.
+10a.1. Chủ cửa hàng nhấn “Xuất báo cáo”.
+10a.2. Hệ thống chuyển sang use case “Xuất báo cáo” (UC_3.3).
+Exception flows | 6a. Tiêu chí lọc không hợp lệ:
+6a.1. Hệ thống phát hiện khoảng thời gian hoặc tiêu chí lọc không hợp lệ.
+6a.2. Hệ thống thông báo lỗi “Khoảng thời gian hoặc tiêu chí lọc không hợp lệ”. và yêu cầu điều chỉnh.
+Use case quay lại bước 4.
+7a. Không thể truy xuất dữ liệu:
+7a.1. Hệ thống gặp lỗi khi lấy dữ liệu báo cáo.
+7a.2. Hệ thống thông báo “Không thể tải báo cáo. Vui lòng thử lại” và kết thúc.
+7b. Không có dữ liệu phù hợp:
+7b.1. Hệ thống không tìm thấy dữ liệu phù hợp với tiêu chí đã chọn.
+7b.2. Hệ thống hiển thị kết quả trống và thông báo “Không có dữ liệu phù hợp”.
+7b.3. Chủ cửa hàng có thể thay đổi tiêu chí hoặc kết thúc Use case.
+
+Business rules | BR-UC3-01, BR-UC3-02, BR-UC3-03, BR-UC3-04, BR-UC3-05, BR-UC3-06, BR-UC3-09, BR-UC3-10.
+ 
+Non-functional requirement | N/A
+
+[/BẢNG]
+ 
+ 
+Xem báo cáo xuất – nhập – tồn
+[BẢNG]
+Use case ID | UC_3.2
+Use case name | Xem báo cáo xuất – nhập – tồn
+Description | Là Chủ cửa hàng, tôi muốn xem báo cáo xuất – nhập – tồn theo khoảng thời gian để theo dõi biến động hàng hóa và kiểm soát tồn kho.
+Actors | Chủ cửa hàng
+Priority | High
+Trigger | Chủ cửa hàng ấn chọn chức năng “Báo cáo xuất – nhập – tồn” trong mục “Báo cáo thống kê”
+Pre-conditions |    Chủ cửa hàng đã đăng nhập vào hệ thống.
+Post-conditions | Hệ thống hiển thị báo cáo xuất – nhập – tồn theo tiêu chí đã chọn.
+Nếu không có dữ liệu phù hợp, hệ thống thông báo “Không có dữ liệu phù hợp”.
+Main flow | 1. Chủ cửa hàng chọn chức năng “Báo cáo xuất – nhập – tồn”.
+2. Hệ thống hiển thị giao diện báo cáo và bộ lọc.
+3. Chủ cửa hàng chọn khoảng thời gian (“Từ ngày”, “Đến ngày”), có thể chọn thêm sản phẩm hoặc nhóm sản phẩm (để trống là xem tất cả).
+4. Chủ cửa hàng nhấn “Xem báo cáo”.
+5. Hệ thống kiểm tra tính hợp lệ của các tiêu chí lọc.
+6. Hệ thống truy xuất dữ liệu tồn kho và các giao dịch nhập, xuất, điều chỉnh kho đã được ghi nhận.
+7. Hệ thống tổng hợp số lượng tồn đầu kỳ, nhập, xuất, điều chỉnh và tính tồn cuối kỳ.
+8. Hệ thống hiển thị bảng báo cáo gồm các cột: sản phẩm, tồn đầu kỳ, nhập, xuất, điều chỉnh tăng, điều chỉnh giảm, tồn cuối kỳ, giá trị tồn.
+9. Chủ cửa hàng xem kết quả báo cáo.
+Alternative flows | 3a. Chủ cửa hàng dùng bộ lọc thời gian nhanh.
+3a.1. Chủ cửa hàng chọn một khoảng có sẵn: “Hôm nay”, “7 ngày qua”, “Tháng này” hoặc “Tháng trước”.
+3a.2. Hệ thống tự xác định “Từ ngày” và “Đến ngày” tương ứng.
+3a.3. Use case tiếp tục ở bước 4.
+ 9a. Chủ cửa hàng muốn xuất báo cáo đang xem.
+ 9a.1. Chủ cửa hàng nhấn “Xuất báo cáo”.
+ 9a.2. Hệ thống chuyển sang use case “Xuất báo cáo” (UC_3.3).
+Exception flows | 5a. Tiêu chí lọc không hợp lệ:
+5a.1. Hệ thống phát hiện khoảng thời gian hoặc tiêu chí lọc không hợp lệ.
+5a.2. Hệ thống thông báo lỗi “Khoảng thời gian hoặc tiêu chí lọc không hợp lệ” và yêu cầu điều chỉnh.
+5a.3. Use case quay lại bước 3.
+6a. Không thể truy xuất dữ liệu:
+6a.1. Hệ thống gặp lỗi trong quá trình truy xuất dữ liệu kho.
+6a.2. Hệ thống thông báo “Không thể tải báo cáo. Vui lòng thử lại” và kết thúc.
+6b. Không có dữ liệu phù hợp:
+6b.1. Hệ thống không tìm thấy dữ liệu phù hợp với tiêu chí đã chọn.
+6b.2. Hệ thống hiển thị kết quả trống và thông báo “Không có dữ liệu phù hợp”.
+6b.3. Chủ cửa hàng có thể thay đổi tiêu chí hoặc kết thúc quy trình
+Business rules | BR-UC3-01, BR-UC3-02, BR-UC3-03, BR-UC3-04, BR-UC3-07, BR-UC3-08.
+Non-functional requirement | N/A
+[/BẢNG]
+Xuất báo cáo
+[BẢNG]
+Use case ID | 3.3
+Use case name | Xuất báo cáo
+Description | Là chủ cửa hàng tôi muốn xuất báo cáo để lưu trữ hoặc sử dụng khi cần thiết.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng ấn chọn chức năng “Xuất báo cáo” trên giao diện báo cáo đang xem.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Báo cáo cần xuất đã được hiển thị thành công và có dữ liệu phù hợp.
+ 
+Post-conditions | Hệ thống tạo và cung cấp tệp báo cáo theo dữ liệu và định dạng đã chọn.
+Nếu xuất không thành công, hệ thống thông báo lỗi.
+Main flow | 1. Chủ cửa hàng chọn “Xuất báo cáo” trên giao diện báo cáo đang xem.
+2. Hệ thống hiển thị các định dạng xuất báo cáo được hỗ trợ: “Excel”, “PDF”
+3. Chủ cửa hàng chọn định dạng và nhấn chọn “Xuất báo cáo”.
+4. Hệ thống lấy dữ liệu của báo cáo đang hiển thị, gồm loại báo cáo, tiêu chí lọc và số liệu.
+5. Hệ thống tạo tệp báo cáo theo định dạng đã chọn.
+6. Hệ thống cung cấp tệp báo cáo và thông báo “Xuất báo cáo thành công”.
+7. Chủ cửa hàng nhận tệp báo cáo.
+Alternative flows | 3a. Chủ cửa hàng hủy yêu cầu xuất báo cáo:
+3a.1. Chủ cửa hàng chọn “Hủy”. 
+3a.2. Hệ thống hiển thị thông báo xác nhận: “Bạn có chắc chắn muốn hủy thao tác không?”
+3a.3. Nếu Chủ cửa hàng chọn “Xác nhận”, hệ thống đóng giao diện xuất báo cáo, giữ nguyên báo cáo đang xem và kết thúc Use Case.
+3a.4. Nếu Chủ cửa hàng chọn “Quay lại”, hệ thống đóng thông báo xác nhận và quay lại giao diện xuất báo cáo để Chủ cửa hàng tiếp tục thao tác.
+Exception flows | 4a. Không thể truy xuất dữ liệu báo cáo:
+4a.1. Hệ thống gặp lỗi khi lấy dữ liệu báo cáo. 
+4a.2. Hệ thống thông báo “Không thể xuất báo cáo, vui lòng thử lại”.
+4a.3. Use Case kết thúc.
+5a. Không thể tạo tệp báo cáo:
+5a.1. Hệ thống gặp lỗi trong quá trình tạo tệp.
+5a.2. Hệ thống thông báo “Xuất báo cáo không thành công, vui lòng thử lại”. 
+5a.3. Chủ cửa hàng có thể thực hiện lại từ bước 3 hoặc kết thúc Use Case.
+Business rules | BR-UC3-02, BR-UC3-03, BR-UC3-11.
+Non-functional requirement | N/A
+[/BẢNG]
+QUẢN LÝ TỒN KHO
+Mô tả  
+Cho phép Chủ cửa hàng nhập hàng từ nhà cung cấp, điều chỉnh số lượng tồn kho theo thực tế, tra cứu tình trạng tồn kho và nhận cảnh báo hàng tồn kho thấp, sắp hết hạn hoặc đã hết hạn.Hệ thống hỗ trợ tra cứu lịch sử nhập hàng để theo dõi và kiểm soát hàng hóa trong cửa hàng
+3 Business rules
+[BẢNG]
+ID | Business rules
+BR-UC4-01 | Phiếu nhập phải có nhà cung cấp và ít nhất một sản phẩm..
+BR-UC4-02 | Mỗi dòng nhập phải có đơn vị nhập, số lượng nhập và giá nhập. Số lượng và giá nhập phải lớn hơn 0. Giá nhập tính theo đơn vị nhập đã chọn.
+BR-UC4-03 | Sản phẩm có quản lý hạn sử dụng phải nhập hạn sử dụng khi nhập hàng, và hạn phải sau ngày nhập. Ngày nhập là ngày lập phiếu
+BR-UC4-04
+ | Sau khi lưu phiếu nhập thành công, hệ thống cộng số lượng hàng nhập vào tồn kho theo đơn vị quy đổi và tính lại giá nhập bình quân của sản phẩm.
+BR-UC4-05
+ | Điều chỉnh tồn kho phải có số lượng thực tế của chi tiết phiếu nhập cần điều chỉnh và lý do điều chỉnh
+BR-UC4-06
+ | Số lượng thực tế phải là số nguyên lớn hơn hoặc bằng 0
+BR-UC4-07
+ | Khi lưu điều chỉnh, hệ thống cập nhật số lượng còn của chi tiết và tổng tồn của sản phẩm, đồng thời lưu số cũ, số mới và chênh lệch
+BR-UC4-08
+ | Tra cứu tồn kho theo mã sản phẩm, tên sản phẩm hoặc mã vạch….
+BR-UC4-09
+ | Sản phẩm có tổng tồn nhỏ hơn hoặc bằng mức tồn tối thiểu nằm trong danh sách cảnh báo tồn kho.
+BR-UC4-10
+ | Chỉ cảnh báo các chi tiết phiếu nhập vẫn còn hàng:
+Đã hết hạn: Hạn sử dụng trước hôm nay.
+Sắp hết hạn: Hạn sử dụng là hôm nay hoặc trong 30 ngày tới.
+BR-UC4-11
+ | Hệ thống cho phép tra cứu phiếu nhập hàng theo mã phiếu nhập, tên nhà cung cấp hoặc khoảng thời gian nhập hàng.
+BR-UC4-12
+ | Khi chọn một phiếu nhập, hệ thống hiển thị ngày nhập, nhà cung cấp, danh sách sản phẩm, đơn vị nhập, số lượng nhập, giá nhập và tổng tiền phiếu nhập.
+BR-UC4-13
+ | Khi tra cứu lịch sử nhập hàng theo khoảng thời gian, “Từ ngày” không được lớn hơn “Đến ngày”.
+BR-UC4-14 | Nếu một sản phẩm có nhiều hạn sử dụng trong cùng phiếu nhập, mỗi hạn sử dụng là một chi tiết phiếu nhập riêng..
+BR-UC4-15 | Hệ thống xác định số lượng còn của từng chi tiết phiếu nhập dựa trên số lượng nhập, số lượng xuất, hàng được hoàn kho và các điều chỉnh hợp lệ để phục vụ quản lý tồn kho và cảnh báo hạn sử dụng..
+[/BẢNG]
+3.4.2 Nhập hàng 
+[BẢNG]
+Use case ID
+ | 4.1
+Use case name
+ | Nhập hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn lập phiếu nhập hàng mới từ nhà cung cấp để cộng số lượng hàng vào kho và tự động tính lại giá nhập bình quân
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn chức năng “Nhập hàng”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Thông tin nhà cung cấp và sản phẩm đã có trong hệ thống
+Post-conditions | Phiếu nhập hàng mới được lưu vào hệ thống
+Số lượng tồn kho và giá nhập bình quân của sản phẩm được cập nhật tự động
+Số lượng còn của mỗi chi tiết phiếu nhập bằng số lượng nhập
+Main flow | Chủ cửa hàng chọn chức năng “Nhập hàng”.
+Hệ thống hiển thị màn hình tạo phiếu nhập gồm thông tin nhà cung cấp, khu vực tìm kiếm sản phẩm, danh sách sản phẩm nhập, tổng tiền và nút “Lưu phiếu nhập”.
+Chủ cửa hàng chọn nhà cung cấp và chọn số lượng cần nhập.
+Chủ cửa hàng chọn đơn vị nhập, nhập số lượng, giá nhập và hạn sử dụng nếu sản phẩm có quản lý hạn sử dụng, sau đó nhấn “Thêm sản phẩm”.
+Hệ thống thêm dòng sản phẩm vào danh sách hàng nhập, tính thành tiền và cập nhật tổng tiền phiếu nhập.
+Chủ cửa hàng chọn nút “Lưu phiếu nhập”.
+Hệ thống kiểm tra tính hợp lệ của thông tin phiếu nhập.
+Hệ thống lưu phiếu nhập và các chi tiết phiếu nhập, bao gồm hạn sử dụng tương ứng của từng dòng hàng, cộng số lượng nhập vào tồn kho theo đơn vị quy đổi và tính lại giá nhập bình quân trong cùng một giao dịch dữ liệu.
+Hệ thống hiển thị thông báo “Nhập hàng thành công”.
+Alternative flows | 2a. Chủ cửa hàng nhấn nút “Hủy”.
+2a.1. Nếu chủ cửa hàng chưa nhập thông tin hoặc chưa có thay đổi, hệ thống đóng biểu mẫu, không lưu thông tin và kết thúc.
+2a.2. Nếu chủ cửa hàng đã nhập thông tin, hệ thống hiển thị thông báo: “Bạn có chắc chắn muốn hủy nhập hàng không?” với hai nút “Xác nhận” và “Quay lại”.
+2a.3. Nếu chủ cửa hàng nhấn nút “Xác nhận”, hệ thống đóng màn hình tạo nhập , không lưu dữ liệu và kết thúc.
+2a.4. Nếu chủ cửa hàng nhấn nút “Quay lại”, hệ thống đóng thông báo và giữ nguyên biểu mẫu để tiếp tục nhập thông tin.
+6a. Chủ cửa hàng chọn thêm sản phẩm khác.
+6a.1. Hệ thống giữ các sản phẩm đã nhập trên phiếu và quay lại bước 4.
+6b. Một sản phẩm có nhiều hạn sử dụng trong cùng phiếu nhập.
+6b.1. Chủ cửa hàng nhập một dòng sản phẩm với số lượng và hạn sử dụng tương ứng.
+6b.2. Chủ cửa hàng tiếp tục thêm dòng nhập khác cho cùng sản phẩm với số lượng và hạn sử dụng khác.
+6b.3. Hệ thống ghi nhận các dòng chi tiết và cập nhật tổng tiền phiếu nhập, tiếp tục bước 7 hoặc cho phép nhập thêm sản phẩm.
+
+Exception flows | 5a. Chủ cửa hàng bỏ trống thông tin bắt buộc.
+5a.1. Chủ cửa hàng bỏ trống nhà cung cấp, đơn vị nhập, số lượng nhập, giá nhập hoặc hạn sử dụng đối với sản phẩm có quản lý hạn sử dụng.
+5a.2. Hệ thống hiển thị thông báo “Không được để trống” tại trường tương ứng và quay lại bước 4.
+5b. Số lượng nhập hoặc giá nhập không hợp lệ.
+5b.1. Chủ cửa hàng nhập “Số lượng nhập” hoặc “Giá nhập” nhỏ hơn hoặc bằng 0.
+5b.2. Hệ thống hiển thị thông báo “Số lượng nhập và giá nhập phải lớn hơn 0” và quay lại bước 4.
+5c. Hạn sử dụng không hợp lệ.
+7c.1. Chủ cửa hàng nhập hạn sử dụng không sau ngày nhập hàng.
+5c.2. Hệ thống hiển thị thông báo “Hạn sử dụng phải sau ngày nhập hàng” và quay lại bước 4
+
+8a. Lưu phiếu nhập không thành công
+8a.1. Hệ thống hiển thị thông báo “Không thể lưu phiếu nhập”.
+8a.2. Hệ thống không ghi nhận nhập hàng thành công và kết thúc.
+Business rules | BR-UC4-01, BR-UC4-02, BR-UC4-03, BR-UC4-04, BR-UC4-14, BR-UC4-15
+Non-functional requirement | N/A
+[/BẢNG]
+Điều chỉnh tồn kho
+[BẢNG]
+Use case ID
+ | 4.2
+Use case name
+ | Điều chỉnh tồn kho
+Description
+ | Là Chủ cửa hàng, tôi muốn điều chỉnh số lượng tồn kho trên hệ thống cho khớp với thực tế hoặc trừ kho khi hủy hàng hỏng, hết hạn, đồng thời cập nhật số lượng còn theo chi tiết phiếu nhập.
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn chức năng “Điều chỉnh tồn kho”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Sản phẩm và chi tiết phiếu nhập cần điều chỉnh đã có trong hệ thống
+Post-conditions | Phiếu điều chỉnh được lưu
+Số lượng còn của chi tiết phiếu nhập và tổng tồn kho sản phẩm được cập nhập
+Main flow | Chủ cửa hàng chọn chức năng “Điều chỉnh tồn kho”.
+Hệ thống hiển thị màn hình điều chỉnh tồn kho.
+Chủ cửa hàng tìm sản phẩm cần điều chỉnh.
+Hệ thống hiển thị tổng tồn kho hiện tại và số lượng còn theo từng chi tiết phiếu nhập, kèm hạn sử dụng nếu có.
+Chủ cửa hàng chọn một chi tiết phiếu nhập, nhập số lượng tồn mới và lý do điều chỉnh.
+Chủ cửa hàng nhấn nút “Lưu”.
+Hệ thống kiểm tra tính hợp lệ của dữ liệu.
+Hệ thống lưu phiếu điều chỉnh và cập nhật tồn kho.
+Hệ thống hiển thị thông báo “Điều chỉnh tồn kho thành công”
+Alternative flows | 5a. Sản phẩm có nhiều chi tiết phiếu nhập.
+5a.1. Hệ thống hiển thị danh sách các chi tiết phiếu nhập và số lượng còn tương ứng.
+5a.2. Chủ cửa hàng xác định số lượng cần điều chỉnh ở từng chi tiết phiếu nhập và tiếp tục bước 6.
+6a.1. Chủ cửa hàng chọn nút “Hủy”.
+6a.2. Hệ thống hiển thị thông báo: “Bạn có chắc chắn muốn hủy điều chỉnh tồn kho không?” với hai lựa chọn “Xác nhận” và “Quay lại”.
+6a.3. Nếu Chủ cửa hàng chọn “Xác nhận”, hệ thống đóng màn hình điều chỉnh, giữ nguyên số lượng tồn kho cũ và kết thúc.
+6a.4. Nếu Chủ cửa hàng chọn “Quay lại”, hệ thống đóng thông báo xác nhận, giữ nguyên dữ liệu đang nhập và quay lại bước 6.
+Exception flows | 7a. Thiếu thông tin bắt buộc.
+7a.1. Hệ thống hiển thị thông báo “Không được để trống” tại trường tương ứng và quay lại bước 5.
+7b. Số lượng điều chỉnh không hợp lệ.
+7b.1. Số lượng tồn kho mới không phải số nguyên, nhỏ hơn 0 hoặc số lượng phân bổ điều chỉnh không phù hợp với tổng tồn kho mới.
+7b.2. Hệ thống hiển thị thông báo “Số lượng điều chỉnh không hợp lệ” và quay lại bước 5.
+
+8a. Lưu phiếu điều chỉnh không thành công.
+8a.1. Hệ thống thông báo “Không thể lưu phiếu điều chỉnh” và kết thúc.
+Business rules | BR-UC4-05, BR-UC4-06, BR-UC4-07
+Non-functional requirement | N/A
+[/BẢNG]
+Tra cứu tồn kho và cảnh báo 
+[BẢNG]
+Use case ID
+ | 4.3
+Use case name
+ | Tra cứu tồn kho và cảnh báo
+Description
+ | Là Chủ cửa hàng, tôi muốn tra cứu số lượng hàng tồn kho hiện tại và lọc xem các sản phẩm sắp hết hàng, sắp hết hạn hoặc đã hết hạn sử dụng.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng nhấn chọn chức năng “Tra cứu tồn kho”.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Hệ thống có dữ liệu sản phẩm, số lượng tồn kho và hạn sử dụng
+Thông tin hạn sử dụng được ghi nhận theo từng chi tiết phiếu nhập đối với sản phẩm có quản lý hạn sử dụng
+Post-conditions | Hệ thống hiển thị danh sách tồn kho và trạng thái cảnh báo tương ứng với điều kiện tra cứu.
+Đối với cảnh báo hạn sử dụng, hệ thống hiển thị số lượng còn lại của sản phẩm theo từng chi tiết phiếu nhập và hạn sử dụng tương ứng.
+Main flow | Chủ cửa hàng chọn chức năng “Tra cứu tồn kho”.
+Hệ thống hiển thị ô tìm kiếm theo tên hoặc mã sản phẩm, bộ lọc gồm “Tất cả”, “Dưới mức cảnh báo tồn kho”, “Sắp hết hạn”, “Đã hết hạn” và nút “Tìm kiếm”
+Chủ cửa hàng nhập tên hoặc mã sản phẩm và chọn trạng thái cần tra cứu.
+Chủ cửa hàng chọn nút “Tìm kiếm”.
+Hệ thống truy xuất dữ liệu và lọc theo điều kiện đã chọn.
+6. Hệ thống hiển thị kết quả gồm Mã sản phẩm, Tên sản phẩm, Số lượng tồn và Trạng thái.
+
+7. Hệ thống hiển thị thêm Mã phiếu nhập, Hạn sử dụng, Số lượng còn và Trạng thái của từng chi tiết phiếu nhập khi Chủ cửa hàng chọn bộ lọc “Sắp hết hạn” hoặc “Đã hết hạn”.
+Alternative flows | 3a. Tra cứu tất cả sản phẩm
+3a.1. Chủ cửa hàng để trống ô tìm kiếm và giữ bộ lọc mặc định “Tất cả”.
+3a.2. Hệ thống tra cứu toàn bộ sản phẩm và tiếp tục bước 4.
+3b. Lọc theo trạng thái “Dưới mức cảnh báo tồn kho”.
+3b.1. Chủ cửa hàng chọn “Dưới mức cảnh báo tồn kho”.
+3b.2. Hệ thống lọc các sản phẩm có tổng tồn kho nhỏ hơn hoặc bằng mức tồn tối thiểu và hiển thị kết quả ở bước 6.
+3c. Lọc theo trạng thái “Sắp hết hạn”.
+3c.1. Chủ cửa hàng chọn “Sắp hết hạn”.
+3c.2. Hệ thống hiển thị các chi tiết phiếu nhập còn hàng và có hạn sử dụng là hôm nay hoặc trong 30 ngày tới, tiếp tục bước 6.
+3d. Lọc theo trạng thái “Đã hết hạn”.
+3d.1. Chủ cửa hàng chọn “Đã hết hạn”.
+3d.2. Hệ thống lọc các chi tiết phiếu nhập có hạn sử dụng trước ngày hiện tại và số lượng còn lớn hơn 0, sau đó hiển thị kết quả ở bước 6
+Exception flows | 5a. Không tìm thấy sản phẩm phù hợp.
+5a.1. Hệ thống hiển thị thông báo “Không tìm thấy sản phẩm phù hợp”.
+5a.2. Chủ cửa hàng có thể thay đổi điều kiện tra cứu và quay lại bước 3.
+5b. Không thể truy xuất dữ liệu tồn kho.
+5b.1. Hệ thống hiển thị thông báo “Không thể tải dữ liệu tồn kho” và kết thúc.
+Business rules | BR-UC4-08, BR-UC4-09, BR-UC4-10, BR-UC4-15
+Non-functional requirement | N/A
+[/BẢNG]
+Tra cứu lịch sử nhập hàng
+[BẢNG]
+Use case ID
+ | 4.4
+Use case name
+ | Tra cứu lịch sử nhập hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn tra cứu lịch sử nhập hàng theo mã phiếu nhập, nhà cung cấp hoặc khoảng thời gian để xem lại thông tin các lần nhập hàng đã được ghi nhận
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn chức năng “Lịch sử nhập hàng”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Hệ thống có lưu trữ dữ liệu các phiếu nhập hàng
+Post-conditions | Hệ thống hiển thị danh sách các phiếu nhập hàng phù hợp và chi tiết phiếu nhập được chọn
+Main flow | Chủ cửa hàng chọn chức năng “Lịch sử nhập hàng”.
+Hệ thống hiển thị danh sách các phiếu nhập hàng kèm bộ lọc tìm kiếm.
+Chủ cửa hàng nhập từ khóa tìm kiếm (“Mã phiếu nhập”, “Tên nhà cung cấp” hoặc khoảng thời gian).
+Chủ cửa hàng chọn nút “Tìm kiếm”.
+Hệ thống tìm kiếm các phiếu nhập hàng theo điều kiện đã nhập.
+Hệ thống hiển thị danh sách các phiếu nhập hàng phù hợp.
+Chủ cửa hàng nhấn chọn một phiếu nhập hàng trong danh sách.
+8. Hệ thống hiển thị thông tin chi tiết của phiếu nhập hàng được chọn.
+Alternative flows | 3a. Chủ cửa hàng không nhập điều kiện tìm kiếm.
+3a.1. Hệ thống truy xuất danh sách tất cả phiếu nhập hàng đã lưu.
+3a.2. Hệ thống hiển thị danh sách phiếu nhập và quy trình tiếp tục tại bước 7.
+Exception flows | 5a. Không tìm thấy phiếu nhập phù hợp.
+5a.1. Hệ thống hiển thị thông báo “Không tìm thấy phiếu nhập”.
+5a.2. Chủ cửa hàng có thể thay đổi điều kiện tra cứu và quay lại bước 3.
+5b. Không thể truy xuất lịch sử nhập hàng.
+5b.1. Hệ thống hiển thị thông báo “Không thể tải lịch sử nhập hàng” và kết thúc.
+Business rules | BR-UC4-11, BR-UC4-12
+Non-functional requirement | N/A
+[/BẢNG]
+Quản lý khác hàng
+Mô tả khái quát UC:
+Cho phép Chủ cửa hàng thêm, sửa, xóa, tra cứu thông tin khách hàng và xem lịch sử mua hàng.”
+Business rules
+[BẢNG]
+ID | Business rules
+BR-UC5-01 | Tên khách hàng và số điện thoại bắt buộc nhập. Địa chỉ không bắt buộc.
+BR-UC5-02 | Số điện thoại khách hàng phải gồm đúng 10 chữ số, bắt đầu bằng chữ số 0 và không chứa chữ cái, khoảng trắng hoặc ký tự đặc biệt.
+BR-UC5-03 | Số điện thoại khách hàng không được trùng với khách hàng khác.
+BR-UC5-04 | Mã khách hàng do hệ thống tự tạo, là duy nhất và không được chỉnh sửa.
+BR-UC5-05 | Không được xóa khách hàng đã phát sinh hóa đơn mua hàng.
+BR-UC5-06 | Lịch sử mua hàng phải được liên kết với đúng khách hàng và hóa đơn đã lưu.
+BR-UC5-07 | Hệ thống hiển thị “Chưa có lịch sử mua hàng” đối với khách hàng chưa phát sinh hóa đơn.
+[/BẢNG]
+ Thêm khách hàng
+[BẢNG]
+Use case ID
+ | 5.1
+Use case name
+ | Thêm khách hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn thêm khách hàng để lưu thông tin liên hệ và theo dõi lịch sử mua hàng.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn chức năng “Thêm khách hàng”.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+ Chủ cửa hàng đang ở màn hình Quản lý khách hàng.
+Post-conditions | Khách hàng mới được lưu và hiển thị trong danh sách.
+Main flow | Chủ cửa hàng chọn chức năng “Thêm khách hàng”.
+Hệ thống hiển thị biểu mẫu gồm Tên khách hàng, Số điện thoại bắt buộc nhập, Địa chỉ không bắt buộc và hai nút “Lưu”, “Hủy”.
+Chủ cửa hàng nhập thông tin khách hàng.
+Chủ cửa hàng chọn nút “Lưu”.
+Hệ thống kiểm tra dữ liệu và số điện thoại trùng.
+Hệ thống tạo mã khách hàng và lưu thông tin.
+Hệ thống đóng biểu mẫu, thông báo “Thêm khách hàng thành công” và cập nhật danh sách..
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”.
+4a.1. Nếu chủ cửa hàng chưa nhập thông tin hoặc chưa có thay đổi, hệ thống đóng biểu mẫu, không lưu thông tin và kết thúc.
+4a.2. Nếu chủ cửa hàng đã nhập thông tin, hệ thống hiển thị thông báo: “Bạn có chắc chắn muốn hủy thêm khách hàng không?” với hai nút “Xác nhận” và “Quay lại”.
+4a.3. Nếu chủ cửa hàng nhấn nút “Xác nhận”, hệ thống đóng biểu mẫu, không lưu thông tin và kết thúc.
+4a.4. Nếu chủ cửa hàng nhấn nút “Quay lại”, hệ thống đóng thông báo và giữ nguyên thông tin và quay lại bước 3.
+Exception flows | 5a. Bỏ trống thông tin bắt buộc:
+5a.1. Hệ thống hiển thị thông báo “Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại” và quay lại bước 3.
+5b. Thông tin nhập sai định dạng:
+5b.1. Hệ thống hiển thị thông báo “Tên khách hàng hoặc Số điện thoại không đúng định dạng” và quay lại bước 3.
+5c. Số điện thoại đã tồn tại:
+5c.1. Hệ thống hiển thị thông báo “Số điện thoại đã tồn tại trong hệ thống” và quay lại bước 3
+Business rules | BR-UC5-01, BR-UC5-02, BR-UC5-03, BR-UC5-04
+Non-functional requirement | N/A
+[/BẢNG]
+Sửa thông tin khách hàng
+[BẢNG]
+Use case ID
+ | 5.2
+Use case name
+ | Sửa thông tin khách hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn sửa thông tin khách hàng khi thông tin thay đổi hoặc bị nhập sai.
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn chức năng “Sửa”.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Thông tin khách hàng cần sửa đã tồn tại trong hệ thống.
+Post-conditions | Thông tin khách hàng được cập nhật mới trong hệ thống.
+Main flow | Chủ cửa hàng chọn một khách hàng trong danh sách và chọn chức năng “Sửa”.
+Hệ thống hiển thị biểu mẫu gồm Mã khách hàng chỉ được xem, Tên khách hàng, Số điện thoại bắt buộc nhập, Địa chỉ không bắt buộc và hai nút “Lưu”, “Hủy”.
+Chủ cửa hàng chỉnh sửa thông tin khách hàng.
+Chủ cửa hàng chọn nút “Lưu”.
+Hệ thống kiểm tra tính hợp lệ của dữ liệu và kiểm tra trùng Số điện thoại với khách hàng khác.
+Hệ thống cập nhật khách hàng.
+7. Hệ thống thông báo “Cập nhật thông tin khách hàng thành công” và cập nhật danh sách.
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”.
+4a.1. Nếu chủ cửa hàng chưa nhập thông tin hoặc chưa có thay đổi, hệ thống đóng biểu mẫu, không lưu thông tin và kết thúc.
+4a.2. Nếu chủ cửa hàng đã nhập thông tin, hệ thống hiển thị thông báo: “Bạn có chắc chắn muốn hủy sửa khách hàng không?” với hai nút “Xác nhận” và “Quay lại”.
+4a.3. Nếu chủ cửa hàng nhấn nút “Xác nhận”, hệ thống đóng biểu mẫu, không lưu thông tin và kết thúc.
+4a.4. Nếu chủ cửa hàng nhấn nút “Quay lại”, hệ thống đóng thông báo và giữ nguyên thông tin và quay lại bước 3.
+Exception flows | 5a.1. Hệ thống hiển thị thông báo “Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại” và quay lại bước 3.
+5b. Thông tin nhập sai định dạng
+5b.1. Hệ thống hiển thị thông báo “Tên khách hàng hoặc Số điện thoại không đúng định dạng” và quay lại bước 3.
+5c. Số điện thoại đã tồn tại
+5c.1. Hệ thống hiển thị thông báo “Số điện thoại đã tồn tại trong hệ thống” và quay lại bước 3.
+
+Business rules | BR-UC5-01, BR-UC5-02, BR-UC5-03, BR-UC5-04
+Non-functional requirement | N/A
+[/BẢNG]
+Xóa thông tin khách hàng
+[BẢNG]
+Use case ID
+ | 5.3
+Use case name
+ | Xóa thông tin khách hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn xóa khách hàng không còn cần lưu và chưa phát sinh hóa đơn mua hàng.
+Actors | Chủ cửa hàng
+Priority | Low
+Triggers | Chủ cửa hàng chọn chức năng “Xóa”.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Khách hàng được chọn đang tồn tại trong hệ thống.
+Post-conditions | Thông tin khách hàng được xóa khỏi hệ thống và danh sách.
+Main flow | Chủ cửa hàng chọn một khách hàng từ danh sách và chọn chức năng “Xóa”.
+Hệ thống hiển thị hộp thoại xác nhận “Bạn có chắc chắn muốn xóa khách hàng này không?” với hai lựa chọn “Đồng ý” và “Quay lại”.
+Chủ cửa hàng chọn “Đồng ý”.
+Hệ thống kiểm tra lịch sử mua hàng của khách hàng.
+Hệ thống xóa thông tin khách hàng.
+6. Hệ thống đóng hộp thoại, thông báo “Xóa khách hàng thành công” và cập nhật danh sách.
+Alternative flows | 3a. Hủy thao tác xóa:
+3a.1. Chủ cửa hàng chọn “Hủy” tại hộp thoại xác nhận.
+3a.2. Hệ thống đóng hộp thoại, giữ nguyên dữ liệu khách hàng và kết thúc.
+Exception flows | 4a. Khách hàng đã có hóa đơn mua hàng:
+4a.1. Hệ thống hiển thị thông báo “Không thể xóa khách hàng đã có lịch sử mua hàng”.
+4a.2. Hệ thống hủy thao tác xóa và kết thúc.
+Business rules | BR-UC5-05
+Non-functional requirement | N/A
+[/BẢNG]
+Tra cứu thông tin khách hàng
+[BẢNG]
+Use case ID
+ | 5.4
+Use case name
+ | Tra cứu thông tin khách hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn tìm khách hàng để xem thông tin liên hệ và lịch sử mua hàng.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn chức năng “Tra cứu thông tin khách hàng”.
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Hệ thống có dữ liệu khách hàng.
+Post-conditions | Thông tin khách hàng và lịch sử hóa đơn được hiển thị.
+Main flow | Chủ cửa hàng chọn “Quản lý khách hàng”.
+Hệ thống hiển thị ô tìm kiếm, nút “Tìm kiếm” và danh sách gồm Mã khách hàng, Tên khách hàng, Số điện thoại, Địa chỉ.
+Chủ cửa hàng nhập mã khách hàng, tên khách hàng hoặc số điện thoại và chọn “Tìm kiếm”.
+Hệ thống hiển thị danh sách khách hàng phù hợp.
+Chủ cửa hàng chọn một khách hàng trong danh sách.
+Hệ thống hiển thị Mã khách hàng, Tên khách hàng, Số điện thoại, Địa chỉ và bảng lịch sử mua hàng gồm Mã hóa đơn, Ngày giờ bán, Tổng tiền, Trạng thái.
+Chủ cửa hàng nhấn “Đóng”.
+Hệ thống đóng cửa sổ thông tin khách hàng và trở về danh sách.
+
+Alternative flows | 6a. Khách hàng chưa có lịch sử mua hàng:
+6a.1. Hệ thống hiển thị thông tin khách hàng và thông báo “Chưa có lịch sử mua hàng” tại bảng hóa đơn.
+Exception flows | 4a. Không tìm thấy khách hàng phù hợp:
+4a.1. Hệ thống hiển thị thông báo “Không tìm thấy khách hàng phù hợp” và quay lại bước 3.
+Business rules | BR-UC5-05, BR-UC5-06, BR-UC5-07
+Non-functional requirement | N/A
+[/BẢNG]
+Bán hàng
+Mô tả khái quát UC
+Cho phép Chủ cửa hàng thực hiện các hoạt động bán hàng tại quầy, bao gồm tạo giao dịch, thanh toán, in hóa đơn, hủy hóa đơn và xử lý đổi/trả hàng. Hệ thống hỗ trợ tính tiền, ghi nhận giao dịch và cập nhật số lượng tồn kho tương ứng.
+[BẢNG]
+ID | Business rules
+BR-UC6-01 | Sản phẩm được thêm vào giao dịch phải tồn tại trong danh mục sản phẩm của hệ thống.
+BR-UC6-02 | Số lượng bán phải lớn hơn 0 và không vượt quá số lượng tồn kho có thể bán.
+BR-UC6-03 | Nếu sản phẩm có nhiều đơn vị bán như hộp, lốc, thùng thì hệ thống phải áp dụng đúng giá bán và tỷ lệ quy đổi tương ứng.
+BR-UC6-04 | Thành tiền của từng sản phẩm bằng số lượng bán nhân với đơn giá của đơn vị bán được chọn. Tổng tiền giao dịch bằng tổng thành tiền của các sản phẩm.
+BR-UC6-05 | Với thanh toán tiền mặt, hệ thống tính tiền thừa bằng số tiền khách đưa trừ tổng tiền thanh toán.
+BR-UC6-06 | Với thanh toán chuyển khoản, Chủ cửa hàng xác nhận đã nhận tiền trước khi hoàn tất giao dịch.
+BR-UC6-07 | Giao dịch hoàn tất phải được lưu vào lịch sử bán hàng và cập nhật số lượng tồn kho tương ứng.
+BR-UC6-08 | Nếu số lượng tồn kho xuống mức cảnh báo sau khi bán, hệ thống phải hiển thị cảnh báo trên ứng dụng bán hàng.
+BR-UC6-09 | Hóa đơn in phải phản ánh đúng thông tin giao dịch đã được lưu.
+BR-UC6-10 | Hóa đơn tồn tại trong hệ thống và chưa bị hủy mới được phép hủy. Khi hủy thành công, hệ thống phải ghi nhận trạng thái, lý do, thời gian hủy và hoàn lại số lượng tồn kho theo đúng các chi tiết phiếu nhập đã xuất khi bán hàng. Hóa đơn đã phát sinh đổi/trả không được hủy trực tiếp
+BR-UC6-11 | Giao dịch đổi/trả phải được đối chiếu với giao dịch bán hàng đã lưu.
+BR-UC6-12 | Điều kiện đổi/trả phụ thuộc vào sản phẩm và quyết định xử lý của cửa hàng; không áp dụng thời hạn cố định khi chưa có quy định cụ thể.
+BR-UC6-13 | Khi đổi/trả thành công, hệ thống cập nhật tồn kho tương ứng, ghi nhận việc hoàn kho theo đúng chi tiết phiếu nhập ban đầu đối với hàng đủ điều kiện nhập lại kho và lưu lịch sử điều chỉnh giao dịch.
+BR-UC6-14 | Tiền chênh lệch được tính bằng giá trị hàng đổi mới trừ giá trị hàng trả. Nếu kết quả lớn hơn 0, Chủ cửa hàng thu thêm tiền.Nếu nhỏ hơn 0, Chủ cửa hàng hoàn tiền. Nếu bằng 0, không phát sinh thu thêm hoặc hoàn tiền.
+BR-UC6-15 | Khi bán hàng, hệ thống phải ghi nhận số lượng sản phẩm được xuất từ từng chi tiết phiếu nhập tương ứng. Một chi tiết hóa đơn bán có thể được xuất từ nhiều chi tiết phiếu nhập khác nhau.
+BR-UC6-16 | Tổng số lượng xuất từ các chi tiết phiếu nhập phải bằng số lượng bán sau quy đổi đơn vị. Hệ thống không cho phép xuất vượt số lượng còn có thể bán của từng chi tiết phiếu nhập.
+[/BẢNG]
+Tạo giao dịch bán hàng
+[BẢNG]
+Use case ID
+ | 6.1
+Use case name
+ | Tạo giao dịch bán hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn tạo giao dịch bán hàng bằng cách lựa chọn sản phẩm, đơn vị bán và số lượng để xác định tổng tiền khách cần thanh toán.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng đăng nhập thành công vào hệ thống hoặc chọn chức năng “Tạo giao dịch bán hàng”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống
+Hệ thống có dữ liệu của sản phẩm, giá bán và số lượng tồn kho.
+Hệ thống có thông tin số lượng tồn theo từng chi tiết phiếu nhập đối với hàng hóa đã nhập kho
+Post-conditions | Giao dịch bán hàng lưu thành công cùng danh sách sản phẩm, số lượng, đơn giá, tổng tiền và phương thức thanh toán.
+Hệ thống ghi nhận số lượng xuất tương ứng với từng chi tiết phiếu nhập
+Tổng tồn kho và số lượng còn theo từng chi tiết phiếu nhập được cập nhật.
+Main flow | Chủ cửa hàng chọn chức năng “Tạo giao dịch bán hàng”.
+Hệ thống hiển thị màn hình bán hàng gồm ô tìm kiếm sản phẩm, giỏ hàng, tổng tiền và khu vực thanh toán.
+Chủ cửa hàng quét mã vạch sản phẩm.
+
+Hệ thống tìm và hiển thị tên sản phẩm, đơn vị bán, giá bán và số lượng tồn kho.
+Chủ cửa hàng chọn đơn vị bán và nhập số lượng cần bán.
+Hệ thống kiểm tra số lượng bán sau quy đổi và số lượng hàng có thể xuất từ các chi tiết phiếu nhập.
+Hệ thống tính thành tiền và cập nhật tổng tiền giao dịch.
+Chủ cửa hàng chọn “Hoàn tất chọn sản phẩm” và phương thức thanh toán.
+Chủ cửa hàng xác nhận đã nhận đủ tiền và chọn “Hoàn tất thanh toán”.
+Hệ thống lưu hóa đơn, chi tiết hóa đơn, ghi nhận số lượng xuất theo từng chi tiết phiếu nhập và cập nhật tồn kho trong cùng một giao dịch dữ liệu.
+Hệ thống kiểm tra mức cảnh báo tồn kho sau bán.
+Hệ thống thông báo “Bán hàng thành công” và làm mới giỏ hàng.
+Alternative flows | 3a. Tìm sản phẩm bằng tên
+3a.1. Chủ cửa hàng nhập tên sản phẩm thay vì quét mã vạch.
+3a.2. Hệ thống hiển thị các sản phẩm phù hợp. Chủ cửa hàng chọn sản phẩm và tiếp tục bước 5.
+
+7a. Thêm sản phẩm khác
+7a.1. Chủ cửa hàng tiếp tục thêm sản phẩm và quay lại bước 3.
+
+8a. Thanh toán bằng tiền mặt
+8a.1. Chủ cửa hàng chọn “Tiền mặt” và nhập số tiền khách đưa.
+8a.2. Hệ thống kiểm tra số tiền và tính tiền thừa.
+8a.3. Chủ cửa hàng thu tiền, trả tiền thừa nếu có và tiếp tục bước 9.
+8b. Thanh toán bằng chuyển khoản
+8b.1. Chủ cửa hàng chọn “Chuyển khoản” và cung cấp mã QR ngân hàng cho khách.
+8b.2. Khách thực hiện chuyển khoản.
+8b.3. Chủ cửa hàng kiểm tra, xác nhận đã nhận đủ tiền và tiếp tục bước 9.
+
+11a. Tồn kho xuống mức cảnh báo
+11a.1. Hệ thống phát hiện sản phẩm có tồn kho nhỏ hơn hoặc bằng mức tồn tối thiểu.
+11a.2. Hệ thống hiển thị cảnh báo và tiếp tục bước 12.
+Exception flows | 4a. Không tìm thấy sản phẩm
+4a.1. Hệ thống thông báo “Không tìm thấy sản phẩm” và quay lại bước 3.
+
+6a. Số lượng bán không hợp lệ
+6a.1. Nếu số lượng không lớn hơn 0 hoặc vượt tồn kho có thể bán, hệ thống thông báo “Số lượng bán không hợp lệ” và quay lại bước 5.
+6b. Không đủ hàng theo nguồn nhập
+6b.1. Hệ thống không xác định được đủ số lượng hàng có thể xuất từ các chi tiết phiếu nhập.
+6b.2. Hệ thống thông báo “Không đủ số lượng hàng có thể bán” và quay lại bước 5.
+
+8a.2a. Tiền khách đưa không đủ
+8a.2a.1. Hệ thống phát hiện tiền khách đưa nhỏ hơn tổng thanh toán.
+8a.2a.2. Hệ thống thông báo “Tiền khách đưa chưa đủ để thanh toán” và quay lại bước 8a.1.
+
+10a. Không thể lưu giao dịch
+10a.1. Hệ thống thông báo “Không thể lưu giao dịch. Hãy thử lại”.
+10a.2. Hệ thống không ghi nhận giao dịch hoàn tất và không cập nhật tồn kho.
+10a.3. Hệ thống giữ thông tin giao dịch để Chủ cửa hàng thử lại tại bước 9.
+Business rules | BR-UC6-01, BR-UC6-02, BR-UC6-03, BR-UC6-04, BR-UC6-05, BR-UC6-06, BR-UC6-07, BR-UC6-08.
+Non-functional requirement | NFR-02
+[/BẢNG]
+In hóa đơn
+[BẢNG]
+Use case ID
+ | 6.2
+Use case name
+ | In hóa đơn
+Description
+ | Là Chủ cửa hàng, tôi muốn in hóa đơn bán hàng để giao cho khách và đổi trả hàng khi cần.
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn chức năng “In hóa đơn”.
+Pre-conditions | Hóa đơn đang ở trạng thái “Hóa đơn đã được lưu”
+Máy in hóa đơn sẵn sàng kết nối.
+Post-conditions | Hóa đơn được in thành công.
+Nội dung in khớp với thông tin giao dịch đã lưu.
+Main flow | Chủ cửa hàng chọn chức năng “In hóa đơn” cho một giao dịch đã lưu.
+Hệ thống kiểm tra trạng thái của giao dịch.
+Hệ thống tạo và hiển thị nội dung hóa đơn gồm mã hóa đơn, ngày giờ bán, danh sách sản phẩm, số lượng, đơn giá, tổng tiền và phương thức thanh toán.
+Chủ cửa hàng chọn nút “In hóa đơn”.
+Hệ thống gửi yêu cầu in đến máy in.
+Hệ thống thông báo “In hóa đơn thành công” sau khi nhận được kết quả in thành công.
+Alternative flows | 4a. Chủ cửa hàng nhấn nút “Hủy”.
+4a.1. Hệ thống hiển thị thông báo: “Bạn có chắc chắn muốn hủy in hóa đơn không?” với hai nút “Xác nhận” và “Quay lại”.
+4a.2. Nếu Chủ cửa hàng nhấn nút “Xác nhận”, hệ thống đóng màn hình xem trước hóa đơn, không gửi yêu cầu in đến máy in và kết thúc.
+4a.3. Nếu Chủ cửa hàng nhấn nút “Quay lại”, hệ thống đóng thông báo và giữ nguyên màn hình xem trước hóa đơn để chủ cửa hàng tiếp tục thao tác in.
+UC quay lại bước 4
+Exception flows | 2a. Hóa đơn đã bị hủy trước đó:
+2a.1. Hệ thống phát hiện hóa đơn có trạng thái “Đã hủy”.
+2a.2. Hệ thống hiển thị thông báo “Hóa đơn đã bị hủy, không thể in” và kết thúc.
+
+5a. Không thể gửi yêu cầu in
+5a.1. Hệ thống hiển thị thông báo “Không thể kết nối hoặc gửi yêu cầu đến máy in”.
+5a.2. Chủ cửa hàng kiểm tra kết nối 
+UC quay lại bước 4
+Business rules | BR-UC6-09.
+Non-functional requirement | N/A
+[/BẢNG]
+Hủy hóa đơn
+[BẢNG]
+Use case ID
+ | 6.3
+Use case name
+ | Hủy hóa đơn
+Description
+ | Là Chủ cửa hàng, tôi muốn hủy hóa đơn đã lưu khi phát hiện sai sót hoặc giao dịch cần được hủy.
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn chức năng “Hủy hóa đơn”
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Hóa đơn cần hủy tồn tại trong hệ thống và chưa bị hủy.
+Post-conditions | Trạng thái hóa đơn chuyển thành “Đã hủy”.
+Lý do và thời gian hủy được lưu vào hệ thống.
+Số lượng tồn kho được hoàn lại theo đúng các chi tiết phiếu nhập đã xuất khi bán hàng.
+Hóa đơn được lưu trong lịch sử bán hàng.
+Main flow | Chủ cửa hàng tìm và chọn hóa đơn cần hủy.
+Chủ cửa hàng chọn nút “Hủy”.
+Hệ thống kiểm tra trạng thái và thông tin hóa đơn.
+Hệ thống hiển thị hộp thoại yêu cầu nhập lý do hủy.
+Chủ cửa hàng nhập lý do và chọn “Xác nhận”.
+Hệ thống kiểm tra lý do hủy đã được nhập.
+Hệ thống cập nhật trạng thái hóa đơn, lưu lý do và thời gian hủy, hoàn số lượng về đúng chi tiết phiếu nhập đã xuất
+Hệ thống hiển thị thông báo “Hủy hóa đơn thành công”.
+Alternative flows | 5a. Chủ cửa hàng không tiếp tục hủy hóa đơn.
+5a.1. Chủ cửa hàng chọn “Quay lại” trên hộp thoại xác nhận.
+5a.2. Hệ thống đóng hộp thoại, giữ nguyên trạng thái hóa đơn và kết thúc.
+Exception flows | 3a. Hóa đơn đã bị hủy
+3a.1. Hệ thống phát hiện hóa đơn đã có trạng thái “Đã hủy”.
+3a.2. Hệ thống thông báo “Hóa đơn này đã được hủy trước đó” và kết thúc.
+3b. Hóa đơn đã phát sinh đổi/trả hàng
+3b.1. Hệ thống phát hiện hóa đơn đã có phiếu đổi/trả được ghi nhận.
+3b.2. Hệ thống thông báo “Hóa đơn có giao dịch đổi/trả hàng, không thể hủy trực tiếp” và kết thúc.
+
+6a. Chủ cửa hàng chưa nhập lý do hủy
+6a.1. Hệ thống hiển thị thông báo “Vui lòng nhập lý do hủy hóa đơn” và quay lại bước 5.
+
+7a. Không thể lưu trạng thái hủy
+7a.1. Hệ thống hiển thị thông báo “Không thể hủy hóa đơn”.
+7a.2. Hệ thống giữ nguyên trạng thái hóa đơn và Chủ cửa hàng thử lại từ bước 5.
+Business rules | BR-UC6-10
+Non-functional requirement | N/A
+[/BẢNG]
+ 
+Tra cứu lịch sử bán hàng
+[BẢNG]
+Use case ID
+ | 6.4
+Use case name
+ | Tra cứu lịch sử bán hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn tra cứu các hóa đơn đã lưu để xem lại thông tin giao dịch, kiểm tra trạng thái hóa đơn và lựa chọn hóa đơn khi cần xử lý.
+Actors | Chủ cửa hàng
+Priority | High
+Triggers | Chủ cửa hàng chọn chức năng “Lịch sử bán hàng”
+Pre-conditions | Chủ cửa hàng đã đăng nhập thành công vào hệ thống.
+Hệ thống có dữ liệu các giao dịch bán hàng đã lưu.
+Post-conditions | Hệ thống hiển thị danh sách hóa đơn kèm điều kiện tìm kiếm
+Thông tin chi tiết của hóa đơn được hiển thị khi Chủ cửa hàng chọn xem.
+Main flow | Chủ cửa hàng chọn chức năng “Lịch sử bán hàng”.
+Hệ thống hiển thị danh sách các hóa đơn đã lưu và công cụ tìm kiếm.
+Chủ cửa hàng nhập mã hóa đơn, số điện thoại khách hàng hoặc khoảng thời gian(Từ ngày , Đến ngày)
+Chủ cửa hàng nhấn “Tìm kiếm”.
+Hệ thống tìm các hóa đơn theo điều kiện đã nhập.
+Hệ thống hiển thị danh sách hóa đơn phù hợp.
+Chủ cửa hàng chọn một hóa đơn.
+Hệ thống hiển thị chi tiết hóa đơn gồm mã hóa đơn, ngày giờ bán, thông tin khách hàng nếu có, danh sách sản phẩm, số lượng, đơn giá, tổng tiền, phương thức thanh toán và trạng thái hóa đơn.
+Alternative flows | 3a. Chủ cửa hàng không nhập điều kiện tìm kiếm
+3a.1. Hệ thống sử dụng danh sách tất cả hóa đơn đã lưu.
+3a.2. Hệ thống hiển thị danh sách hóa đơn.
+UC tiếp tục bước 7
+8a. Chủ cửa hàng chọn “In hóa đơn” chuyển sang UC 6.2
+8b. Chủ cửa hàng chọn “Đổi/trả hàng” chuyển sang UC 6.5
+Exception flows | 4a. Khoảng thời gian không hợp lệ
+4a.1. Nếu “Từ ngày” lớn hơn “Đến ngày”, hệ thống thông báo “Khoảng thời gian không hợp lệ”.
+4a.2. Chủ cửa hàng sửa khoảng thời gian và tìm kiếm lại.
+5a. Không tìm thấy hóa đơn phù hợp
+5a.1. Hệ thống hiển thị thông báo “Không tìm thấy hóa đơn phù hợp”.
+5a.2. Chủ cửa hàng thay đổi điều kiện tìm kiếm quay lại bước 3
+
+5b. Không thể truy xuất lịch sử bán hàng
+5b.1. Hệ thống hiển thị thông báo “Không thể tải lịch sử bán hàng” và kết thúc.
+Business rules | BR-UC6-07
+Non-functional requirement | N/A
+[/BẢNG]
+Xử lý đổi trả
+[BẢNG]
+Use case ID
+ | 6.5
+Use case name
+ | Xử lý đổi/trả hàng
+Description
+ | Là Chủ cửa hàng, tôi muốn xử lý đổi/trả hàng theo hóa đơn đã bán để biết số tiền thu thêm hoặc hoàn lại và cập nhật tồn kho.
+Actors | Chủ cửa hàng
+Priority | Medium
+Triggers | Chủ cửa hàng chọn một hóa đơn và nhấn Đổi/trả hàng
+Pre-conditions | Chủ cửa hàng đã đăng nhập vào hệ thống.
+Hóa đơn gốc đã được lưu.
+Post-conditions | Phiếu đổi/trả được lưu và liên kết với hóa đơn gốc.
+Hàng trả được nhập lại kho được cộng về đúng chi tiết phiếu nhập đã xuất ra hàng đó.
+Hàng đổi được trừ kho theo phân bổ xuất kho.
+Tiền chênh lệch được ghi nhận.
+Main flow | Chủ cửa hàng chọn hóa đơn và nhấn “Đổi/trả hàng”.
+Hệ thống kiểm tra hóa đơn và hiển thị Mã hóa đơn, Ngày bán, danh sách sản phẩm đã mua gồm Tên sản phẩm, Đơn vị bán, Số lượng đã mua, Số lượng còn được trả, Đơn giá.
+Chủ cửa hàng chọn sản phẩm trả và nhập số lượng trả.
+Hệ thống kiểm tra số lượng trả và thêm vào danh sách hàng trả.
+Chủ cửa hàng kiểm tra tình trạng hàng trả, mặc định mỗi dòng hàng trả được nhập lại kh
+Chủ cửa hàng chọn sản phẩm đổi, đơn vị bán và nhập số lượng đổi.
+Hệ thống kiểm tra tồn kho hàng đổi, tính tiền hàng trả, tiền hàng đổi và tiền chênh lệch.
+Hệ thống hiển thị số tiền cần thu thêm. Chủ cửa hàng xác nhận đã thu tiền.
+Chủ cửa hàng nhấn “Hoàn tất đổi/trả”.
+Hệ thống lưu phiếu đổi/trả, cộng hàng trả được nhập lại về đúng chi tiết phiếu nhập, phân bổ xuất kho hàng đổi và cập nhật tồn kho, trong cùng một giao dịch dữ liệu.
+Hệ thống hiển thị “Xử lý đổi/trả hàng thành công” và quay về chi tiết hóa đơn
+Alternative flows | 5a. Hàng trả không nhập lại kho
+5a.1. Chủ cửa hàng chọn “Không nhập lại kho” cho dòng hàng đó.
+5a.2. Hệ thống đánh dấu dòng đó không nhập lại kho và tiếp tục bước 6.
+
+6a. Chỉ trả hàng
+6a.1. Chủ cửa hàng chọn “Chỉ trả hàng”.
+6a.2. Hệ thống đặt tiền hàng đổi bằng 0 và tiếp tục bước 8b.
+8a. Không có tiền chênh lệch
+8a.1. Hệ thống xác định tiền chênh lệch bằng 0, bỏ qua xác nhận tiền và tiếp tục bước 9.
+8b. Cần hoàn tiền
+8b.1. Hệ thống hiển thị số tiền cần hoàn lại.
+8b.2. Chủ cửa hàng xác nhận đã hoàn tiền và tiếp tục bước 9.
+Exception flows | 2a. Hóa đơn không hợp lệ
+2a.1. Hệ thống phát hiện hóa đơn đã bị hủy hoặc không còn sản phẩm nào được trả.
+2a.2. Hệ thống thông báo “Hóa đơn không thể đổi/trả hàng” và kết thúc.
+
+4a. Số lượng trả không hợp lệ
+4a.1. Hệ thống phát hiện số lượng trả bằng 0, không phải số nguyên hoặc vượt quá số lượng còn được trả.
+4a.2. Hệ thống thông báo “Số lượng trả không hợp lệ” và quay lại bước 3.
+
+
+7a. Không đủ hàng để đổi
+7a.1. Hệ thống thông báo “Không đủ số lượng hàng có thể bán” và quay lại bước 6.
+9a. Chưa xác nhận xử lý tiền
+9a.1. Hệ thống phát hiện có tiền chênh lệch nhưng chưa được xác nhận.
+9a.2. Hệ thống thông báo “Vui lòng xác nhận đã xử lý tiền chênh lệch” và quay lại bước 8.
+10a. Không thể lưu phiếu
+10a.1. Hệ thống thông báo “Không thể lưu phiếu đổi/trả”, hoàn tác mọi thay đổi và quay lại bước 9.
+Business rules | BR-UC6-11, BR-UC6-12, BR-UC6-13, BR-UC6-14, BR-UC6-15, BR-UC6-16.
+Non-functional requirement | N/A
+[/BẢNG]

@@ -1,10 +1,41 @@
+# Báo cáo đợt rà soát ngày 11/11/2026
+
+Trạng thái: bàn giao bản sửa có kiểm thử; CHƯA hoàn tất yêu cầu khớp toàn bộ Figma và xác minh Vercel.
+
+## Đã sửa
+
+- Khôi phục đầy đủ mã ứng dụng tại thư mục gốc repository công khai `baokhanh224/demo-50K211.08.3007`, nhánh main; không có thư mục demo-quynh-nhu lồng bên trong.
+- Trích 394 mục chữ Word (gồm bảng), hơn 12.000 lượt chữ Figma từ 199 frame trên 7 trang; quét chuỗi bằng AST trong JSX/API/PDF/Excel, lập bảng nguồn và danh mục frame. Trang UC1 thực có 27 frame, UC3 có 51 frame, nhiều hơn số dự kiến trong yêu cầu mỗi trang một frame.
+- UC7: đúng bốn thông báo/trạng thái, khung 500×478, vị trí trường, vùng lỗi cố định, font Inter; đã so ảnh Figma 1440×900. Sai lệch pixel thực tế 0,13–0,18%, chưa gọi là khớp tuyệt đối.
+- UC6: tách ô mã hóa đơn/điện thoại, nút Xem, bảng chi tiết 4 cột, tên sản phẩm kèm đơn vị; thêm nhanh khách bằng form UC5 và gắn vào giỏ; chỉnh chữ/menu và giữ route khi tải lại.
+- Không hiển thị mật khẩu demo; README/báo cáo không chứa tài khoản hoặc ID dự án Neon. Tài khoản nằm trong tệp riêng ngoài kho. Seed giữ nguyên tài khoản trên CSDL đã có.
+
+## Lệnh và kiểm tra đã chạy
+
+- `npm run typecheck`, `npm run build`: đạt.
+- `npm test`: 3 kiểm tra PostgreSQL đạt trên CSDL local riêng, gồm transaction rollback, chống trùng/đồng thời và dữ liệu lịch sử.
+- `npx tsx --test tests/payment-qr.test.ts`: 2 kiểm tra đạt.
+- `npm run test:ui`: 8/8 đạt trên production build local cổng 3002 với PostgreSQL local riêng. Bao gồm 3 test trong `tests/chu.spec.ts`; 4 trạng thái đăng nhập được so pixel, lỗi bắt buộc UC1 đúng Word, thêm nhanh khách, nhãn UC6, tải lại giữ màn hình; nhập hai hạn, bán thiếu tiền rồi sửa, chống bấm đôi, hủy hoàn nguồn, trả không nhập kho, báo cáo và Excel/PDF, master data, hai trình duyệt bán gần hết.
+- Hai lỗi test tên menu cũ và dữ liệu báo cáo phụ thuộc kịch bản bán đã được sửa; lần chạy cuối toàn bộ 8 test đạt.
+- Ảnh chuẩn tại `tests/figma-baseline`; ảnh thực/diff UC7 và số đo tại `docs/evidence/uc7`. Không đưa trace có cookie phiên lên GitHub.
+
+## Chưa hoàn tất/chưa xác minh
+
+- Chưa đối chiếu đủ 195 frame còn lại. UC6 đã sửa một phần, chưa chốt 40 trạng thái; UC4/5/1/2/3 chưa chỉnh toàn bộ bố cục.
+- Bảng chữ còn các câu chưa có nguồn hoặc chưa xác nhận đúng UC, được ghi rõ trong docs/kiem-tra-chu.md. Test chữ chưa bao phủ mọi nhãn và mọi ngoại lệ.
+- Chưa khôi phục trường hạn mặc định sản phẩm/tự điền phiếu nhập; chưa đổi toàn bộ dữ liệu mẫu và bố cục báo cáo theo Figma mới.
+- Chưa được cung cấp URL Vercel công khai cho đợt này và không có kết nối quản lý Vercel; chưa kiểm tra ẩn danh, redeploy/persistence hoặc đồng thời trên bản công khai. Không coi localhost là go-live.
+- Máy in vật lý, quét bằng app ngân hàng chưa kiểm chứng.
+
+## Kết quả lịch sử trước đợt rà soát
+
+Các nội dung dưới đây là kiểm tra cũ, không thay thế kết quả đợt mới hoặc chứng minh parity Figma.
+
 # Báo cáo bàn giao — 10/11/2026
 
 Đã chuyển theo yêu cầu mới: Next.js + TypeScript + PostgreSQL/Prisma, đủ các màn hình cho UC1.1–UC6.5, dữ liệu lưu trên Neon. Mã nguồn có migration, seed, nút khôi phục mẫu, cấu hình Vercel, xuất Excel/PDF, tài liệu và kịch bản demo.
 
-**Tài khoản kiểm tra:** `chucuahang` / `QuynhNhu@123`.
 
-**Go-live:** CSDL Neon đã có migration và dữ liệu tại dự án `quynh-nhu-demo` (`curly-pine-28788367`). Mã nguồn GitHub: https://github.com/baokhanh224/50K211.08.3007/tree/codex/quynh-nhu-demo/demo-quynh-nhu . Kết nối GitHub không có quyền tạo repository mới, nên ứng dụng được đưa vào một thư mục mới trên nhánh riêng của repository dự án có cùng link Figma. Chưa có URL Vercel công khai: kết nối Vercel chưa được cấp quyền. Không coi http://localhost:3000 là đường dẫn công khai. Các bước Vercel đã có trong README.
 
 
 ## Các lệnh và kiểm tra đã chạy

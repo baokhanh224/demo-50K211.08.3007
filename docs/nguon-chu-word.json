@@ -1,0 +1,2366 @@
+[
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-01",
+    "dong_nguon": 6,
+    "chu": "Tên sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-01",
+    "dong_nguon": 6,
+    "chu": "Danh mục"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-01",
+    "dong_nguon": 6,
+    "chu": "Đơn vị tính"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-01",
+    "dong_nguon": 6,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-01",
+    "dong_nguon": 6,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-02",
+    "dong_nguon": 7,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-03",
+    "dong_nguon": 8,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-03",
+    "dong_nguon": 8,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-04",
+    "dong_nguon": 9,
+    "chu": "Hạn sử dụng"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-05",
+    "dong_nguon": 10,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-06",
+    "dong_nguon": 11,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-08",
+    "dong_nguon": 13,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-08",
+    "dong_nguon": 13,
+    "chu": "Tên sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-09",
+    "dong_nguon": 14,
+    "chu": "Giá bán mới"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 20,
+    "chu": "Thêm sản phẩm"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 24,
+    "chu": "Thêm sản phẩm"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 29,
+    "chu": "Thêm sản phẩm"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 32,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 34,
+    "chu": "Thêm sản phẩm thành công!"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 36,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 39,
+    "chu": "Không được để trống!"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 41,
+    "chu": "Dữ liệu không hợp lệ!"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 42,
+    "chu": "Tên sản phẩm"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 42,
+    "chu": "Danh mục"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 42,
+    "chu": "Đơn vị tính"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 42,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC1.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 42,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-02: “Mã sản phẩm” do hệ thống tự động sinh theo định dạng SP + 4 chữ số tăng dần (SP0001, SP0002, …), là duy nhất trong hệ thống và không được tái sử dụng kể cả khi sản phẩm đã bị xóa",
+    "dong_nguon": 43,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-03: “Giá nhập” và “Giá bán” phải là số lớn hơn 0",
+    "dong_nguon": 44,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-03: “Giá nhập” và “Giá bán” phải là số lớn hơn 0",
+    "dong_nguon": 44,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-04: “Hạn sử dụng” (nếu có) phải sau ngày hiện tại",
+    "dong_nguon": 45,
+    "chu": "Hạn sử dụng"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 51,
+    "chu": "Sửa sản phẩm"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 55,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 61,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 64,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 66,
+    "chu": "Cập nhật sản phẩm thành công!"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 68,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 70,
+    "chu": "Bạn có chắc chắn muốn hủy không?"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 70,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 70,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 71,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 72,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 75,
+    "chu": "Không được để trống!"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 77,
+    "chu": "Dữ liệu không hợp lệ!"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 79,
+    "chu": "Sản phẩm không tồn tại!"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 80,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC1.2",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 80,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-04: “Hạn sử dụng” (nếu có) phải sau ngày hiện tại",
+    "dong_nguon": 81,
+    "chu": "Hạn sử dụng"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-05: “Mã sản phẩm” không được chỉnh sửa",
+    "dong_nguon": 82,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "BR-UC1-06: “Giá bán” không được chỉnh sửa tại chức năng này (sử dụng chức năng Cập nhật giá bán)",
+    "dong_nguon": 83,
+    "chu": "Giá bán"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 89,
+    "chu": "Xóa sản phẩm"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 93,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 99,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 100,
+    "chu": "Bạn có chắc chắn muốn xóa sản phẩm này?"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 101,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 103,
+    "chu": "Xóa sản phẩm thành công!"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 105,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.3",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 108,
+    "chu": "Không thể xóa sản phẩm đã có tồn kho hoặc giao dịch!"
+  },
+  {
+    "UC": "UC1.4",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 117,
+    "chu": "Tra cứu sản phẩm"
+  },
+  {
+    "UC": "UC1.4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 127,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC1.4",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 137,
+    "chu": "Không tìm thấy sản phẩm!"
+  },
+  {
+    "UC": "UC1.4",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 138,
+    "chu": "Mã sản phẩm"
+  },
+  {
+    "UC": "UC1.4",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 138,
+    "chu": "Tên sản phẩm"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 144,
+    "chu": "Cập nhật giá bán"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 148,
+    "chu": "Cập nhật giá bán"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 154,
+    "chu": "Cập nhật giá bán"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 157,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 159,
+    "chu": "Cập nhật giá bán thành công!"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 160,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 162,
+    "chu": "Bạn có chắc chắn muốn hủy cập nhật giá bán không?"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 162,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 162,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 163,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 164,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 166,
+    "chu": "Giá bán thấp hơn giá nhập. Bạn có muốn tiếp tục?"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 166,
+    "chu": "Tiếp tục"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 166,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5c.2.",
+    "dong_nguon": 167,
+    "chu": "Tiếp tục"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5c.2.",
+    "dong_nguon": 167,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Exception flows",
+    "dong_nguon": 168,
+    "chu": "Giá bán mới"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 169,
+    "chu": "Không được để trống!"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 171,
+    "chu": "Giá bán không hợp lệ!"
+  },
+  {
+    "UC": "UC1.5",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 172,
+    "chu": "Giá bán mới"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": " BR-UC2-01",
+    "dong_nguon": 181,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC1",
+    "buoc_ngoai_le": "    BR-UC2-02",
+    "dong_nguon": 182,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-03",
+    "dong_nguon": 183,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-04",
+    "dong_nguon": 184,
+    "chu": "Số điện thoại"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "    BR-UC2-06",
+    "dong_nguon": 186,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "    BR-UC2-06",
+    "dong_nguon": 186,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07",
+    "dong_nguon": 187,
+    "chu": "Trạng thái"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07",
+    "dong_nguon": 187,
+    "chu": "Đang hợp tác"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07",
+    "dong_nguon": 187,
+    "chu": "Ngừng hợp tác"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": " BR-UC2-08",
+    "dong_nguon": 188,
+    "chu": "Email"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "    BR-UC2-09",
+    "dong_nguon": 189,
+    "chu": "Đang hợp tác"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 196,
+    "chu": "Thêm nhà cung cấp"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 200,
+    "chu": "Thêm nhà cung cấp"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Thêm nhà cung cấp"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Số điện thoại"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Email"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Địa chỉ"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Danh mục"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Mô tả"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 205,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "6.",
+    "dong_nguon": 206,
+    "chu": "Thêm nhà cung cấp thành công!"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 207,
+    "chu": "Khác"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.",
+    "dong_nguon": 209,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 211,
+    "chu": "Bạn có chắc chắn muốn hủy không?"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 211,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 211,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 212,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 213,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 216,
+    "chu": "Không được để trống!"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 218,
+    "chu": "Dữ liệu không hợp lệ!"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 220,
+    "chu": "Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "5d.",
+    "dong_nguon": 221,
+    "chu": "Khác"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "5d.1.",
+    "dong_nguon": 222,
+    "chu": "Vui lòng nhập tên danh mục mới!"
+  },
+  {
+    "UC": "UC2.1",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 223,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-02: “Mã nhà cung cấp” không được chỉnh sửa",
+    "dong_nguon": 224,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-03: “Tên nhà cung cấp” không được để trống",
+    "dong_nguon": 225,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-04: “Số điện thoại” không được để trống và phải gồm đúng 10 chữ số từ 0 đến 9",
+    "dong_nguon": 226,
+    "chu": "Số điện thoại"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-08: “Email” (nếu có) phải đúng định dạng địa chỉ email hợp lệ, bao gồm phần tên hộp thư, ký tự @ và tên miền ",
+    "dong_nguon": 227,
+    "chu": "Email"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-09: Nhà cung cấp mới có trạng thái mặc định là “Đang hợp tác”",
+    "dong_nguon": 228,
+    "chu": "Đang hợp tác"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 236,
+    "chu": "Sửa thông tin nhà cung cấp"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 240,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Số điện thoại"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Email"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Địa chỉ"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Danh mục"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Mô tả"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Trạng thái"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 246,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 247,
+    "chu": "Cập nhật thông tin nhà cung cấp thành công!"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 248,
+    "chu": "Khác"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 249,
+    "chu": "Danh mục"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 250,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 252,
+    "chu": "Bạn có chắc chắn muốn hủy không?"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 252,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 252,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 253,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 254,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 256,
+    "chu": "Không được để trống!"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 258,
+    "chu": "Dữ liệu không hợp lệ!"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 260,
+    "chu": "Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "5d.",
+    "dong_nguon": 261,
+    "chu": "Khác"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "5d.1.",
+    "dong_nguon": 262,
+    "chu": "Vui lòng nhập tên danh mục mới!"
+  },
+  {
+    "UC": "UC2.2",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 263,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-02: “Mã nhà cung cấp” không được chỉnh sửa",
+    "dong_nguon": 264,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-03: “Tên nhà cung cấp” không được để trống",
+    "dong_nguon": 265,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-04:“Số điện thoại” không được để trống và phải gồm đúng 10 chữ số từ 0 đến 9",
+    "dong_nguon": 266,
+    "chu": "Số điện thoại"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác”",
+    "dong_nguon": 267,
+    "chu": "Trạng thái"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác”",
+    "dong_nguon": 267,
+    "chu": "Đang hợp tác"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác”",
+    "dong_nguon": 267,
+    "chu": "Ngừng hợp tác"
+  },
+  {
+    "UC": "UC2",
+    "buoc_ngoai_le": "BR-UC2-08: “Email” (nếu có) phải đúng định dạng địa chỉ email hợp lệ, bao gồm phần tên hộp thư, ký tự @ và tên miền ",
+    "dong_nguon": 268,
+    "chu": "Email"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 276,
+    "chu": "Xóa nhà cung cấp"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 280,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 286,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "2.",
+    "dong_nguon": 287,
+    "chu": "Bạn có chắc chắn muốn xóa nhà cung cấp này?"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 288,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 288,
+    "chu": "Xóa nhà cung cấp thành công!"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 290,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC2.3",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 292,
+    "chu": "Không thể xóa nhà cung cấp đã phát sinh giao dịch nhập hàng!"
+  },
+  {
+    "UC": "UC2.4",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 300,
+    "chu": "Tìm kiếm nhà cung cấp"
+  },
+  {
+    "UC": "UC2.4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 310,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC2.4",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 319,
+    "chu": "Không tìm thấy nhà cung cấp!"
+  },
+  {
+    "UC": "UC2.4",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 320,
+    "chu": "Mã nhà cung cấp"
+  },
+  {
+    "UC": "UC2.4",
+    "buoc_ngoai_le": "Business rules",
+    "dong_nguon": 320,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC3 ",
+    "buoc_ngoai_le": "BR-UC3 - 01",
+    "dong_nguon": 328,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC3 ",
+    "buoc_ngoai_le": "BR-UC3 - 01",
+    "dong_nguon": 328,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC3 ",
+    "buoc_ngoai_le": "BR-UC3 - 04",
+    "dong_nguon": 331,
+    "chu": "Không có dữ liệu phù hợp"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 345,
+    "chu": "Xem báo cáo kinh doanh"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 349,
+    "chu": "Báo cáo kinh doanh"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 349,
+    "chu": "Báo cáo thống kê"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "Post-conditions",
+    "dong_nguon": 352,
+    "chu": "Không có dữ liệu phù hợp"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 353,
+    "chu": "Báo cáo kinh doanh"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 355,
+    "chu": "Doanh thu"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 355,
+    "chu": "Lợi nhuận"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 355,
+    "chu": "Sản phẩm bán chạy/chậm"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4.",
+    "dong_nguon": 356,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4.",
+    "dong_nguon": 356,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4.",
+    "dong_nguon": 356,
+    "chu": "Sản phẩm bán chạy/chậm"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "5.",
+    "dong_nguon": 357,
+    "chu": "Xem báo cáo"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "9.",
+    "dong_nguon": 361,
+    "chu": "Doanh thu"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "9.",
+    "dong_nguon": 361,
+    "chu": "Lợi nhuận"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "9.",
+    "dong_nguon": 361,
+    "chu": "Sản phẩm bán chạy/chậm"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 365,
+    "chu": "Hôm nay"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 365,
+    "chu": "Hôm qua"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 365,
+    "chu": "7 ngày qua"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 365,
+    "chu": "Tháng này"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 365,
+    "chu": "Tháng trước"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "10a.1.",
+    "dong_nguon": 369,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "10a.2.",
+    "dong_nguon": 370,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "6a.2.",
+    "dong_nguon": 373,
+    "chu": "Khoảng thời gian hoặc tiêu chí lọc không hợp lệ"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "7a.2.",
+    "dong_nguon": 377,
+    "chu": "Không thể tải báo cáo. Vui lòng thử lại"
+  },
+  {
+    "UC": "UC3.1",
+    "buoc_ngoai_le": "7b.2.",
+    "dong_nguon": 380,
+    "chu": "Không có dữ liệu phù hợp"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 393,
+    "chu": "Xem báo cáo xuất – nhập – tồn"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Trigger",
+    "dong_nguon": 397,
+    "chu": "Báo cáo xuất – nhập – tồn"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Trigger",
+    "dong_nguon": 397,
+    "chu": "Báo cáo thống kê"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Post-conditions",
+    "dong_nguon": 400,
+    "chu": "Không có dữ liệu phù hợp"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 401,
+    "chu": "Báo cáo xuất – nhập – tồn"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 403,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 403,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "4.",
+    "dong_nguon": 404,
+    "chu": "Xem báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 411,
+    "chu": "Hôm nay"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 411,
+    "chu": "7 ngày qua"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 411,
+    "chu": "Tháng này"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 411,
+    "chu": "Tháng trước"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.2.",
+    "dong_nguon": 412,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.2.",
+    "dong_nguon": 412,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.3.",
+    "dong_nguon": 415,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.3.",
+    "dong_nguon": 416,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "5a.2.",
+    "dong_nguon": 419,
+    "chu": "Khoảng thời gian hoặc tiêu chí lọc không hợp lệ"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "6a.2.",
+    "dong_nguon": 423,
+    "chu": "Không thể tải báo cáo. Vui lòng thử lại"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "6b.2.",
+    "dong_nguon": 426,
+    "chu": "Không có dữ liệu phù hợp"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Use case name",
+    "dong_nguon": 434,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 438,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 444,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "2.",
+    "dong_nguon": 445,
+    "chu": "Excel"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "2.",
+    "dong_nguon": 445,
+    "chu": "PDF"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3.",
+    "dong_nguon": 446,
+    "chu": "Xuất báo cáo"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "6.",
+    "dong_nguon": 449,
+    "chu": "Xuất báo cáo thành công"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 452,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.2.",
+    "dong_nguon": 453,
+    "chu": "Bạn có chắc chắn muốn hủy thao tác không?"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.3.",
+    "dong_nguon": 454,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "3a.4.",
+    "dong_nguon": 455,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 458,
+    "chu": "Không thể xuất báo cáo, vui lòng thử lại"
+  },
+  {
+    "UC": "UC3.2",
+    "buoc_ngoai_le": "5a.2.",
+    "dong_nguon": 462,
+    "chu": "Xuất báo cáo không thành công, vui lòng thử lại"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "",
+    "dong_nguon": 497,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "",
+    "dong_nguon": 497,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 511,
+    "chu": "Nhập hàng"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 517,
+    "chu": "Nhập hàng"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 518,
+    "chu": "Lưu phiếu nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 520,
+    "chu": "Thêm sản phẩm"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 522,
+    "chu": "Lưu phiếu nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 525,
+    "chu": "Nhập hàng thành công"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 526,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "2a.2.",
+    "dong_nguon": 528,
+    "chu": "Bạn có chắc chắn muốn hủy nhập hàng không?"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "2a.2.",
+    "dong_nguon": 528,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "2a.2.",
+    "dong_nguon": 528,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "2a.3.",
+    "dong_nguon": 529,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "2a.4.",
+    "dong_nguon": 530,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5a.2.",
+    "dong_nguon": 540,
+    "chu": "Không được để trống"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 542,
+    "chu": "Số lượng nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 542,
+    "chu": "Giá nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5b.2.",
+    "dong_nguon": 543,
+    "chu": "Số lượng nhập và giá nhập phải lớn hơn 0"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5c.2.",
+    "dong_nguon": 546,
+    "chu": "Hạn sử dụng phải sau ngày nhập hàng"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "8a.1.",
+    "dong_nguon": 549,
+    "chu": "Không thể lưu phiếu nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 564,
+    "chu": "Điều chỉnh tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 569,
+    "chu": "Điều chỉnh tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 574,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 577,
+    "chu": "Điều chỉnh tồn kho thành công"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.1.",
+    "dong_nguon": 581,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.2.",
+    "dong_nguon": 582,
+    "chu": "Bạn có chắc chắn muốn hủy điều chỉnh tồn kho không?"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.2.",
+    "dong_nguon": 582,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.2.",
+    "dong_nguon": 582,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.3.",
+    "dong_nguon": 583,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "6a.4.",
+    "dong_nguon": 584,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "7a.1.",
+    "dong_nguon": 586,
+    "chu": "Không được để trống"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "7b.2.",
+    "dong_nguon": 589,
+    "chu": "Số lượng điều chỉnh không hợp lệ"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "8a.1.",
+    "dong_nguon": 592,
+    "chu": "Không thể lưu phiếu điều chỉnh"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 606,
+    "chu": "Tra cứu tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 612,
+    "chu": "Tra cứu tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 613,
+    "chu": "Tất cả"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 613,
+    "chu": "Dưới mức cảnh báo tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 613,
+    "chu": "Sắp hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 613,
+    "chu": "Đã hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 613,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 615,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "7.",
+    "dong_nguon": 619,
+    "chu": "Sắp hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "7.",
+    "dong_nguon": 619,
+    "chu": "Đã hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 621,
+    "chu": "Tất cả"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3b.",
+    "dong_nguon": 623,
+    "chu": "Dưới mức cảnh báo tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3b.1.",
+    "dong_nguon": 624,
+    "chu": "Dưới mức cảnh báo tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3c.",
+    "dong_nguon": 626,
+    "chu": "Sắp hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3c.1.",
+    "dong_nguon": 627,
+    "chu": "Sắp hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3d.",
+    "dong_nguon": 629,
+    "chu": "Đã hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "3d.1.",
+    "dong_nguon": 630,
+    "chu": "Đã hết hạn"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 633,
+    "chu": "Không tìm thấy sản phẩm phù hợp"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 636,
+    "chu": "Không thể tải dữ liệu tồn kho"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 650,
+    "chu": "Lịch sử nhập hàng"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 654,
+    "chu": "Lịch sử nhập hàng"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 656,
+    "chu": "Mã phiếu nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 656,
+    "chu": "Tên nhà cung cấp"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 657,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 666,
+    "chu": "Không tìm thấy phiếu nhập"
+  },
+  {
+    "UC": "UC4",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 669,
+    "chu": "Không thể tải lịch sử nhập hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "BR-UC5-07",
+    "dong_nguon": 685,
+    "chu": "Chưa có lịch sử mua hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 697,
+    "chu": "Thêm khách hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 701,
+    "chu": "Thêm khách hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 702,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 702,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 704,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 707,
+    "chu": "Thêm khách hàng thành công"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 708,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 710,
+    "chu": "Bạn có chắc chắn muốn hủy thêm khách hàng không?"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 710,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 710,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 711,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 712,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 714,
+    "chu": "Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 716,
+    "chu": "Tên khách hàng hoặc Số điện thoại không đúng định dạng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 718,
+    "chu": "Số điện thoại đã tồn tại trong hệ thống"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 732,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 736,
+    "chu": "Sửa"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 737,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 737,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 739,
+    "chu": "Lưu"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "7.",
+    "dong_nguon": 742,
+    "chu": "Cập nhật thông tin khách hàng thành công"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 743,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 745,
+    "chu": "Bạn có chắc chắn muốn hủy sửa khách hàng không?"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 745,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 745,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 746,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.4.",
+    "dong_nguon": 747,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Exception flows",
+    "dong_nguon": 748,
+    "chu": "Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 750,
+    "chu": "Tên khách hàng hoặc Số điện thoại không đúng định dạng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "5c.1.",
+    "dong_nguon": 752,
+    "chu": "Số điện thoại đã tồn tại trong hệ thống"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 767,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 771,
+    "chu": "Xóa"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 772,
+    "chu": "Bạn có chắc chắn muốn xóa khách hàng này không?"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 772,
+    "chu": "Đồng ý"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 772,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 773,
+    "chu": "Đồng ý"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "6.",
+    "dong_nguon": 776,
+    "chu": "Xóa khách hàng thành công"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 778,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 781,
+    "chu": "Không thể xóa khách hàng đã có lịch sử mua hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 796,
+    "chu": "Tra cứu thông tin khách hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 800,
+    "chu": "Quản lý khách hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 801,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 802,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 806,
+    "chu": "Đóng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "6a.1.",
+    "dong_nguon": 810,
+    "chu": "Chưa có lịch sử mua hàng"
+  },
+  {
+    "UC": "UC5",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 812,
+    "chu": "Không tìm thấy khách hàng phù hợp"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 848,
+    "chu": "Tạo giao dịch bán hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 855,
+    "chu": "Tạo giao dịch bán hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 863,
+    "chu": "Hoàn tất chọn sản phẩm"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 864,
+    "chu": "Hoàn tất thanh toán"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 867,
+    "chu": "Bán hàng thành công"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "8a.1.",
+    "dong_nguon": 876,
+    "chu": "Tiền mặt"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "8b.1.",
+    "dong_nguon": 880,
+    "chu": "Chuyển khoản"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 888,
+    "chu": "Không tìm thấy sản phẩm"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "6a.1.",
+    "dong_nguon": 891,
+    "chu": "Số lượng bán không hợp lệ"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "6b.2.",
+    "dong_nguon": 894,
+    "chu": "Không đủ số lượng hàng có thể bán"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "8a.",
+    "dong_nguon": 898,
+    "chu": "Tiền khách đưa chưa đủ để thanh toán"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "10a.1.",
+    "dong_nguon": 901,
+    "chu": "Không thể lưu giao dịch. Hãy thử lại"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 917,
+    "chu": "In hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Pre-conditions",
+    "dong_nguon": 918,
+    "chu": "Hóa đơn đã được lưu"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 922,
+    "chu": "In hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 925,
+    "chu": "In hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 927,
+    "chu": "In hóa đơn thành công"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Alternative flows",
+    "dong_nguon": 928,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 929,
+    "chu": "Bạn có chắc chắn muốn hủy in hóa đơn không?"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 929,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 929,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 930,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.3.",
+    "dong_nguon": 931,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "2a.1.",
+    "dong_nguon": 934,
+    "chu": "Đã hủy"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "2a.2.",
+    "dong_nguon": 935,
+    "chu": "Hóa đơn đã bị hủy, không thể in"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 938,
+    "chu": "Không thể kết nối hoặc gửi yêu cầu đến máy in"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 954,
+    "chu": "Hủy hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Post-conditions",
+    "dong_nguon": 957,
+    "chu": "Đã hủy"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 962,
+    "chu": "Hủy"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 965,
+    "chu": "Xác nhận"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 968,
+    "chu": "Hủy hóa đơn thành công"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 970,
+    "chu": "Quay lại"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "3a.1.",
+    "dong_nguon": 973,
+    "chu": "Đã hủy"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "3a.2.",
+    "dong_nguon": 974,
+    "chu": "Hóa đơn này đã được hủy trước đó"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "3b.2.",
+    "dong_nguon": 977,
+    "chu": "Hóa đơn có giao dịch đổi/trả hàng, không thể hủy trực tiếp"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "6a.1.",
+    "dong_nguon": 980,
+    "chu": "Vui lòng nhập lý do hủy hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "7a.1.",
+    "dong_nguon": 983,
+    "chu": "Không thể hủy hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Triggers",
+    "dong_nguon": 999,
+    "chu": "Lịch sử bán hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 1004,
+    "chu": "Lịch sử bán hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 1007,
+    "chu": "Tìm kiếm"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "8a.",
+    "dong_nguon": 1016,
+    "chu": "In hóa đơn"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "8b.",
+    "dong_nguon": 1017,
+    "chu": "Đổi/trả hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 1019,
+    "chu": "Từ ngày"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 1019,
+    "chu": "Đến ngày"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.1.",
+    "dong_nguon": 1019,
+    "chu": "Khoảng thời gian không hợp lệ"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 1022,
+    "chu": "Không tìm thấy hóa đơn phù hợp"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "5b.1.",
+    "dong_nguon": 1026,
+    "chu": "Không thể tải lịch sử bán hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 1047,
+    "chu": "Đổi/trả hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 1055,
+    "chu": "Hoàn tất đổi/trả"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "Main flow",
+    "dong_nguon": 1057,
+    "chu": "Xử lý đổi/trả hàng thành công"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "5a.1.",
+    "dong_nguon": 1059,
+    "chu": "Không nhập lại kho"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "6a.1.",
+    "dong_nguon": 1063,
+    "chu": "Chỉ trả hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "2a.2.",
+    "dong_nguon": 1072,
+    "chu": "Hóa đơn không thể đổi/trả hàng"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "4a.2.",
+    "dong_nguon": 1076,
+    "chu": "Số lượng trả không hợp lệ"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "7a.1.",
+    "dong_nguon": 1080,
+    "chu": "Không đủ số lượng hàng có thể bán"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "9a.2.",
+    "dong_nguon": 1083,
+    "chu": "Vui lòng xác nhận đã xử lý tiền chênh lệch"
+  },
+  {
+    "UC": "UC6",
+    "buoc_ngoai_le": "10a.1.",
+    "dong_nguon": 1085,
+    "chu": "Không thể lưu phiếu đổi/trả"
+  }
+]

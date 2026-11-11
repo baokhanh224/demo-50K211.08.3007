@@ -1,0 +1,297 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model account {
+  id       String    @id
+  username String    @unique
+  password String
+  session  session[]
+}
+
+model adjustment {
+  id              String            @id
+  created_at      String
+  reason          String
+  request_key     String            @unique
+  adjustment_line adjustment_line[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model adjustment_line {
+  id            Int          @id @default(autoincrement())
+  adjustment_id String
+  lot_id        Int
+  old_quantity  Int
+  new_quantity  Int
+  delta         Int
+  adjustment    adjustment   @relation(fields: [adjustment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receipt_line  receipt_line @relation(fields: [lot_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model allocation {
+  id                Int                 @id @default(autoincrement())
+  lot_id            Int
+  invoice_line_id   Int?
+  exchange_line_id  Int?
+  quantity          Int
+  return_line       return_line?        @relation(fields: [exchange_line_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  invoice_line      invoice_line?       @relation(fields: [invoice_line_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receipt_line      receipt_line        @relation(fields: [lot_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  return_allocation return_allocation[]
+
+  @@index([invoice_line_id], map: "idx_allocation_line")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model category {
+  id                Int                 @id @default(autoincrement())
+  name              String              @unique
+  product           product[]
+  supplier_category supplier_category[]
+}
+
+model customer {
+  id      String    @id
+  name    String
+  phone   String    @unique
+  address String    @default("")
+  invoice invoice[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model invoice {
+  id                 String          @id
+  customer_id        String?
+  created_at         String
+  total              Float
+  method             String
+  cash               Float
+  change             Float
+  status             String          @default("Đã thanh toán")
+  cancel_reason      String?
+  cancelled_at       String?
+  request_key        String          @unique
+  cancel_request_key String?         @unique
+  customer           customer?       @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  invoice_line       invoice_line[]
+  return_ticket      return_ticket[]
+
+  @@index([created_at], map: "idx_invoice_date")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model invoice_line {
+  id           Int           @id @default(autoincrement())
+  invoice_id   String
+  product_id   String
+  product_name String
+  unit_id      Int
+  unit_name    String
+  factor       Int
+  quantity     Int
+  price        Float
+  cost         Float
+  total        Float
+  allocation   allocation[]
+  invoice      invoice       @relation(fields: [invoice_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  product      product       @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  unit         unit          @relation(fields: [unit_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  return_line  return_line[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model movement {
+  id           Int          @id @default(autoincrement())
+  product_id   String
+  lot_id       Int
+  kind         String
+  quantity     Int
+  created_at   String
+  reference    String
+  receipt_line receipt_line @relation(fields: [lot_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  product      product      @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([created_at, product_id], map: "idx_movement_date")
+}
+
+model price_history {
+  id         Int    @id @default(autoincrement())
+  unit_id    Int
+  old_price  Float
+  new_price  Float
+  created_at String
+  unit       unit   @relation(fields: [unit_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model product {
+  id             String         @id
+  name           String
+  category_id    Int
+  barcode        String         @default("")
+  base_unit      String
+  reference_cost Float
+  average_cost   Float
+  min_stock      Int            @default(0)
+  expiry_managed Int            @default(0)
+  description    String         @default("")
+  invoice_line   invoice_line[]
+  movement       movement[]
+  category       category       @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receipt_line   receipt_line[]
+  return_line    return_line[]
+  unit           unit[]
+}
+
+model receipt {
+  id           String         @id
+  supplier_id  String
+  created_at   String
+  total        Float
+  request_key  String         @unique
+  supplier     supplier       @relation(fields: [supplier_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receipt_line receipt_line[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model receipt_line {
+  id                Int               @id @default(autoincrement())
+  receipt_id        String
+  product_id        String
+  unit_id           Int
+  unit_name         String
+  factor            Int
+  quantity          Int
+  price             Float
+  total             Float
+  expiry            String?
+  original_quantity Int
+  remaining         Int
+  adjustment_line   adjustment_line[]
+  allocation        allocation[]
+  movement          movement[]
+  product           product           @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receipt           receipt           @relation(fields: [receipt_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  unit              unit              @relation(fields: [unit_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([product_id, expiry, remaining], map: "idx_lot_product")
+}
+
+model report_snapshot {
+  id            String @id
+  session_token String
+  created_at    String
+  data          String
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model return_allocation {
+  id             Int         @id @default(autoincrement())
+  return_line_id Int
+  allocation_id  Int
+  quantity       Int
+  restock        Int
+  allocation     allocation  @relation(fields: [allocation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  return_line    return_line @relation(fields: [return_line_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model return_line {
+  id                Int                 @id @default(autoincrement())
+  ticket_id         String
+  original_line_id  Int?
+  kind              String
+  product_id        String
+  product_name      String
+  unit_id           Int
+  unit_name         String
+  factor            Int
+  quantity          Int
+  price             Float
+  cost              Float
+  total             Float
+  restock           Int                 @default(1)
+  allocation        allocation[]
+  return_allocation return_allocation[]
+  invoice_line      invoice_line?       @relation(fields: [original_line_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  product           product             @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  return_ticket     return_ticket       @relation(fields: [ticket_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  unit              unit                @relation(fields: [unit_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model return_ticket {
+  id              String        @id
+  invoice_id      String
+  created_at      String
+  return_total    Float
+  exchange_total  Float
+  difference      Float
+  money_confirmed Int
+  request_key     String        @unique
+  return_line     return_line[]
+  invoice         invoice       @relation(fields: [invoice_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([invoice_id], map: "idx_return_invoice")
+}
+
+model sequence {
+  prefix String @id
+  value  Int
+}
+
+model session {
+  token      String  @id
+  account_id String
+  expires_at String
+  account    account @relation(fields: [account_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model setting {
+  key   String @id
+  value String
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model supplier {
+  id                String              @id
+  name              String
+  phone             String
+  email             String              @default("")
+  address           String              @default("")
+  description       String              @default("")
+  status            String              @default("Đang hợp tác")
+  receipt           receipt[]
+  supplier_category supplier_category[]
+}
+
+model supplier_category {
+  supplier_id String
+  category_id Int
+  category    category @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  supplier    supplier @relation(fields: [supplier_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([supplier_id, category_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model unit {
+  id            Int             @id @default(autoincrement())
+  product_id    String
+  name          String
+  factor        Int
+  price         Float
+  invoice_line  invoice_line[]
+  price_history price_history[]
+  receipt_line  receipt_line[]
+  return_line   return_line[]
+  product       product         @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([product_id, name])
+}
