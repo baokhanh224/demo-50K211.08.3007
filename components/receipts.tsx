@@ -27,6 +27,9 @@ export default function Receipts() {
     setError("");
   }
   async function add() {
+    if (lock.current) return;
+    lock.current = true;
+    setBusy(true);
     setError("");
     setErrors({});
     const l = {
@@ -53,6 +56,9 @@ export default function Receipts() {
     } catch (e: any) {
       setErrors(e.fields);
       setError(e.message);
+    } finally {
+      lock.current = false;
+      setBusy(false);
     }
   }
   async function save() {
@@ -168,7 +174,7 @@ export default function Receipts() {
         </div>
         <Notice text={error && !Object.keys(errors).length ? error : ""} />
         <div className="actions" style={{ marginTop: 10 }}>
-          <Button onClick={add}>Thêm sản phẩm</Button>
+          <Button onClick={add} disabled={busy}>Thêm sản phẩm</Button>
         </div>
       </section>
       <section className="card" style={{ minHeight: 270 }}>
