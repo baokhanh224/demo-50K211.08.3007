@@ -1,0 +1,24 @@
+{
+  "url": "https://quynh-nhu-demo.vercel.app",
+  "testedAt": "2026-11-11T04:55:50.266Z",
+  "login": true,
+  "history": {
+    "labels": [
+      "Mã hóa đơn",
+      "Số điện thoại khách hàng",
+      "Từ ngày",
+      "Đến ngày"
+    ],
+    "columns": [
+      "Mã hóa đơn",
+      "Ngày giờ bán",
+      "Khách hàng",
+      "Tổng tiền",
+      "Trạng thái",
+      ""
+    ]
+  },
+  "reload": true,
+  "errors": [],
+  "tls": "Node fetch via supplied proxy CA; real responses forwarded to Chromium"
+}

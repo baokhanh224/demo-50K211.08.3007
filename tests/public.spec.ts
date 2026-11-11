@@ -16,11 +16,14 @@ async function all(sql: string) {
  throw new Error('Unsupported QA read');
 }
 async function one(sql: string) {
+ if(sql.includes('SUM(remaining) n FROM receipt_line'))return {n:(await remote('bootstrap')).products.find((p:any)=>p.id===(sql.match(/SP[0-9]+/)?.[0]||'SP0001')).stock};
+ if(sql.includes('MIN(remaining)'))return {n:Math.min(...(await remote('query',{scope:'adjustments'})).map((r:any)=>r.remaining))};
  if(sql.includes('COUNT(*) n FROM invoice'))return {n:(await remote('query',{scope:'sales-history'})).length};
  throw new Error('Unsupported QA read');
 }
 import { datePlus } from "../lib/db";
-import { date } from "../lib/format";
+import { date, today, money } from "../lib/format";
+import ExcelJS from "exceljs";
 import fs from "node:fs";
 import { installTrustedTransport } from "./public-transport";
 // Chạy sau npm run db:seed trên CSDL demo riêng. Tất cả thao tác ghi đi qua giao diện.
@@ -254,4 +257,190 @@ test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", asy
       2,
     ),
   );
+});
+
+test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ page, context }) => {
+  test.skip(process.env.PUBLIC_QA !== '1', 'Chỉ chạy khi chủ website cho phép');
+  qaPage=page;
+  await installTrustedTransport(context);
+  await page.goto("/");
+  await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
+  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+  await page
+    .getByRole("link", { name: "Báo cáo thống kê", exact: true })
+    .click();
+  await expect(page.getByTestId("report-revenue")).toBeVisible();
+  await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
+  await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
+  const [response] = await Promise.all([
+    page.waitForResponse(r=>new URL(r.url()).pathname==='/api/report' && r.request().method()==='POST'),
+    page.getByRole("button", { name: "Xem báo cáo", exact: true }).click(),
+  ]);
+  const report=await response.json();
+  const expectedRevenue=report.summary.revenue;
+  await expect(page.getByTestId("report-revenue")).toHaveText(money(expectedRevenue));
+  await page.screenshot({
+    path: "test-results/04-bao-cao.png",
+    fullPage: true,
+  });
+  const exported: any = {};
+  for (const format of ["Excel", "PDF"]) {
+    await page
+      .getByRole("button", { name: "Xuất báo cáo", exact: true })
+      .click();
+    await page.getByLabel("Định dạng", { exact: true }).selectOption(format);
+    const download = page.waitForEvent("download");
+    await page
+      .getByRole("dialog", { name: "Xuất báo cáo" })
+      .getByRole("button", { name: "Xuất báo cáo", exact: true })
+      .click();
+    const file = await download;
+    const target =
+      "test-results/" + (format === "Excel" ? "bao-cao.xlsx" : "bao-cao.pdf");
+    await file.saveAs(target);
+    expect(fs.statSync(target).size).toBeGreaterThan(1000);
+    if (format === "Excel") {
+      const book = new ExcelJS.Workbook();
+      await book.xlsx.readFile(target);
+      const sheet = book.worksheets[0];
+      const rows: any[] = [];
+      sheet.eachRow((r) => rows.push(r.values));
+      const total = rows.find((r) => r[1] === "Tổng");
+      expect(total[3]).toBe(expectedRevenue);
+      exported.xlsx = total;
+    } else {
+      expect(fs.readFileSync(target).subarray(0, 4).toString()).toBe("%PDF");
+      exported.pdfBytes = fs.statSync(target).size;
+    }
+    await expect(
+      page.getByText("Xuất báo cáo thành công", { exact: true }),
+    ).toBeVisible();
+  }
+  await page
+    .getByRole("link", { name: "Báo cáo xuất – nhập – tồn", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Báo cáo xuất – nhập – tồn" }).first(),
+  ).toBeVisible();
+  await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
+  await page.getByRole("button", { name: "Xem báo cáo", exact: true }).click();
+  const row = page.locator("tbody tr").filter({ hasText: "Sữa Milo" });
+  await expect(row).toBeVisible();
+  const stock = (
+    await one(
+      "SELECT SUM(remaining) n FROM receipt_line WHERE product_id='SP0001'",
+    )
+  ).n;
+  expect(await row.locator("td").nth(7).innerText()).toBe(String(stock));
+  const before = await all("SELECT id,remaining FROM receipt_line ORDER BY id");
+  await page.reload();
+  await expect(
+    page.getByRole("heading", { name: "Báo cáo xuất – nhập – tồn" }).first(),
+  ).toBeVisible();
+  expect(
+    await all("SELECT id,remaining FROM receipt_line ORDER BY id"),
+  ).toEqual(before);
+  fs.writeFileSync(
+    "test-results/verification-reports.json",
+    JSON.stringify(
+      { revenue: expectedRevenue, exported, stock, persisted: true },
+      null,
+      2,
+    ),
+  );
+});
+
+test("Public: hai trình duyệt bán cùng sản phẩm gần hết", async ({ browser }) => {
+  test.skip(process.env.PUBLIC_QA !== '1', 'Chỉ chạy khi chủ website cho phép');
+  const a = await browser.newContext(),
+    b = await browser.newContext();
+  const pages = [await a.newPage(), await b.newPage()];
+  await Promise.all([installTrustedTransport(a),installTrustedTransport(b)]);
+  let stock=0;
+  for (const page of pages) {
+    await page.goto("/");
+    await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
+    await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+    await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Tạo giao dịch bán hàng" }),
+    ).toBeVisible();
+    qaPage=page;
+    stock=(await remote('bootstrap')).products.find((p:any)=>p.id==='SP0005').sellable;
+    expect(stock).toBeGreaterThan(0);
+    await page
+      .getByLabel("Tìm kiếm sản phẩm", { exact: true })
+      .fill("Muối I-ốt");
+    await page.getByRole("button", { name: /Muối I-ốt.*SP0005/ }).click();
+    await page.getByLabel("Số lượng bán", { exact: true }).fill(String(stock));
+    await page
+      .getByRole("button", { name: "Hoàn tất chọn sản phẩm", exact: true })
+      .click();
+    await page.getByLabel("Tiền khách đưa", { exact: true }).fill("100000");
+  }
+  await Promise.all(
+    pages.map((p) =>
+      p
+        .getByRole("button", { name: "Hoàn tất thanh toán", exact: true })
+        .click(),
+    ),
+  );
+  await expect
+    .poll(
+      async () =>
+        (await pages[0]
+          .getByText("Bán hàng thành công", { exact: true })
+          .count()) +
+        (await pages[1]
+          .getByText("Bán hàng thành công", { exact: true })
+          .count()),
+    )
+    .toBe(1);
+  const winner = (await pages[0]
+    .getByText("Bán hàng thành công", { exact: true })
+    .count())
+    ? pages[0]
+    : pages[1];
+  const loser = winner === pages[0] ? pages[1] : pages[0];
+  await expect(
+    loser.getByText("Không đủ số lượng hàng có thể bán", { exact: true }),
+  ).toBeVisible();
+  expect(
+    (
+      await one(
+        "SELECT SUM(remaining) n FROM receipt_line WHERE product_id='SP0005'",
+      )
+    ).n,
+  ).toBe(0);
+  expect(
+    (await one("SELECT MIN(remaining) n FROM receipt_line")).n,
+  ).toBeGreaterThanOrEqual(0);
+  await winner.screenshot({
+    path: "test-results/05-hai-phien.png",
+    fullPage: true,
+  });
+  await winner
+    .getByRole("button", { name: "Xem hóa đơn", exact: true })
+    .click();
+  await winner.getByRole("button", { name: "Hủy", exact: true }).click();
+  await winner
+    .getByLabel("Lý do hủy hóa đơn", { exact: true })
+    .fill("Hoàn kho sau kiểm tra hai phiên");
+  await winner
+    .getByRole("dialog", { name: "Nhập lý do hủy hóa đơn" })
+    .getByRole("button", { name: "Xác nhận", exact: true })
+    .click();
+  await expect(
+    winner.getByText("Hủy hóa đơn thành công", { exact: true }),
+  ).toBeVisible();
+  expect(
+    (
+      await one(
+        "SELECT SUM(remaining) n FROM receipt_line WHERE product_id='SP0005'",
+      )
+    ).n,
+  ).toBe(stock);
+  await a.close();
+  await b.close();
 });

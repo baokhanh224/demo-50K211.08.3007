@@ -1,6 +1,23 @@
+# Kiểm tra Vercel thực tế ngày 11/11/2026
+
+Website: https://quynh-nhu-demo.vercel.app/ . Đã mở bằng phiên trình duyệt mới, đăng nhập, kiểm tra điều hướng và tải lại giữ màn hình.
+
+- Commit giao diện `a94beb5` ở repository triển khai đã được Vercel báo success và xác minh bằng UI công khai: đăng nhập mới, hai ô mã hóa đơn/điện thoại, nút Xem. Bản bàn giao tương ứng ở repository mới.
+- Năm kịch bản công khai đạt: PN0005 hai dòng Milo 5/5 hộp hạn khác nhau; HD0006 bán 8 đơn vị lấy 5+3 từ hai nguồn, thiếu tiền rồi sửa, lỗi lưu một lần rollback, bấm đôi chỉ một hóa đơn; hủy HD0006 hoàn đúng nguồn; HD0007 bán 6, trả 2 không nhập kho/hoàn 36.000đ, tồn không tăng, còn trả 4 và cấm hủy trực tiếp; báo cáo/Excel/PDF và tải lại.
+- Báo cáo hôm nay: màn hình và Excel tổng 108.000đ; PDF đã trích bằng pdftotext, dòng Tổng 108.000. Trong đó có dữ liệu demo người dùng trước kiểm tra, không reset để ép số liệu.
+- Hai trình duyệt đồng thời bán hết Muối I-ốt: chỉ một thành công, bên kia thiếu nguồn, tồn không âm; HD0008 đã hủy để hoàn hàng sau kiểm tra.
+- Dữ liệu test được giữ để xem lại. Lần đầu lưu PN0004 chỉ có một dòng do test bấm lưu khi kiểm tra dòng thứ hai chưa trả về; không xóa PN0004. Đã sửa khóa Thêm sản phẩm/Lưu phiếu nhập trong lúc đang thêm dòng, typecheck/build local đạt. Lần triển khai commit `a759e17` chứa sửa này thất bại; đã yêu cầu log, chưa xác nhận sửa này đang chạy trên public.
+- Đã lấy snapshot dữ liệu nghiệp vụ trước redeploy để đối chiếu; chưa ghi đạt bảo toàn qua redeploy cho tới khi có bản build tiếp theo thành công.
+- Các test public chạy Chromium với phản hồi thật từ server, chuyển tiếp qua Node fetch do CA proxy Cloud không nằm trong store của Chromium; xác minh TLS vẫn bật.
+- Kết quả: tests/public.spec.ts phần nhập/bán/hủy/trả + báo cáo 2/2 đạt; test đồng thời chạy riêng 1/1 đạt; báo cáo chạy lại 1/1 đạt. Không coi các lần chạy riêng là toàn bộ UI/Figma đã hoàn tất.
+
+Chứng cứ tại docs/evidence/public; không đưa .env hoặc trace có cookie vào GitHub.
+
+---
+
 # Báo cáo đợt rà soát ngày 11/11/2026
 
-Trạng thái: bàn giao bản sửa có kiểm thử; CHƯA hoàn tất yêu cầu khớp toàn bộ Figma và xác minh Vercel.
+Trạng thái: đã triển khai bản sửa giao diện và kiểm tra nghiệp vụ trên website công khai; CHƯA hoàn tất parity toàn bộ Figma. Xem tình trạng bản sửa nhập hàng bên dưới.
 
 ## Đã sửa
 
@@ -24,7 +41,7 @@ Trạng thái: bàn giao bản sửa có kiểm thử; CHƯA hoàn tất yêu c�
 - Chưa đối chiếu đủ 195 frame còn lại. UC6 đã sửa một phần, chưa chốt 40 trạng thái; UC4/5/1/2/3 chưa chỉnh toàn bộ bố cục.
 - Bảng chữ còn các câu chưa có nguồn hoặc chưa xác nhận đúng UC, được ghi rõ trong docs/kiem-tra-chu.md. Test chữ chưa bao phủ mọi nhãn và mọi ngoại lệ.
 - Chưa khôi phục trường hạn mặc định sản phẩm/tự điền phiếu nhập; chưa đổi toàn bộ dữ liệu mẫu và bố cục báo cáo theo Figma mới.
-- Chưa được cung cấp URL Vercel công khai cho đợt này và không có kết nối quản lý Vercel; chưa kiểm tra ẩn danh, redeploy/persistence hoặc đồng thời trên bản công khai. Không coi localhost là go-live.
+- URL đã được cung cấp và đã kiểm tra công khai như mục đầu báo cáo; chưa xác minh fingerprint bảo toàn qua redeploy tiếp theo. Không có quyền đọc build logs Vercel qua kết nối hiện tại.
 - Máy in vật lý, quét bằng app ngân hàng chưa kiểm chứng.
 
 ## Kết quả lịch sử trước đợt rà soát

@@ -1,0 +1,14 @@
+{
+  "revenue": 108000,
+  "exported": {
+    "xlsx": [
+      null,
+      "Tổng",
+      2,
+      108000
+    ],
+    "pdfBytes": 11527
+  },
+  "stock": 37,
+  "persisted": true
+}

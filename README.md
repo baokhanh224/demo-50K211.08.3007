@@ -4,7 +4,7 @@ Bản demo tiếng Việt cho Chủ cửa hàng. Next.js 16 + TypeScript + Postg
 
 - Sau đăng nhập mở **Tạo giao dịch bán hàng**. Có **Đăng xuất**.
 - Mã nguồn GitHub: https://github.com/baokhanh224/demo-50K211.08.3007 (repository công khai, mã nguồn tại thư mục gốc, nhánh `main`).
-- Trạng thái URL công khai: xem `BAO-CAO-KIEM-THU.md`; không coi localhost là URL go-live.
+- Website công khai: https://quynh-nhu-demo.vercel.app/ . Kết quả kiểm tra và giới hạn phiên bản xem `BAO-CAO-KIEM-THU.md`.
 
 ## Chạy từ đầu
 
@@ -196,3 +196,13 @@ Nguồn chữ: `docs/nguon-chu-word.json`, `docs/nguon-chu-figma.json`; danh m�
 
 - Nhãn lỗi API hết phiên vẫn được ghi trong bảng chữ bổ sung; chưa có tuyên bố đã rà soát xong tất cả câu ngoài nguồn.
 - Chưa có URL Vercel do người dùng cung cấp cho đợt kiểm tra mới; không thực hiện reset hoặc test ghi trên một URL đoán.
+
+### Kiểm tra bản công khai
+
+`tests/public.spec.ts` mặc định bỏ qua, chỉ chạy khi đặt `PUBLIC_QA=1`, `BASE_URL` và tài khoản kiểm thử từ môi trường riêng. Test ghi dữ liệu demo, không reset hoặc xóa dữ liệu đã có. Chạy với Node 24; trong Cloud đặt thêm `NODE_USE_ENV_PROXY=1` để giữ proxy và CA. Chromium của môi trường chưa tin CA proxy, nên `tests/public-transport.ts` chuyển tiếp phản hồi thật bằng Node fetch có xác minh TLS; không dùng dữ liệu giả hoặc tắt xác minh chứng chỉ.
+
+```bash
+BASE_URL=https://quynh-nhu-demo.vercel.app PUBLIC_QA=1 NODE_USE_ENV_PROXY=1 npx playwright test tests/public.spec.ts
+```
+
+Repository mới là nguồn bàn giao chính. Vercel hiện vẫn kết nối repository cũ `50K211.08.3007`, Root Directory `demo-quynh-nhu`; bản được kiểm thử đã được đồng bộ vào đó để cập nhật website mà không yêu cầu đổi kết nối tài khoản. Nếu chuyển kết nối Vercel sang repository mới thì Root Directory dùng `.`.
