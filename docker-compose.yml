@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: quynh_nhu
+      POSTGRES_PASSWORD: demo-local-only
+      POSTGRES_DB: quynh_nhu
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - quynh_nhu_data:/var/lib/postgresql/data
+volumes:
+  quynh_nhu_data:
