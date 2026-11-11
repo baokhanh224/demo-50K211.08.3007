@@ -49,14 +49,14 @@ Khi đó đặt `DATABASE_URL="postgresql://quynh_nhu:demo-local-only@localhost:
 
 Các bước tài khoản chỉ cần làm nếu chưa kết nối các dịch vụ để trợ lý thực hiện:
 
-1. Mã nguồn đã được đưa vào repository hiện có của dự án: https://github.com/baokhanh224/50K211.08.3007 , nhánh `codex/quynh-nhu-demo`, thư mục `demo-quynh-nhu`. Lấy mã:
+1. Mã nguồn đầy đủ ở repository công khai, nhánh `main`, thư mục gốc:
 
    ```bash
-   git clone --branch codex/quynh-nhu-demo https://github.com/baokhanh224/50K211.08.3007.git
-   cd 50K211.08.3007/demo-quynh-nhu
+   git clone https://github.com/baokhanh224/demo-50K211.08.3007.git
+   cd demo-50K211.08.3007
    ```
 
-   Đăng nhập GitHub bằng tài khoản có quyền đọc repository riêng tư. Hồ sơ Word/Figma gốc của repository được giữ nguyên. `.env`, khóa kết nối và `node_modules` không được đưa lên GitHub.
+   Không có thư mục `demo-quynh-nhu` lồng bên trong. `.env`, khóa kết nối và `node_modules` không được đưa lên GitHub.
 2. Đăng nhập https://vercel.com, chọn **Add New → Project → Import** repository `demo-50K211.08.3007`, chọn framework **Next.js**, **Root Directory = .** và nhánh production `main`. Cấu hình `vercel.json` dùng build `npm run vercel-build`, khu vực `sin1`.
 3. Trong **Environment Variables**, đặt `DATABASE_URL` và `SESSION_SECRET` cho Production và Preview. Dùng chuỗi Neon thật và khóa ngẫu nhiên ít nhất 32 ký tự. Không đặt các biến này dưới tiền tố `NEXT_PUBLIC_`.
 4. Chọn **Deploy**. Migration chạy trong build; build không chạy seed, nên redeploy giữ dữ liệu. Nếu dùng một CSDL mới chưa có mẫu, chạy `npm run db:seed` một lần từ máy đã đặt đúng `.env`, hoặc thực hiện nút khôi phục sau khi đã có tài khoản mẫu.

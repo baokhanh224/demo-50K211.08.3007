@@ -12,7 +12,7 @@ Trạng thái: bàn giao bản sửa có kiểm thử; CHƯA hoàn tất yêu c�
 
 ## Lệnh và kiểm tra đã chạy
 
-- `npm run typecheck`, `npm run build`: đạt.
+- `npm run typecheck`, `npm run build`: đạt. Clone sạch commit `25d3083` từ repository công khai sang thư mục riêng, không sao chép `.env`/node_modules; chạy `npm ci --cache /workspace/work/npm-cache && npm run build`: đạt.
 - `npm test`: 3 kiểm tra PostgreSQL đạt trên CSDL local riêng, gồm transaction rollback, chống trùng/đồng thời và dữ liệu lịch sử.
 - `npx tsx --test tests/payment-qr.test.ts`: 2 kiểm tra đạt.
 - `npm run test:ui`: 8/8 đạt trên production build local cổng 3002 với PostgreSQL local riêng. Bao gồm 3 test trong `tests/chu.spec.ts`; 4 trạng thái đăng nhập được so pixel, lỗi bắt buộc UC1 đúng Word, thêm nhanh khách, nhãn UC6, tải lại giữ màn hình; nhập hai hạn, bán thiếu tiền rồi sửa, chống bấm đôi, hủy hoàn nguồn, trả không nhập kho, báo cáo và Excel/PDF, master data, hai trình duyệt bán gần hết.
