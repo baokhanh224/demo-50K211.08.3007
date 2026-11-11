@@ -125,3 +125,7 @@ Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằ
 ### Vị trí tìm kiếm và danh mục sản phẩm
 
 Đã sửa theo Figma 60:2 và triển khai commit 65df1a6. Typecheck/build đạt. Kiểm tra thực qua UI cục bộ và https://quynh-nhu-demo.vercel.app/?view=products đạt: kích thước/đồng hàng các bộ lọc, thứ tự bộ lọc → nhóm thao tác → bảng; tìm theo tên kết hợp danh mục và bỏ lọc đều hoạt động; 7 tài sản Figma tải đủ. Không ghi dữ liệu nghiệp vụ trong kiểm tra này.
+
+### Quản lý nhà cung cấp
+
+Đã sửa vị trí bộ lọc/nhóm thao tác và thứ tự cột theo Figma 293:2818, thêm hiển thị Email đã có sẵn trong CSDL. Typecheck/build đạt. Kiểm tra bộ lọc kết hợp, bỏ lọc, hình/vị trí và đủ ảnh trên https://quynh-nhu-demo.vercel.app/?view=suppliers đạt sau deploy 9a7e9d8. Không ghi dữ liệu nghiệp vụ khi kiểm tra.

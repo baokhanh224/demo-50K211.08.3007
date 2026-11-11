@@ -1,0 +1,79 @@
+{
+  "origin": "https://quynh-nhu-demo.vercel.app",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "boxes": [
+    {
+      "x": 296,
+      "y": 191,
+      "width": 290,
+      "height": 37.828125
+    },
+    {
+      "x": 596,
+      "y": 192.21875,
+      "width": 138.71875,
+      "height": 35.375
+    },
+    {
+      "x": 892.328125,
+      "y": 191.5,
+      "width": 107.359375,
+      "height": 36.828125
+    },
+    {
+      "x": 296,
+      "y": 244.828125,
+      "width": 1098,
+      "height": 36.828125
+    }
+  ],
+  "assets": [
+    {
+      "src": "/figma/21532.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/002a0.svg",
+      "loaded": true,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "src": "/figma/002a0.svg",
+      "loaded": true,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "src": "/figma/f5950.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/a3829.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/390c0.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "src": "/figma/f8244.svg",
+      "loaded": true,
+      "width": 16,
+      "height": 16
+    }
+  ],
+  "searchAndCategory": true,
+  "resetFilters": true
+}

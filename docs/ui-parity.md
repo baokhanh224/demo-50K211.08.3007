@@ -230,3 +230,9 @@ Chưa hoàn thành parity 195 frame UC6/4/5/1/2/3, gồm bố cục/đủ trạn
 Frame nguồn 60:2, phần 60:70–60:109: đã đọc design context và ảnh, xuất trực tiếp 7 icon SVG từ Figma. Sửa thứ tự bộ lọc trước nhóm nút, tìm kiếm 320×40, danh mục 157×40, nút tìm 111×40, gap 10; nhóm thao tác ở hàng sau cách 16, căn phải. Nhãn Danh mục: nằm trong bộ lọc, bỏ tiêu đề phụ Danh sách sản phẩm không có trong frame này.
 
 Đã kiểm tra hình và đo geometry trên localhost và Vercel 1440×900; tìm kết hợp Milo/danh mục cho 1 dòng, xóa bộ lọc về 7 dòng; cả 7 icon tải thành công đúng kích thước 16px/14px. Chứng cứ docs/evidence/product-filters. Commit triển khai 65df1a6 đạt Vercel success. Đối chiếu này chỉ áp dụng bộ lọc/nhóm nút; không đánh dấu khớp toàn bộ frame hoặc bảng sản phẩm/sidebar.
+
+## Bộ lọc nhà cung cấp — Figma 293:2818
+
+Đã đọc context và ảnh, xuất trực tiếp 6 SVG Figma (icon down dùng hai vị trí). Chuyển tìm kiếm/danh mục/trạng thái/nút tìm lên hàng đầu, nhãn inline trong dropdown; nút thêm/sửa/xóa ở hàng sau, căn phải, cách 16px. Theo nguồn: tìm kiếm 290×37,84; danh mục 138,72×35,39; trạng thái 137,61×35,39; nút tìm 107,36×36,84; gap 10. Bảng có thứ tự Mã nhà cung cấp, Tên nhà cung cấp, Danh mục, Số điện thoại, Email, Địa chỉ, Trạng thái.
+
+Typecheck/build đạt; đã đo và kiểm tra thực ở localhost và Vercel 1440×900: tìm Thuận Phát + danh mục + trạng thái cho một kết quả; xóa bộ lọc về 3 nhà cung cấp; 7 ảnh icon tải đủ đúng 16px/14px. Deploy 9a7e9d8 thành công; chứng cứ docs/evidence/supplier-filters. Chỉ xác nhận phần bộ lọc/toolbar/cột trong phạm vi sửa, không nhận toàn frame khớp tuyệt đối.
