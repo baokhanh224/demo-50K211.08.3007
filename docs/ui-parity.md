@@ -223,4 +223,4 @@ Bốn frame đã có context, ảnh chuẩn 1440×900 và ảnh thật từ prod
 
 ## Phần còn lại
 
-Chưa hoàn thành parity 195 frame UC6/4/5/1/2/3, gồm bố cục/đủ trạng thái, khôi phục hạn mặc định sản phẩm và tự điền nhập hàng, dữ liệu mẫu giống Figma, bố cục báo cáo. Kiểm thử nghiệp vụ hiện có không thay cho kiểm tra từng frame. Chưa kiểm tra Vercel, redeploy và hai trình duyệt trên domain công khai.
+Chưa hoàn thành parity 195 frame UC6/4/5/1/2/3, gồm bố cục/đủ trạng thái, khôi phục hạn mặc định sản phẩm và tự điền nhập hàng, dữ liệu mẫu giống Figma, bố cục báo cáo. Kiểm thử nghiệp vụ hiện có không thay cho kiểm tra từng frame. Đã kiểm tra Vercel, redeploy giữ dữ liệu và hai trình duyệt trên domain công khai; xem BAO-CAO-KIEM-THU.md. Những kiểm tra nghiệp vụ này không xác nhận khớp ảnh cho các frame chưa so.

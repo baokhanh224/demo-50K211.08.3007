@@ -1,0 +1,18 @@
+{
+  "url": "https://quynh-nhu-demo.vercel.app/",
+  "deployedCommit": "dfdb768",
+  "vercelStatus": "success",
+  "loginAfterDeploy": true,
+  "businessDataPreserved": true,
+  "beforeHash": "001a02966b9b1d49c6542cb4b05e0a737a7194d5ed7fcd353f99102f6172827f",
+  "afterHash": "001a02966b9b1d49c6542cb4b05e0a737a7194d5ed7fcd353f99102f6172827f",
+  "receiptPendingGuard": {
+    "delayMs": 1500,
+    "addDisabled": true,
+    "saveDisabled": true,
+    "receiptSaved": false
+  },
+  "publicScenarioTestsPassed": 3,
+  "loginStateTestPassed": true,
+  "figmaParityComplete": false
+}

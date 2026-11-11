@@ -2,7 +2,7 @@
 
 - Người dùng cung cấp build log: Prisma P1002 hết 10 giây chờ `pg_advisory_lock(72707369)` trên kết nối pooled. Read-only inspect locks sau đó không còn phiên giữ khóa; không ngắt phiên hoặc thay đổi dữ liệu.
 - Lần deploy tiếp theo `69a26a9` thành công; giao diện mới và khóa nút nhập đã lên website. Dữ liệu nghiệp vụ trước/sau redeploy có SHA-256 giống nhau: `001a02966b9b1d49c6542cb4b05e0a737a7194d5ed7fcd353f99102f6172827f`. Snapshot gồm stock/average_cost sản phẩm, tồn từng nguồn và id/tổng/trạng thái hóa đơn, không tính phiên đăng nhập/report snapshot.
-- Đã sửa nguồn build để migration dùng direct endpoint Neon, runtime giữ pooled; không tắt khóa migration. Typecheck, build, db:init local và 2 test migration đạt. Đang triển khai bản đổi kết nối này.
+- Đã sửa nguồn build để migration dùng direct endpoint Neon, runtime giữ pooled; không tắt khóa migration. Typecheck, build, db:init local và 2 test migration đạt. Bản đổi kết nối đã triển khai thành công: commit `dfdb768` tại repository đang kết nối Vercel, deployment `3SxDgsf6KhPHRRSw6L9k5PhTfuFz`. Đăng nhập và dữ liệu nghiệp vụ đã kiểm tra lại sau deploy; fingerprint giữ nguyên.
 - Bốn trạng thái UC7 đã kiểm tra lại trên Vercel công khai, chữ và ngưỡng ảnh đều đạt test; vẫn còn sai lệch raster 0,13–0,18%.
 
 # Kiểm tra Vercel thực tế ngày 11/11/2026
@@ -48,7 +48,7 @@ Trạng thái: đã triển khai bản sửa giao diện và kiểm tra nghiệp
 - Chưa đối chiếu đủ 195 frame còn lại. UC6 đã sửa một phần, chưa chốt 40 trạng thái; UC4/5/1/2/3 chưa chỉnh toàn bộ bố cục.
 - Bảng chữ còn các câu chưa có nguồn hoặc chưa xác nhận đúng UC, được ghi rõ trong docs/kiem-tra-chu.md. Test chữ chưa bao phủ mọi nhãn và mọi ngoại lệ.
 - Chưa khôi phục trường hạn mặc định sản phẩm/tự điền phiếu nhập; chưa đổi toàn bộ dữ liệu mẫu và bố cục báo cáo theo Figma mới.
-- URL đã được cung cấp và đã kiểm tra công khai như mục đầu báo cáo; chưa xác minh fingerprint bảo toàn qua redeploy tiếp theo. Không có quyền đọc build logs Vercel qua kết nối hiện tại.
+- URL đã được cung cấp và đã kiểm tra công khai như mục đầu báo cáo; đã xác minh fingerprint bảo toàn qua redeploy như phần đầu báo cáo. Không có quyền đọc build logs Vercel qua kết nối hiện tại.
 - Máy in vật lý, quét bằng app ngân hàng chưa kiểm chứng.
 
 ## Kết quả lịch sử trước đợt rà soát
@@ -117,3 +117,7 @@ CSDL SQLite của lượt thử ban đầu được giữ nguyên trong thư m�
 - Playwright `tests/qr.spec.ts` trên production build cổng 3001, dùng CSDL Neon: đạt. Thêm Milo 1 hộp, chuyển khoản: URL QR amount=18000; thêm 1 hộp: amount=36000, checkbox nhận tiền bỏ chọn; chuyển tiền mặt: ẩn QR. Không hoàn tất thanh toán, không tạo hóa đơn hoặc trừ kho.
 - Ảnh QR thực từ VietQR được tải bằng curl qua CA tin cậy rồi chuyển vào trình duyệt tự động; Chromium trong Cloud chưa tin CA proxy (`ERR_CERT_AUTHORITY_INVALID`). Không tắt xác minh TLS.
 - Chưa kiểm tra quét bằng ứng dụng ngân hàng và chưa xác minh trên URL Vercel sau triển khai; cần tài khoản nhận thật, ba biến cấu hình VietQR và URL website.
+
+### Kiểm tra riêng lỗi thao tác khi mạng chậm
+
+Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằng transport của trình duyệt kiểm thử; nút Thêm sản phẩm và Lưu phiếu nhập đều bị khóa, sau phản hồi có đúng 1 dòng và nút lưu bật lại. Không lưu thêm phiếu trong kiểm tra này. Đã kiểm tra typecheck/build trên nguồn mới; migration helper có 2 test đạt và db:init local chạy được.
