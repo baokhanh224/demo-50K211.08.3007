@@ -1024,3 +1024,18 @@ tbody tr.clickable:hover {
 .product-category-filter { flex:0 0 157px; width:157px; }
 .product-category-filter select { flex:1; width:0; max-width:none; }
 .product-list-card > .filters > .btn { width:111px; flex:0 0 111px; }
+
+/* Figma UC2.4 293:2818: compact inline filters, then right-aligned actions. */
+.supplier-list-card { border:1px solid #e2e8f0; box-shadow:none; border-radius:10px; }
+.supplier-list-card > .filters .search { flex-basis:290px; width:290px; height:37.84px; }
+.supplier-list-card > .filters .search input { height:37.84px; border-color:#cbd5e1; border-radius:6px; padding-left:32px; }
+.supplier-list-card > .filters .search img { left:9.5px; top:10.92px; }
+.supplier-list-card .product-category-filter { flex-basis:138.72px; width:138.72px; height:35.39px; border-color:#cbd5e1; border-radius:6px; padding:0 10px; }
+.supplier-list-card .supplier-status-filter { flex-basis:137.61px; width:137.61px; }
+.supplier-list-card .product-category-filter label { font-size:12px; color:#1e293b; }
+.supplier-list-card .product-category-filter select { height:33px; font-size:12px; font-weight:700; }
+.supplier-list-card .product-category-filter > img { right:10px; }
+.supplier-list-card > .filters > .btn { flex-basis:107.36px; width:107.36px; height:36.84px; border-radius:6px; background:#17409a; padding:0 12px; }
+.supplier-list-card > .card-head .btn { height:36.84px; border-radius:6px; }
+.supplier-list-card > .card-head .btn.primary { background:#17409a; }
+.supplier-list-card .btn { min-height:0; }

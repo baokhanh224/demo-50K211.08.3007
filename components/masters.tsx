@@ -100,16 +100,16 @@ export default function Masters({ kind }: any) {
   }
   const toolbar = (
         <div className="card-head">
-          {kind !== "products" && <h2>Danh sách {c.singular}</h2>}
+          {kind === "customers" && <h2>Danh sách {c.singular}</h2>}
           <div className="row">
             <Button variant="primary" onClick={() => setForm({})}>
-              {kind === "products" ? <img src="/figma/9fda3.svg" width="16" height="16" alt="" /> : <span aria-hidden="true">＋</span>}Thêm {c.singular}
+              {kind !== "customers" ? <img src={kind === "suppliers" ? "/figma/a3829.svg" : "/figma/9fda3.svg"} width="16" height="16" alt="" /> : <span aria-hidden="true">＋</span>}Thêm {c.singular}
             </Button>
             <Button disabled={!selected} onClick={() => setForm(selected)}>
-              {kind === "products" && <img src="/figma/b3751.svg" width="16" height="16" alt="" />}Sửa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/390c0.svg" : "/figma/b3751.svg"} width="16" height="16" alt="" />}Sửa
             </Button>
             <Button disabled={!selected} variant="danger" onClick={remove}>
-              {kind === "products" && <img src="/figma/a04e9.svg" width="16" height="16" alt="" />}Xóa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f8244.svg" : "/figma/a04e9.svg"} width="16" height="16" alt="" />}Xóa
             </Button>
             {kind === "products" && (
               <Button disabled={!selected} onClick={() => setPrice(selected)}>
@@ -122,30 +122,30 @@ export default function Masters({ kind }: any) {
   return (
     <>
       <h1>{c.title}</h1>
-      <section className={"card" + (kind === "products" ? " product-list-card" : "")}>
-        {kind !== "products" && toolbar}
+      <section className={"card" + (kind === "products" ? " product-list-card" : kind === "suppliers" ? " product-list-card supplier-list-card" : "")}>
+        {kind === "customers" && toolbar}
         <form className="filters" onSubmit={search}>
           <div className="field search">
-            {kind === "products" && <img src="/figma/35b85.svg" width="16" height="16" alt="" />}
+            {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/21532.svg" : "/figma/35b85.svg"} width="16" height="16" alt="" />}
             <input
               aria-label="Từ khóa"
               placeholder={
                 kind === "customers"
                   ? "Nhập mã, tên hoặc số điện thoại"
-                  : kind === "products" ? "Tìm theo mã hoặc tên sản phẩm..." : `Nhập mã hoặc tên ${c.singular}`
+                  : `Tìm theo mã hoặc tên ${c.singular}...`
               }
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
           </div>
-          {kind === "products" ? (
+          {kind !== "customers" ? (
             <div className="product-category-filter">
               <label htmlFor="product-category">Danh mục:</label>
               <select id="product-category" aria-label="Danh mục" value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Tất cả</option>
                 {data.categories.map((x: any) => <option key={x.id} value={x.id}>{x.name}</option>)}
               </select>
-              <img src="/figma/b4dfe.svg" width="14" height="14" alt="" />
+              <img src={kind === "suppliers" ? "/figma/002a0.svg" : "/figma/b4dfe.svg"} width="14" height="14" alt="" />
             </div>
           ) : kind !== "customers" && (
             <Field label="Danh mục">
@@ -163,22 +163,19 @@ export default function Masters({ kind }: any) {
             </Field>
           )}
           {kind === "suppliers" && (
-            <Field label="Trạng thái">
-              <select
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <option value="">Tất cả</option>
-                <option>Đang hợp tác</option>
-                <option>Ngừng hợp tác</option>
+            <div className="product-category-filter supplier-status-filter">
+              <label htmlFor="supplier-status">Trạng thái:</label>
+              <select id="supplier-status" aria-label="Trạng thái" value={status} onChange={(e)=>setStatus(e.target.value)}>
+                <option value="">Tất cả</option><option>Đang hợp tác</option><option>Ngừng hợp tác</option>
               </select>
-            </Field>
+              <img src="/figma/002a0.svg" width="14" height="14" alt="" />
+            </div>
           )}
           <Button type="submit" variant="primary">
-            {kind === "products" && <img src="/figma/bb29d.svg" width="16" height="16" alt="" />}Tìm kiếm
+            {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f5950.svg" : "/figma/bb29d.svg"} width="16" height="16" alt="" />}Tìm kiếm
           </Button>
         </form>
-        {kind === "products" && toolbar}
+        {kind !== "customers" && toolbar}
         <Notice text={error} />
         <div className="table-wrap">
           <table>
@@ -197,14 +194,11 @@ export default function Masters({ kind }: any) {
                   </>
                 ) : (
                   <>
+                    {kind === "suppliers" && <th>Danh mục</th>}
                     <th>Số điện thoại</th>
+                    {kind === "suppliers" && <th>Email</th>}
                     <th>Địa chỉ</th>
-                    {kind === "suppliers" && (
-                      <>
-                        <th>Danh mục</th>
-                        <th>Trạng thái</th>
-                      </>
-                    )}
+                    {kind === "suppliers" && <th>Trạng thái</th>}
                   </>
                 )}
               </tr>
@@ -249,14 +243,15 @@ export default function Masters({ kind }: any) {
                     </>
                   ) : (
                     <>
+                      {kind === "suppliers" && <td>{r.categories.join(", ") || "—"}</td>}
                       <td>{r.phone}</td>
+                      {kind === "suppliers" && <td>{r.email || "—"}</td>}
                       <td>{r.address || "—"}</td>
                       {kind === "suppliers" && (
                         <>
-                          <td>{r.categories.join(", ") || "—"}</td>
                           <td>
                             <Badge
-                              tone={r.status === "Đang hợp tác" ? "green" : ""}
+                              tone={r.status === "Đang hợp tác" ? "green" : "red"}
                             >
                               {r.status}
                             </Badge>
