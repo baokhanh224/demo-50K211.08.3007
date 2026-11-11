@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import { PNG } from 'pngjs';
 import pixelmatch from 'pixelmatch';
+import { installTrustedTransport } from './public-transport';
+test.beforeEach(async({context})=>{
+ if(process.env.PUBLIC_QA==='1')await installTrustedTransport(context);
+});
 const figma=JSON.parse(fs.readFileSync('docs/nguon-chu-figma.json','utf8'));
 const word=JSON.parse(fs.readFileSync('docs/nguon-chu-word.json','utf8'));
 const source=(frame:string,text:string)=>{

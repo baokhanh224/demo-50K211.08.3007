@@ -6,13 +6,13 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "prisma generate && next build",
     "start": "next start --hostname 0.0.0.0",
-    "db:init": "prisma migrate deploy",
+    "db:init": "node scripts/migrate.mjs",
     "db:seed": "tsx scripts/seed.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/business.test.ts",
     "test:ui": "playwright test",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma migrate deploy && prisma generate && next build",
+    "vercel-build": "node scripts/migrate.mjs && prisma generate && next build",
     "check": "npm run typecheck && npm test"
   },
   "dependencies": {

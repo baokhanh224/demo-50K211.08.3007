@@ -1,0 +1,130 @@
+{
+  "hash": "001a02966b9b1d49c6542cb4b05e0a737a7194d5ed7fcd353f99102f6172827f",
+  "snapshot": {
+    "products": [
+      {
+        "id": "SP0001",
+        "stock": 37,
+        "average_cost": 13135.14699429575
+      },
+      {
+        "id": "SP0002",
+        "stock": 56,
+        "average_cost": 3000
+      },
+      {
+        "id": "SP0003",
+        "stock": 18,
+        "average_cost": 12000
+      },
+      {
+        "id": "SP0004",
+        "stock": 45,
+        "average_cost": 3500
+      },
+      {
+        "id": "SP0005",
+        "stock": 3,
+        "average_cost": 4000
+      },
+      {
+        "id": "SP0006",
+        "stock": 12,
+        "average_cost": 20000
+      },
+      {
+        "id": "SP0007",
+        "stock": 0,
+        "average_cost": 5000
+      }
+    ],
+    "lots": [
+      {
+        "id": 1,
+        "remaining": 0
+      },
+      {
+        "id": 2,
+        "remaining": 23
+      },
+      {
+        "id": 3,
+        "remaining": 18
+      },
+      {
+        "id": 4,
+        "remaining": 56
+      },
+      {
+        "id": 5,
+        "remaining": 45
+      },
+      {
+        "id": 6,
+        "remaining": 3
+      },
+      {
+        "id": 7,
+        "remaining": 12
+      },
+      {
+        "id": 8,
+        "remaining": 5
+      },
+      {
+        "id": 9,
+        "remaining": 0
+      },
+      {
+        "id": 10,
+        "remaining": 4
+      },
+      {
+        "id": 11,
+        "remaining": 5
+      }
+    ],
+    "invoices": [
+      {
+        "id": "HD0001",
+        "total": 70000,
+        "status": "Đã thanh toán"
+      },
+      {
+        "id": "HD0002",
+        "total": 54000,
+        "status": "Đã thanh toán"
+      },
+      {
+        "id": "HD0003",
+        "total": 20000,
+        "status": "Đã hủy"
+      },
+      {
+        "id": "HD0004",
+        "total": 360000,
+        "status": "Đã thanh toán"
+      },
+      {
+        "id": "HD0005",
+        "total": 36000,
+        "status": "Đã thanh toán"
+      },
+      {
+        "id": "HD0006",
+        "total": 144000,
+        "status": "Đã hủy"
+      },
+      {
+        "id": "HD0007",
+        "total": 108000,
+        "status": "Đã thanh toán"
+      },
+      {
+        "id": "HD0008",
+        "total": 18000,
+        "status": "Đã hủy"
+      }
+    ]
+  }
+}

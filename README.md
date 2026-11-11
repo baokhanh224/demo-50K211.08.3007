@@ -23,7 +23,7 @@ Cần Node.js 22.12 trở lên hoặc Node.js 24, npm và một PostgreSQL riên
 
    ```bash
    npm ci
-   npx prisma migrate deploy
+   npm run db:init
    npm run db:seed
    npm run dev
    ```
@@ -206,3 +206,9 @@ BASE_URL=https://quynh-nhu-demo.vercel.app PUBLIC_QA=1 NODE_USE_ENV_PROXY=1 npx 
 ```
 
 Repository mới là nguồn bàn giao chính. Vercel hiện vẫn kết nối repository cũ `50K211.08.3007`, Root Directory `demo-quynh-nhu`; bản được kiểm thử đã được đồng bộ vào đó để cập nhật website mà không yêu cầu đổi kết nối tài khoản. Nếu chuyển kết nối Vercel sang repository mới thì Root Directory dùng `.`.
+
+### Migration Neon và lỗi P1002
+
+`npm run db:init` và build Vercel chạy `scripts/migrate.mjs`: chỉ tiến trình Prisma Migrate dùng kết nối trực tiếp. Với host Neon, tự bỏ hậu tố `-pooler` của endpoint; tài khoản/mật khẩu, tên database và sslmode được giữ. Có thể cấu hình `DIRECT_URL` riêng nếu cần; không bắt buộc thêm biến khi dùng host Neon chuẩn. Runtime website giữ nguyên `DATABASE_URL` pooled.
+
+Không tắt advisory lock, không seed khi deploy và không reset CSDL. Hai test trong `tests/migrate.test.ts` kiểm tra đổi endpoint, bảo toàn tham số, không đổi cấu hình runtime và xử lý URL không hợp lệ. Lỗi build đã gặp: Prisma P1002 chờ khóa 72707369 qua pooler. Tham khảo [Neon connection pooling](https://neon.com/docs/connect/connection-pooling).
