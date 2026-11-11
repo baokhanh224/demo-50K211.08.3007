@@ -1039,3 +1039,5 @@ tbody tr.clickable:hover {
 .supplier-list-card > .card-head .btn { height:36.84px; border-radius:6px; }
 .supplier-list-card > .card-head .btn.primary { background:#17409a; }
 .supplier-list-card .btn { min-height:0; }
+.supplier-list-card .product-category-filter { gap:3px; }
+.supplier-list-card .product-category-filter select { padding-right:14px; }
