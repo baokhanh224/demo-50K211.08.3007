@@ -1,4 +1,5 @@
 "use client";
+import ReportDate from "./report-date";
 import { useState, useEffect } from "react";
 import { api, Button, Field, Notice, Empty, Modal, useApp } from "./ui";
 import { money, number, date, today, iso } from "@/lib/format";
@@ -7,6 +8,7 @@ export default function Reports({ stock = false }: any) {
   const [type, setType] = useState(stock ? "Xuất – nhập – tồn" : "Doanh thu");
   const [from, setFrom] = useState(date(today().slice(0, 8) + "01"));
   const [to, setTo] = useState(date(today()));
+  const [calendar, setCalendar] = useState<"from" | "to" | null>(null);
   const [product, setProduct] = useState("");
   const [category, setCategory] = useState("");
   const [rank, setRank] = useState("Số lượng bán thuần");
@@ -107,6 +109,7 @@ export default function Reports({ stock = false }: any) {
                 </select>
               </Field>
             )}
+            {stock ? <>
             <Field
               label="Từ ngày"
               value={from}
@@ -119,6 +122,12 @@ export default function Reports({ stock = false }: any) {
               placeholder="dd/mm/yyyy"
               onChange={(e: any) => setTo(e.target.value)}
             />
+            </> : <>
+              <ReportDate label="Từ ngày" value={from} onChange={setFrom} from={from} to={to}
+                open={calendar === "from"} onOpen={() => setCalendar("from")} onClose={() => setCalendar(null)} />
+              <ReportDate label="Đến ngày" value={to} onChange={setTo} from={from} to={to}
+                open={calendar === "to"} onOpen={() => setCalendar("to")} onClose={() => setCalendar(null)} />
+            </>}
             <Field label="Sản phẩm">
               <select
                 value={product}
