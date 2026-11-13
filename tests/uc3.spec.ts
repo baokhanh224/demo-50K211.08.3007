@@ -151,6 +151,21 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
       name: "Xuất báo cáo",
       exact: true,
     });
+    await expect(
+      modal.getByText("Nội dung sẽ xuất", { exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      modal.getByText("Định dạng được hỗ trợ", { exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      modal.getByText(
+        "Chọn định dạng tệp. Nội dung xuất gồm loại báo cáo, tiêu chí lọc và số liệu đang hiển thị.",
+        { exact: true },
+      ),
+    ).toBeVisible();
+    await expect(
+      modal.getByRole("radio", { name: "Excel (.xlsx)", exact: true }),
+    ).toBeChecked();
     await page.screenshot({ path: out + "-export-formats.png" });
     await modal
       .getByRole("radio", {
@@ -227,17 +242,18 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
   await expect(
     page.getByText("Không có dữ liệu phù hợp", { exact: true }),
   ).toBeVisible();
-  const missingImages = () => page
-    .locator(".reports-page img,.sidebar img")
-    .evaluateAll((a) =>
-      a
-        .filter(
-          (n) =>
-            !(n as HTMLImageElement).complete ||
-            !(n as HTMLImageElement).naturalWidth,
-        )
-        .map((n) => (n as HTMLImageElement).src),
-    );
+  const missingImages = () =>
+    page
+      .locator(".reports-page img,.sidebar img")
+      .evaluateAll((a) =>
+        a
+          .filter(
+            (n) =>
+              !(n as HTMLImageElement).complete ||
+              !(n as HTMLImageElement).naturalWidth,
+          )
+          .map((n) => (n as HTMLImageElement).src),
+      );
   await expect.poll(missingImages).toEqual([]);
   const missing = await missingImages();
   await page.screenshot({ path: out + "-empty.png" });

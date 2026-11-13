@@ -4,7 +4,7 @@ import { Button, Modal } from "./ui";
 import { date, number } from "@/lib/format";
 import { ReportIcon } from "./report-picker";
 export default function ReportExport({ report, onClose }: any) {
-  const [format, setFormat] = useState("");
+  const [format, setFormat] = useState("xlsx");
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   const [confirm, setConfirm] = useState(false),
@@ -116,7 +116,7 @@ export default function ReportExport({ report, onClose }: any) {
         showClose={false}
         onClose={requestClose}
         className={`report-dialog report-export-dialog ${busy ? "report-export-busy" : ""}`}
-        overlayClassName={`report-dialog-overlay ${!format ? "report-export-unselected" : ""}`}
+        overlayClassName="report-dialog-overlay"
       >
         {!busy && (
           <button
@@ -130,37 +130,14 @@ export default function ReportExport({ report, onClose }: any) {
         )}
         {!busy && (
           <>
-            {format && (
-              <>
-                <p className="report-export-instruction">
-                  Chọn định dạng tệp báo cáo rồi nhấn “Xuất báo cáo”.
-                </p>
-                <div className="report-export-preview">
-                  <small>Nội dung sẽ xuất</small>
-                  <strong>
-                    {report.type === "Xuất – nhập – tồn"
-                      ? "Báo cáo xuất – nhập – tồn"
-                      : `Báo cáo ${report.type.toLocaleLowerCase("vi")}`}
-                  </strong>
-                  <p>
-                    Tiêu chí lọc: {date(report.filters.from)} –{" "}
-                    {date(report.filters.to)} ·{" "}
-                    {report.filters.selection_names?.join(", ") ||
-                      (report.filters.product && report.filters.product_name) ||
-                      (report.filters.category &&
-                        report.filters.category_name) ||
-                      "Tất cả sản phẩm"}
-                  </p>
-                </div>
-              </>
-            )}
-            <p className="report-format-label" id="report-format-label">
-              Định dạng được hỗ trợ
+            <p className="report-export-instruction">
+              Chọn định dạng tệp. Nội dung xuất gồm loại báo cáo, tiêu chí lọc
+              và số liệu đang hiển thị.
             </p>
             <div
               className="report-formats"
               role="radiogroup"
-              aria-labelledby="report-format-label"
+              aria-label="Định dạng tệp"
             >
               {[
                 { value: "xlsx", label: "Excel (.xlsx)" },

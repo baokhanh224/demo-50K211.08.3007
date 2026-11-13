@@ -1,3 +1,9 @@
+## Sửa hộp Xuất báo cáo theo ảnh bên trái người dùng
+
+- Bỏ khối Nội dung sẽ xuất, tiêu chí lọc trong hộp và nhãn Định dạng được hỗ trợ. Hiển thị đúng câu hướng dẫn của ảnh; Excel chọn mặc định, nút xuất dùng được ngay. Hộp rộng 440px; giữ hai định dạng và hai nút Hủy/Xuất báo cáo.
+- `npm run build` đạt; `BASE_URL=http://localhost:3023 npx playwright test tests/uc3.spec.ts --grep 'bộ lọc'` đạt 1/1 (6,6 giây), gồm kiểm tra không còn phần thừa, câu hướng dẫn, Excel mặc định, đổi PDF, hủy/quay lại và tải cả hai tệp. Dòng tổng Excel vẫn khớp snapshot. Không đổi hàm tính báo cáo/CSDL.
+- Ảnh kiểm tra: `docs/evidence/uc3/export-compact-local.png` và `export-compact-pdf-local.png`.
+
 ## UC3 — xác minh bản công khai
 
 - Bản triển khai cuối `c7eb2bc` tại repository đang nối Vercel; Vercel báo success: https://vercel.com/baokhanh224/quynh-nhu-demo/CW2GPe9DpUjcb11YLP7mnW4MFVvq . Mã nguồn bàn giao tương ứng `735ae96` (cộng bản cập nhật test/tài liệu xác minh này).
