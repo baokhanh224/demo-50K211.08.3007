@@ -100,16 +100,15 @@ export default function Masters({ kind }: any) {
   }
   const toolbar = (
         <div className="card-head">
-          {kind === "customers" && <h2>Danh sách {c.singular}</h2>}
           <div className="row">
             <Button variant="primary" onClick={() => setForm({})}>
-              {kind !== "customers" ? <img src={kind === "suppliers" ? "/figma/a3829.svg" : "/figma/9fda3.svg"} width="16" height="16" alt="" /> : <span aria-hidden="true">＋</span>}Thêm {c.singular}
+              {kind !== "customers" ? <img src={kind === "suppliers" ? "/figma/a3829.svg" : "/figma/9fda3.svg"} width="16" height="16" alt="" /> : <img src="/figma/1cd29.svg" width="16" height="16" alt="" />}Thêm {c.singular}
             </Button>
             <Button disabled={!selected} onClick={() => setForm(selected)}>
-              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/390c0.svg" : "/figma/b3751.svg"} width="16" height="16" alt="" />}Sửa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/390c0.svg" : "/figma/b3751.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src="/figma/8ebed.svg" width="16" height="16" alt="" />}Sửa
             </Button>
             <Button disabled={!selected} variant="danger" onClick={remove}>
-              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f8244.svg" : "/figma/a04e9.svg"} width="16" height="16" alt="" />}Xóa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f8244.svg" : "/figma/a04e9.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src="/figma/d1421.svg" width="16" height="16" alt="" />}Xóa
             </Button>
             {kind === "products" && (
               <Button disabled={!selected} onClick={() => setPrice(selected)}>
@@ -119,19 +118,16 @@ export default function Masters({ kind }: any) {
           </div>
         </div>
   );
-  return (
-    <>
-      <h1>{c.title}</h1>
-      <section className={"card" + (kind === "products" ? " product-list-card" : kind === "suppliers" ? " product-list-card supplier-list-card" : "")}>
-        {kind === "customers" && toolbar}
+  const controls = <>
         <form className="filters" onSubmit={search}>
           <div className="field search">
+            {kind === "customers" && <img src="/figma/ab536.svg" width="16" height="16" alt="" />}
             {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/21532.svg" : "/figma/35b85.svg"} width="16" height="16" alt="" />}
             <input
               aria-label="Từ khóa"
               placeholder={
                 kind === "customers"
-                  ? "Nhập mã, tên hoặc số điện thoại"
+                  ? "Nhập mã, tên hoặc số điện thoại khách hàng"
                   : `Tìm theo mã hoặc tên ${c.singular}...`
               }
               value={q}
@@ -172,10 +168,16 @@ export default function Masters({ kind }: any) {
             </div>
           )}
           <Button type="submit" variant="primary">
-            {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f5950.svg" : "/figma/bb29d.svg"} width="16" height="16" alt="" />}Tìm kiếm
+            {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f5950.svg" : "/figma/bb29d.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src="/figma/cd5cf.svg" width="16" height="16" alt="" />}Tìm kiếm
           </Button>
         </form>
-        {kind !== "customers" && toolbar}
+        {toolbar}
+  </>;
+  return (
+    <>
+      <h1>{c.title}</h1>
+      <section className={"card" + (kind === "products" ? " product-list-card" : kind === "suppliers" ? " product-list-card supplier-list-card" : " customer-list-card")}>
+        {kind === "customers" ? <><h2>Danh sách khách hàng</h2><div className="customer-list-controls">{controls}</div></> : controls}
         <Notice text={error} />
         <div className="table-wrap">
           <table>
