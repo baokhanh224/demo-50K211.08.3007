@@ -1,0 +1,107 @@
+{
+  "receipt": "PN0004",
+  "cancelledInvoice": "HD0004",
+  "partialReturnInvoice": "HD0005",
+  "returnAmount": 36000,
+  "saleSources": [
+    {
+      "id": 8,
+      "lot_id": 1,
+      "invoice_line_id": 7,
+      "exchange_line_id": null,
+      "quantity": 5
+    },
+    {
+      "id": 9,
+      "lot_id": 2,
+      "invoice_line_id": 7,
+      "exchange_line_id": null,
+      "quantity": 3
+    }
+  ],
+  "afterSaleStock": [
+    {
+      "id": 1,
+      "remaining": 0
+    },
+    {
+      "id": 2,
+      "remaining": 39
+    },
+    {
+      "id": 3,
+      "remaining": 18
+    },
+    {
+      "id": 4,
+      "remaining": 56
+    },
+    {
+      "id": 5,
+      "remaining": 45
+    },
+    {
+      "id": 6,
+      "remaining": 3
+    },
+    {
+      "id": 7,
+      "remaining": 12
+    },
+    {
+      "id": 8,
+      "remaining": 5
+    },
+    {
+      "id": 9,
+      "remaining": 2
+    },
+    {
+      "id": 10,
+      "remaining": 3
+    }
+  ],
+  "afterReturnStock": [
+    {
+      "id": 1,
+      "remaining": 0
+    },
+    {
+      "id": 2,
+      "remaining": 39
+    },
+    {
+      "id": 3,
+      "remaining": 18
+    },
+    {
+      "id": 4,
+      "remaining": 56
+    },
+    {
+      "id": 5,
+      "remaining": 45
+    },
+    {
+      "id": 6,
+      "remaining": 3
+    },
+    {
+      "id": 7,
+      "remaining": 12
+    },
+    {
+      "id": 8,
+      "remaining": 5
+    },
+    {
+      "id": 9,
+      "remaining": 2
+    },
+    {
+      "id": 10,
+      "remaining": 3
+    }
+  ],
+  "passed": true
+}

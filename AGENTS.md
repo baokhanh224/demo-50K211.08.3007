@@ -1,9 +1,10 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Quỳnh Như — Python edition
 
-## This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+- Backend and production server: Python 3.12, FastAPI, psycopg/PostgreSQL.
+- Preserve `frontend/` markup, CSS, messages and Figma assets. Browser UI uses React JavaScript; Node is a build tool only.
+- Run `npm ci --prefix frontend` then `npm run build --prefix frontend` after frontend changes. Commit `static/build/` so runtime needs only Python.
+- Never run seed against the live database. Use a separate database ending in `_test` for business/UI tests.
+- Multi-table writes require transactions. Preserve idempotency, row locks, FEFO and original source allocations.
+- Do not migrate/seed at import, startup or deploy. Use explicit `python -m quynh_nhu.manage init` and seed commands.
+- Business text comes from `docs/dac-ta-nghiep-vu-trich-xuat.txt`. Existing README decisions remain applicable.
+- The old Next.js source is retained in Git history at `61a4402`; historical docs are explicitly marked.

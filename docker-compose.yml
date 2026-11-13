@@ -4,10 +4,10 @@ services:
     environment:
       POSTGRES_USER: quynh_nhu
       POSTGRES_PASSWORD: demo-local-only
-      POSTGRES_DB: quynh_nhu
+      POSTGRES_DB: quynh_nhu_python
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:5433:5432"
     volumes:
-      - quynh_nhu_data:/var/lib/postgresql/data
+      - quynh_nhu_python_data:/var/lib/postgresql/data
 volumes:
-  quynh_nhu_data:
+  quynh_nhu_python_data:

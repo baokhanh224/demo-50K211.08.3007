@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-13",
+  "reference_commit": "61a4402",
+  "scope": "14 initial desktop views; fonts and all images decoded; same isolated database",
+  "results": [
+    {
+      "view": "adjustments",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "78ad247348a8ef927ae4a674bb0d7dd644851ae662dd0eb05fe14b88f5f30426",
+      "python_sha256": "78ad247348a8ef927ae4a674bb0d7dd644851ae662dd0eb05fe14b88f5f30426"
+    },
+    {
+      "view": "cancel-invoice",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "82a55f9fd5367405f8acfe59970653708aa7fba2e80b2078644fb90599af0a7c",
+      "python_sha256": "82a55f9fd5367405f8acfe59970653708aa7fba2e80b2078644fb90599af0a7c"
+    },
+    {
+      "view": "customers",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "cfcfb70edd1700a759f9d79c3d73a98b23998e7e04d6ef582d205e9e0e265e22",
+      "python_sha256": "cfcfb70edd1700a759f9d79c3d73a98b23998e7e04d6ef582d205e9e0e265e22"
+    },
+    {
+      "view": "inventory",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "d51f0778467fd697b59144d39c35e1ed4d97cd0442547bc739da5c1c7d80d43c",
+      "python_sha256": "d51f0778467fd697b59144d39c35e1ed4d97cd0442547bc739da5c1c7d80d43c"
+    },
+    {
+      "view": "products",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "c00663592a9889e99322865b0397a61b75f29602ce877462803725397bcc1306",
+      "python_sha256": "c00663592a9889e99322865b0397a61b75f29602ce877462803725397bcc1306"
+    },
+    {
+      "view": "receipt-history",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "f81151ad4f066e56283f01e5f3155883f9dc695bbe763b76e3facc57ee4b9560",
+      "python_sha256": "f81151ad4f066e56283f01e5f3155883f9dc695bbe763b76e3facc57ee4b9560"
+    },
+    {
+      "view": "receipts",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "12c4c46a0f8ad152dbb2e43f9928bfbb22e1cb76c13a144d0bb6830152973d21",
+      "python_sha256": "12c4c46a0f8ad152dbb2e43f9928bfbb22e1cb76c13a144d0bb6830152973d21"
+    },
+    {
+      "view": "reports",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "6b6b18defac792d27c55fb53ae0e76f556bab50d48ebff414ee9c90d102b8cc2",
+      "python_sha256": "6b6b18defac792d27c55fb53ae0e76f556bab50d48ebff414ee9c90d102b8cc2"
+    },
+    {
+      "view": "returns",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "4df1b366326bf54d23b1a3ef562034810bec0c7b9822aa782cc1e86ee67c2bcf",
+      "python_sha256": "4df1b366326bf54d23b1a3ef562034810bec0c7b9822aa782cc1e86ee67c2bcf"
+    },
+    {
+      "view": "sale",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "6d70e8376bacb2cc95fc1d42cf8072849e0ebe37cf24d9b144f97877d4d0d7b8",
+      "python_sha256": "6d70e8376bacb2cc95fc1d42cf8072849e0ebe37cf24d9b144f97877d4d0d7b8"
+    },
+    {
+      "view": "sales-history",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "9fdb66a2683dea461ed8580b675436002b0504106b31b672b4f848bab8cc8e34",
+      "python_sha256": "9fdb66a2683dea461ed8580b675436002b0504106b31b672b4f848bab8cc8e34"
+    },
+    {
+      "view": "settings",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "b3e514120821c38f455532f2f6baf0576db5a7e7eb4fae4e789519a3b7631d34",
+      "python_sha256": "b3e514120821c38f455532f2f6baf0576db5a7e7eb4fae4e789519a3b7631d34"
+    },
+    {
+      "view": "stock-report",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "fac14c0b1e73df7968ab0c36bd95ddeb00d548971892739d57bde834197c5318",
+      "python_sha256": "fac14c0b1e73df7968ab0c36bd95ddeb00d548971892739d57bde834197c5318"
+    },
+    {
+      "view": "suppliers",
+      "viewport": [
+        1440,
+        927
+      ],
+      "same_pixels": true,
+      "reference_sha256": "fc51fcf90d6c3c38b458afe7da026c96a5737e0eba906c96666f86cd06f49d38",
+      "python_sha256": "fc51fcf90d6c3c38b458afe7da026c96a5737e0eba906c96666f86cd06f49d38"
+    }
+  ]
+}

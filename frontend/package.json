@@ -1,0 +1,1 @@
+{"name":"quynh-nhu-python-ui","private":true,"type":"module","scripts":{"build":"node build.mjs"},"dependencies":{"react":"19.2.0","react-dom":"19.2.0","@fontsource/inter":"5.2.8"},"devDependencies":{"esbuild":"0.28.2","@playwright/test":"1.56.1"}}
