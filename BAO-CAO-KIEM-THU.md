@@ -137,3 +137,7 @@ Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằ
 ### Xác nhận hủy khách hàng và thông báo
 
 Đã sửa hộp hủy thêm/hủy sửa/xóa: title riêng, dấu ! đỏ và vòng tròn, nút và overlay theo Figma. Thêm/sửa form có kích thước riêng. Toast khách hàng dùng SVG Figma check/close và có nút đóng thật. Sửa lỗi hai modal cùng nhận Escape và lỗi callback cũ làm mất dữ liệu khi nhấn Escape. Local/public QA các hành vi đều đạt, typecheck/build đạt, deploy d326fea thành công. Tạo/xóa khách để kiểm tra toast chỉ thực hiện ở local; không ghi dữ liệu trên public trong đợt này. Pixel crop hủy thêm còn lệch 1,48%, không đánh dấu khớp tuyệt đối. Xem ui-parity.md và chứng cứ customer-dialogs.
+
+### Lịch chọn ngày báo cáo kinh doanh
+
+Đã triển khai custom calendar theo Figma 304:2866/304:2632: input170×40, popup276×312 dưới input6px, tuầnT2–CN, tô hai đầu/khoảng, chuyểntháng và chọnngày ngoài tháng. Typecheck/build và các bước QA UI local/public (range, năm mới, năm nhuận, Escape, không mở hai popup, API nhận đúng ngày, range lỗi) đạt; deploy c77ff0e success. Không sửa hàm tính báo cáo hoặc dữ liệu nghiệp vụ. Thay đổi được ghi trong nguồn component report-date.tsx, có ảnh/chứng cứ JSON.

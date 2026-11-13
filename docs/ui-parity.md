@@ -250,3 +250,9 @@ Typecheck/build đạt, kiểm tra UI local và public đạt: tìm theo điện
 Đã kiểm tra trên local và public Vercel: đúng câu chữ/tên nút/geometry hủy thêm; Quay lại giữ dữ liệu, Xác nhận đóng form; Escape ở form mở xác nhận bằng dữ liệu mới nhất và ở xác nhận chỉ đóng lớp trên; hủy sửa/xác nhận xóa đúng câu/tên nút. Toast thêm/xóa và icon đóng kiểm tra thật trên CSDL local riêng, tạo rồi xóa khách kiểm thử; public không ghi dữ liệu. Deploy d326fea success. Typecheck/build đạt.
 
 Đã so crop hộp hủy thêm bằng pixelmatch threshold .1: 1594/107500 pixel khác (1,48%) sau chỉnh vị trí chữ; geometry khớp nhưng chữ raster vẫn chưa trùng pixel tuyệt đối. Không tuyên bố toàn website hoặc toàn bộ 22 trạng thái UC5 đạt 100%. Chứng cứ ảnh nguồn/thực/diff ở docs/evidence/customer-dialogs.
+
+## Lịch Báo cáo kinh doanh — 13/11/2026
+
+Đã đọc context/ảnh 304:2866 (Đến ngày) và 304:2632 (Từ ngày). Lịch popup 276×312, dưới ô đang chọn 6px, padding12, radius10, border d1d5db, bóng0/6/16/14%; header tiếng Việt, icon16px xuất từ Figma. Tuần bắt đầu T2, 42 ô, hai đầu khoảng ngày xanh103a9b, giữa dbeafe; nhập tay dd/mm/yyyy, chuyển tháng và đóng bằng Escape/click ngoài. Chỉ áp dụng Báo cáo kinh doanh; báo cáo xuất–nhập–tồn giữ form ngày cũ.
+
+Typecheck/build đạt; kiểm tra UI local và Vercel: khoảng28/10–03/11 tô đúng; chọnngày cập nhật input; chuyển tháng qua năm mới; ngày nhuận29/02/2028; chỉ mở một lịch; Escape đóng; khoảng đảo ngược vẫn trả đúng lỗi nghiệp vụ. Khi bấm Xem báo cáo gửi from=2026-10-28/to=2026-11-03, không sai lệch múi giờ. Deploy c77ff0e success. Chứng cứ docs/evidence/report-calendar. Chỉ đối chiếu thành phần lịch, không nhận toàn bộ bộ lọc/biểu đồ báo cáo đã giống Figma.

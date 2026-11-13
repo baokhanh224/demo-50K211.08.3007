@@ -1,0 +1,31 @@
+{
+  "origin": "https://quynh-nhu-demo.vercel.app",
+  "box": {
+    "x": 712,
+    "y": 304.546875,
+    "width": 276,
+    "height": 312
+  },
+  "inputBox": {
+    "x": 712,
+    "y": 258.546875,
+    "width": 170,
+    "height": 40
+  },
+  "mondayFirst": true,
+  "rangeHighlights": true,
+  "monthNavigation": true,
+  "yearBoundary": true,
+  "leapDay": true,
+  "onlyOneCalendar": true,
+  "escape": true,
+  "invalidRange": true,
+  "payload": {
+    "type": "Doanh thu",
+    "from": "2026-10-28",
+    "to": "2026-11-03",
+    "product": "",
+    "category": "",
+    "rank": "Số lượng bán thuần"
+  }
+}

@@ -218,3 +218,7 @@ Không tắt advisory lock, không seed khi deploy và không reset CSDL. Hai te
 Theo yêu cầu mới ưu tiên hiển thị đúng Figma, hộp hủy sửa dùng câu “Bạn có chắc chắn muốn hủy thao tác không?” và tiêu đề “Xác nhận hủy thao tác” (frame 90:1262). Word UC5.2 trước đó ghi “Bạn có chắc chắn muốn hủy sửa khách hàng không?”; khác biệt được ghi nhận, không sửa tài liệu Word. Hủy thêm giữ đúng câu Word/Figma và nút Xác nhận/Quay lại. Xác nhận xóa hiển thị hai nút Quay lại/Đồng ý theo frame 90:1856.
 
 Dấu ! cảnh báo được dựng bằng chữ và vòng tròn CSS theo nguồn Figma, không dùng emoji. Check và đóng toast là SVG xuất từ Figma. Escape dùng callback mới nhất của form, chỉ lớp modal trên cùng nhận phím; tránh đóng mất form khi đang xác nhận.
+
+### Chọn ngày Báo cáo kinh doanh
+
+Bấm ô Từ ngày/Đến ngày hoặc icon lịch để mở popup theo Figma. Có thể nhập dd/mm/yyyy hoặc chọn ngày; dùng mũi tên để chuyển tháng; Escape/click ra ngoài đóng lịch. Hai đầu khoảng tô đậm, khoảng giữa tô nhạt. Ngày được gửi dạng ISO cùng hàm tính báo cáo cũ; khoảng sai vẫn báo lỗi khi Xem báo cáo, không tự đảo ngày. Nhãn aria “Mở lịch từ ngày/đến ngày”, “Tháng trước/sau” bổ sung để sử dụng được bằng bàn phím và trình đọc màn hình, không thay chữ hiển thị của Figma.

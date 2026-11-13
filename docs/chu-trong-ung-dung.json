@@ -1659,246 +1659,274 @@
     "can_kiem_tra_hien_thi": true
   },
   {
+    "file": "components/report-date.tsx",
+    "line": 44,
+    "chu": "Mở lịch",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/report-date.tsx",
+    "line": 48,
+    "chu": "Lịch",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/report-date.tsx",
+    "line": 50,
+    "chu": "Tháng trước",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/report-date.tsx",
+    "line": 53,
+    "chu": "Tháng",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/report-date.tsx",
+    "line": 54,
+    "chu": "Tháng sau",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
     "file": "components/reports.tsx",
-    "line": 7,
+    "line": 8,
     "chu": "Xuất – nhập – tồn",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 12,
+    "line": 14,
     "chu": "Số lượng bán thuần",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 47,
+    "line": 49,
     "chu": "Hôm qua",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 50,
-    "chu": "7 ngày qua",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 51,
-    "chu": "Tháng này",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
     "line": 52,
-    "chu": "Tháng trước",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 80,
-    "chu": "Xuất báo cáo thành công",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 96,
-    "chu": "Báo cáo xuất – nhập – tồn",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 96,
-    "chu": "Báo cáo kinh doanh",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 98,
-    "chu": "Bộ lọc báo cáo",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 102,
-    "chu": "Loại báo cáo",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 105,
-    "chu": "Lợi nhuận",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 106,
-    "chu": "Sản phẩm bán chạy/chậm",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 111,
-    "chu": "Từ ngày",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 117,
-    "chu": "Đến ngày",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 122,
-    "chu": "Sản phẩm",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 127,
-    "chu": "Tất cả",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 135,
-    "chu": "Nhóm sản phẩm",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 140,
-    "chu": "Tất cả",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 148,
-    "chu": "Sản phẩm bán chạy/chậm",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 149,
-    "chu": "Tiêu chí xếp hạng",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 151,
-    "chu": "Số lượng bán thuần",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 152,
-    "chu": "Doanh thu thuần",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 157,
-    "chu": "Xem báo cáo",
-    "loai": "JsxText",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 162,
-    "chu": "Hôm nay",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 163,
-    "chu": "Hôm qua",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 164,
     "chu": "7 ngày qua",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 165,
+    "line": 53,
     "chu": "Tháng này",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 166,
+    "line": 54,
     "chu": "Tháng trước",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 188,
+    "line": 82,
+    "chu": "Xuất báo cáo thành công",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 98,
+    "chu": "Báo cáo xuất – nhập – tồn",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 98,
+    "chu": "Báo cáo kinh doanh",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 100,
+    "chu": "Bộ lọc báo cáo",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 104,
+    "chu": "Loại báo cáo",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 107,
+    "chu": "Lợi nhuận",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 108,
+    "chu": "Sản phẩm bán chạy/chậm",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 114,
+    "chu": "Từ ngày",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 120,
+    "chu": "Đến ngày",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 126,
+    "chu": "Từ ngày",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 128,
+    "chu": "Đến ngày",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 131,
+    "chu": "Sản phẩm",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 136,
+    "chu": "Tất cả",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 144,
+    "chu": "Nhóm sản phẩm",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 149,
+    "chu": "Tất cả",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 157,
+    "chu": "Sản phẩm bán chạy/chậm",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 158,
+    "chu": "Tiêu chí xếp hạng",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 160,
+    "chu": "Số lượng bán thuần",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 161,
+    "chu": "Doanh thu thuần",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 166,
+    "chu": "Xem báo cáo",
+    "loai": "JsxText",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 171,
+    "chu": "Hôm nay",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 172,
+    "chu": "Hôm qua",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 173,
+    "chu": "7 ngày qua",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 174,
+    "chu": "Tháng này",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 175,
+    "chu": "Tháng trước",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 197,
     "chu": "Xuất báo cáo",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 194,
+    "line": 203,
     "chu": "Tổng doanh thu thuần",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 201,
-    "chu": "Lợi nhuận",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 201,
-    "chu": "Tổng giá vốn",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 201,
-    "chu": "Số hóa đơn",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 204,
+    "line": 210,
     "chu": "Lợi nhuận",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
@@ -1906,90 +1934,111 @@
   {
     "file": "components/reports.tsx",
     "line": 210,
+    "chu": "Tổng giá vốn",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 210,
+    "chu": "Số hóa đơn",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 213,
+    "chu": "Lợi nhuận",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 219,
     "chu": "Lợi nhuận gộp",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 216,
+    "line": 225,
     "chu": "Không có dữ liệu phù hợp",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 220,
+    "line": 229,
     "chu": "Sản phẩm bán chạy/chậm",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 222,
+    "line": 231,
     "chu": "Biểu đồ xu hướng",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 226,
+    "line": 235,
     "chu": "Lợi nhuận",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 233,
+    "line": 242,
     "chu": "Lợi nhuận",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 299,
-    "chu": "Không có dữ liệu phù hợp",
-    "loai": "StringLiteral",
-    "can_kiem_tra_hien_thi": true
-  },
-  {
-    "file": "components/reports.tsx",
-    "line": 306,
-    "chu": "Xuất báo cáo",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
     "line": 308,
+    "chu": "Không có dữ liệu phù hợp",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 315,
+    "chu": "Xuất báo cáo",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "components/reports.tsx",
+    "line": 317,
     "chu": "Bạn có chắc chắn muốn hủy thao tác không?",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 313,
+    "line": 322,
     "chu": "Định dạng",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 323,
+    "line": 332,
     "chu": "Bạn có chắc chắn muốn hủy thao tác không?",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 328,
+    "line": 337,
     "chu": "Hủy",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/reports.tsx",
-    "line": 331,
+    "line": 340,
     "chu": "Xuất báo cáo",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
@@ -3676,21 +3725,21 @@
   },
   {
     "file": "components/ui.tsx",
-    "line": 162,
+    "line": 164,
     "chu": "Đóng",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/ui.tsx",
-    "line": 163,
+    "line": 165,
     "chu": "×",
     "loai": "JsxText",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "components/ui.tsx",
-    "line": 188,
+    "line": 190,
     "chu": "Chưa có dữ liệu",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true

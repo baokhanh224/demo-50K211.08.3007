@@ -161,12 +161,16 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Chi tiết phiếu nhập | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | · Nhà cung cấp: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Số lượng còn | Figma 231:142, 231:1724, 231:1873 | Trùng nguyên văn | Giữ |
+| Mở lịch | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Lịch | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tháng trước | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
+| Tháng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tháng sau | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Xuất – nhập – tồn | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Số lượng bán thuần | Figma 304:5749, 304:5901, 304:6255 | Trùng nguyên văn | Giữ |
 | Hôm qua | UC3.1 4a.1. dòng 365 | Trùng nguyên văn | Giữ |
 | 7 ngày qua | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
 | Tháng này | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
-| Tháng trước | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
 | Xuất báo cáo thành công | UC3.2 6. dòng 449 | Trùng nguyên văn | Giữ |
 | Bộ lọc báo cáo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Loại báo cáo | Figma 304:2349, 304:2486, 304:2486 | Trùng nguyên văn | Giữ |
@@ -432,7 +436,3 @@ Không tự thay các thông báo chỉ khác dấu câu. Word được ưu tiê
 ## Phạm vi chưa hoàn tất
 
 Bảng đánh dấu các câu chưa có nguồn, không coi đây là bảng đã sửa xong. Kiểm tra runtime và đối chiếu theo từng UC tiếp tục trong tests/chu.spec.ts và ui-parity.md.
-
-### Chữ Word và Figma khác nhau — xác nhận hủy sửa UC5.2
-
-Word: “Bạn có chắc chắn muốn hủy sửa khách hàng không?”. Figma 90:1262: “Bạn có chắc chắn muốn hủy thao tác không?”. Theo yêu cầu mới ngày 13/11/2026 của người dùng về hiển thị đúng Figma, UI dùng câu Figma; Word nguyên bản giữ nguyên. Tiêu đề hộp hủy thêm/sửa/xóa lấy từ Figma.
