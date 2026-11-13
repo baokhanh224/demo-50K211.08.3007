@@ -118,12 +118,14 @@ export function Button({ children, variant = "", ...props }: any) {
 }
 export function Modal({ title, children, onClose, wide = false, className = "", overlayClassName = "", showClose = true }: any) {
   const ref = useRef<HTMLDivElement>(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
   useEffect(() => {
     const previous = document.activeElement as HTMLElement;
     const h = (e: KeyboardEvent) => {
       const top = Array.from(document.querySelectorAll(".overlay")).at(-1);
       if (!ref.current || !top?.contains(ref.current)) return;
-      if (e.key === "Escape") onClose?.();
+      if (e.key === "Escape") onCloseRef.current?.();
       if (e.key === "Tab") {
         const els = ref.current?.querySelectorAll<HTMLElement>(
           "input,select,textarea,button,[href]",
