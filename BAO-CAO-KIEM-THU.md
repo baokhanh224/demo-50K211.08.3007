@@ -1,5 +1,7 @@
 ## UC6.1: placeholder và bố cục theo Figma 336:329
 
+- Bản c8c8315 đã triển khai thành công trên repository mới. Test UI trực tiếp Vercel đạt 1/1 (5,8 giây): placeholder có màu đúng, nhập/chọn hàng hoạt động, thêm/xóa dòng giỏ, icon và toast đúng vị trí/kích thước, nút đóng hoạt động. Không thực hiện checkout. Ảnh `docs/evidence/uc6-sale/public-not-found.png`.
+
 - Đã đọc context đầy đủ và ảnh frame Không tìm thấy sản phẩm từ page 336:2. Dùng lại các icon header/menu đã có; xuất đúng SVG cảnh báo 18×18 (336:488) và chevron 16×16 (336:418).
 - Sửa tên sản phẩm từ giá trị readOnly giả thành placeholder thật, nhập tên/mã để chọn; placeholder cùng màu #94a3b8 với Nhập số lượng. Khi sửa từ khóa, bỏ product/unit cũ; giá và tồn trống cho tới khi chọn sản phẩm. Ghi nhận đúng dữ liệu chọn khi quote, không dùng tên gõ tay thay product ID.
 - `npm run build` đạt. Test `tests/sale-ui.spec.ts` trên production build local đạt: gõ tên, chọn SP0001, điền lượng, thêm/xóa dòng giỏ, Enter từ khóa không tồn tại, thông báo đúng nội dung/đóng được và icon tải được. Không thanh toán/tạo hóa đơn, không reset/seed CSDL.
