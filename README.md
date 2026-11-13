@@ -248,3 +248,4 @@ npx playwright test tests/uc3.spec.ts
 ```
 
 Ảnh chuẩn, ảnh chạy thật và phạm vi đối chiếu: `docs/uc3-figma.md`. Không coi kết quả này là chứng nhận trùng 100% pixel ở mọi trình duyệt.
+Kiểm tra kết nối Vercel với repository mới.
