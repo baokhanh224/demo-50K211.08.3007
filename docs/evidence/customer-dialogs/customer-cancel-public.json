@@ -1,0 +1,29 @@
+{
+  "origin": "https://quynh-nhu-demo.vercel.app",
+  "boxes": {
+    "form": {
+      "x": 439,
+      "y": 271,
+      "width": 562,
+      "height": 365
+    },
+    "confirm": {
+      "x": 505,
+      "y": 343,
+      "width": 430,
+      "height": 250
+    },
+    "icon": {
+      "x": 693,
+      "y": 367,
+      "width": 54,
+      "height": 54
+    }
+  },
+  "copy": true,
+  "returnPreservesInput": true,
+  "escapeOnlyTopDialog": true,
+  "cancelClosesForm": true,
+  "editCancel": true,
+  "deleteConfirmation": true
+}

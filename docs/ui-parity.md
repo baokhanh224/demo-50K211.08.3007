@@ -242,3 +242,11 @@ Typecheck/build đạt; đã đo và kiểm tra thực ở localhost và Vercel 
 Đã đối chiếu design context/ảnh 90:286 và 90:2240 cho phần danh sách: tiêu đề riêng, tìm kiếm và nhóm nút cùng hàng, placeholder nguyên văn, 5 icon Figma xuất trực tiếp, bốn cột dữ liệu. Tại 1440×900: khung (278,192) 1136×562; ô tìm (299,263) 464×42; nút tìm (781,264) 122×40; nút thêm (976,264) 205×40 (lệch 1px x so với frame). Giữ mã KH0001 và dữ liệu hiện có theo quyết định bổ sung.
 
 Typecheck/build đạt, kiểm tra UI local và public đạt: tìm theo điện thoại, bỏ lọc, chọn/bỏ chọn để bật/tắt Sửa, 5 icon tải đủ. Đã kiểm tra lại bố cục/tìm kiếm sản phẩm và nhà cung cấp local sau khi sửa thành phần chung, đạt. Deploy 475b53f success. Chứng cứ docs/evidence/customer-list. Không nhận toàn bộ sidebar hoặc các form/ngoại lệ UC5 đã so pixel xong.
+
+## Hộp hủy khách hàng và biểu tượng thông báo — 13/11/2026
+
+Đã lấy context/ảnh frame 90:419, 90:1262, 90:1856, 90:148 và dùng lại context toast 90:286. Hủy thêm: form tại (439,271) 562×365; xác nhận tại (505,343) 430×250; vòng tròn tại (693,367) 54×54. Hai lớp overlay rgba(15,23,42,.38) và .20. Loại nút đóng X thừa, giữ hai nút Quay lại/Xác nhận. Điều chỉnh hộp hủy sửa và xóa theo nguồn, xuất SVG check 18px/close 14px cho toast. Menu khách hàng thu gọn nhóm không chọn và kích thước theo frame.
+
+Đã kiểm tra trên local và public Vercel: đúng câu chữ/tên nút/geometry hủy thêm; Quay lại giữ dữ liệu, Xác nhận đóng form; Escape ở form mở xác nhận bằng dữ liệu mới nhất và ở xác nhận chỉ đóng lớp trên; hủy sửa/xác nhận xóa đúng câu/tên nút. Toast thêm/xóa và icon đóng kiểm tra thật trên CSDL local riêng, tạo rồi xóa khách kiểm thử; public không ghi dữ liệu. Deploy d326fea success. Typecheck/build đạt.
+
+Đã so crop hộp hủy thêm bằng pixelmatch threshold .1: 1594/107500 pixel khác (1,48%) sau chỉnh vị trí chữ; geometry khớp nhưng chữ raster vẫn chưa trùng pixel tuyệt đối. Không tuyên bố toàn website hoặc toàn bộ 22 trạng thái UC5 đạt 100%. Chứng cứ ảnh nguồn/thực/diff ở docs/evidence/customer-dialogs.

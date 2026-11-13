@@ -42,6 +42,8 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Cảnh báo tồn kho | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Cài đặt demo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Đăng xuất | Figma 336:4, 336:170, 336:329 | Trùng nguyên văn | Giữ |
+| khách hàng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Đóng thông báo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | sản phẩm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Không tìm thấy sản phẩm! | UC1.4 4a.1. dòng 137 | Trùng nguyên văn | Giữ |
 | Mã sản phẩm | UC1 BR-UC1-02 dòng 7; UC1 BR-UC1-05 dòng 10; UC1 BR-UC1-08 dòng 13 | Trùng nguyên văn | Giữ |
@@ -50,7 +52,6 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Không tìm thấy nhà cung cấp! | UC2.4 4a.1. dòng 319 | Trùng nguyên văn | Giữ |
 | Mã nhà cung cấp | UC1  BR-UC2-01 dòng 181; UC1     BR-UC2-02 dòng 182; UC2     BR-UC2-06 dòng 186 | Trùng nguyên văn | Giữ |
 | Tên nhà cung cấp | UC2 BR-UC2-03 dòng 183; UC2     BR-UC2-06 dòng 186; UC2.1 Main flow dòng 205 | Trùng nguyên văn | Giữ |
-| khách hàng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Không tìm thấy khách hàng phù hợp | UC5 4a.1. dòng 812 | Trùng nguyên văn | Giữ |
 | Mã khách hàng | Figma 90:148, 90:286, 90:419 | Trùng nguyên văn | Giữ |
 | Tên khách hàng | Figma 90:148, 90:286, 90:419 | Trùng nguyên văn | Giữ |
@@ -58,7 +59,7 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Bạn có chắc chắn muốn xóa nhà cung cấp này? | UC2.3 2. dòng 287 | Trùng nguyên văn | Giữ |
 | Bạn có chắc chắn muốn xóa khách hàng này không? | UC5 Main flow dòng 772 | Trùng nguyên văn | Giữ |
 | Đồng ý | UC5 Main flow dòng 772; UC5 Main flow dòng 773 | Trùng nguyên văn | Giữ |
-| Hủy | UC1.1 Alternative flows dòng 36; UC1.2 Alternative flows dòng 68; UC1.5 Alternative flows dòng 160 | Trùng nguyên văn | Giữ |
+| Xóa thông tin khách hàng | Figma 90:1856 | Trùng nguyên văn | Giữ |
 | Thêm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Sửa | UC1.2 Triggers dòng 55; UC1.2 Main flow dòng 61; UC2.2 Triggers dòng 240 | Trùng nguyên văn | Giữ |
 | Xóa | UC1.3 Triggers dòng 93; UC1.3 Main flow dòng 99; UC2.3 Triggers dòng 280 | Trùng nguyên văn | Giữ |
@@ -106,6 +107,10 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Bạn có chắc chắn muốn hủy không? | UC1.2 4a.2. dòng 70; UC2.1 4a.2. dòng 211; UC2.2 4a.2. dòng 252 | Trùng nguyên văn | Giữ |
 | Bạn có chắc chắn muốn hủy sửa khách hàng không? | UC5 4a.2. dòng 745 | Trùng nguyên văn | Giữ |
 | Bạn có chắc chắn muốn hủy thêm khách hàng không? | UC5 4a.2. dòng 710 | Trùng nguyên văn | Giữ |
+| Bạn có chắc chắn muốn hủy thao tác không? | UC3.2 3a.2. dòng 453 | Trùng nguyên văn | Giữ |
+| Xác nhận hủy thao tác | Figma 90:1262 | Trùng nguyên văn | Giữ |
+| Xác nhận hủy thêm khách hàng | Figma 90:419 | Trùng nguyên văn | Giữ |
+| Sửa thông tin khách hàng | Figma 90:993, 90:1262, 90:1415 | Trùng nguyên văn | Giữ |
 | Tự động tạo | Figma 293:180, 293:502, 293:817 | Trùng nguyên văn | Giữ |
 | Chọn danh mục | Figma 60:1533, 60:1860, 60:2202 | Trùng nguyên văn | Giữ |
 | Đơn vị tính là đơn vị cơ sở, tỷ lệ quy đổi bằng 1. | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
@@ -114,6 +119,7 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Khác | UC2.1 Alternative flows dòng 207; UC2.1 5d. dòng 221; UC2.2 Alternative flows dòng 248 | Trùng nguyên văn | Giữ |
 | Tên danh mục mới | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Mô tả | UC2.1 Main flow dòng 205; UC2.2 Main flow dòng 246 | Trùng nguyên văn | Giữ |
+| Hủy | UC1.1 Alternative flows dòng 36; UC1.2 Alternative flows dòng 68; UC1.5 Alternative flows dòng 160 | Trùng nguyên văn | Giữ |
 | Lưu | UC1.1 Main flow dòng 32; UC1.2 Main flow dòng 64; UC1.5 Main flow dòng 157 | Trùng nguyên văn | Giữ |
 | Bạn có chắc chắn muốn hủy cập nhật giá bán không? | UC1.5 4a.2. dòng 162 | Trùng nguyên văn | Giữ |
 | Tiếp tục | UC1.5 5c.1. dòng 166; UC1.5 5c.2. dòng 167 | Trùng nguyên văn | Giữ |
@@ -178,7 +184,6 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Lợi nhuận gộp | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
 | Không có dữ liệu phù hợp | UC3  BR-UC3 - 04 dòng 331; UC3.1 Post-conditions dòng 352; UC3.1 7b.2. dòng 380 | Trùng nguyên văn | Giữ |
 | Biểu đồ xu hướng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Bạn có chắc chắn muốn hủy thao tác không? | UC3.2 3a.2. dòng 453 | Trùng nguyên văn | Giữ |
 | Định dạng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Tiền mặt | UC6 8a.1. dòng 876 | Trùng nguyên văn | Giữ |
 | Chuyển khoản | UC6 8b.1. dòng 880 | Trùng nguyên văn | Giữ |
@@ -427,3 +432,7 @@ Không tự thay các thông báo chỉ khác dấu câu. Word được ưu tiê
 ## Phạm vi chưa hoàn tất
 
 Bảng đánh dấu các câu chưa có nguồn, không coi đây là bảng đã sửa xong. Kiểm tra runtime và đối chiếu theo từng UC tiếp tục trong tests/chu.spec.ts và ui-parity.md.
+
+### Chữ Word và Figma khác nhau — xác nhận hủy sửa UC5.2
+
+Word: “Bạn có chắc chắn muốn hủy sửa khách hàng không?”. Figma 90:1262: “Bạn có chắc chắn muốn hủy thao tác không?”. Theo yêu cầu mới ngày 13/11/2026 của người dùng về hiển thị đúng Figma, UI dùng câu Figma; Word nguyên bản giữ nguyên. Tiêu đề hộp hủy thêm/sửa/xóa lấy từ Figma.

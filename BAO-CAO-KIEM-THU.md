@@ -133,3 +133,7 @@ Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằ
 ### Danh sách khách hàng — 13/11/2026
 
 Đã sửa bố cục danh sách theo Figma 90:286/90:2240 và triển khai 475b53f. Tìm kiếm bên trái, nhóm thêm/sửa/xóa bên phải cùng hàng dưới tiêu đề; khung/bảng/khoảng cách cột và icon đã chỉnh. Typecheck/build đạt. Kiểm tra read-only trên local/Vercel đạt: hình và geometry 1440×900, tìm bằng điện thoại/bỏ lọc, chọn dòng bật nút sửa. Không tạo/sửa/xóa dữ liệu khách hàng trong đợt này.
+
+### Xác nhận hủy khách hàng và thông báo
+
+Đã sửa hộp hủy thêm/hủy sửa/xóa: title riêng, dấu ! đỏ và vòng tròn, nút và overlay theo Figma. Thêm/sửa form có kích thước riêng. Toast khách hàng dùng SVG Figma check/close và có nút đóng thật. Sửa lỗi hai modal cùng nhận Escape và lỗi callback cũ làm mất dữ liệu khi nhấn Escape. Local/public QA các hành vi đều đạt, typecheck/build đạt, deploy d326fea thành công. Tạo/xóa khách để kiểm tra toast chỉ thực hiện ở local; không ghi dữ liệu trên public trong đợt này. Pixel crop hủy thêm còn lệch 1,48%, không đánh dấu khớp tuyệt đối. Xem ui-parity.md và chứng cứ customer-dialogs.

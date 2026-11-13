@@ -212,3 +212,9 @@ Repository mới là nguồn bàn giao chính. Vercel hiện vẫn kết nối r
 `npm run db:init` và build Vercel chạy `scripts/migrate.mjs`: chỉ tiến trình Prisma Migrate dùng kết nối trực tiếp. Với host Neon, tự bỏ hậu tố `-pooler` của endpoint; tài khoản/mật khẩu, tên database và sslmode được giữ. Có thể cấu hình `DIRECT_URL` riêng nếu cần; không bắt buộc thêm biến khi dùng host Neon chuẩn. Runtime website giữ nguyên `DATABASE_URL` pooled.
 
 Không tắt advisory lock, không seed khi deploy và không reset CSDL. Hai test trong `tests/migrate.test.ts` kiểm tra đổi endpoint, bảo toàn tham số, không đổi cấu hình runtime và xử lý URL không hợp lệ. Lỗi build đã gặp: Prisma P1002 chờ khóa 72707369 qua pooler. Tham khảo [Neon connection pooling](https://neon.com/docs/connect/connection-pooling).
+
+### Đối chiếu hộp thoại khách hàng — 13/11/2026
+
+Theo yêu cầu mới ưu tiên hiển thị đúng Figma, hộp hủy sửa dùng câu “Bạn có chắc chắn muốn hủy thao tác không?” và tiêu đề “Xác nhận hủy thao tác” (frame 90:1262). Word UC5.2 trước đó ghi “Bạn có chắc chắn muốn hủy sửa khách hàng không?”; khác biệt được ghi nhận, không sửa tài liệu Word. Hủy thêm giữ đúng câu Word/Figma và nút Xác nhận/Quay lại. Xác nhận xóa hiển thị hai nút Quay lại/Đồng ý theo frame 90:1856.
+
+Dấu ! cảnh báo được dựng bằng chữ và vòng tròn CSS theo nguồn Figma, không dùng emoji. Check và đóng toast là SVG xuất từ Figma. Escape dùng callback mới nhất của form, chỉ lớp modal trên cùng nhận phím; tránh đóng mất form khi đang xác nhận.
