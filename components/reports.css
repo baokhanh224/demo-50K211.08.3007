@@ -962,3 +962,6 @@ body:has(.reports-page) .sidebar-bottom button:last-child {
   justify-content: space-between;
   gap: 8px;
 }
+.report-ranking-card td:first-child {
+  text-align: left;
+}

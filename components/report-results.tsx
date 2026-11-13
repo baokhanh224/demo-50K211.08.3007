@@ -281,7 +281,7 @@ export default function ReportResults({ report, stock }: any) {
                         {row.map((v, j) => (
                           <td
                             key={j}
-                            className={`${typeof v === "number" ? "num" : ""} ${(stock && j === 6) || (ranking && j === 2) ? "report-emphasis" : ""}`}
+                            className={`${typeof v === "number" ? "num" : ""} ${(stock && j === 6) || (ranking && j === (i === 0 && report.filters.rank === "Doanh thu thuần" ? 3 : 2)) ? "report-emphasis" : ""}`}
                           >
                             {show(v, s.columns[j])}
                           </td>

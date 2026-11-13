@@ -118,6 +118,15 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
     page.getByRole("columnheader", { name: "Doanh thu thuần ↓", exact: true }),
   ).toBeVisible();
   expect(rankRevenue.sections[1].rows).toEqual(ranking.sections[1].rows);
+  if (rankRevenue.sections[0].rows.length) {
+    const first = page
+      .locator(".report-ranking-card")
+      .first()
+      .locator("tbody tr")
+      .first();
+    await expect(first.locator("td").nth(3)).toHaveCSS("font-weight", "600");
+    await expect(first.locator("td").first()).toHaveCSS("text-align", "left");
+  }
   await page.screenshot({ path: out + "-rank-revenue.png" });
   await page
     .getByRole("link", { name: "Báo cáo xuất – nhập – tồn", exact: true })
