@@ -1,3 +1,11 @@
+## UC6.1: placeholder và bố cục theo Figma 336:329
+
+- Đã đọc context đầy đủ và ảnh frame Không tìm thấy sản phẩm từ page 336:2. Dùng lại các icon header/menu đã có; xuất đúng SVG cảnh báo 18×18 (336:488) và chevron 16×16 (336:418).
+- Sửa tên sản phẩm từ giá trị readOnly giả thành placeholder thật, nhập tên/mã để chọn; placeholder cùng màu #94a3b8 với Nhập số lượng. Khi sửa từ khóa, bỏ product/unit cũ; giá và tồn trống cho tới khi chọn sản phẩm. Ghi nhận đúng dữ liệu chọn khi quote, không dùng tên gõ tay thay product ID.
+- `npm run build` đạt. Test `tests/sale-ui.spec.ts` trên production build local đạt: gõ tên, chọn SP0001, điền lượng, thêm/xóa dòng giỏ, Enter từ khóa không tồn tại, thông báo đúng nội dung/đóng được và icon tải được. Không thanh toán/tạo hóa đơn, không reset/seed CSDL.
+- Ở 1440×927: thông tin sản phẩm (274,252), 798×224; giỏ (274,495), 798×386; thanh toán (1096,118), 320×760; thông báo (1097,106), 320×56. Đã đo từ DOM thật theo frame. Native select và raster chữ có thể khác giữa trình duyệt, không chứng nhận 100% pixel mọi trạng thái UC6.
+- User đã chuyển Vercel sang repository demo-50K211.08.3007 (commit thử 3c7efe0 được Vercel báo success). Đợt sửa này chỉ đẩy repository mới, giữ commit README của người dùng; không sửa repository cũ.
+
 ## Đính chính: khôi phục hộp xuất có Nội dung sẽ xuất
 
 - Đã lên Vercel thành công ở commit `7f0c696`. Kiểm tra public đạt 1/1 trong 12,5 giây; xuất Excel/PDF và dòng tổng đạt. Kiểm tra riêng Báo cáo doanh thu kỳ 07/11/2026–13/11/2026: khối Nội dung sẽ xuất, loại báo cáo và tiêu chí đúng snapshot; nhãn Định dạng được hỗ trợ hiển thị, chọn PDF được. Ảnh `export-preview-restored-public.png`.

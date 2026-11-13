@@ -216,7 +216,7 @@ test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", asy
   await page
     .getByLabel("Tra cứu khách hàng", { exact: true })
     .fill("0901234567");
-  await page.getByRole("button", { name: "Tra cứu", exact: true }).click();
+  await page.getByRole("button", { name: "Tìm", exact: true }).click();
   await expect(page.getByText(/Nguyễn Bảo Khanh · KH0001/)).toBeVisible();
   await page.getByLabel("Tiền khách đưa", { exact: true }).fill("200000");
   await page

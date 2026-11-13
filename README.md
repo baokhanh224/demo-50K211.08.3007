@@ -205,7 +205,7 @@ Nguồn chữ: `docs/nguon-chu-word.json`, `docs/nguon-chu-figma.json`; danh m�
 BASE_URL=https://quynh-nhu-demo.vercel.app PUBLIC_QA=1 NODE_USE_ENV_PROXY=1 npx playwright test tests/public.spec.ts
 ```
 
-Repository mới là nguồn bàn giao chính. Vercel hiện vẫn kết nối repository cũ `50K211.08.3007`, Root Directory `demo-quynh-nhu`; bản được kiểm thử đã được đồng bộ vào đó để cập nhật website mà không yêu cầu đổi kết nối tài khoản. Nếu chuyển kết nối Vercel sang repository mới thì Root Directory dùng `.`.
+Repository bàn giao và triển khai hiện là `demo-50K211.08.3007`, nhánh `main`, Root Directory `./`. Người dùng đã chuyển kết nối Vercel sang repository này; push vào main tự triển khai website. Không còn cần đồng bộ sang thư mục demo-quynh-nhu của repository cũ.
 
 ### Migration Neon và lỗi P1002
 
@@ -249,3 +249,9 @@ npx playwright test tests/uc3.spec.ts
 
 Ảnh chuẩn, ảnh chạy thật và phạm vi đối chiếu: `docs/uc3-figma.md`. Không coi kết quả này là chứng nhận trùng 100% pixel ở mọi trình duyệt.
 Kiểm tra kết nối Vercel với repository mới.
+
+### Giao diện Tạo giao dịch bán hàng — UC6.1
+
+Theo frame Figma 336:329: tên sản phẩm dùng placeholder “Chưa chọn sản phẩm” màu #94a3b8 như “Nhập số lượng”; có thể nhập để tìm/chọn sản phẩm. Chỉ dữ liệu sản phẩm đã chọn mới dùng để tính giá/tồn và thêm giỏ, không dùng chữ tự nhập làm hồ sơ sản phẩm. Giá và tồn để trống khi chưa chọn. Nhập lại tên/từ khóa bỏ lựa chọn cũ để tránh giá/tồn bị giữ sai.
+
+Thông báo Không tìm thấy sản phẩm có nút đóng, SVG gốc Figma, rộng 320px cao 56px tại góc khung thanh toán. Đơn vị/giá/tồn/số lượng, giỏ, khách hàng tùy chọn và nút Tìm được bố trí theo frame. Thêm nhanh khách hàng vẫn có sau khi tra cứu không tìm thấy. Style chỉ áp dụng trong màn hình bán hàng; các bộ chọn nhập hàng giữ hành vi cũ. Không thay công thức hoặc API bán hàng, xuất kho hay VietQR.

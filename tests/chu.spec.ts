@@ -75,6 +75,8 @@ test('UC6: tra cứu hai trường, thêm nhanh khách hàng và giữ đường
  await page.getByLabel('Tên đăng nhập').fill(username!);
  await page.getByLabel('Mật khẩu',{exact:true}).fill(password!);
  await page.getByRole('button',{name:'Đăng nhập',exact:true}).click();
+ await page.getByLabel('Tra cứu khách hàng',{exact:true}).fill('099'+String(Date.now()).slice(-7));
+ await page.getByRole('button',{name:'Tìm',exact:true}).click();
  await page.getByRole('button',{name:'Thêm khách hàng',exact:true}).click();
  const dialog=page.getByRole('dialog');
  await expect(dialog).toBeVisible();

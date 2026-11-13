@@ -1,0 +1,411 @@
+/* Figma UC6.1, node 336:329, native design size 1440 × 927. */
+.main:has(.sale-layout) {
+  margin-left: 245px;
+  padding: 28px 24px 46px 29px;
+}
+.sale-layout {
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  position: relative;
+}
+.sale-main {
+  min-width: 0;
+}
+.sale-main h1 {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 35px;
+  margin: 0 0 16px 2px;
+}
+.sale-main > .product-search {
+  margin: 0 0 16px;
+}
+.sale-main > .product-search .field {
+  width: 290px;
+  gap: 5px;
+}
+.sale-main > .product-search input {
+  height: 38px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.sale-main > .product-search .field > label {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  padding-left: 4px;
+}
+.sale-layout .card {
+  border-color: #e1e6ed;
+  box-shadow: none;
+}
+.sale-product-card {
+  min-height: 224px;
+  padding: 16px 18px 24px;
+  margin-bottom: 19px;
+  border-radius: 9px;
+}
+.sale-product-card h2 {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 13px;
+}
+.sale-layout .product-info-grid {
+  grid-template-columns: 255fr 183fr 148fr 128fr;
+  gap: 15px;
+}
+.sale-product-card .field {
+  gap: 6px;
+}
+.sale-product-card .field > label {
+  font-size: 13px;
+  line-height: 19px;
+}
+.sale-product-card input,
+.sale-product-card select {
+  height: 42px;
+  font-size: 13px;
+  border-color: #e1e6ed;
+  padding: 0 11px;
+  background: white;
+}
+.sale-product-card input[readonly] {
+  color: #0f172a;
+  background: white;
+}
+.sale-product-card input::placeholder,
+.sale-placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+.sale-product-card .product-search {
+  margin: 0;
+}
+.sale-product-card .product-search .field {
+  width: 100%;
+}
+.sale-layout .product-info-bottom {
+  margin-top: 11px;
+  gap: 16px;
+}
+.sale-layout .product-info-bottom .field {
+  width: 260px;
+}
+.sale-layout .product-info-bottom > .btn {
+  height: 42px;
+  width: 210px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sale-layout .cart {
+  min-height: 386px;
+  padding: 16px 17px 0;
+  margin: 0;
+  border-radius: 9px;
+}
+.sale-layout .cart h2 {
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0 2px 19px;
+}
+.sale-layout .cart table {
+  table-layout: fixed;
+}
+.sale-layout .cart thead th {
+  height: 46px;
+  padding: 0 12px;
+  font-size: 13px;
+  text-align: left;
+  background: #eef3fd;
+}
+.sale-layout .cart th:first-child {
+  width: 26.4%;
+  border-radius: 6px 0 0 6px;
+}
+.sale-layout .cart th:nth-child(2) {
+  width: 15.3%;
+}
+.sale-layout .cart th:nth-child(3) {
+  width: 9.4%;
+}
+.sale-layout .cart th:nth-child(4) {
+  width: 21%;
+}
+.sale-layout .cart th:nth-child(5) {
+  width: 27.9%;
+}
+.sale-layout .cart th:last-child {
+  width: 0;
+  padding: 0;
+  border-radius: 0 6px 6px 0;
+}
+.sale-layout .cart td:last-child {
+  padding: 0;
+  position: relative;
+}
+.sale-layout .cart td:last-child .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-height: 20px;
+}
+.sale-layout .cart > .empty {
+  padding: 51px 12px 20px;
+  text-align: left;
+  font-size: 15px;
+  color: #64748b;
+}
+.sale-layout .cart-total {
+  min-height: 62px;
+  padding: 16px 0 0;
+  gap: 0;
+  align-items: center;
+  border-color: #e1e6ed;
+}
+.sale-layout .cart-total span {
+  margin-right: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 140px;
+}
+.sale-layout .cart-total strong {
+  width: 164px;
+  text-align: right;
+  font-size: 23px;
+  font-weight: 600;
+}
+.sale-layout .payment-card {
+  position: relative;
+  height: auto;
+  min-height: 760px;
+  align-self: start;
+  border-radius: 10px;
+  padding: 16px 17px 30px;
+  margin: 0;
+}
+.sale-layout .payment-card > h2 {
+  font-size: 17px;
+  line-height: 30px;
+  margin: 0 0 8px;
+}
+.sale-layout .payment-card > .small {
+  font-size: 13px;
+  line-height: 22px;
+  color: #334155;
+}
+.sale-layout .payment-card .total {
+  margin: 3px 0 10px;
+  font-size: 28px;
+  line-height: 43px;
+  font-weight: 600;
+}
+.sale-layout .payment-card > h3 {
+  margin: 0 0 8px;
+  padding-top: 22px;
+  font-size: 14px;
+  line-height: 27px;
+  border-color: #e1e6ed;
+}
+.sale-layout .payment-method {
+  gap: 9px;
+  margin: 0 0 19px;
+}
+.sale-layout .payment-method .btn {
+  height: 42px;
+  padding: 0;
+  background: white;
+  border-color: #c3d1e5;
+  color: #103a9b;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sale-layout .payment-card > .field {
+  gap: 6px;
+}
+.sale-layout .payment-card .field > label {
+  font-size: 13px;
+  line-height: 19px;
+}
+.sale-layout .payment-card input {
+  height: 42px;
+  font-size: 13px;
+  border-color: #e1e6ed;
+  padding: 0 11px;
+}
+.sale-layout .payment-change {
+  margin-top: 21px;
+  min-height: 30px;
+  font-size: 13px;
+}
+.sale-layout .payment-change strong {
+  font-size: 16px;
+}
+.sale-layout .payment-customer {
+  margin-top: auto;
+  padding-top: 30px;
+}
+.sale-layout .payment-customer h3 {
+  margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #334155;
+}
+.sale-layout .payment-customer .row {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.sale-layout .payment-customer .row input {
+  width: 200px;
+  min-width: 0;
+}
+.sale-layout .payment-customer .row .btn {
+  width: 76px;
+  height: 42px;
+  padding: 0;
+  flex: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.sale-layout .checkout {
+  height: 47px;
+  min-height: 47px;
+  margin-top: 29px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sale-error-toast {
+  position: absolute;
+  top: -13px;
+  left: 0;
+  z-index: 21;
+  width: 320px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px 10px 15px;
+  border: 1px solid #ffa4a4;
+  border-radius: 9px;
+  background: #fef2f2;
+  color: #d8272b;
+  font-size: 13px;
+  font-weight: 500;
+}
+.sale-error-toast img {
+  flex: none;
+}
+.sale-error-toast span {
+  flex: 1;
+}
+.sale-error-toast button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: #d8272b;
+  width: 17px;
+  height: 26px;
+  font-size: 18px;
+  font-weight: 600;
+}
+body:has(.sale-layout) .global-search input {
+  padding: 0;
+  font-size: 14px;
+}
+body:has(.sale-layout) .global-search input::placeholder {
+  color: #64748b;
+}
+body:has(.sale-layout) .sidebar .nav-group {
+  margin-bottom: 11px;
+}
+body:has(.sale-layout) .sidebar .subnav {
+  margin: 12px 5px 13px 17px;
+  gap: 5px;
+}
+body:has(.sale-layout) .sidebar .subnav a {
+  height: 39px;
+  padding: 12px 14px;
+  font-size: 11px;
+}
+body:has(.sale-layout) .sidebar .nav-item {
+  font-size: 14px;
+  padding-left: 18px;
+  gap: 12px;
+}
+body:has(.sale-layout) .sidebar .nav-group:first-child .chevron img {
+  content: url("/figma/sale-chevron.svg");
+}
+body:has(.sale-layout) .sidebar-bottom button:first-child {
+  display: none;
+}
+body:has(.sale-layout) .sidebar-bottom {
+  padding: 0 10px;
+  position: absolute;
+  bottom: 37px;
+  left: 12px;
+}
+body:has(.sale-layout) .sidebar-bottom button:last-child {
+  margin: 0;
+  height: 35px;
+  padding: 14px 0 0;
+  border-color: #103a9b;
+}
+@media (max-width: 1100px) {
+  .sale-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sale-layout .payment-card {
+    min-height: 600px;
+  }
+  .sale-layout .product-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sale-layout .product-info-bottom > .btn {
+  transform: translateY(1px);
+}
+.sale-layout .cart tbody td:nth-child(5) {
+  padding-right: 42px;
+}
+body:has(.sale-layout) .sidebar nav {
+  width: 220px;
+}
+body:has(.sale-layout) .sidebar .nav-group:first-child {
+  margin-bottom: 4px;
+}
+body:has(.sale-layout) .sidebar .subnav {
+  margin-right: 4px;
+  margin-bottom: 0;
+}
+body:has(.sale-layout) .sidebar .subnav a {
+  font-size: 12px;
+}
+.sale-layout .payment-card {
+  padding-left: 16px;
+  padding-right: 18px;
+}
+
+body:has(.sale-layout)
+  .sidebar
+  .nav-group:first-child:has(.subnav)
+  .chevron
+  img {
+  transform: none;
+}
+.sale-layout .checkout:disabled {
+  opacity: 1;
+}
+.sale-layout .payment-method .btn:first-child {
+  flex: 0 0 133px;
+}
+.sale-layout .cart {
+  padding-left: 16px;
+  padding-right: 17px;
+}
+.sale-layout .sale-placeholder {
+  appearance: none;
+}

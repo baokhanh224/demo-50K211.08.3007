@@ -3,7 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import { api, Button, Field, Notice, Empty, useApp } from "./ui";
 import ProductPicker from "./picker";
 import { MasterForm } from "./masters";
+import "./sale.css";
 import { money } from "@/lib/format";
+const saleMoney = (n: number) => (n === 0 ? "0 đ" : money(n));
 export default function Sale() {
   const { data, refresh, notify, navigate } = useApp();
   const [externalQuery, setExternalQuery] = useState("");
@@ -20,6 +22,7 @@ export default function Sale() {
     return () => window.removeEventListener("qn:search", search);
   }, []);
   const [product, setProduct] = useState<any>(null);
+  const [productName, setProductName] = useState("");
   const [unit, setUnit] = useState("");
   const [quantity, setQuantity] = useState("");
   const [cart, setCart] = useState<any[]>([]);
@@ -58,13 +61,18 @@ export default function Sale() {
           }
           setQr(r);
         })
-        .catch((e) => { if (active) setQrError(e.message); });
+        .catch((e) => {
+          if (active) setQrError(e.message);
+        });
     }
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [cart, method, total, qrRetry]);
   const selected = product?.units.find((u: any) => u.id === Number(unit));
   function choose(p: any) {
     setProduct(p);
+    setProductName(p.name);
     setUnit(String(p.units[0].id));
     setQuantity("");
     setProductError("");
@@ -118,6 +126,7 @@ export default function Sale() {
       setLast(r);
       setCart([]);
       setProduct(null);
+      setProductName("");
       setUnit("");
       setQuantity("");
       setCash("");
@@ -138,22 +147,39 @@ export default function Sale() {
       <div className="sale-main">
         <h1>Tạo giao dịch bán hàng</h1>
         <ProductPicker
+          clearOnNotFound
           externalQuery={externalQuery}
           onSelect={choose}
-          error={productError}
+          onQueryChange={() => {
+            setProduct(null);
+            setProductName("");
+            setUnit("");
+            setProductError("");
+          }}
           onNotFound={() => setProductError("Không tìm thấy sản phẩm")}
         />
-        <section className="card">
+        <section className="card sale-product-card">
           <h2>Thông tin sản phẩm</h2>
           <div className="product-info-grid">
-            <Field
+            <ProductPicker
+              clearOnNotFound
               label="Tên sản phẩm"
-              value={product?.name || "Chưa chọn sản phẩm"}
-              readOnly
+              placeholder="Chưa chọn sản phẩm"
+              value={productName}
+              onSelect={choose}
+              onNotFound={() => setProductError("Không tìm thấy sản phẩm")}
+              onQueryChange={(q: string) => {
+                setProductName(q);
+                setProduct(null);
+                setUnit("");
+                setProductError("");
+                setQuantityError("");
+              }}
             />
             <Field label="Đơn vị bán">
               <select
                 value={unit}
+                className={!unit ? "sale-placeholder" : ""}
                 onChange={(e) => {
                   setUnit(e.target.value);
                   setQuantityError("");
@@ -169,7 +195,7 @@ export default function Sale() {
             </Field>
             <Field
               label="Giá bán"
-              value={money(selected?.price || 0)}
+              value={selected ? money(selected.price) : ""}
               readOnly
             />
             <Field
@@ -177,7 +203,7 @@ export default function Sale() {
               value={
                 product && selected
                   ? `${Math.floor(product.sellable / selected.factor)} ${selected.name}`
-                  : "—"
+                  : ""
               }
               readOnly
             />
@@ -240,7 +266,7 @@ export default function Sale() {
           {!cart.length && <Empty text="Chưa có sản phẩm trong giỏ hàng" />}
           <div className="cart-total">
             <span>Tổng tiền</span>
-            <strong>{money(total)}</strong>
+            <strong>{saleMoney(total)}</strong>
           </div>
         </section>
         {last && (
@@ -269,10 +295,22 @@ export default function Sale() {
         )}
       </div>
       <section className="card payment-card">
+        {productError && (
+          <div className="sale-error-toast" role="alert">
+            <img src="/figma/sale-alert.svg" width={18} height={18} alt="" />
+            <span>{productError}</span>
+            <button
+              aria-label="Đóng thông báo"
+              onClick={() => setProductError("")}
+            >
+              ×
+            </button>
+          </div>
+        )}
         <h2>Thanh toán</h2>
         <span className="muted small">Tổng thanh toán</span>
         <div className="total" data-testid="checkout-total">
-          {money(total)}
+          {saleMoney(total)}
         </div>
         <h3>Phương thức thanh toán</h3>
         <div className="payment-method">
@@ -309,33 +347,50 @@ export default function Sale() {
             />
             <div className="payment-change">
               <span>Tiền thừa</span>
-              <strong>{money(Math.max(0, (Number(cash) || 0) - total))}</strong>
+              <strong>
+                {saleMoney(Math.max(0, (Number(cash) || 0) - total))}
+              </strong>
             </div>
           </>
         ) : (
           <>
             <div className="qr">
-              {qr && !qrError && <img
-                key={qr.url}
-                src={qr.url}
-                alt={`Mã QR chuyển khoản ${money(qr.total)}`}
-                width="240"
-                height="240"
-                onLoad={() => setQrLoaded(true)}
-                onError={() => {
-                  setQrLoaded(false);
-                  setQrError("Không thể tải mã QR. Vui lòng thử lại.");
-                }}
-              />}
-              {!cart.length ? <p>Chưa có sản phẩm trong giỏ hàng</p> :
-                !qr && !qrError ? <p>Đang tạo mã QR…</p> : null}
-              {qr && !qrError && <div className="small">
-                <p><strong>{qr.name}</strong> · {qr.account}</p>
-                <p>Số tiền: <strong>{money(qr.total)}</strong></p>
-                <p>Nội dung: {qr.description}</p>
-              </div>}
+              {qr && !qrError && (
+                <img
+                  key={qr.url}
+                  src={qr.url}
+                  alt={`Mã QR chuyển khoản ${money(qr.total)}`}
+                  width="240"
+                  height="240"
+                  onLoad={() => setQrLoaded(true)}
+                  onError={() => {
+                    setQrLoaded(false);
+                    setQrError("Không thể tải mã QR. Vui lòng thử lại.");
+                  }}
+                />
+              )}
+              {!cart.length ? (
+                <p>Chưa có sản phẩm trong giỏ hàng</p>
+              ) : !qr && !qrError ? (
+                <p>Đang tạo mã QR…</p>
+              ) : null}
+              {qr && !qrError && (
+                <div className="small">
+                  <p>
+                    <strong>{qr.name}</strong> · {qr.account}
+                  </p>
+                  <p>
+                    Số tiền: <strong>{money(qr.total)}</strong>
+                  </p>
+                  <p>Nội dung: {qr.description}</p>
+                </div>
+              )}
               <Notice text={qrError} />
-              {qrError && <Button onClick={() => setQrRetry((n) => n + 1)}>Thử lại</Button>}
+              {qrError && (
+                <Button onClick={() => setQrRetry((n) => n + 1)}>
+                  Thử lại
+                </Button>
+              )}
             </div>
             <label className="checkbox">
               <input
@@ -356,11 +411,12 @@ export default function Sale() {
         )}
         <div className="payment-customer">
           <h3>Khách hàng (không bắt buộc)</h3>
-          <label htmlFor="sale-customer">Tra cứu khách hàng</label>
+
           <div className="row">
             <input
               id="sale-customer"
-              placeholder="Nhập thông tin khách hàng"
+              aria-label="Tra cứu khách hàng"
+              placeholder="Số điện thoại khách hàng"
               value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
@@ -368,10 +424,7 @@ export default function Sale() {
                 setCustomerError("");
               }}
             />
-          </div>
-          <div className="row customer-actions">
-            <Button onClick={find}>Tra cứu</Button>
-            <Button onClick={() => setAddingCustomer(true)}>Thêm khách hàng</Button>
+            <Button onClick={find}>Tìm</Button>
           </div>
           {customer && (
             <p className="small">
@@ -379,17 +432,36 @@ export default function Sale() {
             </p>
           )}
           <Notice text={customerError} />
+          {customerError === "Không tìm thấy khách hàng" && (
+            <Button onClick={() => setAddingCustomer(true)}>
+              Thêm khách hàng
+            </Button>
+          )}
         </div>
         <Button
           variant="primary checkout"
           onClick={pay}
-          disabled={busy || !cart.length || (method === "Chuyển khoản" && (!qrLoaded || !!qrError || !qr))}
+          disabled={
+            busy ||
+            !cart.length ||
+            (method === "Chuyển khoản" && (!qrLoaded || !!qrError || !qr))
+          }
         >
           Hoàn tất thanh toán
         </Button>
       </section>
-      {addingCustomer && <MasterForm kind="customers" item={{phone}} onClose={() => setAddingCustomer(false)}
-        onSaved={(saved: any) => {setCustomer(saved);setPhone(saved.phone);setCustomerError("");}} />}
+      {addingCustomer && (
+        <MasterForm
+          kind="customers"
+          item={{ phone }}
+          onClose={() => setAddingCustomer(false)}
+          onSaved={(saved: any) => {
+            setCustomer(saved);
+            setPhone(saved.phone);
+            setCustomerError("");
+          }}
+        />
+      )}
     </div>
   );
 }

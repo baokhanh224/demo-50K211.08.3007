@@ -9,6 +9,9 @@ export default function ProductPicker({
   value,
   onNotFound,
   externalQuery,
+  placeholder = "Quét mã vạch hoặc nhập tên sản phẩm",
+  onQueryChange,
+  clearOnNotFound = false,
 }: any) {
   const { data } = useApp();
   const [q, setQ] = useState(value || "");
@@ -19,6 +22,9 @@ export default function ProductPicker({
       setOpen(true);
     }
   }, [externalQuery]);
+  useEffect(() => {
+    if (value !== undefined) setQ(value);
+  }, [value]);
   const matches = data.products.filter((p: any) =>
     [p.id, p.name, p.barcode].some((s) =>
       String(s || "")
@@ -32,11 +38,12 @@ export default function ProductPicker({
         label={label}
         error={error}
         value={q}
-        placeholder="Quét mã vạch hoặc nhập tên sản phẩm"
+        placeholder={placeholder}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         onChange={(e: any) => {
           setQ(e.target.value);
+          onQueryChange?.(e.target.value);
           setOpen(true);
         }}
         onKeyDown={(e: any) => {
@@ -47,6 +54,11 @@ export default function ProductPicker({
               setQ(matches[0].name);
               setOpen(false);
             } else if (!matches.length) {
+              if (clearOnNotFound) {
+                setQ("");
+                onQueryChange?.("");
+                e.currentTarget.blur();
+              }
               onNotFound?.();
               setOpen(false);
             }
