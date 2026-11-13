@@ -1,0 +1,9 @@
+.git
+.venv
+.env
+.env.*
+frontend/node_modules
+python-evidence
+test-results
+__pycache__
+backups

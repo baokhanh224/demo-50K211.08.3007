@@ -1,0 +1,114 @@
+{
+  "origin": "http://localhost:8101",
+  "chip": {
+    "radius": "16px",
+    "box": {
+      "x": 338.5,
+      "y": 268,
+      "width": 80.796875,
+      "height": 29,
+      "top": 268,
+      "right": 419.296875,
+      "bottom": 297,
+      "left": 338.5
+    }
+  },
+  "heading": {
+    "x": 244,
+    "y": 114,
+    "width": 1172,
+    "height": 40
+  },
+  "exportBox": {
+    "x": 1267.375,
+    "y": 114,
+    "width": 148.625,
+    "height": 40
+  },
+  "cols": [
+    {
+      "x": 244,
+      "y": 422,
+      "width": 578,
+      "height": 324,
+      "top": 422,
+      "right": 822,
+      "bottom": 746,
+      "left": 244
+    },
+    {
+      "x": 838,
+      "y": 422,
+      "width": 578,
+      "height": 324,
+      "top": 422,
+      "right": 1416,
+      "bottom": 746,
+      "left": 838
+    }
+  ],
+  "revenue": {
+    "revenue": 196000,
+    "cost": 138877.35849056602,
+    "profit": 57122.641509433975,
+    "invoices": 3
+  },
+  "profit": {
+    "revenue": 196000,
+    "cost": 138877.35849056602,
+    "profit": 57122.641509433975,
+    "invoices": 3
+  },
+  "rankRows": [
+    4,
+    6
+  ],
+  "rankRevenueColumns": [
+    [
+      "#",
+      "Sản phẩm",
+      "SL bán thuần",
+      "Doanh thu thuần ↓"
+    ],
+    [
+      "#",
+      "Sản phẩm",
+      "SL bán thuần ↑",
+      "Tồn kho"
+    ]
+  ],
+  "stockTotal": [
+    "Tổng",
+    0,
+    214,
+    31,
+    0,
+    0,
+    183,
+    1439745.283018868
+  ],
+  "exported": {
+    "xlsx": {
+      "filename": "BaoCao_XuatNhapTon_01012020_13112026.xlsx",
+      "bytes": 5868
+    },
+    "pdf": {
+      "filename": "BaoCao_XuatNhapTon_01012020_13112026.pdf",
+      "bytes": 25511
+    }
+  },
+  "excelTotal": [
+    "Tổng",
+    0,
+    214,
+    31,
+    0,
+    0,
+    183,
+    1439745.283018868
+  ],
+  "invalid": "Khoảng thời gian hoặc tiêu chí lọc không hợp lệ",
+  "empty": true,
+  "missing": [],
+  "errors": []
+}
