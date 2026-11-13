@@ -1,5 +1,7 @@
 ## Sửa hộp Xuất báo cáo theo ảnh bên trái người dùng
 
+- Bản `a3de1a2` đã triển khai Vercel thành công. Kiểm tra trực tiếp website bằng cùng test: 1/1 đạt trong 13,2 giây; không còn hai phần thừa, đúng hướng dẫn, Excel mặc định, xuất Excel/PDF thành công và tổng Excel khớp màn hình. Ảnh `export-compact-public.png`, `export-compact-pdf-public.png`.
+
 - Bỏ khối Nội dung sẽ xuất, tiêu chí lọc trong hộp và nhãn Định dạng được hỗ trợ. Hiển thị đúng câu hướng dẫn của ảnh; Excel chọn mặc định, nút xuất dùng được ngay. Hộp rộng 440px; giữ hai định dạng và hai nút Hủy/Xuất báo cáo.
 - `npm run build` đạt; `BASE_URL=http://localhost:3023 npx playwright test tests/uc3.spec.ts --grep 'bộ lọc'` đạt 1/1 (6,6 giây), gồm kiểm tra không còn phần thừa, câu hướng dẫn, Excel mặc định, đổi PDF, hủy/quay lại và tải cả hai tệp. Dòng tổng Excel vẫn khớp snapshot. Không đổi hàm tính báo cáo/CSDL.
 - Ảnh kiểm tra: `docs/evidence/uc3/export-compact-local.png` và `export-compact-pdf-local.png`.
