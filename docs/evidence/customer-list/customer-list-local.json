@@ -1,0 +1,37 @@
+{
+  "origin": "http://localhost:3008",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "boxes": [
+    {
+      "x": 278,
+      "y": 192,
+      "width": 1136,
+      "height": 562
+    },
+    {
+      "x": 299,
+      "y": 263,
+      "width": 464,
+      "height": 42
+    },
+    {
+      "x": 781,
+      "y": 264,
+      "width": 122,
+      "height": 40
+    },
+    {
+      "x": 976,
+      "y": 264,
+      "width": 205,
+      "height": 40
+    }
+  ],
+  "searchByPhone": true,
+  "reset": true,
+  "selection": true,
+  "icons": 5
+}

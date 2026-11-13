@@ -59,13 +59,12 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Bạn có chắc chắn muốn xóa khách hàng này không? | UC5 Main flow dòng 772 | Trùng nguyên văn | Giữ |
 | Đồng ý | UC5 Main flow dòng 772; UC5 Main flow dòng 773 | Trùng nguyên văn | Giữ |
 | Hủy | UC1.1 Alternative flows dòng 36; UC1.2 Alternative flows dòng 68; UC1.5 Alternative flows dòng 160 | Trùng nguyên văn | Giữ |
-| Danh sách | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Thêm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Sửa | UC1.2 Triggers dòng 55; UC1.2 Main flow dòng 61; UC2.2 Triggers dòng 240 | Trùng nguyên văn | Giữ |
 | Xóa | UC1.3 Triggers dòng 93; UC1.3 Main flow dòng 99; UC2.3 Triggers dòng 280 | Trùng nguyên văn | Giữ |
 | Cập nhật giá bán | UC1.5 Use case name dòng 144; UC1.5 Triggers dòng 148; UC1.5 Main flow dòng 154 | Trùng nguyên văn | Giữ |
 | Từ khóa | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Nhập mã, tên hoặc số điện thoại | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Nhập mã, tên hoặc số điện thoại khách hàng | Figma 90:148, 90:286, 90:419 | Trùng nguyên văn | Giữ |
 | Tìm theo mã hoặc tên | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Danh mục: | Figma 293:5, 293:180, 293:502 | Trùng nguyên văn | Giữ |
 | Danh mục | UC1 BR-UC1-01 dòng 6; UC1.1 Business rules dòng 42; UC2.1 Main flow dòng 205 | Trùng nguyên văn | Giữ |
@@ -75,6 +74,7 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Đang hợp tác | UC2 BR-UC2-07 dòng 187; UC2     BR-UC2-09 dòng 189; UC2 BR-UC2-09: Nhà cung cấp mới có trạng thái mặc định là “Đang hợp tác” dòng 228 | Trùng nguyên văn | Giữ |
 | Ngừng hợp tác | UC2 BR-UC2-07 dòng 187; UC2 BR-UC2-07: “Trạng thái” nhà cung cấp chỉ được nhận một trong hai giá trị: “Đang hợp tác” hoặc “Ngừng hợp tác” dòng 267 | Trùng nguyên văn | Giữ |
 | Tìm kiếm | UC1.4 Main flow dòng 127; UC2.4 Main flow dòng 310; UC4 Main flow dòng 613 | Trùng nguyên văn | Giữ |
+| Danh sách khách hàng | Figma 90:148, 90:286, 90:419 | Trùng nguyên văn | Giữ |
 | Đơn vị tính | UC1 BR-UC1-01 dòng 6; UC1.1 Business rules dòng 42 | Trùng nguyên văn | Giữ |
 | Giá nhập | UC1 BR-UC1-01 dòng 6; UC1 BR-UC1-03 dòng 8; UC1.1 Business rules dòng 42 | Trùng nguyên văn | Giữ |
 | Giá bán | UC1 BR-UC1-01 dòng 6; UC1 BR-UC1-03 dòng 8; UC1 BR-UC1-06 dòng 11 | Trùng nguyên văn | Giữ |

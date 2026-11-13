@@ -236,3 +236,9 @@ Frame nguồn 60:2, phần 60:70–60:109: đã đọc design context và ảnh,
 Đã đọc context và ảnh, xuất trực tiếp 6 SVG Figma (icon down dùng hai vị trí). Chuyển tìm kiếm/danh mục/trạng thái/nút tìm lên hàng đầu, nhãn inline trong dropdown; nút thêm/sửa/xóa ở hàng sau, căn phải, cách 16px. Theo nguồn: tìm kiếm 290×37,84; danh mục 138,72×35,39; trạng thái 137,61×35,39; nút tìm 107,36×36,84; gap 10. Bảng có thứ tự Mã nhà cung cấp, Tên nhà cung cấp, Danh mục, Số điện thoại, Email, Địa chỉ, Trạng thái.
 
 Typecheck/build đạt; đã đo và kiểm tra thực ở localhost và Vercel 1440×900: tìm Thuận Phát + danh mục + trạng thái cho một kết quả; xóa bộ lọc về 3 nhà cung cấp; 7 ảnh icon tải đủ đúng 16px/14px. Deploy 9a7e9d8 thành công; chứng cứ docs/evidence/supplier-filters. Chỉ xác nhận phần bộ lọc/toolbar/cột trong phạm vi sửa, không nhận toàn frame khớp tuyệt đối.
+
+## Danh sách khách hàng — 13/11/2026
+
+Đã đối chiếu design context/ảnh 90:286 và 90:2240 cho phần danh sách: tiêu đề riêng, tìm kiếm và nhóm nút cùng hàng, placeholder nguyên văn, 5 icon Figma xuất trực tiếp, bốn cột dữ liệu. Tại 1440×900: khung (278,192) 1136×562; ô tìm (299,263) 464×42; nút tìm (781,264) 122×40; nút thêm (976,264) 205×40 (lệch 1px x so với frame). Giữ mã KH0001 và dữ liệu hiện có theo quyết định bổ sung.
+
+Typecheck/build đạt, kiểm tra UI local và public đạt: tìm theo điện thoại, bỏ lọc, chọn/bỏ chọn để bật/tắt Sửa, 5 icon tải đủ. Đã kiểm tra lại bố cục/tìm kiếm sản phẩm và nhà cung cấp local sau khi sửa thành phần chung, đạt. Deploy 475b53f success. Chứng cứ docs/evidence/customer-list. Không nhận toàn bộ sidebar hoặc các form/ngoại lệ UC5 đã so pixel xong.
