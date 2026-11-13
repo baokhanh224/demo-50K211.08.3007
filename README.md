@@ -235,7 +235,7 @@ Bấm ô Từ ngày/Đến ngày hoặc icon lịch để mở popup theo Figma.
 ### Điểm đặc tả chưa quy định — giao diện UC3
 
 - Frame 304:10082 chứa hai lớp xác nhận và một ảnh chụp lồng nhau. Chỉ dựng lớp xác nhận trên cùng (vòng xanh, tiêu đề “Xác nhận”, nút Quay lại/Xác nhận), giữ nguyên thông báo Word “Bạn có chắc chắn muốn hủy thao tác không?”. Không nhúng ảnh giao diện làm chức năng.
-- Các frame xuất cũ của UC3.1/3.2 và nhóm UC3.3 có cách trình bày khác nhau. Theo ảnh bên trái người dùng chốt ở lượt sửa sau: hộp xuất gọn, Excel mặc định, câu hướng dẫn “Chọn định dạng tệp. Nội dung xuất gồm loại báo cáo, tiêu chí lọc và số liệu đang hiển thị.”; không có khối Nội dung sẽ xuất hoặc nhãn Định dạng được hỗ trợ; xử lý, thành công, lỗi đọc dữ liệu, lỗi tạo tệp và hủy là các trạng thái thực.
+- Các frame xuất cũ của UC3.1/3.2 và nhóm UC3.3 có cách trình bày khác nhau. Theo ảnh người dùng xác nhận cuối cùng, hộp xuất có câu “Chọn định dạng tệp báo cáo rồi nhấn “Xuất báo cáo”.”, khối “Nội dung sẽ xuất” (loại báo cáo và tiêu chí lọc), nhãn “Định dạng được hỗ trợ”, lựa chọn Excel/PDF, nút Hủy/Xuất báo cáo. Excel mặc định; đổi định dạng giữ nguyên nội dung báo cáo. Các trạng thái xử lý, thành công, lỗi và hủy giữ nguyên.
 - Khóa nút trong lúc gửi yêu cầu để tránh lặp. Trong lúc tạo tệp chưa cho hủy yêu cầu đang xử lý; không đổi snapshot. Hộp thành công có thể đóng bằng Escape hoặc bấm vùng ngoài; thẻ tệp cho tải lại đúng tệp đã tạo. Tên tệp, dung lượng và khoảng ngày dùng giá trị thật.
 - Trên màn hình dưới 1100 px, các bảng chuyển thành một cột; desktop từ 1100 px giữ bố cục cạnh nhau. Các danh sách dài cuộn trong menu, không tràn khung nhìn.
 

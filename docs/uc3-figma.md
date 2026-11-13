@@ -40,6 +40,6 @@ Không tuyên bố đã đạt trùng 100% pixel của cả 51 frame. Bảng dan
 
 Bản `c7eb2bc` triển khai thành công. Hai test UC3 trên https://quynh-nhu-demo.vercel.app/ đạt 2/2 trong 27,3 giây, gồm các kết quả, bộ lọc, lịch, lỗi và xuất. Tổng tiền tồn màn hình/PDF 1.276.500đ; tổng Excel giữ giá trị gốc của cùng snapshot. Dữ liệu nghiệp vụ trước/sau có cùng SHA-256 (xem BAO-CAO-KIEM-THU.md). Ảnh public ở `docs/evidence/uc3/uc3-public-*.png`.
 
-## Điều chỉnh theo ảnh người dùng chốt
+## Giao diện xuất người dùng xác nhận cuối cùng
 
-Hộp Xuất báo cáo được thay bằng bản gọn ở ảnh bên trái người dùng gửi: giữ tiêu đề, nút đóng, câu “Chọn định dạng tệp. Nội dung xuất gồm loại báo cáo, tiêu chí lọc và số liệu đang hiển thị.”, hai lựa chọn Excel/PDF và hai nút Hủy/Xuất báo cáo. Excel được chọn mặc định. Bỏ khối Nội dung sẽ xuất, tiêu chí lọc trong hộp và nhãn Định dạng được hỗ trợ; phần này thay thế mô tả hộp xuất có preview ở các ghi nhận trước. Chức năng tạo tệp từ snapshot giữ nguyên.
+Đã đính chính cách hiểu: người dùng yêu cầu **khôi phục hộp có Nội dung sẽ xuất**, không dùng bản gọn. Hộp có câu “Chọn định dạng tệp báo cáo rồi nhấn “Xuất báo cáo”.”, khối nền nhạt chứa loại báo cáo và tiêu chí lọc từ snapshot, nhãn Định dạng được hỗ trợ, lựa chọn Excel/PDF và nút Hủy/Xuất báo cáo. Nội dung luôn hiện khi mở, Excel mặc định; chọn PDF có kiểu chọn như ảnh người dùng gửi. Bản gọn ở lượt trước là do hiểu ngược yêu cầu và đã được thay thế.

@@ -1,3 +1,10 @@
+## Đính chính: khôi phục hộp xuất có Nội dung sẽ xuất
+
+- Yêu cầu cuối của người dùng là trở lại giao diện có khối Nội dung sẽ xuất, loại báo cáo/tiêu chí lọc và nhãn Định dạng được hỗ trợ. Bản gọn trước đó do hiểu ngược yêu cầu đã được thay thế. Giữ đúng câu hướng dẫn trong ảnh, hai lựa chọn Excel/PDF và các nút Hủy/Xuất báo cáo.
+- Mở hộp hiển thị ngay loại báo cáo và tiêu chí từ snapshot đang xem; đổi định dạng giữ nội dung này. Không đổi hàm tính, số liệu hay API xuất.
+- `npm run build`: đạt. `BASE_URL=http://localhost:3024 npx playwright test tests/uc3.spec.ts --grep 'bộ lọc'`: 1/1 đạt trong 6,4 giây; kiểm tra đầy đủ phần khôi phục, tải hai định dạng, hủy/quay lại và tổng Excel khớp snapshot.
+- Ảnh hiện tại: `docs/evidence/uc3/export-preview-restored-local.png`. Các ghi nhận bản gọn phía dưới là lịch sử đã được thay thế.
+
 ## Sửa hộp Xuất báo cáo theo ảnh bên trái người dùng
 
 - Bản `a3de1a2` đã triển khai Vercel thành công. Kiểm tra trực tiếp website bằng cùng test: 1/1 đạt trong 13,2 giây; không còn hai phần thừa, đúng hướng dẫn, Excel mặc định, xuất Excel/PDF thành công và tổng Excel khớp màn hình. Ảnh `export-compact-public.png`, `export-compact-pdf-public.png`.

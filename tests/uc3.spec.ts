@@ -153,19 +153,24 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
     });
     await expect(
       modal.getByText("Nội dung sẽ xuất", { exact: true }),
-    ).toHaveCount(0);
+    ).toBeVisible();
     await expect(
       modal.getByText("Định dạng được hỗ trợ", { exact: true }),
-    ).toHaveCount(0);
+    ).toBeVisible();
     await expect(
-      modal.getByText(
-        "Chọn định dạng tệp. Nội dung xuất gồm loại báo cáo, tiêu chí lọc và số liệu đang hiển thị.",
-        { exact: true },
-      ),
+      modal.getByText("Chọn định dạng tệp báo cáo rồi nhấn “Xuất báo cáo”.", {
+        exact: true,
+      }),
     ).toBeVisible();
     await expect(
       modal.getByRole("radio", { name: "Excel (.xlsx)", exact: true }),
     ).toBeChecked();
+    await expect(modal.locator(".report-export-preview strong")).toHaveText(
+      "Báo cáo xuất – nhập – tồn",
+    );
+    await expect(modal.locator(".report-export-preview p")).toContainText(
+      "Tiêu chí lọc:",
+    );
     await page.screenshot({ path: out + "-export-formats.png" });
     await modal
       .getByRole("radio", {
