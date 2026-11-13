@@ -113,7 +113,7 @@ Không đổi Root Directory của bản chính, không xóa nhánh `main`, khô
 
 Để thử trên internet, tạo **Vercel project riêng** nối cùng repository, nhánh production `migration/python`, **Root Directory = .**, Framework Preset **Other**, bỏ các override lệnh build/install từ Next.js. Thêm `PYTHON_DATABASE_URL` của bản sao CSDL, `SESSION_SECRET` và cấu hình VietQR vào Environment Variables của project thử. Đặt tài khoản demo nếu cần dùng khôi phục dữ liệu mẫu. Deploy và kiểm tra `/health` trả `runtime: "python"`, `database_configured: true`, rồi kiểm tra đăng nhập/thao tác nghiệp vụ.
 
-Chỉ chuyển domain chính sau khi đã kiểm tra bản Python công khai và sao lưu CSDL. Không thể coi một lần build thành công là đã xác minh truy cập CSDL hoặc toàn bộ nghiệp vụ. Ở lần bàn giao này chưa có quyền cấu hình biến môi trường Vercel, nên chưa thay domain chính sang Python. Có thể triển khai Dockerfile trên máy chủ có HTTPS và PostgreSQL bằng cùng bộ mã.
+Chỉ chuyển domain chính sau khi đã kiểm tra bản Python công khai và sao lưu CSDL. Không thể coi một lần build thành công là đã xác minh truy cập CSDL hoặc toàn bộ nghiệp vụ. Nhánh thử đã được Vercel báo build/deploy thành công, nhưng preview đang được bảo vệ bằng Vercel Authentication và chưa xác minh CSDL trên đó. Ở lần bàn giao này chưa có quyền cấu hình biến môi trường Vercel, nên chưa thay domain chính sang Python. Có thể triển khai Dockerfile trên máy chủ có HTTPS và PostgreSQL bằng cùng bộ mã.
 
 ## Kiểm thử
 

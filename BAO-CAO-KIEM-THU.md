@@ -59,6 +59,14 @@ Bằng chứng chỉ khẳng định các trạng thái/viewport đã chạy; kh
 - Excel nạp lại có sai số float rất nhỏ: kiểm tra số thực theo dung sai; nội dung/định dạng tiền vẫn khớp. Chuỗi bắt đầu bằng `=` được ghi dạng văn bản để không trở thành công thức Excel.
 - Selector kiểm thử cũ dùng role `columnheader` không khớp cây accessibility của bảng đang hiển thị: tìm đúng th có cùng nội dung, giữ nguyên giao diện.
 
+## Trạng thái GitHub và Vercel
+
+- Source Python đã đẩy lên `migration/python`; PR nháp: https://github.com/baokhanh224/demo-50K211.08.3007/pull/1 . Không hợp nhất vào `main`.
+- Tag `before-python-20261113` giữ bản tham chiếu cũ.
+- Vercel báo `success / Deployment has completed` cho commit `2c270a3`, deployment `4D2wnwnCtc4jexvLowjWSZzXyfC4`. Đây là preview, không phải production.
+- URL preview nhánh trả HTTP 302 “Protected by Vercel Authentication”; chưa truy cập qua lớp bảo vệ để xác minh API/CSDL. Không có quyền cấu hình `PYTHON_DATABASE_URL` trên Vercel.
+- Domain chính vẫn trả HTML có tài nguyên Next.js, chưa đổi sang Python.
+
 ## Chưa xác minh và triển khai
 
 - Chưa chuyển domain chính sang Python; chưa xác minh Python + CSDL qua Vercel công khai. Không có công cụ/quyền cấu hình biến môi trường Vercel trong phiên này. Cần project thử riêng với `PYTHON_DATABASE_URL` của bản sao CSDL, làm theo README.
