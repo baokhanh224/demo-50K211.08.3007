@@ -4187,49 +4187,56 @@
   },
   {
     "file": "lib/export.ts",
-    "line": 11,
+    "line": 13,
     "chu": "Tạp hóa Quỳnh Như",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 12,
+    "line": 14,
     "chu": "Báo cáo",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 13,
+    "line": 15,
     "chu": "HỆ THỐNG QUẢN LÝ BÁN HÀNG TẠP HÓA QUỲNH NHƯ",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 14,
+    "line": 16,
     "chu": "Loại báo cáo:",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 33,
+    "line": 36,
+    "chu": "#,##0\"đ\"",
+    "loai": "StringLiteral",
+    "can_kiem_tra_hien_thi": true
+  },
+  {
+    "file": "lib/export.ts",
+    "line": 45,
     "chu": "Sản phẩm bán chạy/chậm",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 63,
+    "line": 74,
     "chu": "TẠP HÓA QUỲNH NHƯ",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true
   },
   {
     "file": "lib/export.ts",
-    "line": 67,
+    "line": 78,
     "chu": "Loại báo cáo:",
     "loai": "StringLiteral",
     "can_kiem_tra_hien_thi": true

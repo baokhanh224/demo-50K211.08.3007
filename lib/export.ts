@@ -2,7 +2,9 @@ import ExcelJS from "exceljs";
 import PDFDocument from "pdfkit";
 import path from "node:path";
 import { Report } from "./reports";
-import { date, number } from "./format";
+import { date, number, money } from "./format";
+const currencyColumn = (column: string) =>
+  /Doanh thu|Giá trị|giá vốn|Lợi nhuận/.test(column);
 function value(v: any) {
   return typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) ? date(v) : v;
 }
@@ -25,8 +27,18 @@ export async function excel(report: Report) {
       pattern: "solid",
       fgColor: { argb: "FF103A9B" },
     };
-    for (const row of s.rows) sheet.addRow(row.map(value));
-    sheet.addRow(s.total).font = { bold: true };
+    function dataRow(cells: any[], total = false) {
+      const row = sheet.addRow(cells.map(value));
+      if (total) row.font = { bold: true };
+      row.eachCell((cell, i) => {
+        if (typeof cell.value === "number")
+          cell.numFmt = currencyColumn(s.columns[i - 1])
+            ? '#,##0"đ"'
+            : "#,##0.##";
+      });
+    }
+    for (const row of s.rows) dataRow(row);
+    dataRow(s.total, true);
     sheet.addRow([]);
   }
   sheet.columns.forEach((column, i) => {
@@ -40,7 +52,6 @@ export async function excel(report: Report) {
       : i === 0
         ? 40
         : 24;
-    column.numFmt = "#,##0.##";
   });
   sheet.views = [{ state: "frozen", ySplit: 4 }];
   return Buffer.from(await book.xlsx.writeBuffer());
@@ -79,8 +90,12 @@ export async function pdf(report: Report): Promise<Buffer> {
             : (width * 0.74) / (s.columns.length - 1),
       );
       function row(cells: any[], header = false, total = false) {
-        const texts = cells.map((x) =>
-          typeof x === "number" ? number(x) : String(value(x) ?? ""),
+        const texts = cells.map((x, i) =>
+          typeof x === "number"
+            ? currencyColumn(s.columns[i])
+              ? money(x)
+              : number(x)
+            : String(value(x) ?? ""),
         );
         const height = Math.max(
           30,

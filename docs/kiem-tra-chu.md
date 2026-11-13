@@ -360,6 +360,7 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Tạp hóa Quỳnh Như | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | HỆ THỐNG QUẢN LÝ BÁN HÀNG TẠP HÓA QUỲNH NHƯ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Loại báo cáo: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| #,##0"đ" | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | đ | Figma 60:1533, 60:1533, 60:1860 | Trùng nguyên văn | Giữ |
 | Chưa cấu hình tài khoản nhận chuyển khoản. Vui lòng cấu hình VietQR trên Vercel. | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Số tiền chuyển khoản không hợp lệ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |

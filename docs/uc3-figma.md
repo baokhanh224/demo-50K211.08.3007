@@ -28,7 +28,7 @@ Các trạng thái cùng loại dùng một thành phần React, không tạo c�
 ## Kiểm tra
 
 - `npm run build`: production build và TypeScript đạt.
-- `tests/uc3.spec.ts`: kiểm tra bộ lọc nhiều lựa chọn, lịch khoảng, năm nút nhanh, bốn loại kết quả, chỉ một yêu cầu khi bấm đôi, thông báo sai khoảng, không có dữ liệu, lỗi tải, xuất Excel/PDF, lỗi xuất đọc/tạo tệp, thử lại, hủy và quay lại. Tổng Excel so đúng mảng tổng của snapshot đang hiển thị, PDF có định dạng thật; tải lại không đổi tồn kho.
+- `tests/uc3.spec.ts`: kiểm tra bộ lọc nhiều lựa chọn, lịch khoảng, năm nút nhanh, bốn loại kết quả, chỉ một yêu cầu khi bấm đôi, thông báo sai khoảng, không có dữ liệu, lỗi tải, xuất Excel/PDF, lỗi xuất đọc/tạo tệp, thử lại, hủy và quay lại. Tổng Excel so đúng mảng tổng của snapshot đang hiển thị; tiền Excel/PDF hiển thị VNĐ nguyên như màn hình, số Excel vẫn giữ giá trị gốc; `pdftotext` kiểm tra dòng tổng PDF; tải lại không đổi tồn kho.
 - Sáu ảnh Figma gốc ở `tests/figma-baseline/304-*.png`, kích thước 1400×900 hoặc 1440×900 theo từng frame; dùng làm ảnh đối chiếu, không dùng làm UI.
 - SVG gốc xuất từ node Figma, gồm root menu, submenu, tải xuống, tìm kiếm, lịch, radio, check, đóng, cảnh báo và trạng thái; danh mục `docs/uc3-assets.json`. Kiểm tra file không rỗng, icon nạp được, radio hiển thị 16×16.
 - Ảnh chạy thật và tệp kết quả ở `docs/evidence/uc3/`. Dữ liệu khác số minh họa Figma; không chỉnh số liệu để khớp ảnh.

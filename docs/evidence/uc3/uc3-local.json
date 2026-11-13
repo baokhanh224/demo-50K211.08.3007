@@ -1,5 +1,5 @@
 {
-  "origin": "http://localhost:3019",
+  "origin": "http://localhost:3020",
   "chip": {
     "radius": "16px",
     "box": {
@@ -90,11 +90,11 @@
   "exported": {
     "xlsx": {
       "filename": "BaoCao_XuatNhapTon_01012020_13112026.xlsx",
-      "bytes": 7559
+      "bytes": 7504
     },
     "pdf": {
       "filename": "BaoCao_XuatNhapTon_01012020_13112026.pdf",
-      "bytes": 15386
+      "bytes": 15319
     }
   },
   "excelTotal": [

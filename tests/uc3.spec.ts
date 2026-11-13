@@ -98,7 +98,9 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
   await page.screenshot({ path: out + "-profit.png" });
   await choose("Sản phẩm bán chạy/chậm");
   const ranking = await view();
-  const radioBox = await page.getByRole("radio", {name:"Số lượng bán thuần", exact:true}).boundingBox();
+  const radioBox = await page
+    .getByRole("radio", { name: "Số lượng bán thuần", exact: true })
+    .boundingBox();
   expect(radioBox?.width).toBe(16);
   expect(radioBox?.height).toBe(16);
   await expect(page.locator(".report-ranking-card")).toHaveCount(2);
@@ -125,7 +127,7 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
       exact: true,
     }),
   ).toBeVisible();
-  await page.screenshot({path:out+"-stock-idle.png"});
+  await page.screenshot({ path: out + "-stock-idle.png" });
   await from.fill("01/01/2020");
   await to.fill(date(today()));
   const stock = await view();
@@ -186,6 +188,12 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
   book.worksheets[0].eachRow((r) => rows.push(r.values));
   const total = rows.find((r) => r[1] === "Tổng");
   expect(total.slice(1)).toEqual(stock.sections[0].total);
+  let totalCurrencyFormat = "";
+  book.worksheets[0].eachRow((r) => {
+    if (r.getCell(1).value === "Tổng")
+      totalCurrencyFormat = r.getCell(8).numFmt;
+  });
+  expect(totalCurrencyFormat).toBe('#,##0"đ"');
   expect(
     fs
       .readFileSync(out + ".pdf")
