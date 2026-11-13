@@ -95,7 +95,8 @@ export default function Masters({ kind }: any) {
         }
       },
       kind === "customers" ? "Đồng ý" : "Xác nhận",
-      kind === "customers" ? ["Quay lại", "Hủy"] : "Quay lại",
+      "Quay lại",
+      kind === "customers" ? { title: "Xóa thông tin khách hàng", variant: "customer-delete" } : undefined,
     );
   }
   const toolbar = (
@@ -471,7 +472,12 @@ export function MasterForm({ kind, item, onClose, onSaved }: any) {
       msg = item.id
         ? "Bạn có chắc chắn muốn hủy sửa khách hàng không?"
         : "Bạn có chắc chắn muốn hủy thêm khách hàng không?";
-    if (changed) confirm(msg, onClose);
+    if (changed && kind === "customers") {
+      confirm(item.id ? "Bạn có chắc chắn muốn hủy thao tác không?" : msg, onClose, "Xác nhận", "Quay lại", {
+        title: item.id ? "Xác nhận hủy thao tác" : "Xác nhận hủy thêm khách hàng",
+        variant: item.id ? "customer-cancel-edit" : "customer-cancel-add",
+      });
+    } else if (changed) confirm(msg, onClose);
     else onClose();
   }
   async function save(e: React.FormEvent) {
@@ -492,7 +498,10 @@ export function MasterForm({ kind, item, onClose, onSaved }: any) {
   }
   return (
     <Modal
-      title={(item.id ? "Sửa " : "Thêm ") + c.singular}
+      title={kind === "customers" && item.id ? "Sửa thông tin khách hàng" : (item.id ? "Sửa " : "Thêm ") + c.singular}
+      className={kind === "customers" ? "customer-form " + (item.id ? "customer-edit-form" : "customer-add-form") : ""}
+      overlayClassName={kind === "customers" ? "customer-form-overlay" : ""}
+      showClose={kind !== "customers"}
       onClose={cancel}
       wide={kind === "products"}
     >
@@ -645,7 +654,7 @@ export function MasterForm({ kind, item, onClose, onSaved }: any) {
                   error={f.errors.email}
                 />
               )}
-              <div className="full">
+              <div className={kind === "customers" && item.id ? "" : "full"}>
                 <Field
                   label="Địa chỉ"
                   value={f.form.address}

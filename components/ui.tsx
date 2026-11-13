@@ -116,11 +116,13 @@ export function Button({ children, variant = "", ...props }: any) {
     </button>
   );
 }
-export function Modal({ title, children, onClose, wide = false }: any) {
+export function Modal({ title, children, onClose, wide = false, className = "", overlayClassName = "", showClose = true }: any) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement;
     const h = (e: KeyboardEvent) => {
+      const top = Array.from(document.querySelectorAll(".overlay")).at(-1);
+      if (!ref.current || !top?.contains(ref.current)) return;
       if (e.key === "Escape") onClose?.();
       if (e.key === "Tab") {
         const els = ref.current?.querySelectorAll<HTMLElement>(
@@ -146,9 +148,9 @@ export function Modal({ title, children, onClose, wide = false }: any) {
     };
   }, []);
   return (
-    <div className="overlay">
+    <div className={"overlay " + overlayClassName}>
       <div
-        className={"modal " + (wide ? "wide" : "")}
+        className={"modal " + (wide ? "wide" : "") + " " + className}
         role="dialog"
         aria-modal="true"
         aria-label={title}
@@ -156,7 +158,7 @@ export function Modal({ title, children, onClose, wide = false }: any) {
       >
         <div className="modal-head">
           <h2>{title}</h2>
-          {onClose && (
+          {onClose && showClose && (
             <button className="close" onClick={onClose} aria-label="Đóng">
               ×
             </button>

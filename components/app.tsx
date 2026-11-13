@@ -61,7 +61,7 @@ export default function App() {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({sale:true});
   useEffect(() => {
     const menu = menus.find(m => m.items.some(([id]) => id === view));
-    if(menu) setExpanded(old => ({...old,[menu.icon]:true}));
+    if(menu) setExpanded(menu.items.length > 1 ? {[menu.icon]:true} : {});
   }, [view]);
   const [toast, setToast] = useState("");
   const [confirmation, setConfirmation] = useState<any>(null);
@@ -102,8 +102,9 @@ export default function App() {
     action: () => void,
     ok = "Xác nhận",
     cancel: string | string[] = "Quay lại",
+    appearance?: { title: string; variant: string },
   ) {
-    setConfirmation({ message, action, ok, cancel });
+    setConfirmation({ message, action, ok, cancel, ...appearance });
   }
   async function signin(e: React.FormEvent) {
     e.preventDefault();
@@ -285,13 +286,18 @@ export default function App() {
         )}
       </main>
       {toast && (
-        <div className="toast" role="status">
-          <span aria-hidden="true">✓ </span>
+        <div className={"toast " + (toast.includes("khách hàng") ? "customer-toast" : "")} role="status">
+          {toast.includes("khách hàng") ? <img src="/figma/8b27f.svg" width="18" height="18" alt="" /> : <span aria-hidden="true">✓ </span>}
           <span>{toast}</span>
+          {toast.includes("khách hàng") && <button aria-label="Đóng thông báo" onClick={()=>setToast("")}><img src="/figma/e9399.svg" width="14" height="14" alt="" /></button>}
         </div>
       )}
       {confirmation && (
-        <Modal title="Xác nhận" onClose={() => setConfirmation(null)}>
+        <Modal title={confirmation.title || "Xác nhận"} onClose={() => setConfirmation(null)}
+          className={confirmation.variant ? "customer-confirm " + confirmation.variant : ""}
+          overlayClassName={confirmation.variant ? "customer-confirm-overlay " + confirmation.variant : ""}
+          showClose={!confirmation.variant}>
+          {confirmation.variant && <div className="customer-warning" aria-hidden="true">!</div>}
           <p className="confirm-text">{confirmation.message}</p>
           <div className="actions">
             {(Array.isArray(confirmation.cancel)
