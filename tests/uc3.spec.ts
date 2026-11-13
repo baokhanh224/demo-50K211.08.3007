@@ -227,8 +227,7 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
   await expect(
     page.getByText("Không có dữ liệu phù hợp", { exact: true }),
   ).toBeVisible();
-  await page.screenshot({ path: out + "-empty.png" });
-  const missing = await page
+  const missingImages = () => page
     .locator(".reports-page img,.sidebar img")
     .evaluateAll((a) =>
       a
@@ -239,7 +238,9 @@ test("UC3: bộ lọc, bốn kết quả, hủy xuất và tổng Excel/PDF", as
         )
         .map((n) => (n as HTMLImageElement).src),
     );
-  expect(missing).toEqual([]);
+  await expect.poll(missingImages).toEqual([]);
+  const missing = await missingImages();
+  await page.screenshot({ path: out + "-empty.png" });
   expect(errors).toEqual([]);
   const result = {
     origin,

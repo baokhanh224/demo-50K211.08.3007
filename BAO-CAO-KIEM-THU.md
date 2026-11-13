@@ -1,3 +1,13 @@
+## UC3 — xác minh bản công khai
+
+- Bản triển khai cuối `c7eb2bc` tại repository đang nối Vercel; Vercel báo success: https://vercel.com/baokhanh224/quynh-nhu-demo/CW2GPe9DpUjcb11YLP7mnW4MFVvq . Mã nguồn bàn giao tương ứng `735ae96` (cộng bản cập nhật test/tài liệu xác minh này).
+- `BASE_URL=https://quynh-nhu-demo.vercel.app PUBLIC_QA=1 NODE_USE_ENV_PROXY=1 npx playwright test tests/uc3.spec.ts`: **2/2 đạt, 27,3 giây**. Dùng trình duyệt thật và phản hồi thật qua Node có xác minh TLS. Không mock báo cáo hay số liệu.
+- Đã kiểm tra các bộ lọc/lịch/5 chip, 4 kết quả, thứ tự bảng bán chậm không đổi khi đổi radio doanh thu, nhấn đôi chỉ 1 yêu cầu, lỗi khoảng, kết quả trống, lỗi tải, Excel và PDF, hủy/quay lại/xác nhận, lỗi xuất và thử lại; không có pageerror hay icon bị thiếu sau nạp xong.
+- Báo cáo toàn kỳ dùng để kiểm tra: doanh thu thuần 506.000đ, giá vốn 366.191,53137340944, lợi nhuận 139.808,46862659056, 6 hóa đơn ròng. Tồn cuối 170 đơn vị; giá trị tồn gốc 1.276.500,4387889428. Màn hình và PDF hiển thị **1.276.500đ**; Excel giữ đúng giá trị số gốc và định dạng tiền nguyên VNĐ. Dòng tổng 8 ô Excel khớp snapshot; `pdftotext -layout` xác nhận tổng PDF khớp màn hình.
+- Fingerprint dữ liệu nghiệp vụ trước/sau giữ nguyên: `5f8703155604af33b94e7f9fe3c5b42fa38ad80503f5e279bac3a36cae812f52` (7 sản phẩm, 11 chi tiết nhập, 9 hóa đơn). Không reset, không seed, không tạo/sửa phiếu nhập/bán/đổi trả. Không tính session/report snapshot/công tắc theo phiên vào fingerprint.
+- Lần kiểm tra public đầu chụp một SVG trước khi trình duyệt giải mã xong; response là 200, file 813 byte, không phải thiếu asset. Đã sửa test chờ icon nạp xong rồi xác minh; chạy lại đạt. Đây là sửa kiểm tra, không đổi ứng dụng sau deployment nêu trên.
+- Ảnh và tệp thật: `docs/evidence/uc3/uc3-public-*`, `uc3-public.xlsx`, `uc3-public.pdf`, `uc3-public-pdf.txt` và fingerprint JSON. Typecheck cuối đạt. Chưa chứng nhận trùng 100% pixel; sai lệch ảnh nguồn ghi riêng phía dưới.
+
 # UC3 theo Figma — 13/11/2026
 
 - Đọc đủ 51 context/ảnh từ trang UC_3 Báo cáo (1:2). Sửa vị trí Xuất báo cáo cạnh tiêu đề, nhãn Lọc nhanh:, chip bo tròn, menu lọc kết hợp, radio xếp hạng, lịch cho cả hai trang, biểu đồ/bảng/thẻ tổng đúng từng loại, các hộp xuất và trạng thái lỗi.

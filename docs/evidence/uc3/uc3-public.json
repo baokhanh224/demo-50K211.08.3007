@@ -1,0 +1,114 @@
+{
+  "origin": "https://quynh-nhu-demo.vercel.app",
+  "chip": {
+    "radius": "16px",
+    "box": {
+      "x": 338.5,
+      "y": 268,
+      "width": 80.796875,
+      "height": 29,
+      "top": 268,
+      "right": 419.296875,
+      "bottom": 297,
+      "left": 338.5
+    }
+  },
+  "heading": {
+    "x": 244,
+    "y": 114,
+    "width": 1172,
+    "height": 40
+  },
+  "exportBox": {
+    "x": 1267.375,
+    "y": 114,
+    "width": 148.625,
+    "height": 40
+  },
+  "cols": [
+    {
+      "x": 244,
+      "y": 422,
+      "width": 578,
+      "height": 324,
+      "top": 422,
+      "right": 822,
+      "bottom": 746,
+      "left": 244
+    },
+    {
+      "x": 838,
+      "y": 422,
+      "width": 578,
+      "height": 324,
+      "top": 422,
+      "right": 1416,
+      "bottom": 746,
+      "left": 838
+    }
+  ],
+  "revenue": {
+    "revenue": 506000,
+    "cost": 366191.53137340944,
+    "profit": 139808.46862659056,
+    "invoices": 6
+  },
+  "profit": {
+    "revenue": 506000,
+    "cost": 366191.53137340944,
+    "profit": 139808.46862659056,
+    "invoices": 6
+  },
+  "rankRows": [
+    4,
+    6
+  ],
+  "rankRevenueColumns": [
+    [
+      "#",
+      "Sản phẩm",
+      "SL bán thuần",
+      "Doanh thu thuần ↓"
+    ],
+    [
+      "#",
+      "Sản phẩm",
+      "SL bán thuần ↑",
+      "Tồn kho"
+    ]
+  ],
+  "stockTotal": [
+    "Tổng",
+    0,
+    227,
+    57,
+    0,
+    0,
+    170,
+    1276500.4387889428
+  ],
+  "exported": {
+    "xlsx": {
+      "filename": "BaoCao_XuatNhapTon_01012020_13112026.xlsx",
+      "bytes": 7508
+    },
+    "pdf": {
+      "filename": "BaoCao_XuatNhapTon_01012020_13112026.pdf",
+      "bytes": 15308
+    }
+  },
+  "excelTotal": [
+    "Tổng",
+    0,
+    227,
+    57,
+    0,
+    0,
+    170,
+    1276500.4387889428
+  ],
+  "invalid": "Khoảng thời gian hoặc tiêu chí lọc không hợp lệ",
+  "empty": true,
+  "missing": [],
+  "errors": []
+}

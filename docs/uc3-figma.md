@@ -35,3 +35,7 @@ Các trạng thái cùng loại dùng một thành phần React, không tạo c�
 - So ảnh toàn màn hình mở báo cáo kinh doanh (304:2349), 1440×900, Pixelmatch threshold 0,1: còn khoảng **0,37% pixel khác**; không bỏ qua vùng nào. Khung, khoảng cách và màu nền đã đối chiếu. Còn khác raster chữ và một số vị trí nét/viền; các màn hình có dữ liệu động chưa có phép so pixel tuyệt đối toàn ảnh.
 
 Không tuyên bố đã đạt trùng 100% pixel của cả 51 frame. Bảng danh mục `ui-parity.json` ghi riêng trạng thái đọc context, kiểm tra UI và đối chiếu ảnh cho từng frame.
+
+## Xác minh trên Vercel
+
+Bản `c7eb2bc` triển khai thành công. Hai test UC3 trên https://quynh-nhu-demo.vercel.app/ đạt 2/2 trong 27,3 giây, gồm các kết quả, bộ lọc, lịch, lỗi và xuất. Tổng tiền tồn màn hình/PDF 1.276.500đ; tổng Excel giữ giá trị gốc của cùng snapshot. Dữ liệu nghiệp vụ trước/sau có cùng SHA-256 (xem BAO-CAO-KIEM-THU.md). Ảnh public ở `docs/evidence/uc3/uc3-public-*.png`.
