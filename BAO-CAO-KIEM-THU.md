@@ -1,3 +1,13 @@
+# UC3 theo Figma — 13/11/2026
+
+- Đọc đủ 51 context/ảnh từ trang UC_3 Báo cáo (1:2). Sửa vị trí Xuất báo cáo cạnh tiêu đề, nhãn Lọc nhanh:, chip bo tròn, menu lọc kết hợp, radio xếp hạng, lịch cho cả hai trang, biểu đồ/bảng/thẻ tổng đúng từng loại, các hộp xuất và trạng thái lỗi.
+- `npm run build`: đạt; TypeScript kiểm tra trong production build. `BASE_URL=http://localhost:3019 npx playwright test tests/uc3.spec.ts`: 2/2 đạt, 12,6 giây. Tài khoản và DATABASE_URL lấy từ môi trường riêng; không ghi vào repository.
+- Kiểm tra UI: khởi đầu trống; chọn loại; tìm/tích nhiều tiêu chí và Áp dụng; năm chip nhanh; lịch 42 ngày, đầu/cuối/khoảng; bấm đôi chỉ 1 yêu cầu; doanh thu/lợi nhuận/xếp hạng số lượng và doanh thu/tồn kho; khoảng sai, kết quả trống, lỗi tải một lần; Excel/PDF; hủy/quay lại/xác nhận; lỗi đọc xuất, lỗi tạo tệp và thử lại; tải lại không đổi tồn.
+- Sửa lỗi đã phát hiện: bảng bán chậm từng dùng nhầm tiêu chí doanh thu khi đổi radio; nay luôn theo lượng tăng dần (BR-UC3-10). Reset padding checkbox/radio để đủ 16×16; dùng đúng SVG Figma. Bộ test ban đầu chờ nhầm `/api/settings`, đã sửa thành `/api/action` theo route thật và chạy lại đạt.
+- Tổng Excel xuất tồn kho local khớp đủ 8 ô của snapshot màn hình; PDF thực có header `%PDF`. Không seed/reset, không tạo nhập/bán/đổi trả trong đợt UC3. Không đổi schema/CSDL.
+- So toàn màn hình 304:2349 ở 1440×900, threshold 0,1: 4.775/1.296.000 pixel khác (0,3684%). Không có vùng bị bỏ qua. Còn sai raster chữ/nét/viền; chưa chứng nhận trùng 100% cả 51 frame, chưa so pixel toàn ảnh các kết quả dùng dữ liệu động.
+- Chi tiết nguồn, trạng thái và quyết định khi frame mâu thuẫn ở `docs/uc3-figma.md`, README và `docs/ui-parity.json`. Ảnh nguồn và ảnh UI được bàn giao kèm mã nguồn.
+
 ## Cập nhật nguyên nhân build và redeploy
 
 - Người dùng cung cấp build log: Prisma P1002 hết 10 giây chờ `pg_advisory_lock(72707369)` trên kết nối pooled. Read-only inspect locks sau đó không còn phiên giữ khóa; không ngắt phiên hoặc thay đổi dữ liệu.

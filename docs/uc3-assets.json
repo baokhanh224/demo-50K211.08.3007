@@ -1,0 +1,170 @@
+[
+  {
+    "name": "ed836",
+    "id": "304:31",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "90b50",
+    "id": "304:37",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "626f0",
+    "id": "304:42",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "886ee",
+    "id": "304:49",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "82580",
+    "id": "304:56",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "c47d3",
+    "id": "304:62",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "1f0e9",
+    "id": "304:2415",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "1487e",
+    "id": "304:2419",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "d5302",
+    "id": "304:1693",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "b8118",
+    "id": "304:113",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "report-idle-stock",
+    "id": "304:131",
+    "width": 40,
+    "height": 40
+  },
+  {
+    "name": "report-idle",
+    "id": "304:2481",
+    "width": 40,
+    "height": 40
+  },
+  {
+    "name": "report-busy-button",
+    "id": "304:3835",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "report-busy",
+    "id": "304:3843",
+    "width": 20,
+    "height": 20
+  },
+  {
+    "name": "report-invalid",
+    "id": "304:3987",
+    "width": 40,
+    "height": 40
+  },
+  {
+    "name": "report-load-error",
+    "id": "304:4124",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "report-empty",
+    "id": "304:4262",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "report-close",
+    "id": "304:8924",
+    "width": 18,
+    "height": 18
+  },
+  {
+    "name": "report-download-white",
+    "id": "304:8946",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "report-check",
+    "id": "304:9688",
+    "width": 28,
+    "height": 28
+  },
+  {
+    "name": "report-alert",
+    "id": "304:10488",
+    "width": 26,
+    "height": 26
+  },
+  {
+    "name": "report-warning",
+    "id": "304:11606",
+    "width": 28,
+    "height": 28
+  },
+  {
+    "name": "report-retry",
+    "id": "304:11986",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "report-radio-checked",
+    "width": 16,
+    "height": 16,
+    "id": "304:8936"
+  },
+  {
+    "name": "report-radio",
+    "width": 16,
+    "height": 16,
+    "id": "304:8940"
+  },
+  {
+    "name": "report-filter-search",
+    "width": 14,
+    "height": 14,
+    "id": "304:3254"
+  },
+  {
+    "name": "report-checkbox-check",
+    "width": 12,
+    "height": 12,
+    "id": "304:3286"
+  },
+  {
+    "name": "report-type-check",
+    "width": 16,
+    "height": 16,
+    "id": "304:2626"
+  }
+]

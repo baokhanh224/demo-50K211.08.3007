@@ -2,24 +2,54 @@ import { test, expect } from "@playwright/test";
 // Explicit opt-in only: performs demo writes on the public website without reset.
 let qaPage: any;
 async function remote(path: string, data?: any) {
- return qaPage.evaluate(async ({path,data}:any) => {
-  const r=await fetch('/api/'+path,{method:data===undefined?'GET':'POST',headers:{'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data)});
-  const d=await r.json();if(!r.ok)throw new Error(d.error);return d;
- },{path,data});
+  return qaPage.evaluate(
+    async ({ path, data }: any) => {
+      const r = await fetch("/api/" + path, {
+        method: data === undefined ? "GET" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data === undefined ? undefined : JSON.stringify(data),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      return d;
+    },
+    { path, data },
+  );
 }
 async function all(sql: string) {
- if(sql.includes('SELECT id,remaining FROM receipt_line'))return (await remote('query',{scope:'adjustments'})).map((r:any)=>({id:r.id,remaining:r.remaining})).sort((a:any,b:any)=>a.id-b.id);
- if(sql.includes('SELECT a.* FROM allocation')){
-  const id=(await remote('query',{scope:'sales-history'})).map((r:any)=>r.id).sort().at(-1);
-  return (await remote('detail?type=invoice&id='+id)).lines.flatMap((l:any)=>l.allocations);
- }
- throw new Error('Unsupported QA read');
+  if (sql.includes("SELECT id,remaining FROM receipt_line"))
+    return (await remote("query", { scope: "adjustments" }))
+      .map((r: any) => ({ id: r.id, remaining: r.remaining }))
+      .sort((a: any, b: any) => a.id - b.id);
+  if (sql.includes("SELECT a.* FROM allocation")) {
+    const id = (await remote("query", { scope: "sales-history" }))
+      .map((r: any) => r.id)
+      .sort()
+      .at(-1);
+    return (await remote("detail?type=invoice&id=" + id)).lines.flatMap(
+      (l: any) => l.allocations,
+    );
+  }
+  throw new Error("Unsupported QA read");
 }
 async function one(sql: string) {
- if(sql.includes('SUM(remaining) n FROM receipt_line'))return {n:(await remote('bootstrap')).products.find((p:any)=>p.id===(sql.match(/SP[0-9]+/)?.[0]||'SP0001')).stock};
- if(sql.includes('MIN(remaining)'))return {n:Math.min(...(await remote('query',{scope:'adjustments'})).map((r:any)=>r.remaining))};
- if(sql.includes('COUNT(*) n FROM invoice'))return {n:(await remote('query',{scope:'sales-history'})).length};
- throw new Error('Unsupported QA read');
+  if (sql.includes("SUM(remaining) n FROM receipt_line"))
+    return {
+      n: (await remote("bootstrap")).products.find(
+        (p: any) => p.id === (sql.match(/SP[0-9]+/)?.[0] || "SP0001"),
+      ).stock,
+    };
+  if (sql.includes("MIN(remaining)"))
+    return {
+      n: Math.min(
+        ...(await remote("query", { scope: "adjustments" })).map(
+          (r: any) => r.remaining,
+        ),
+      ),
+    };
+  if (sql.includes("COUNT(*) n FROM invoice"))
+    return { n: (await remote("query", { scope: "sales-history" })).length };
+  throw new Error("Unsupported QA read");
 }
 import { datePlus } from "../lib/db";
 import { date, today, money } from "../lib/format";
@@ -27,25 +57,37 @@ import ExcelJS from "exceljs";
 import fs from "node:fs";
 import { installTrustedTransport } from "./public-transport";
 // Chạy sau npm run db:seed trên CSDL demo riêng. Tất cả thao tác ghi đi qua giao diện.
-test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", async ({ page, context }) => {
-  test.skip(process.env.PUBLIC_QA !== '1', 'Chỉ chạy khi chủ website cho phép');
-  qaPage=page;
+test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", async ({
+  page,
+  context,
+}) => {
+  test.skip(process.env.PUBLIC_QA !== "1", "Chỉ chạy khi chủ website cho phép");
+  qaPage = page;
   await installTrustedTransport(context);
   const count = async () => (await one("SELECT COUNT(*) n FROM invoice")).n;
   const stocks = async () =>
     await all("SELECT id,remaining FROM receipt_line ORDER BY id");
   await page.goto("/");
   await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
-  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page
+    .getByLabel("Mật khẩu", { exact: true })
+    .fill(process.env.DEMO_PASSWORD!);
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Tạo giao dịch bán hàng" }),
   ).toBeVisible();
-  const oldInvoices=await remote('query',{scope:'sales-history'});
-  const oldReceipts=await remote('query',{scope:'receipt-history'});
-  const next=(prefix:string,rows:any[])=>prefix+String(Math.max(0,...rows.map(r=>Number(r.id.slice(2))))+1).padStart(4,'0');
-  const receiptCode=next('PN',oldReceipts),saleCode=next('HD',oldInvoices);
-  const secondCode='HD'+String(Number(saleCode.slice(2))+1).padStart(4,'0');
+  const oldInvoices = await remote("query", { scope: "sales-history" });
+  const oldReceipts = await remote("query", { scope: "receipt-history" });
+  const next = (prefix: string, rows: any[]) =>
+    prefix +
+    String(Math.max(0, ...rows.map((r) => Number(r.id.slice(2)))) + 1).padStart(
+      4,
+      "0",
+    );
+  const receiptCode = next("PN", oldReceipts),
+    saleCode = next("HD", oldInvoices);
+  const secondCode =
+    "HD" + String(Number(saleCode.slice(2)) + 1).padStart(4, "0");
   await page
     .getByRole("link", { name: "Quản lý tồn kho", exact: true })
     .click();
@@ -66,9 +108,7 @@ test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", asy
     await page
       .getByRole("button", { name: "Thêm sản phẩm", exact: true })
       .click();
-    await expect(
-      page.locator("tbody tr"),
-    ).toHaveCount(index + 1);
+    await expect(page.locator("tbody tr")).toHaveCount(index + 1);
   }
   await page
     .getByRole("button", { name: "Lưu phiếu nhập", exact: true })
@@ -166,9 +206,7 @@ test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", asy
   ).toBeVisible();
   expect(await stocks()).toEqual(beforeSale);
   await page.getByRole("button", { name: "Đóng", exact: true }).last().click();
-  await page
-    .getByRole("link", { name: "Bán hàng", exact: true })
-    .click();
+  await page.getByRole("link", { name: "Bán hàng", exact: true }).click();
   await page.getByLabel("Tìm kiếm sản phẩm", { exact: true }).fill("Sữa Milo");
   await page.getByRole("button", { name: /Sữa Milo.*SP0001/ }).click();
   await page.getByLabel("Số lượng bán", { exact: true }).fill("6");
@@ -259,27 +297,40 @@ test("Public: nhập, bán, hủy, trả không nhập kho và tải lại", asy
   );
 });
 
-test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ page, context }) => {
-  test.skip(process.env.PUBLIC_QA !== '1', 'Chỉ chạy khi chủ website cho phép');
-  qaPage=page;
+test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({
+  page,
+  context,
+}) => {
+  test.skip(process.env.PUBLIC_QA !== "1", "Chỉ chạy khi chủ website cho phép");
+  qaPage = page;
   await installTrustedTransport(context);
   await page.goto("/");
   await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
-  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page
+    .getByLabel("Mật khẩu", { exact: true })
+    .fill(process.env.DEMO_PASSWORD!);
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await page
     .getByRole("link", { name: "Báo cáo thống kê", exact: true })
     .click();
-  await expect(page.getByTestId("report-revenue")).toBeVisible();
+  await page.getByRole("button", { name: "Loại báo cáo", exact: true }).click();
+  await page.getByRole("option", { name: "Doanh thu", exact: true }).click();
   await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
   await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
+  await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
   const [response] = await Promise.all([
-    page.waitForResponse(r=>new URL(r.url()).pathname==='/api/report' && r.request().method()==='POST'),
+    page.waitForResponse(
+      (r) =>
+        new URL(r.url()).pathname === "/api/report" &&
+        r.request().method() === "POST",
+    ),
     page.getByRole("button", { name: "Xem báo cáo", exact: true }).click(),
   ]);
-  const report=await response.json();
-  const expectedRevenue=report.summary.revenue;
-  await expect(page.getByTestId("report-revenue")).toHaveText(money(expectedRevenue));
+  const report = await response.json();
+  const expectedRevenue = report.summary.revenue;
+  await expect(page.getByTestId("report-revenue")).toHaveText(
+    money(expectedRevenue),
+  );
   await page.screenshot({
     path: "test-results/04-bao-cao.png",
     fullPage: true,
@@ -289,7 +340,12 @@ test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ pa
     await page
       .getByRole("button", { name: "Xuất báo cáo", exact: true })
       .click();
-    await page.getByLabel("Định dạng", { exact: true }).selectOption(format);
+    await page
+      .getByRole("radio", {
+        name: format === "Excel" ? "Excel (.xlsx)" : "PDF (.pdf)",
+        exact: true,
+      })
+      .check();
     const download = page.waitForEvent("download");
     await page
       .getByRole("dialog", { name: "Xuất báo cáo" })
@@ -316,6 +372,7 @@ test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ pa
     await expect(
       page.getByText("Xuất báo cáo thành công", { exact: true }),
     ).toBeVisible();
+    await page.keyboard.press("Escape");
   }
   await page
     .getByRole("link", { name: "Báo cáo xuất – nhập – tồn", exact: true })
@@ -324,6 +381,7 @@ test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ pa
     page.getByRole("heading", { name: "Báo cáo xuất – nhập – tồn" }).first(),
   ).toBeVisible();
   await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
+  await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
   await page.getByRole("button", { name: "Xem báo cáo", exact: true }).click();
   const row = page.locator("tbody tr").filter({ hasText: "Sữa Milo" });
   await expect(row).toBeVisible();
@@ -332,7 +390,7 @@ test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ pa
       "SELECT SUM(remaining) n FROM receipt_line WHERE product_id='SP0001'",
     )
   ).n;
-  expect(await row.locator("td").nth(7).innerText()).toBe(String(stock));
+  expect(await row.locator("td").nth(6).innerText()).toBe(String(stock));
   const before = await all("SELECT id,remaining FROM receipt_line ORDER BY id");
   await page.reload();
   await expect(
@@ -351,23 +409,29 @@ test("Public: báo cáo, Excel/PDF và dữ liệu sau tải lại", async ({ pa
   );
 });
 
-test("Public: hai trình duyệt bán cùng sản phẩm gần hết", async ({ browser }) => {
-  test.skip(process.env.PUBLIC_QA !== '1', 'Chỉ chạy khi chủ website cho phép');
+test("Public: hai trình duyệt bán cùng sản phẩm gần hết", async ({
+  browser,
+}) => {
+  test.skip(process.env.PUBLIC_QA !== "1", "Chỉ chạy khi chủ website cho phép");
   const a = await browser.newContext(),
     b = await browser.newContext();
   const pages = [await a.newPage(), await b.newPage()];
-  await Promise.all([installTrustedTransport(a),installTrustedTransport(b)]);
-  let stock=0;
+  await Promise.all([installTrustedTransport(a), installTrustedTransport(b)]);
+  let stock = 0;
   for (const page of pages) {
     await page.goto("/");
     await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
-    await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+    await page
+      .getByLabel("Mật khẩu", { exact: true })
+      .fill(process.env.DEMO_PASSWORD!);
     await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
     await expect(
       page.getByRole("heading", { name: "Tạo giao dịch bán hàng" }),
     ).toBeVisible();
-    qaPage=page;
-    stock=(await remote('bootstrap')).products.find((p:any)=>p.id==='SP0005').sellable;
+    qaPage = page;
+    stock = (await remote("bootstrap")).products.find(
+      (p: any) => p.id === "SP0005",
+    ).sellable;
     expect(stock).toBeGreaterThan(0);
     await page
       .getByLabel("Tìm kiếm sản phẩm", { exact: true })

@@ -149,7 +149,7 @@ Bắt đầu bằng **Cài đặt demo → Khôi phục dữ liệu mẫu**.
 2. **Bán hàng**: Sữa Milo, **Lốc**, số lượng **2** (8 hộp), tổng **144.000đ**. Nhập tiền 100000 để thấy “Tiền khách đưa chưa đủ để thanh toán”, sửa 200000, bấm hoàn tất hai lần. Chỉ có **HD0004**, tiền thừa 56.000đ. Xuất 5 hộp nguồn gần hạn và 3 hộp nguồn hạn xa, bỏ nguồn đã hết hạn.
 3. Xem HD0004, chọn **Hủy**, nhập lý do, **Xác nhận**. Từng nguồn được hoàn chính xác 5 và 3 hộp. Hóa đơn đổi “Đã hủy”.
 4. Bán tiếp **6 Hộp Sữa Milo**, gắn số 0901234567 – Nguyễn Bảo Khanh, thanh toán 108.000đ để tạo **HD0005**. Đổi/trả **2 hộp**, **Chỉ trả hàng**, **Không nhập lại kho**, xác nhận **Đã hoàn tiền**. Hoàn **36.000đ**, tồn không tăng, còn được trả **4 hộp**, không hủy trực tiếp hóa đơn được.
-5. Báo cáo doanh thu **Hôm nay → Xem báo cáo**: doanh thu ròng từ các giao dịch trên là **72.000đ**. Xuất Excel và PDF; tổng khớp màn hình. Báo cáo xuất–nhập–tồn ghi hàng trả không nhập kho với lượng nhập bằng 0 cho lần trả đó.
+5. Báo cáo kinh doanh **Loại báo cáo: Doanh thu → Hôm nay → Xem báo cáo**: doanh thu ròng từ các giao dịch trên là **72.000đ**. Xuất Excel và PDF; tổng khớp màn hình. Báo cáo xuất–nhập–tồn ghi hàng trả không nhập kho với lượng nhập bằng 0 cho lần trả đó.
 6. Hai cửa sổ ẩn danh đăng nhập độc lập, cùng thêm **Muối I-ốt, Gói, 3** vào giỏ trước khi thanh toán. Thanh toán đồng thời: một thành công, một báo không đủ nguồn; tồn không âm. Hủy hóa đơn thử để hoàn kho.
 7. **Quản lý khách hàng → KH0002**: “Chưa có lịch sử mua hàng”. Tra cứu tồn **Đã hết hạn** thấy nguồn PN0003; **Dưới mức cảnh báo tồn kho** thấy Muối I-ốt. Có thể thử máy in/lỗi tải/lưu bằng công tắc riêng phiên.
 
@@ -195,7 +195,7 @@ Nguồn chữ: `docs/nguon-chu-word.json`, `docs/nguon-chu-figma.json`; danh m�
 ### Điểm đặc tả chưa quy định — đợt rà soát
 
 - Nhãn lỗi API hết phiên vẫn được ghi trong bảng chữ bổ sung; chưa có tuyên bố đã rà soát xong tất cả câu ngoài nguồn.
-- Chưa có URL Vercel do người dùng cung cấp cho đợt kiểm tra mới; không thực hiện reset hoặc test ghi trên một URL đoán.
+- Bản công khai được người dùng cung cấp: https://quynh-nhu-demo.vercel.app/; các đợt kiểm tra sau không reset CSDL đang dùng.
 
 ### Kiểm tra bản công khai
 
@@ -222,3 +222,29 @@ Dấu ! cảnh báo được dựng bằng chữ và vòng tròn CSS theo nguồ
 ### Chọn ngày Báo cáo kinh doanh
 
 Bấm ô Từ ngày/Đến ngày hoặc icon lịch để mở popup theo Figma. Có thể nhập dd/mm/yyyy hoặc chọn ngày; dùng mũi tên để chuyển tháng; Escape/click ra ngoài đóng lịch. Hai đầu khoảng tô đậm, khoảng giữa tô nhạt. Ngày được gửi dạng ISO cùng hàm tính báo cáo cũ; khoảng sai vẫn báo lỗi khi Xem báo cáo, không tự đảo ngày. Nhãn aria “Mở lịch từ ngày/đến ngày”, “Tháng trước/sau” bổ sung để sử dụng được bằng bàn phím và trình đọc màn hình, không thay chữ hiển thị của Figma.
+
+
+### Quyết định bổ sung của nhóm — giao diện UC3 (13/11/2026)
+
+- Đọc đầy đủ context và ảnh của 51 frame trên trang Figma `1:2`. Nút Xuất báo cáo ở cạnh tiêu đề, bộ lọc gồm loại báo cáo, hai lịch và một menu sản phẩm/nhóm sản phẩm; có “Lọc nhanh:” và năm chip bo tròn. Xếp hạng dùng radio và hai bảng đặt cạnh nhau. Doanh thu dùng hai thẻ tổng, biểu đồ đường và bảng cạnh nhau; lợi nhuận dùng ba thẻ tổng và biểu đồ cột doanh thu/giá vốn; tồn kho dùng năm thẻ tổng và bảng tám cột.
+- Menu checkbox theo Figma cho phép chọn nhiều sản phẩm/nhóm. Các lựa chọn kết hợp theo hợp; một sản phẩm chỉ tính một lần dù chọn cả nó và nhóm chứa nó. “Tất cả”/“Bỏ chọn tất cả” bỏ giới hạn; “Áp dụng” mới áp dụng lựa chọn. Ô tìm kiếm menu chỉ lọc danh sách lựa chọn, không tự chạy báo cáo. API vẫn tiếp nhận bộ lọc đơn cũ.
+- Mở màn hình ở trạng thái chưa chọn, không tự tải báo cáo. Đổi tiêu chí bỏ kết quả cũ; chỉ nhấn “Xem báo cáo” mới tính và lưu snapshot. Xuất Excel/PDF dùng chính snapshot đã hiển thị, cùng cột và dòng tổng. Số liệu và tên sản phẩm lấy từ CSDL thật, không thay bằng số minh họa Figma.
+- Bảng bán chậm luôn xếp số lượng bán thuần tăng dần và chỉ lấy hàng còn tồn (BR-UC3-10), kể cả khi bảng bán chạy đổi sang doanh thu thuần (BR-UC3-09). Bản cũ dùng chung khóa xếp hạng cho hai bảng đã được sửa.
+- Icon lấy SVG từ đúng node Figma; file lưu cục bộ trong `public/figma`. Biểu đồ được vẽ từ dữ liệu thật. Các label aria mô tả lịch/menu là hỗ trợ truy cập, không thay chữ hiển thị.
+
+### Điểm đặc tả chưa quy định — giao diện UC3
+
+- Frame 304:10082 chứa hai lớp xác nhận và một ảnh chụp lồng nhau. Chỉ dựng lớp xác nhận trên cùng (vòng xanh, tiêu đề “Xác nhận”, nút Quay lại/Xác nhận), giữ nguyên thông báo Word “Bạn có chắc chắn muốn hủy thao tác không?”. Không nhúng ảnh giao diện làm chức năng.
+- Các frame xuất cũ của UC3.1/3.2 và nhóm UC3.3 có cách trình bày khác nhau. Dùng nhóm UC3.3 làm hộp xuất thống nhất: ban đầu chưa chọn định dạng; chọn Excel/PDF hiện nội dung sẽ xuất; xử lý, thành công, lỗi đọc dữ liệu, lỗi tạo tệp và hủy là các trạng thái thực.
+- Khóa nút trong lúc gửi yêu cầu để tránh lặp. Trong lúc tạo tệp chưa cho hủy yêu cầu đang xử lý; không đổi snapshot. Hộp thành công có thể đóng bằng Escape hoặc bấm vùng ngoài; thẻ tệp cho tải lại đúng tệp đã tạo. Tên tệp, dung lượng và khoảng ngày dùng giá trị thật.
+- Trên màn hình dưới 1100 px, các bảng chuyển thành một cột; desktop từ 1100 px giữ bố cục cạnh nhau. Các danh sách dài cuộn trong menu, không tràn khung nhìn.
+
+Kiểm tra riêng UC3 (chỉ tạo snapshot báo cáo và công tắc lỗi theo phiên, không ghi phiếu nhập/bán/đổi trả):
+
+```bash
+# Đặt BASE_URL và DEMO_USERNAME/DEMO_PASSWORD trong môi trường riêng
+npx playwright test tests/uc3.spec.ts
+# Bản công khai cần thêm PUBLIC_QA=1; Cloud thêm NODE_USE_ENV_PROXY=1
+```
+
+Ảnh chuẩn, ảnh chạy thật và phạm vi đối chiếu: `docs/uc3-figma.md`. Không coi kết quả này là chứng nhận trùng 100% pixel ở mọi trình duyệt.

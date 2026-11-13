@@ -207,7 +207,7 @@ export default function App() {
                   }}
                   className={"nav-item " + (active ? "active" : "")}
                 >
-                  <Icon name={menu.icon} />
+                  <Icon name={menu.icon} report={["reports", "stock-report"].includes(view)} />
                   <span>{menu.label}</span>
                   {menu.items.length > 1 && (
                     <span className="chevron" aria-hidden="true">
@@ -227,6 +227,7 @@ export default function App() {
                           navigate(id);
                         }}
                       >
+                        {["reports", "stock-report"].includes(view) && menu.icon === "report" && <Icon name={id === "reports" ? "reportBusiness" : "reportInventory"} />}
                         {name}
                       </a>
                     ))}

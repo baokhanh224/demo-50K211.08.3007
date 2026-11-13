@@ -2786,9 +2786,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn",
+    "uc3_context_read": true
   },
   {
     "id": "304:135",
@@ -2868,9 +2869,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – Main Flow – Chọn Từ ngày"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – Main Flow – Chọn Từ ngày",
+    "uc3_context_read": true
   },
   {
     "id": "304:365",
@@ -2958,9 +2960,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2– Main Flow – Chọn Đến ngày"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2– Main Flow – Chọn Đến ngày",
+    "uc3_context_read": true
   },
   {
     "id": "304:610",
@@ -3012,9 +3015,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm",
+    "uc3_context_read": true
   },
   {
     "id": "304:787",
@@ -3052,9 +3056,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – 3a Chọn bộ lọc thời gian nhanh"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – 3a Chọn bộ lọc thời gian nhanh",
+    "uc3_context_read": true
   },
   {
     "id": "304:920",
@@ -3093,9 +3098,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2– 3a Tự động xác định khoảng thời gian"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2– 3a Tự động xác định khoảng thời gian",
+    "uc3_context_read": true
   },
   {
     "id": "304:1054",
@@ -3133,9 +3139,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – Main Flow – Đang xử lý"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – Main Flow – Đang xử lý",
+    "uc3_context_read": true
   },
   {
     "id": "304:1199",
@@ -3175,9 +3182,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – 5a Tiêu chí lọc không hợp lệ"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – 5a Tiêu chí lọc không hợp lệ",
+    "uc3_context_read": true
   },
   {
     "id": "304:1337",
@@ -3215,9 +3223,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – 6a Không thể truy xuất dữ liệu"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – 6a Không thể truy xuất dữ liệu",
+    "uc3_context_read": true
   },
   {
     "id": "304:1471",
@@ -3255,9 +3264,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – 6b Không có dữ liệu phù hợp"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – 6b Không có dữ liệu phù hợp",
+    "uc3_context_read": true
   },
   {
     "id": "304:1605",
@@ -3403,9 +3413,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động",
+    "cach_toi": "UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn",
+    "uc3_context_read": true
   },
   {
     "id": "304:1964",
@@ -3557,9 +3568,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.2 – 9a Xuất báo cáo đang xem"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.2 – 9a Xuất báo cáo đang xem",
+    "uc3_context_read": true
   },
   {
     "id": "304:2349",
@@ -3600,8 +3612,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh"
+    "ket_qua": "Đã so ảnh 1440×900; còn khoảng 0,37% pixel khác",
+    "cach_toi": "UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh",
+    "uc3_context_read": true
   },
   {
     "id": "304:2486",
@@ -3671,8 +3684,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 03 - Main Flow – Chọn loại báo cáo"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 03 - Main Flow – Chọn loại báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:2632",
@@ -3756,8 +3770,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Chọn Từ ngày"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – Main Flow – Chọn Từ ngày",
+    "uc3_context_read": true
   },
   {
     "id": "304:2866",
@@ -3848,8 +3863,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 02 - Main Flow – Chọn Đến ngày "
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 02 - Main Flow – Chọn Đến ngày ",
+    "uc3_context_read": true
   },
   {
     "id": "304:3115",
@@ -3905,8 +3921,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm",
+    "uc3_context_read": true
   },
   {
     "id": "304:3296",
@@ -3947,8 +3964,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:3433",
@@ -3989,8 +4007,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 4a Chọn bộ lọc thời gian nhanh"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 4a Chọn bộ lọc thời gian nhanh",
+    "uc3_context_read": true
   },
   {
     "id": "304:3570",
@@ -4032,8 +4051,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 4a Tự động xác định khoảng thời gian"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 4a Tự động xác định khoảng thời gian",
+    "uc3_context_read": true
   },
   {
     "id": "304:3708",
@@ -4074,8 +4094,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Đang xử lý"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – Main Flow – Đang xử lý",
+    "uc3_context_read": true
   },
   {
     "id": "304:3852",
@@ -4118,8 +4139,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 6a Tiêu chí lọc không hợp lệ"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 6a Tiêu chí lọc không hợp lệ",
+    "uc3_context_read": true
   },
   {
     "id": "304:3992",
@@ -4160,8 +4182,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu",
+    "uc3_context_read": true
   },
   {
     "id": "304:4129",
@@ -4202,8 +4225,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp",
+    "uc3_context_read": true
   },
   {
     "id": "304:4266",
@@ -4290,8 +4314,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu"
+    "ket_qua": "Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động",
+    "cach_toi": "UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu",
+    "uc3_context_read": true
   },
   {
     "id": "304:4506",
@@ -4384,8 +4409,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem",
+    "uc3_context_read": true
   },
   {
     "id": "304:4772",
@@ -4429,8 +4455,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận",
+    "uc3_context_read": true
   },
   {
     "id": "304:4917",
@@ -4472,8 +4499,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận)",
+    "uc3_context_read": true
   },
   {
     "id": "304:5054",
@@ -4514,8 +4542,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận",
+    "uc3_context_read": true
   },
   {
     "id": "304:5198",
@@ -4579,8 +4608,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận"
+    "ket_qua": "Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động",
+    "cach_toi": "UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận",
+    "uc3_context_read": true
   },
   {
     "id": "304:5388",
@@ -4650,8 +4680,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận)",
+    "uc3_context_read": true
   },
   {
     "id": "304:5604",
@@ -4695,8 +4726,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm",
+    "uc3_context_read": true
   },
   {
     "id": "304:5749",
@@ -4740,8 +4772,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm)",
+    "uc3_context_read": true
   },
   {
     "id": "304:5901",
@@ -4877,8 +4910,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần"
+    "ket_qua": "Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động",
+    "cach_toi": "UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần",
+    "uc3_context_read": true
   },
   {
     "id": "304:6255",
@@ -5014,8 +5048,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần"
+    "ket_qua": "Đã kiểm tra radio/cột/sắp xếp; chưa so pixel toàn ảnh",
+    "cach_toi": "UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần",
+    "uc3_context_read": true
   },
   {
     "id": "304:6609",
@@ -5157,8 +5192,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm)",
+    "uc3_context_read": true
   },
   {
     "id": "304:6989",
@@ -5201,8 +5237,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7129",
@@ -5243,8 +5280,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7266",
@@ -5285,8 +5323,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7403",
@@ -5327,8 +5366,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7540",
@@ -5371,8 +5411,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7680",
@@ -5413,8 +5454,9 @@
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
     "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm)"
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm)",
+    "uc3_context_read": true
   },
   {
     "id": "304:7817",
@@ -5560,9 +5602,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3– Main Flow – Nhấn \"Xuất báo cáo\""
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3– Main Flow – Nhấn \"Xuất báo cáo\"",
+    "uc3_context_read": true
   },
   {
     "id": "304:8176",
@@ -5714,9 +5757,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ",
+    "uc3_context_read": true
   },
   {
     "id": "304:8561",
@@ -5872,9 +5916,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất)"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đối chiếu hộp xuất và UI; chưa so pixel toàn ảnh",
+    "cach_toi": "UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất)",
+    "uc3_context_read": true
   },
   {
     "id": "304:8952",
@@ -6023,9 +6068,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 – Main Flow – Đang xuất báo cáo"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3 – Main Flow – Đang xuất báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:9325",
@@ -6174,9 +6220,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 - Main Flow – Xuất báo cáo thành công"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3 - Main Flow – Xuất báo cáo thành công",
+    "uc3_context_read": true
   },
   {
     "id": "304:10082",
@@ -6338,9 +6385,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3– 3a Xác nhận hủy xuất báo cáo"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3– 3a Xác nhận hủy xuất báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:10499",
@@ -6491,9 +6539,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:11243",
@@ -6640,9 +6689,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "304:11614",
@@ -6790,9 +6840,10 @@
     ],
     "page": "1:2",
     "page_name": "UC_3 Báo cáo",
-    "route": "/?view=reports",
-    "ket_qua": "Chưa so ảnh",
-    "cach_toi": "UC_3.3– 5a Không thể tạo tệp báo cáo"
+    "route": "/?view=stock-report",
+    "ket_qua": "Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng",
+    "cach_toi": "UC_3.3– 5a Không thể tạo tệp báo cáo",
+    "uc3_context_read": true
   },
   {
     "id": "90:148",

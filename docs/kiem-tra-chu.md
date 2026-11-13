@@ -167,28 +167,70 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Tháng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Tháng sau | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Xuất – nhập – tồn | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Lợi nhuận | UC3.1 3. dòng 355; UC3.1 9. dòng 361 | Trùng nguyên văn | Giữ |
+| Xuất báo cáo thành công | UC3.2 6. dòng 449 | Trùng nguyên văn | Giữ |
+| Dung lượng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Không thể xuất báo cáo, vui lòng thử lại | UC3.2 4a.2. dòng 458 | Trùng nguyên văn | Giữ |
+| Kết thúc | Figma 304:11614 | Trùng nguyên văn | Giữ |
+| Thực hiện lại | Figma 304:11614 | Trùng nguyên văn | Giữ |
+| Xuất báo cáo | UC3.1 10a.1. dòng 369; UC3.1 10a.2. dòng 370; UC3.2 3a.3. dòng 415 | Trùng nguyên văn | Giữ |
+| Chọn định dạng tệp báo cáo rồi nhấn “Xuất báo cáo”. | Figma 304:8561, 304:10082 | Trùng nguyên văn | Giữ |
+| Nội dung sẽ xuất | Figma 304:8561, 304:10082 | Trùng nguyên văn | Giữ |
+| Báo cáo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tiêu chí lọc: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tất cả sản phẩm | Figma 304:2, 304:135, 304:365 | Trùng nguyên văn | Giữ |
+| Định dạng được hỗ trợ | Figma 304:8176, 304:8561, 304:10082 | Trùng nguyên văn | Giữ |
+| Đang xử lý... | Figma 304:1054, 304:3708, 304:5054 | Trùng nguyên văn | Giữ |
+| Loại báo cáo | Figma 304:2349, 304:2486, 304:2486 | Trùng nguyên văn | Giữ |
+| Sản phẩm / nhóm sản phẩm (không bắt buộc) | Figma 304:2, 304:135, 304:365 | Trùng nguyên văn | Giữ |
+| NHÓM SẢN PHẨM | Figma 304:610, 304:3115 | Trùng nguyên văn | Giữ |
+| SẢN PHẨM | Figma 304:610, 304:3115 | Trùng nguyên văn | Giữ |
+| Chọn loại báo cáo | Figma 304:2349, 304:2486, 304:2486 | Trùng nguyên văn | Giữ |
+| Sản phẩm bán chạy/chậm | UC3.1 3. dòng 355; UC3.1 4. dòng 356; UC3.1 9. dòng 361 | Trùng nguyên văn | Giữ |
+| Chọn sản phẩm / nhóm sản phẩm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Tìm sản phẩm / nhóm sản phẩm | Figma 304:610, 304:3115 | Trùng nguyên văn | Giữ |
+| Bỏ chọn tất cả | Figma 304:610, 304:3115 | Trùng nguyên văn | Giữ |
+| Áp dụng | Figma 304:610, 304:3115 | Trùng nguyên văn | Giữ |
+| không hợp lệ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Đang kiểm tra tiêu chí và truy xuất dữ liệu tồn kho, giao dịch nhập – xuất – điều chỉnh... | Figma 304:1054 | Trùng nguyên văn | Giữ |
+| Đang kiểm tra tiêu chí lọc và truy xuất dữ liệu báo cáo... | Figma 304:3708, 304:5054, 304:5749 | Trùng nguyên văn | Giữ |
+| Không có dữ liệu phù hợp | UC3  BR-UC3 - 04 dòng 331; UC3.1 Post-conditions dòng 352; UC3.1 7b.2. dòng 380 | Trùng nguyên văn | Giữ |
+| Chọn khoảng thời gian, sau đó nhấn “Xem báo cáo”. | Figma 304:2, 304:135, 304:365 | Trùng nguyên văn | Giữ |
+| Chọn loại báo cáo và tiêu chí lọc, sau đó nhấn “Xem báo cáo”. | Figma 304:2349, 304:2486, 304:2486 | Trùng nguyên văn | Giữ |
+| Doanh thu thuần và giá vốn theo ngày | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Biểu đồ xu hướng doanh thu thuần | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
+| Doanh thu thuần | Figma 304:4266, 304:4506, 304:5198 | Trùng nguyên văn | Giữ |
+| Giá vốn | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Tồn đầu kỳ | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
+| Tổng nhập | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
+| Tổng xuất | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
+| Tồn cuối kỳ | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
+| Giá trị tồn | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
+| Tổng doanh thu thuần | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
+| Tổng giá vốn | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Số lượng bán thuần × giá nhập bình quân | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Lợi nhuận gộp | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Doanh thu thuần − Tổng giá vốn | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
+| Số hóa đơn | Figma 304:4266, 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
+| Hóa đơn đã thanh toán, không tính hóa đơn đã hủy | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
+| Bảng số liệu theo ngày | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
+| Xếp hạng theo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| doanh thu thuần | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| số lượng bán thuần | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| , giảm dần | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Số lượng bán thuần thấp nhất, chỉ xét sản phẩm còn tồn kho > 0 | Figma 304:5901, 304:6255, 304:6609 | Trùng nguyên văn | Giữ |
+| Tồn cuối kỳ = Tồn đầu kỳ + Nhập − Xuất + Điều chỉnh tăng −<br>                    Điều chỉnh giảm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Số lượng bán thuần | Figma 304:5749, 304:5901, 304:6255 | Trùng nguyên văn | Giữ |
 | Hôm qua | UC3.1 4a.1. dòng 365 | Trùng nguyên văn | Giữ |
 | 7 ngày qua | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
 | Tháng này | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
-| Xuất báo cáo thành công | UC3.2 6. dòng 449 | Trùng nguyên văn | Giữ |
-| Bộ lọc báo cáo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Loại báo cáo | Figma 304:2349, 304:2486, 304:2486 | Trùng nguyên văn | Giữ |
-| Lợi nhuận | UC3.1 3. dòng 355; UC3.1 9. dòng 361 | Trùng nguyên văn | Giữ |
-| Sản phẩm bán chạy/chậm | UC3.1 3. dòng 355; UC3.1 4. dòng 356; UC3.1 9. dòng 361 | Trùng nguyên văn | Giữ |
-| Nhóm sản phẩm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Tiêu chí xếp hạng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Doanh thu thuần | Figma 304:4266, 304:4506, 304:5198 | Trùng nguyên văn | Giữ |
-| Xem báo cáo | UC3.1 5. dòng 357; UC3.2 4. dòng 404 | Trùng nguyên văn | Giữ |
+| Khoảng thời gian hoặc tiêu chí lọc không hợp lệ | UC3.1 6a.2. dòng 373; UC3.2 5a.2. dòng 419 | Trùng nguyên văn | Giữ |
+| Không vượt quá ngày hiện tại | Figma 304:1199, 304:3852, 304:6989 | Trùng nguyên văn | Giữ |
+| Không nhỏ hơn Từ ngày | Figma 304:1199, 304:3852, 304:6989 | Trùng nguyên văn | Giữ |
+| Lọc nhanh: | Figma 304:2, 304:135, 304:365 | Trùng nguyên văn | Giữ |
 | Hôm nay | UC3.1 4a.1. dòng 365; UC3.2 3a.1. dòng 411 | Trùng nguyên văn | Giữ |
-| Xuất báo cáo | UC3.1 10a.1. dòng 369; UC3.1 10a.2. dòng 370; UC3.2 3a.3. dòng 415 | Trùng nguyên văn | Giữ |
-| Tổng doanh thu thuần | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
-| Tổng giá vốn | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
-| Số hóa đơn | Figma 304:4266, 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
-| Lợi nhuận gộp | Figma 304:5198, 304:5388 | Trùng nguyên văn | Giữ |
-| Không có dữ liệu phù hợp | UC3  BR-UC3 - 04 dòng 331; UC3.1 Post-conditions dòng 352; UC3.1 7b.2. dòng 380 | Trùng nguyên văn | Giữ |
-| Biểu đồ xu hướng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Định dạng | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| Xếp hạng theo: | Figma 304:5749, 304:5901, 304:6255 | Trùng nguyên văn | Giữ |
+| Xem báo cáo | UC3.1 5. dòng 357; UC3.2 4. dòng 404 | Trùng nguyên văn | Giữ |
 | Tiền mặt | UC6 8a.1. dòng 876 | Trùng nguyên văn | Giữ |
 | Chuyển khoản | UC6 8b.1. dòng 880 | Trùng nguyên văn | Giữ |
 | Giá bán đã thay đổi. Vui lòng chọn lại sản phẩm. | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
@@ -316,32 +358,32 @@ Quét AST chuỗi và JSX trong app/components/lib, gồm API, PDF/Excel. Templa
 | Vui lòng đăng nhập | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Không được để trống! | UC1.1 5a.1. dòng 39; UC1.2 5a.1. dòng 75; UC1.5 5a.1. dòng 169 | Trùng nguyên văn | Giữ |
 | Tạp hóa Quỳnh Như | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Báo cáo | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | HỆ THỐNG QUẢN LÝ BÁN HÀNG TẠP HÓA QUỲNH NHƯ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Loại báo cáo: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | đ | Figma 60:1533, 60:1533, 60:1860 | Trùng nguyên văn | Giữ |
 | Chưa cấu hình tài khoản nhận chuyển khoản. Vui lòng cấu hình VietQR trên Vercel. | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Số tiền chuyển khoản không hợp lệ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Mã giao dịch không hợp lệ | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Khoảng thời gian hoặc tiêu chí lọc không hợp lệ | UC3.1 6a.2. dòng 373; UC3.2 5a.2. dòng 419 | Trùng nguyên văn | Giữ |
 | Không thể tải báo cáo. Vui lòng thử lại | UC3.1 7a.2. dòng 377; UC3.2 6a.2. dòng 423 | Trùng nguyên văn | Giữ |
-| Tồn đầu kỳ | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
 | Nhập | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
 | Xuất | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
 | Điều chỉnh tăng | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
 | Điều chỉnh giảm | Figma 304:1605, 304:1964, 304:7817 | Trùng nguyên văn | Giữ |
-| Tồn cuối kỳ | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
-| Giá trị tồn | Figma 304:1605, 304:1605, 304:1964 | Trùng nguyên văn | Giữ |
 | Tổng | Figma 304:1605, 304:1964, 304:4266 | Trùng nguyên văn | Giữ |
-| 10 sản phẩm bán chạy | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| 10 sản phẩm bán chậm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| SL bán thuần ↑ | Figma 304:5901, 304:6255, 304:6609 | Trùng nguyên văn | Giữ |
+| Tồn kho | Figma 304:5901, 304:6255, 304:6609 | Trùng nguyên văn | Giữ |
+| SL bán thuần | Figma 304:6255 | Trùng nguyên văn | Giữ |
+| SL bán thuần ↓ | Figma 304:5901, 304:6609 | Trùng nguyên văn | Giữ |
+| Doanh thu thuần ↓ | Figma 304:6255 | Trùng nguyên văn | Giữ |
+| Top 10 sản phẩm bán chạy | Figma 304:5901, 304:6255, 304:6609 | Trùng nguyên văn | Giữ |
+| Top 10 sản phẩm bán chậm | Figma 304:5901, 304:6255, 304:6609 | Trùng nguyên văn | Giữ |
 | Ngày | Figma 304:4266, 304:4506 | Trùng nguyên văn | Giữ |
 | Từ ngày: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | · Đến ngày: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | · Sản phẩm: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | · Nhóm sản phẩm: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
+| · Sản phẩm / nhóm sản phẩm: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | · Tiêu chí xếp hạng: | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
-| Không thể xuất báo cáo, vui lòng thử lại | UC3.2 4a.2. dòng 458 | Trùng nguyên văn | Giữ |
 | Cần cấu hình DEMO_USERNAME và DEMO_PASSWORD để tạo tài khoản ban đầu | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Sữa & đồ uống | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
 | Mì & thực phẩm | Chưa có nguồn đối chiếu | Cần rà soát | Chưa kết luận; xem vị trí trong JSON |
@@ -436,3 +478,9 @@ Không tự thay các thông báo chỉ khác dấu câu. Word được ưu tiê
 ## Phạm vi chưa hoàn tất
 
 Bảng đánh dấu các câu chưa có nguồn, không coi đây là bảng đã sửa xong. Kiểm tra runtime và đối chiếu theo từng UC tiếp tục trong tests/chu.spec.ts và ui-parity.md.
+
+## UC3 — 13/11/2026
+
+Đã đọc 51 frame page 1:2; câu chờ, xử lý, lỗi tải, lỗi khoảng ngày, không có dữ liệu và lỗi xuất giữ nguyên nguồn Word/Figma. “Lọc nhanh:”, “Xếp hạng theo:”, “Định dạng được hỗ trợ”, tiêu đề bảng và các nút menu lấy từ Figma. Tên, số liệu, tiêu chí, khoảng ngày và dung lượng tệp là dữ liệu động.
+
+Frame 304:10082 lồng hai câu xác nhận khác nhau; dùng nguyên văn Word “Bạn có chắc chắn muốn hủy thao tác không?” với bố cục lớp trên cùng. Aria mô tả thao tác cho menu/lịch là nội dung hỗ trợ truy cập. Không sửa đặc tả gốc; chi tiết ở README và docs/uc3-figma.md.

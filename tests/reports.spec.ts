@@ -6,13 +6,17 @@ import { today, date } from "../lib/format";
 test("Báo cáo, Excel, PDF và dữ liệu sau tải lại", async ({ page }) => {
   await page.goto("/");
   await page.getByLabel("Tên đăng nhập").fill(process.env.DEMO_USERNAME!);
-  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page
+    .getByLabel("Mật khẩu", { exact: true })
+    .fill(process.env.DEMO_PASSWORD!);
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await page
     .getByRole("link", { name: "Báo cáo thống kê", exact: true })
     .click();
-  await expect(page.getByTestId("report-revenue")).toBeVisible();
+  await page.getByRole("button", { name: "Loại báo cáo", exact: true }).click();
+  await page.getByRole("option", { name: "Doanh thu", exact: true }).click();
   await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
+  await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
   await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
   await page.getByRole("button", { name: "Xem báo cáo", exact: true }).click();
   await expect(page.getByTestId("report-revenue")).toHaveText("72.000đ");
@@ -25,7 +29,12 @@ test("Báo cáo, Excel, PDF và dữ liệu sau tải lại", async ({ page }) =
     await page
       .getByRole("button", { name: "Xuất báo cáo", exact: true })
       .click();
-    await page.getByLabel("Định dạng", { exact: true }).selectOption(format);
+    await page
+      .getByRole("radio", {
+        name: format === "Excel" ? "Excel (.xlsx)" : "PDF (.pdf)",
+        exact: true,
+      })
+      .check();
     const download = page.waitForEvent("download");
     await page
       .getByRole("dialog", { name: "Xuất báo cáo" })
@@ -52,6 +61,7 @@ test("Báo cáo, Excel, PDF và dữ liệu sau tải lại", async ({ page }) =
     await expect(
       page.getByText("Xuất báo cáo thành công", { exact: true }),
     ).toBeVisible();
+    await page.keyboard.press("Escape");
   }
   await page
     .getByRole("link", { name: "Báo cáo xuất – nhập – tồn", exact: true })
@@ -60,6 +70,7 @@ test("Báo cáo, Excel, PDF và dữ liệu sau tải lại", async ({ page }) =
     page.getByRole("heading", { name: "Báo cáo xuất – nhập – tồn" }).first(),
   ).toBeVisible();
   await page.getByLabel("Từ ngày", { exact: true }).fill(date(today()));
+  await page.getByLabel("Đến ngày", { exact: true }).fill(date(today()));
   await page.getByRole("button", { name: "Xem báo cáo", exact: true }).click();
   const row = page.locator("tbody tr").filter({ hasText: "Sữa Milo" });
   await expect(row).toBeVisible();
@@ -68,7 +79,7 @@ test("Báo cáo, Excel, PDF và dữ liệu sau tải lại", async ({ page }) =
       "SELECT SUM(remaining) n FROM receipt_line WHERE product_id='SP0001'",
     )
   ).n;
-  expect(await row.locator("td").nth(7).innerText()).toBe(String(stock));
+  expect(await row.locator("td").nth(6).innerText()).toBe(String(stock));
   const before = await all("SELECT id,remaining FROM receipt_line ORDER BY id");
   await page.reload();
   await expect(

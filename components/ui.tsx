@@ -24,8 +24,10 @@ export async function api(path: string, data?: any) {
 }
 export const AppContext = createContext<any>(null);
 export const useApp = () => useContext(AppContext);
-export function Icon({ name, size }: { name: string; size?: number }) {
+export function Icon({ name, size, report = false }: { name: string; size?: number; report?: boolean }) {
   const sizes: Record<string, number> = {
+    reportBusiness: 16,
+    reportInventory: 16,
     cart: 40,
     chevron: 16,
     search: 18,
@@ -41,6 +43,8 @@ export function Icon({ name, size }: { name: string; size?: number }) {
     report: 20,
   };
   const ids: Record<string, string> = {
+    reportBusiness: "1f0e9",
+    reportInventory: "1487e",
     cart: "88365",
     chevron: "aec9f",
     search: "3a11f",
@@ -55,10 +59,11 @@ export function Icon({ name, size }: { name: string; size?: number }) {
     stock: "c205b",
     report: "683e4",
   };
+  const reportIds: Record<string,string> = {sale:"ed836",product:"90b50",customer:"626f0",supplier:"886ee",stock:"82580",report:"c47d3"};
   const s = size || sizes[name] || 20;
   return (
     <img
-      src={"/figma/" + ids[name] + ".svg"}
+      src={"/figma/" + (report ? reportIds[name] || ids[name] : ids[name]) + ".svg"}
       width={s}
       height={s}
       alt=""
@@ -116,7 +121,7 @@ export function Button({ children, variant = "", ...props }: any) {
     </button>
   );
 }
-export function Modal({ title, children, onClose, wide = false, className = "", overlayClassName = "", showClose = true }: any) {
+export function Modal({ title, children, onClose, wide = false, className = "", overlayClassName = "", showClose = true, dismissOnBackdrop = false }: any) {
   const ref = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
@@ -143,14 +148,14 @@ export function Modal({ title, children, onClose, wide = false, className = "", 
       }
     };
     document.addEventListener("keydown", h);
-    ref.current?.querySelector<HTMLElement>("input,select,button")?.focus();
+    ref.current?.querySelector<HTMLElement>("input,select,button,[href]")?.focus();
     return () => {
       document.removeEventListener("keydown", h);
       previous?.focus();
     };
   }, []);
   return (
-    <div className={"overlay " + overlayClassName}>
+    <div className={"overlay " + overlayClassName} onMouseDown={(e) => { if (dismissOnBackdrop && e.target === e.currentTarget) onClose?.(); }}>
       <div
         className={"modal " + (wide ? "wide" : "") + " " + className}
         role="dialog"

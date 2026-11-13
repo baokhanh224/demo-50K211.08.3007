@@ -30,7 +30,16 @@ export async function excel(report: Report) {
     sheet.addRow([]);
   }
   sheet.columns.forEach((column, i) => {
-    column.width = i === 0 ? 40 : i === 1 ? 24 : 20;
+    const ranking = report.type === "Sản phẩm bán chạy/chậm";
+    column.width = ranking
+      ? i === 0
+        ? 8
+        : i === 1
+          ? 40
+          : 24
+      : i === 0
+        ? 40
+        : 24;
     column.numFmt = "#,##0.##";
   });
   sheet.views = [{ state: "frozen", ySplit: 4 }];
@@ -63,7 +72,11 @@ export async function pdf(report: Report): Promise<Buffer> {
       doc.fontSize(11).text(s.title);
       doc.moveDown(0.6);
       const widths = s.columns.map((_, i) =>
-        i === 0 ? width * 0.26 : (width * 0.74) / (s.columns.length - 1),
+        s.columns[0] === "#"
+          ? width * [0.06, 0.42, 0.26, 0.26][i]
+          : i === 0
+            ? width * 0.26
+            : (width * 0.74) / (s.columns.length - 1),
       );
       function row(cells: any[], header = false, total = false) {
         const texts = cells.map((x) =>

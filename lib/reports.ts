@@ -51,7 +51,39 @@ export async function reportData(d: any): Promise<Report> {
         (!d.product || p.id === d.product) &&
         (!d.category || p.category_id === Number(d.category)),
     );
-    const ids = new Set(selected.map((p) => p.id));
+    const productIds = d.products ?? [],
+      categoryIds = d.categories ?? [];
+    if (
+      !Array.isArray(productIds) ||
+      !Array.isArray(categoryIds) ||
+      productIds.some(
+        (id: unknown) => typeof id !== "string" || !ps.some((p) => p.id === id),
+      ) ||
+      categoryIds.some(
+        (id: unknown) =>
+          !["string", "number"].includes(typeof id) ||
+          !Number.isInteger(Number(id)),
+      )
+    )
+      fail("Khoảng thời gian hoặc tiêu chí lọc không hợp lệ");
+    for (const id of categoryIds)
+      if (!(await one("SELECT id FROM category WHERE id=?", Number(id))))
+        fail("Khoảng thời gian hoặc tiêu chí lọc không hợp lệ");
+    const chosen = selected.filter(
+      (p) =>
+        (!productIds.length && !categoryIds.length) ||
+        productIds.includes(p.id) ||
+        categoryIds.map(Number).includes(p.category_id),
+    );
+    const ids = new Set(chosen.map((p) => p.id));
+    const selectionNames: string[] = [];
+    for (const id of categoryIds)
+      selectionNames.push(
+        (await one("SELECT name FROM category WHERE id=?", Number(id))).name,
+      );
+    selectionNames.push(
+      ...ps.filter((p) => productIds.includes(p.id)).map((p) => p.name),
+    );
     const inside = (time: string) => {
       const v = day(new Date(time));
       return v >= d.from && v <= d.to;
@@ -123,7 +155,7 @@ export async function reportData(d: any): Promise<Report> {
     let hasData = period.length > 0;
     if (d.type === "Xuất – nhập – tồn") {
       const moves = await all("SELECT * FROM movement ORDER BY id");
-      const rows = selected
+      const rows = chosen
         .map((p) => {
           let start = 0,
             input = 0,
@@ -144,8 +176,7 @@ export async function reportData(d: any): Promise<Report> {
           }
           const end = start + input - output + increase - decrease;
           return [
-            p.id + " · " + p.name,
-            p.base_unit,
+            p.name,
             start,
             input,
             output,
@@ -155,13 +186,12 @@ export async function reportData(d: any): Promise<Report> {
             end * p.average_cost,
           ];
         })
-        .filter((r) => r.slice(2, 8).some((x) => Number(x) !== 0));
+        .filter((r) => r.slice(1, 7).some((x) => Number(x) !== 0));
       sections = [
         {
           title: "Báo cáo xuất – nhập – tồn",
           columns: [
             "Sản phẩm",
-            "Đơn vị tính",
             "Tồn đầu kỳ",
             "Nhập",
             "Xuất",
@@ -173,14 +203,13 @@ export async function reportData(d: any): Promise<Report> {
           rows,
           total: [
             "Tổng",
-            "",
-            ...Array.from({ length: 7 }, (_, i) => sum(rows, i + 2)),
+            ...Array.from({ length: 7 }, (_, i) => sum(rows, i + 1)),
           ],
         },
       ];
       hasData = rows.length > 0;
     } else if (d.type === "Sản phẩm bán chạy/chậm") {
-      const metrics = selected.map((p) => {
+      const metrics = chosen.map((p) => {
         const es = period.filter((e) => e.product === p.id);
         return {
           p,
@@ -189,39 +218,45 @@ export async function reportData(d: any): Promise<Report> {
         };
       });
       const key = d.rank === "Doanh thu thuần" ? "revenue" : "quantity";
-      const make = (title: string, items: any[]): Section => {
-        const rows = items.map((m) => [
-          m.p.id + " · " + m.p.name,
-          m.p.base_unit,
+      const make = (title: string, items: any[], slow = false): Section => {
+        const byRevenue = d.rank === "Doanh thu thuần";
+        const rows = items.map((m, i) => [
+          i + 1,
+          m.p.name,
           m.quantity,
-          m.revenue,
+          slow ? m.p.stock : m.revenue,
         ]);
         return {
           title,
-          columns: [
-            "Sản phẩm",
-            "Đơn vị tính",
-            "Số lượng bán thuần",
-            "Doanh thu thuần",
-          ],
+          columns: slow
+            ? ["#", "Sản phẩm", "SL bán thuần ↑", "Tồn kho"]
+            : [
+                "#",
+                "Sản phẩm",
+                byRevenue ? "SL bán thuần" : "SL bán thuần ↓",
+                byRevenue ? "Doanh thu thuần ↓" : "Doanh thu thuần",
+              ],
           rows,
           total: ["Tổng", "", sum(rows, 2), sum(rows, 3)],
         };
       };
       sections = [
         make(
-          "10 sản phẩm bán chạy",
+          "Top 10 sản phẩm bán chạy",
           metrics
             .filter((m) => m[key] > 0)
             .sort((a, b) => b[key] - a[key] || a.p.id.localeCompare(b.p.id))
             .slice(0, 10),
         ),
         make(
-          "10 sản phẩm bán chậm",
+          "Top 10 sản phẩm bán chậm",
           metrics
             .filter((m) => m.p.stock > 0)
-            .sort((a, b) => a[key] - b[key] || a.p.id.localeCompare(b.p.id))
+            .sort(
+              (a, b) => a.quantity - b.quantity || a.p.id.localeCompare(b.p.id),
+            )
             .slice(0, 10),
+          true,
         ),
       ];
       hasData = sections.some((s) => s.rows.length > 0);
@@ -259,9 +294,17 @@ export async function reportData(d: any): Promise<Report> {
     const report: Report = {
       id: randomUUID(),
       type: d.type,
-      filters: { ...d, category_name: category, product_name: product },
+      filters: {
+        ...d,
+        category_name: category,
+        product_name: product,
+        selection_names: selectionNames,
+      },
       filterText:
         `Từ ngày: ${date(d.from)} · Đến ngày: ${date(d.to)} · Sản phẩm: ${product} · Nhóm sản phẩm: ${category}` +
+        (selectionNames.length
+          ? ` · Sản phẩm / nhóm sản phẩm: ${selectionNames.join(", ")}`
+          : "") +
         (d.type === "Sản phẩm bán chạy/chậm"
           ? ` · Tiêu chí xếp hạng: ${d.rank || "Số lượng bán thuần"}`
           : ""),

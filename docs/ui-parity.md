@@ -61,57 +61,57 @@ Bốn frame đã có context, ảnh chuẩn 1440×900 và ảnh thật từ prod
 | 336:7095 — UC 6.1 – Tìm sản phẩm bằng tên | `/` → UC 6.1 – Tìm sản phẩm bằng tên | Chưa so ảnh |
 | 336:7267 — UC 6.1 – 8d Gắn khách hàng | `/` → UC 6.1 – 8d Gắn khách hàng | Chưa so ảnh |
 | 336:7433 — UC 6.1 – 8d.2a Không tìm thấy khách hàng | `/` → UC 6.1 – 8d.2a Không tìm thấy khách hàng | Chưa so ảnh |
-| 304:2 — UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn | `/?view=reports` → UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn | Chưa so ảnh |
-| 304:135 — UC_3.2 – Main Flow – Chọn Từ ngày | `/?view=reports` → UC_3.2 – Main Flow – Chọn Từ ngày | Chưa so ảnh |
-| 304:365 — UC_3.2– Main Flow – Chọn Đến ngày | `/?view=reports` → UC_3.2– Main Flow – Chọn Đến ngày | Chưa so ảnh |
-| 304:610 — UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm | `/?view=reports` → UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm | Chưa so ảnh |
-| 304:787 — UC_3.2 – 3a Chọn bộ lọc thời gian nhanh | `/?view=reports` → UC_3.2 – 3a Chọn bộ lọc thời gian nhanh | Chưa so ảnh |
-| 304:920 — UC_3.2– 3a Tự động xác định khoảng thời gian | `/?view=reports` → UC_3.2– 3a Tự động xác định khoảng thời gian | Chưa so ảnh |
-| 304:1054 — UC_3.2 – Main Flow – Đang xử lý | `/?view=reports` → UC_3.2 – Main Flow – Đang xử lý | Chưa so ảnh |
-| 304:1199 — UC_3.2 – 5a Tiêu chí lọc không hợp lệ | `/?view=reports` → UC_3.2 – 5a Tiêu chí lọc không hợp lệ | Chưa so ảnh |
-| 304:1337 — UC_3.2 – 6a Không thể truy xuất dữ liệu | `/?view=reports` → UC_3.2 – 6a Không thể truy xuất dữ liệu | Chưa so ảnh |
-| 304:1471 — UC_3.2 – 6b Không có dữ liệu phù hợp | `/?view=reports` → UC_3.2 – 6b Không có dữ liệu phù hợp | Chưa so ảnh |
-| 304:1605 — UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn | `/?view=reports` → UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn | Chưa so ảnh |
-| 304:1964 — UC_3.2 – 9a Xuất báo cáo đang xem | `/?view=reports` → UC_3.2 – 9a Xuất báo cáo đang xem | Chưa so ảnh |
-| 304:2349 — UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh | `/?view=reports` → UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh | Chưa so ảnh |
-| 304:2486 — UC_3.1 – 03 - Main Flow – Chọn loại báo cáo | `/?view=reports` → UC_3.1 – 03 - Main Flow – Chọn loại báo cáo | Chưa so ảnh |
-| 304:2632 — UC_3.1 – Main Flow – Chọn Từ ngày | `/?view=reports` → UC_3.1 – Main Flow – Chọn Từ ngày | Chưa so ảnh |
-| 304:2866 — UC_3.1 – 02 - Main Flow – Chọn Đến ngày  | `/?view=reports` → UC_3.1 – 02 - Main Flow – Chọn Đến ngày  | Chưa so ảnh |
-| 304:3115 — UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm | `/?view=reports` → UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm | Chưa so ảnh |
-| 304:3296 — UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo | `/?view=reports` → UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo | Chưa so ảnh |
-| 304:3433 — UC_3.1 – 4a Chọn bộ lọc thời gian nhanh | `/?view=reports` → UC_3.1 – 4a Chọn bộ lọc thời gian nhanh | Chưa so ảnh |
-| 304:3570 — UC_3.1 – 4a Tự động xác định khoảng thời gian | `/?view=reports` → UC_3.1 – 4a Tự động xác định khoảng thời gian | Chưa so ảnh |
-| 304:3708 — UC_3.1 – Main Flow – Đang xử lý | `/?view=reports` → UC_3.1 – Main Flow – Đang xử lý | Chưa so ảnh |
-| 304:3852 — UC_3.1 – 6a Tiêu chí lọc không hợp lệ | `/?view=reports` → UC_3.1 – 6a Tiêu chí lọc không hợp lệ | Chưa so ảnh |
-| 304:3992 — UC_3.1 – 7a Không thể truy xuất dữ liệu | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu | Chưa so ảnh |
-| 304:4129 — UC_3.1 – 7b Không có dữ liệu phù hợp | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp | Chưa so ảnh |
-| 304:4266 — UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu | `/?view=reports` → UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu | Chưa so ảnh |
-| 304:4506 — UC_3.1 – 10a Xuất báo cáo đang xem | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem | Chưa so ảnh |
-| 304:4772 — UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận | `/?view=reports` → UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận | Chưa so ảnh |
-| 304:4917 — UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận) | `/?view=reports` → UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận) | Chưa so ảnh |
-| 304:5054 — UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận | `/?view=reports` → UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận | Chưa so ảnh |
-| 304:5198 — UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận | `/?view=reports` → UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận | Chưa so ảnh |
-| 304:5388 — UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận) | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận) | Chưa so ảnh |
-| 304:5604 — UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm | `/?view=reports` → UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm | Chưa so ảnh |
-| 304:5749 — UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm) | Chưa so ảnh |
-| 304:5901 — UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần | `/?view=reports` → UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần | Chưa so ảnh |
-| 304:6255 — UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần | `/?view=reports` → UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần | Chưa so ảnh |
-| 304:6609 — UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm) | Chưa so ảnh |
-| 304:6989 — UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận) | `/?view=reports` → UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận) | Chưa so ảnh |
-| 304:7129 — UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận) | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận) | Chưa so ảnh |
-| 304:7266 — UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm) | Chưa so ảnh |
-| 304:7403 — UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận) | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận) | Chưa so ảnh |
-| 304:7540 — UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm) | Chưa so ảnh |
-| 304:7680 — UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm) | Chưa so ảnh |
-| 304:7817 — UC_3.3– Main Flow – Nhấn "Xuất báo cáo" | `/?view=reports` → UC_3.3– Main Flow – Nhấn "Xuất báo cáo" | Chưa so ảnh |
-| 304:8176 — UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ | `/?view=reports` → UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ | Chưa so ảnh |
-| 304:8561 — UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất) | `/?view=reports` → UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất) | Chưa so ảnh |
-| 304:8952 — UC_3.3 – Main Flow – Đang xuất báo cáo | `/?view=reports` → UC_3.3 – Main Flow – Đang xuất báo cáo | Chưa so ảnh |
-| 304:9325 — UC_3.3 - Main Flow – Xuất báo cáo thành công | `/?view=reports` → UC_3.3 - Main Flow – Xuất báo cáo thành công | Chưa so ảnh |
-| 304:10082 — UC_3.3– 3a Xác nhận hủy xuất báo cáo | `/?view=reports` → UC_3.3– 3a Xác nhận hủy xuất báo cáo | Chưa so ảnh |
-| 304:10499 — UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo | `/?view=reports` → UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo | Chưa so ảnh |
-| 304:11243 — UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo | `/?view=reports` → UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo | Chưa so ảnh |
-| 304:11614 — UC_3.3– 5a Không thể tạo tệp báo cáo | `/?view=reports` → UC_3.3– 5a Không thể tạo tệp báo cáo | Chưa so ảnh |
+| 304:2 — UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn | `/?view=stock-report` → UC_3.2– Main Flow – Mở Báo cáo xuất – nhập – tồn | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:135 — UC_3.2 – Main Flow – Chọn Từ ngày | `/?view=stock-report` → UC_3.2 – Main Flow – Chọn Từ ngày | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:365 — UC_3.2– Main Flow – Chọn Đến ngày | `/?view=stock-report` → UC_3.2– Main Flow – Chọn Đến ngày | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:610 — UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm | `/?view=stock-report` → UC_3.2 – Main Flow – Chọn sản phẩm / nhóm sản phẩm | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:787 — UC_3.2 – 3a Chọn bộ lọc thời gian nhanh | `/?view=stock-report` → UC_3.2 – 3a Chọn bộ lọc thời gian nhanh | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:920 — UC_3.2– 3a Tự động xác định khoảng thời gian | `/?view=stock-report` → UC_3.2– 3a Tự động xác định khoảng thời gian | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:1054 — UC_3.2 – Main Flow – Đang xử lý | `/?view=stock-report` → UC_3.2 – Main Flow – Đang xử lý | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:1199 — UC_3.2 – 5a Tiêu chí lọc không hợp lệ | `/?view=stock-report` → UC_3.2 – 5a Tiêu chí lọc không hợp lệ | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:1337 — UC_3.2 – 6a Không thể truy xuất dữ liệu | `/?view=stock-report` → UC_3.2 – 6a Không thể truy xuất dữ liệu | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:1471 — UC_3.2 – 6b Không có dữ liệu phù hợp | `/?view=stock-report` → UC_3.2 – 6b Không có dữ liệu phù hợp | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:1605 — UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn | `/?view=stock-report` → UC_3.2– Main Flow – Kết quả báo cáo xuất – nhập – tồn | Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động |
+| 304:1964 — UC_3.2 – 9a Xuất báo cáo đang xem | `/?view=stock-report` → UC_3.2 – 9a Xuất báo cáo đang xem | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:2349 — UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh | `/?view=reports` → UC_3.1 – 01 - Main Flow – Mở Báo cáo kinh doanh | Đã so ảnh 1440×900; còn khoảng 0,37% pixel khác |
+| 304:2486 — UC_3.1 – 03 - Main Flow – Chọn loại báo cáo | `/?view=reports` → UC_3.1 – 03 - Main Flow – Chọn loại báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:2632 — UC_3.1 – Main Flow – Chọn Từ ngày | `/?view=reports` → UC_3.1 – Main Flow – Chọn Từ ngày | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:2866 — UC_3.1 – 02 - Main Flow – Chọn Đến ngày  | `/?view=reports` → UC_3.1 – 02 - Main Flow – Chọn Đến ngày  | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3115 — UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm | `/?view=reports` → UC_3.1 – 04– Main Flow – Chọn sản phẩm / nhóm sản phẩm | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3296 — UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo | `/?view=reports` → UC_3.1 – 05 – Main Flow – Nhấn Xem báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3433 — UC_3.1 – 4a Chọn bộ lọc thời gian nhanh | `/?view=reports` → UC_3.1 – 4a Chọn bộ lọc thời gian nhanh | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3570 — UC_3.1 – 4a Tự động xác định khoảng thời gian | `/?view=reports` → UC_3.1 – 4a Tự động xác định khoảng thời gian | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3708 — UC_3.1 – Main Flow – Đang xử lý | `/?view=reports` → UC_3.1 – Main Flow – Đang xử lý | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3852 — UC_3.1 – 6a Tiêu chí lọc không hợp lệ | `/?view=reports` → UC_3.1 – 6a Tiêu chí lọc không hợp lệ | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:3992 — UC_3.1 – 7a Không thể truy xuất dữ liệu | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:4129 — UC_3.1 – 7b Không có dữ liệu phù hợp | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:4266 — UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu | `/?view=reports` → UC_3.1 – Main Flow – Kết quả báo cáo Doanh thu | Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động |
+| 304:4506 — UC_3.1 – 10a Xuất báo cáo đang xem | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:4772 — UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận | `/?view=reports` → UC_3.1 – Main Flow – Chọn loại báo cáo Lợi nhuận | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:4917 — UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận) | `/?view=reports` → UC_3.1  – 4a Tự động xác định khoảng thời gian (Lợi nhuận) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:5054 — UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận | `/?view=reports` → UC_3.1  – Main Flow – Đang xử lý (Lợi nhuận | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:5198 — UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận | `/?view=reports` → UC_3.1 – Main Flow – Kết quả báo cáo Lợi nhuận | Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động |
+| 304:5388 — UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận) | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem (Lợi nhuận) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:5604 — UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm | `/?view=reports` → UC_3.1 - Main Flow – Chọn loại báo cáo Sản phẩm bán chạy/chậm | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:5749 — UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – Main Flow – Đang xử lý (Sản phẩm bán chạy/chậm) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:5901 — UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần | `/?view=reports` → UC_3.1 –Main Flow – Kết quả xếp hạng theo Số lượng bán thuần | Đã đối chiếu bố cục ảnh nguồn và UI; dữ liệu động |
+| 304:6255 — UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần | `/?view=reports` → UC_3.1 – Main Flow – Kết quả xếp hạng theo Doanh thu thuần | Đã kiểm tra radio/cột/sắp xếp; chưa so pixel toàn ảnh |
+| 304:6609 — UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 10a Xuất báo cáo đang xem (Sản phẩm bán chạy/chậm) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:6989 — UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận) | `/?view=reports` → UC_3.1 –6a Tiêu chí lọc không hợp lệ (Lợi nhuận) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7129 — UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận) | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu (Lợi nhuận) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7266 — UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 7a Không thể truy xuất dữ liệu (Sản phẩm bán chạy/chậm) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7403 — UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận) | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp (Lợi nhuận) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7540 — UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 6a Tiêu chí lọc không hợp lệ (Sản phẩm bán chạy/chậm) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7680 — UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm) | `/?view=reports` → UC_3.1 – 7b Không có dữ liệu phù hợp (Sản phẩm bán chạy/chậm) | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:7817 — UC_3.3– Main Flow – Nhấn "Xuất báo cáo" | `/?view=stock-report` → UC_3.3– Main Flow – Nhấn "Xuất báo cáo" | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:8176 — UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ | `/?view=stock-report` → UC_3.3 – Main Flow – Hiển thị định dạng hỗ trợ | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:8561 — UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất) | `/?view=stock-report` → UC_3.3 – Main Flow – Chọn định dạng (có nội dung sẽ xuất) | Đã đối chiếu hộp xuất và UI; chưa so pixel toàn ảnh |
+| 304:8952 — UC_3.3 – Main Flow – Đang xuất báo cáo | `/?view=stock-report` → UC_3.3 – Main Flow – Đang xuất báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:9325 — UC_3.3 - Main Flow – Xuất báo cáo thành công | `/?view=stock-report` → UC_3.3 - Main Flow – Xuất báo cáo thành công | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:10082 — UC_3.3– 3a Xác nhận hủy xuất báo cáo | `/?view=stock-report` → UC_3.3– 3a Xác nhận hủy xuất báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:10499 — UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo | `/?view=stock-report` → UC_3.3 - 3a.4 Quay lại giao diện xuất báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:11243 — UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo | `/?view=stock-report` → UC_3.3 – 4a Không thể truy xuất dữ liệu báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
+| 304:11614 — UC_3.3– 5a Không thể tạo tệp báo cáo | `/?view=stock-report` → UC_3.3– 5a Không thể tạo tệp báo cáo | Đã đọc context/ảnh và dựng trạng thái chung; xem docs/uc3-figma.md; chưa so pixel riêng |
 | 90:148 — UC 5.1 – Main Flow – Thêm khách hàng | `/?view=customers` → UC 5.1 – Main Flow – Thêm khách hàng | Chưa so ảnh |
 | 90:286 — UC 5.1 –  Thêm khách hàng thành công | `/?view=customers` → UC 5.1 –  Thêm khách hàng thành công | Chưa so ảnh |
 | 90:419 — UC 5.1 – Hủy khi đã nhập thông tin | `/?view=customers` → UC 5.1 – Hủy khi đã nhập thông tin | Chưa so ảnh |
@@ -256,3 +256,7 @@ Typecheck/build đạt, kiểm tra UI local và public đạt: tìm theo điện
 Đã đọc context/ảnh 304:2866 (Đến ngày) và 304:2632 (Từ ngày). Lịch popup 276×312, dưới ô đang chọn 6px, padding12, radius10, border d1d5db, bóng0/6/16/14%; header tiếng Việt, icon16px xuất từ Figma. Tuần bắt đầu T2, 42 ô, hai đầu khoảng ngày xanh103a9b, giữa dbeafe; nhập tay dd/mm/yyyy, chuyển tháng và đóng bằng Escape/click ngoài. Chỉ áp dụng Báo cáo kinh doanh; báo cáo xuất–nhập–tồn giữ form ngày cũ.
 
 Typecheck/build đạt; kiểm tra UI local và Vercel: khoảng28/10–03/11 tô đúng; chọnngày cập nhật input; chuyển tháng qua năm mới; ngày nhuận29/02/2028; chỉ mở một lịch; Escape đóng; khoảng đảo ngược vẫn trả đúng lỗi nghiệp vụ. Khi bấm Xem báo cáo gửi from=2026-10-28/to=2026-11-03, không sai lệch múi giờ. Deploy c77ff0e success. Chứng cứ docs/evidence/report-calendar. Chỉ đối chiếu thành phần lịch, không nhận toàn bộ bộ lọc/biểu đồ báo cáo đã giống Figma.
+
+## UC3 — 13/11/2026
+
+Đã đọc 51 context và ảnh. Bố cục, bộ lọc, bốn kết quả và hộp xuất đã sửa theo nguồn; kết quả kiểm tra và giới hạn xem [uc3-figma.md](uc3-figma.md). Không đánh dấu toàn bộ là giống tuyệt đối.
