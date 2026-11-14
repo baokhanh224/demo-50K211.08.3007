@@ -2,6 +2,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { api, Button, Field, Modal, Notice, useApp, useForm } from "./ui";
 import "./suppliers.css";
+import { supplierErrors } from "@/lib/supplier-validation";
 
 const statuses = ["Đang hợp tác", "Ngừng hợp tác"];
 function Asset({ file, size, ...props }: any) {
@@ -24,7 +25,7 @@ function Select({ label, value, options, onChange, inline = false }: any) {
     const close = (e: MouseEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(false); };
     document.addEventListener("mousedown", close); return () => document.removeEventListener("mousedown", close);
   }, []);
-  return <div ref={ref} className={`supplier-select ${inline ? "supplier-inline-select" : ""}`} onKeyDown={e => { if (e.key === "Escape" && open) { e.stopPropagation(); setOpen(false); } }}>
+  return <div ref={ref} className={`supplier-select ${inline ? "supplier-inline-select" : ""} ${inline && label === "Danh mục" ? "supplier-filter-category" : ""}`} onKeyDown={e => { if (e.key === "Escape" && open) { e.stopPropagation(); setOpen(false); } }}>
     <button type="button" aria-label={label} aria-haspopup="listbox" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
       {inline && <span className="supplier-filter-label">{label}:</span>}<span className="supplier-select-value">{options.find((o: any) => String(o.value) === String(value))?.label || "Tất cả"}</span><Asset file={inline ? "002a0" : "7b65a"} size={14} />
     </button>
@@ -45,6 +46,9 @@ function SupplierConfirm({ deletion = false, busy = false, onClose, onConfirm }:
 function CategoryPicker({ form, set, error, validate }: any) {
   const { data } = useApp();
   const [open, setOpen] = useState(false);
+  const [committed, setCommitted] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
+  useEffect(() => { if (error) setCommitted(false); }, [error]);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
   useEffect(() => {
@@ -55,15 +59,20 @@ function CategoryPicker({ form, set, error, validate }: any) {
   return <div className="supplier-category-field supplier-full">
     <label id={id}>Danh mục</label>
     <div className="supplier-category-picker" ref={ref} onKeyDown={e => { if (e.key === "Escape" && open) { e.stopPropagation(); setOpen(false); } }}>
-      <button type="button" aria-labelledby={id} aria-haspopup="dialog" aria-expanded={open} onClick={() => setOpen(!open)} className="supplier-category-trigger">
-        <span className="supplier-category-chips">{!selected.length && !form.other ? <span className="supplier-placeholder">Chọn một hoặc nhiều danh mục</span> : <>{selected.map((c: any) => <span className="supplier-chip" key={c.id}>{c.name}</span>)}{form.other && <span className="supplier-chip">{form.new_category.trim() || "Khác"}</span>}</>}</span><Asset file="68810" size={14} />
+      <button ref={trigger} type="button" aria-labelledby={id} aria-haspopup="dialog" aria-expanded={open} onClick={() => setOpen(!open)} className="supplier-category-trigger">
+        <span className="supplier-category-chips">{!selected.length && !form.other ? <span className="supplier-placeholder">Chọn một hoặc nhiều danh mục</span> : <>{selected.map((c: any) => <span className="supplier-chip" key={c.id}>{c.name}</span>)}{form.other && <span className="supplier-chip">{committed ? form.new_category.trim() : "Khác"}</span>}</>}</span><Asset file="68810" size={14} />
       </button>
       {open && <div className="supplier-category-menu" role="dialog" aria-label="Chọn danh mục">
         {data.categories.map((c: any) => <label className="supplier-category-option" key={c.id}><input type="checkbox" checked={form.category_ids.includes(c.id)} onChange={e => set("category_ids", e.target.checked ? [...form.category_ids, c.id] : form.category_ids.filter((id: number) => id !== c.id))} />{c.name}</label>)}
-        <label className="supplier-category-option"><input type="checkbox" checked={form.other} onChange={e => { set("other", e.target.checked); setOpen(false); }} />Khác</label>
+        <label className="supplier-category-option"><input type="checkbox" checked={form.other} onChange={e => { set("other", e.target.checked); set("new_category", ""); setCommitted(false); setOpen(false); }} />Khác</label>
       </div>}
     </div>
-    {form.other && <Field label="Tên danh mục mới" placeholder="Nhập tên danh mục mới" value={form.new_category} onChange={(e: any) => set("new_category", e.target.value)} onBlur={validate} error={error} />}
+    {form.other && !committed && <div className="supplier-new-category">
+      <input aria-label="Tên danh mục mới" placeholder="Nhập tên danh mục mới" value={form.new_category} aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined}
+        onChange={e => set("new_category", e.target.value)} onBlur={validate}
+        onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); if (!validate()) { set("new_category", form.new_category.trim()); setCommitted(true); trigger.current?.focus(); } } }} />
+      {error && <p id={id + "-error"} className="field-error" role="alert">{error}</p>}
+    </div>}
   </div>;
 }
 export function SupplierForm({ item = {}, onClose, onSaved }: any) {
@@ -76,14 +85,15 @@ export function SupplierForm({ item = {}, onClose, onSaved }: any) {
   function close() { if (saving.current) return; if (changed) setCancelOpen(true); else onClose(); }
   function validateCategory() {
     if (!f.form.other) return "";
-    const name = f.form.new_category.trim();
-    const error = !name ? "Vui lòng nhập tên danh mục mới!" : data.categories.some((c: any) => c.name.toLowerCase() === name.toLowerCase()) ? "Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!" : "";
+    const error = supplierErrors(f.form, data.categories).new_category || "";
     f.setErrors((prev: any) => ({ ...prev, new_category: error || undefined }));
     return error;
   }
   async function save(e: React.FormEvent) {
     e.preventDefault(); if (saving.current) return;
-    if (validateCategory()) return;
+    const errors = supplierErrors(f.form, data.categories);
+    f.setErrors(errors); f.setError("");
+    if (Object.keys(errors).length) return;
     saving.current = true; f.setBusy(true);
     try {
       const r = await api("action", { action: "save-suppliers", ...f.form });

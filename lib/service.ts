@@ -1,3 +1,4 @@
+import { supplierErrors } from "./supplier-validation";
 import {
   db,
   all,
@@ -260,31 +261,9 @@ export async function updatePrice(d: any) {
   });
 }
 export async function saveSupplier(d: any) {
-  required(d, ["name", "phone"]);
-  const fields: Record<string, string> = {};
-  if (!/^\d{10}$/.test(d.phone || "")) fields.phone = "Dữ liệu không hợp lệ!";
-  if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email))
-    fields.email = "Dữ liệu không hợp lệ!";
-  if (d.id && !["Đang hợp tác", "Ngừng hợp tác"].includes(d.status))
-    fields.status = "Dữ liệu không hợp lệ!";
-  if (Object.keys(fields).length) fail("Dữ liệu không hợp lệ!", fields);
   const categories = await all("SELECT * FROM category");
-  if (d.other) {
-    if (!present(d.new_category))
-      fail("Vui lòng nhập tên danh mục mới!", {
-        new_category: "Vui lòng nhập tên danh mục mới!",
-      });
-    if (
-      categories.some(
-        (c) =>
-          c.name.toLocaleLowerCase("vi") ===
-          d.new_category.trim().toLocaleLowerCase("vi"),
-      )
-    )
-      fail("Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!", {
-        new_category: "Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!",
-      });
-  }
+  const fields = supplierErrors(d, categories);
+  if (Object.keys(fields).length) fail(Object.values(fields)[0], fields);
   return await transaction(async () => {
     const id = d.id || (await code("NCC"));
     if (d.id) {

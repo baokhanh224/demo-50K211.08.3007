@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-14",
+  "production_build": true,
+  "typecheck": true,
+  "playwright_passed": 3,
+  "playwright_failed": 0,
+  "checked_in_add_and_edit": [
+    "no visible new-category heading",
+    "new-category input directly below picker",
+    "3 simultaneous missing-field errors",
+    "3 simultaneous invalid-field errors",
+    "Enter adds pending chip and hides input",
+    "Enter does not save supplier or category"
+  ],
+  "api_validation": "all three fields returned together, HTTP 400, no writes",
+  "main_category_filter": "scrollable listbox, overflow-y scroll, scrollHeight > clientHeight with current categories",
+  "production_business_writes": false
+}

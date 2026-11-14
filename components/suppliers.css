@@ -134,3 +134,10 @@ body:has(.supplier-page) .sidebar-bottom button:last-child{height:35px;padding:1
 .supplier-toolbar>.btn.primary{width:173.08px;}
 .supplier-toolbar>.btn:nth-child(2){width:76.33px;}
 .supplier-toolbar>.btn:nth-child(3){width:74.84px;}
+
+/* UC2 category draft: no visible heading; Enter records the pending category. */
+.supplier-new-category{display:flex;flex-direction:column;gap:4px;}
+.supplier-filter-category .supplier-select-menu{max-height:140px;overflow-y:scroll;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#94a3b8 #f1f5f9;}
+.supplier-filter-category .supplier-select-menu::-webkit-scrollbar{width:6px;}
+.supplier-filter-category .supplier-select-menu::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}
+.supplier-filter-category .supplier-select-menu::-webkit-scrollbar-track{background:#f1f5f9;}

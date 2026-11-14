@@ -203,3 +203,9 @@ Lỗi đã sửa khi kiểm tra: chọn “Khác” cần đóng dropdown để 
 Bằng chứng: `docs/evidence/suppliers-20261114/`; đối chiếu frame/icon: `docs/uc2-figma.md`, `docs/supplier-assets.json`. Không khẳng định trùng tuyệt đối mọi pixel khi số lượng/nội dung bản ghi khác dữ liệu mẫu Figma. Không kiểm tra ghi/xóa dữ liệu nghiệp vụ trên production.
 
 Kiểm tra công khai sau triển khai commit `3b85a58`: Vercel `Deployment has completed`, deployment `WTcZvVrM38FJvRAgjRLLxYxqXaqE`. Đăng nhập và mở https://tap-hoa-quynh-nhu.vercel.app/?view=suppliers thành công; chọn dòng, drawer 460px, form thêm tại (420;185,578) kích thước 600×528,844, xác nhận hủy, tìm rỗng và xóa từ khóa đều hoạt động. Không có lỗi JavaScript hoặc icon thiếu. Không lưu/xóa dữ liệu nghiệp vụ trên public. Bằng chứng số đo: `docs/evidence/suppliers-20261114/public-verification.json`; ảnh public có dữ liệu thực được giữ ngoài GitHub.
+
+### Phản hồi UC2: danh mục mới, Enter, lỗi đồng thời
+
+Đã bỏ tiêu đề riêng của ô tên danh mục mới, đặt input ngay dưới bộ chọn Danh mục; Enter ghi nhận chip tạm, ẩn input và không submit form. Danh mục chỉ lưu vào CSDL khi Lưu nhà cung cấp. Bộ lọc danh mục chính có vùng cuộn.
+
+Đã thay kiểm tra dừng ở lỗi đầu tiên bằng kiểm tra tổng hợp dùng chung giữa form/API. `npm run build`, `npm run typecheck` và `tests/suppliers.spec.ts`: **3/3 đạt** trên production build cục bộ. Đã thử cả form thêm và sửa: đủ 3 lỗi bỏ trống, đủ 3 lỗi sai/trùng, vị trí input cách bộ chọn 4px, không có tiêu đề riêng; Enter không tạo request ghi hay bản ghi. API trực tiếp cũng trả đủ 3 lỗi với HTTP 400. Kiểm tra thêm/sửa/xóa/chặn xóa cũ vẫn đạt. Bằng chứng: `docs/evidence/supplier-category-20261114/`. Không ghi dữ liệu nghiệp vụ trên production.

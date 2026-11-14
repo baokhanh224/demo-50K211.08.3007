@@ -49,3 +49,9 @@ Các URL asset Figma trả HTTP 403 tại proxy môi trường. Đã xuất tr�
 Các số đo được kiểm tra ở 1440×900; kiểm tra không tràn trang ở 1280×900 và 1920×900. Không khẳng định mọi pixel của mọi trạng thái trùng tuyệt đối khi dữ liệu thật khác dữ liệu minh họa Figma.
 
 Yêu cầu “Mã khách hàng” trong danh sách các chỉnh sửa UC2 được hiểu là mã nhà cung cấp theo ngữ cảnh và cột trong Figma. Không thay đổi màu mã khách hàng ở UC5.
+
+## Bổ sung theo phản hồi — danh mục mới và lỗi đồng thời
+
+Ô nhập tên danh mục mới không có tiêu đề riêng, nằm ngay dưới ô Danh mục. Enter với tên hợp lệ chuyển thành chip danh mục tạm và ẩn ô nhập; thao tác này không gửi lưu nhà cung cấp hoặc tạo danh mục trong CSDL. Dữ liệu mới chỉ được ghi cùng transaction khi bấm Lưu. Bộ lọc danh mục trang chính có vùng cuộn 140px.
+
+Form và API dùng chung `lib/supplier-validation.ts`, thu thập lỗi tất cả trường trước khi trả kết quả. Kiểm tra bỏ trống tên/SĐT/danh mục mới và nhập sai SĐT/email/trùng danh mục đều hiển thị đủ ba lỗi trong một lần, giữ nguyên câu chữ.

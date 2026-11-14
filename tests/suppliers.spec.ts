@@ -78,3 +78,41 @@ test("UC2 real API: create, update, category validation, protected deletion and 
     await page.getByRole("button",{name:"Tìm kiếm",exact:true}).click();await page.getByRole("checkbox",{name:`Chọn ${createdId}`,exact:true}).check();await page.getByRole("button",{name:"Xóa",exact:true}).click();const dialog=page.getByRole("dialog",{name:"Xóa nhà cung cấp",exact:true});await expect(dialog.getByRole("button",{name:"Xác nhận",exact:true})).toHaveCSS("color","rgb(255, 255, 255)");await dialog.getByRole("button",{name:"Xác nhận",exact:true}).click();await expect(page.locator(".supplier-toast:not(.supplier-toast-error)>span")).toHaveText("Xóa nhà cung cấp thành công!");await capture(page,"deleted");
   }finally{if(createdId)await page.request.post('/api/action',{data:{action:'delete-suppliers',id:createdId}});}
 });
+
+test("UC2: simultaneous errors, category Enter draft and scrolling main filter", async ({page}) => {
+  test.skip(!!process.env.BASE_URL?.startsWith("https:"), "Backend validation checks use the local test database");
+  await page.setViewportSize({width:1440,height:900}); await login(page);
+  const bootstrap=await (await page.request.get('/api/bootstrap')).json();
+  await page.locator('.supplier-filters').getByRole('button',{name:'Danh mục',exact:true}).click();
+  const menu=page.getByRole('listbox',{name:'Danh mục',exact:true});
+  expect(await menu.evaluate(el=>getComputedStyle(el).overflowY)).toBe('scroll');
+  if(bootstrap.categories.length>=4)expect(await menu.evaluate(el=>el.scrollHeight>el.clientHeight)).toBe(true);
+  await capture(page,'main-category-scroll');
+  await page.getByRole('heading',{name:'Quản lý nhà cung cấp',exact:true}).click();
+  const existing=bootstrap.suppliers[0];
+  for(const edit of existing ? [false,true] : [false]) {
+    if(edit){await page.getByRole('checkbox',{name:`Chọn ${existing.id}`,exact:true}).check();await page.getByRole('button',{name:'Sửa',exact:true}).click();}
+    else await page.getByRole('button',{name:'Thêm nhà cung cấp',exact:true}).click();
+    const form=page.getByRole('dialog',{name:edit?'Sửa thông tin nhà cung cấp':'Thêm nhà cung cấp',exact:true});
+    await form.getByLabel('Tên nhà cung cấp',{exact:true}).fill('');await form.getByLabel('Số điện thoại',{exact:true}).fill('');await form.getByLabel('Email',{exact:true}).fill('');
+    await form.getByRole('button',{name:'Danh mục',exact:true}).click();await form.getByRole('checkbox',{name:'Khác',exact:true}).click();
+    await expect(form.getByText('Tên danh mục mới',{exact:true})).toHaveCount(0);
+    const input=form.getByPlaceholder('Nhập tên danh mục mới',{exact:true});await expect(input).toBeVisible();
+    const pickerBox=await form.locator('.supplier-category-picker').boundingBox(),inputBox=await input.boundingBox();expect(inputBox!.y-pickerBox!.y-pickerBox!.height).toBeCloseTo(4,0);
+    await form.getByRole('button',{name:'Lưu',exact:true}).click();
+    await expect(form.getByText('Không được để trống!',{exact:true})).toHaveCount(2);await expect(form.getByText('Vui lòng nhập tên danh mục mới!',{exact:true})).toBeVisible();await expect(form.locator('.field-error')).toHaveCount(3);
+    await capture(page,edit?'edit-three-required':'add-three-required');
+    await form.getByLabel('Tên nhà cung cấp',{exact:true}).fill('Nhà cung cấp kiểm tra');await form.getByLabel('Số điện thoại',{exact:true}).fill('abc');await form.getByLabel('Email',{exact:true}).fill('bad-email');await input.fill(bootstrap.categories[0].name);
+    await form.getByRole('button',{name:'Lưu',exact:true}).click();await expect(form.getByText('Dữ liệu không hợp lệ!',{exact:true})).toHaveCount(2);await expect(form.getByText('Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!',{exact:true})).toBeVisible();await expect(form.locator('.field-error')).toHaveCount(3);
+    await capture(page,edit?'edit-three-invalid':'add-three-invalid');
+    const invalid=await page.request.post('/api/action',{data:{action:'save-suppliers',...(edit?{id:existing.id,status:existing.status}:{}),name:'Nhà cung cấp kiểm tra',phone:'abc',email:'bad-email',other:true,new_category:bootstrap.categories[0].name}});
+    expect(invalid.status()).toBe(400);expect((await invalid.json()).fields).toEqual({phone:'Dữ liệu không hợp lệ!',email:'Dữ liệu không hợp lệ!',new_category:'Danh mục đã tồn tại, vui lòng chọn danh mục có sẵn!'});
+    const required=await page.request.post('/api/action',{data:{action:'save-suppliers',name:'',phone:'',other:true,new_category:''}});expect(required.status()).toBe(400);expect((await required.json()).fields).toEqual({name:'Không được để trống!',phone:'Không được để trống!',new_category:'Vui lòng nhập tên danh mục mới!'});
+    await form.getByLabel('Số điện thoại',{exact:true}).fill('0901122334');await form.getByLabel('Email',{exact:true}).fill('');const draft='Danh mục tạm '+Date.now();await input.fill(draft);
+    let writes=0;const count=(r:any)=>{if(new URL(r.url()).pathname==='/api/action'&&r.method()==='POST')writes++};page.on('request',count);
+    await input.press('Enter');await expect(input).toHaveCount(0);await expect(form.locator('.supplier-chip').filter({hasText:draft})).toBeVisible();await expect(form).toBeVisible();expect(writes).toBe(0);page.off('request',count);
+    await capture(page,edit?'edit-category-committed':'add-category-committed');
+    const after=await (await page.request.get('/api/bootstrap')).json();expect(after.categories.some((c:any)=>c.name===draft)).toBe(false);expect(after.suppliers.length).toBe(bootstrap.suppliers.length);
+    await form.getByRole('button',{name:'Hủy',exact:true}).click();await page.getByRole('dialog',{name:'Xác nhận',exact:true}).getByRole('button',{name:'Xác nhận',exact:true}).click();
+  }
+});
