@@ -18,7 +18,7 @@
 .cancel-invoice-card .badge{padding:0;border:0;border-radius:0;background:none;color:#0f172a;font-size:inherit;line-height:inherit;font-weight:400;}
 .cancel-invoice-card .btn.tiny{display:flex;align-items:center;justify-content:center;width:102px;height:40px;min-height:0;padding:0;border:1px solid #103a9b;border-radius:6px;background:#103a9b;color:white;font-size:13px;line-height:20px;font-weight:600;transform:translateY(3.5px);}
 .cancel-invoice-card>.empty{text-align:left;padding:22px 14px;font-size:13px;}
-.cancel-invoice-error-toast{position:fixed;z-index:80;top:107px;right:53px;width:390px;min-height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid #ffa4a4;border-radius:9px;background:#fef2f2;color:#d8272b;font-size:13px;line-height:17px;font-weight:500;}
+.cancel-invoice-error-toast{position:fixed;z-index:80;top:107px;right:53px;width:390px;min-height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid var(--notification-error-border);border-radius:9px;background:var(--notification-error-bg);color:var(--notification-error-text);font-size:13px;line-height:17px;font-weight:500;}
 .cancel-invoice-alert{display:flex;align-items:center;justify-content:center;flex:none;width:19px;height:26px;}
 .cancel-invoice-error-toast>span:nth-child(2){flex:1;min-width:0;}
 .cancel-invoice-error-toast button{border:0;background:none;padding:0;flex:none;width:17px;height:26px;font-size:18px;line-height:26px;font-weight:600;color:inherit;}

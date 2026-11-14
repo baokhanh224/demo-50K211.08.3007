@@ -289,10 +289,10 @@
   align-items: center;
   gap: 10px;
   padding: 10px 13px 10px 15px;
-  border: 1px solid #ffa4a4;
+  border: 1px solid var(--notification-error-border);
   border-radius: 9px;
-  background: #fef2f2;
-  color: #d8272b;
+  background: var(--notification-error-bg);
+  color: var(--notification-error-text);
   font-size: 13px;
   font-weight: 500;
 }
@@ -306,7 +306,7 @@
   border: 0;
   background: none;
   padding: 0;
-  color: #d8272b;
+  color: var(--notification-error-text);
   width: 17px;
   height: 26px;
   font-size: 18px;

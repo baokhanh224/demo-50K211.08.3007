@@ -24,10 +24,10 @@
 .history-list-card .btn.tiny{height:40px;width:91px;min-height:0;border:1px solid #dee6f0;border-radius:8px;background:white;color:#103a9b;padding:0 11px;text-align:left;justify-content:flex-start;font-size:14px;font-weight:600;}
 .history-list-card tbody tr:not(:first-child) .btn{opacity:0;}
 .history-list-card tbody tr:hover .btn,.history-list-card tbody tr:focus-within .btn{opacity:1;}
-.history-error-toast{position:fixed;z-index:80;top:109px;right:53px;width:283px;height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid #ffa4a4;border-radius:9px;background:#fef2f2;color:#d8272b;font-size:13px;line-height:17px;font-weight:500;}
+.history-error-toast{position:fixed;z-index:80;top:109px;right:53px;width:283px;height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid var(--notification-error-border);border-radius:9px;background:var(--notification-error-bg);color:var(--notification-error-text);font-size:13px;line-height:17px;font-weight:500;}
 .history-alert-icon{display:flex;align-items:center;justify-content:center;width:19px;height:26px;flex:none;}
 .history-error-toast>span:nth-child(2){flex:1;}
-.history-error-toast button{border:0;background:none;padding:0;flex:none;width:17px;height:26px;color:#d8272b;font-size:18px;line-height:26px;font-weight:600;}
+.history-error-toast button{border:0;background:none;padding:0;flex:none;width:17px;height:26px;color:var(--notification-error-text);font-size:18px;line-height:26px;font-weight:600;}
 @media(max-width:1200px){.main:has(.sales-history-page){padding-right:24px;}.history-filters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px;}.history-filter-card{height:auto;min-height:195px;padding-bottom:24px;}.history-list-card{overflow-x:auto;}.history-list-card table{min-width:860px;}.history-error-toast{right:24px;}}
 
 .history-list-card>.empty{text-align:left;padding:22px 12px 0;font-size:12px;line-height:24px;font-weight:500;color:#0f172a;}

@@ -18,12 +18,12 @@
 .invoice-print-actions .btn{width:110px;height:40px;min-height:0;padding:0;border:1px solid #dee6f0;border-radius:6px;font-size:13px;line-height:20px;font-weight:600;background:white;color:#103a9b;}
 .invoice-print-actions .btn.primary{width:145px;background:#103a9b;border-color:#103a9b;color:white;}
 .invoice-print-actions .btn.primary:disabled{background:#e3e8f0;border-color:#e3e8f0;color:#949ead;opacity:1;}
-.invoice-print-toast{position:fixed;z-index:80;top:107px;right:53px;width:290px;min-height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid #ffa4a4;border-radius:9px;background:#fef2f2;color:#d8272b;font-size:13px;line-height:17px;font-weight:500;}
+.invoice-print-toast{position:fixed;z-index:80;top:107px;right:53px;width:290px;min-height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid var(--notification-error-border);border-radius:9px;background:var(--notification-error-bg);color:var(--notification-error-text);font-size:13px;line-height:17px;font-weight:500;}
 .invoice-print-alert,.invoice-print-tick{display:flex;align-items:center;justify-content:center;width:19px;height:26px;flex:none;}
 .invoice-print-tick{font-size:17px;font-weight:700;}
 .invoice-print-toast>span:nth-child(2){flex:1;min-width:0;}
 .invoice-print-toast button{border:0;background:none;padding:0;width:17px;height:26px;flex:none;font-size:18px;line-height:26px;font-weight:600;color:inherit;}
-.invoice-print-toast.success{right:24px;width:245px;background:#e9fff1;border-color:#86efac;color:#148447;}
+.invoice-print-toast.success{right:24px;width:245px;background:var(--notification-success-bg);border-color:var(--notification-success-border);color:var(--notification-success-text);}
 .invoice-print-overlay{background:rgba(15,31,59,.42);z-index:90;}
 .modal.invoice-print-confirm{position:relative;width:440px;height:250px;padding:0;overflow:hidden;border:1px solid #e5e7eb;border-radius:14px;box-shadow:none;transform:translateY(11.5px);}
 .invoice-print-confirm .modal-head{position:absolute;top:76px;left:19px;right:19px;height:32px;margin:0;justify-content:center;}

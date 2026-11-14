@@ -237,3 +237,9 @@ Production build thành công; Playwright **4/4 đạt**: hai test in mới và 
 Đối chiếu frame336:2359: khung1110×644 tại (274,215), chỉ tìm mã, bốn cột dữ liệu, nút Hủy xanh, mã và trạng thái không badge màu; toast lỗi390×56 tại (997,107) có icon gốc và×. Kết quả được giữ khi thao tác/tải bị lỗi. Giữ nguyên API và nghiệp vụ, form lý do hiện có.
 
 Production build thành công, Playwright **5/5 đạt** gồm kiểm tra hủy đã tồn tại trên CSDL thử, tìm mã/rỗng, form lý do/quay lại, dữ liệu không đổi, giữ dòng khi tải lỗi; hồi quy Bán hàng/In hóa đơn/Lịch sử bán hàng. Không xác nhận hủy dữ liệu thật trên production. Chi tiết: `docs/uc6-cancel-figma.md`.
+
+## Đồng nhất màu thông báo theo Nhà cung cấp
+
+Theo yêu cầu mới, dùng chung sáu biến `--notification-success-*` / `--notification-error-*` tại đầu `app/globals.css`. Thành công: nền#f0fdf4, viền#86efac, chữ#15803d. Lỗi: nền#fef2f2, viền#fca5a5, chữ#b91c1c. Áp dụng toast chung, Khách hàng, Nhà cung cấp, Bán hàng, Lịch sử, Hủy hóa đơn, In hóa đơn và Notice thành công/lỗi. Giữ nguyên kích thước, vị trí, nội dung và nghiệp vụ. Thông báo thông tin màu xanh dương và màu trạng thái/ô nhập/nút xác nhận giữ nguyên. Các màu thông báo riêng ở ghi chú Figma cũ được thay bởi yêu cầu đồng nhất mới này.
+
+Production build/TypeScript đạt. Kiểm tra computed styles11 biến thể thông báo: đúng màu nền/viền/chữ và nút đóng. Playwright8/8 đạt: Hủy hóa đơn, hai test In hóa đơn, Bán hàng, Lịch sử, ba test Nhà cung cấp (có thêm/sửa/xóa thật chỉ trên CSDL cục bộ). Các SVG thông báo sẵn có đã dùng đúng màu#15803d/#b91c1c, không sửa asset. Không ghi dữ liệu nghiệp vụ production.
