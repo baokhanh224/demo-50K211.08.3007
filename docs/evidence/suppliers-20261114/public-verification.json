@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-14",
+  "origin": "https://tap-hoa-quynh-nhu.vercel.app",
+  "rows": 4,
+  "formBox": {
+    "x": 420,
+    "y": 185.578125,
+    "width": 600,
+    "height": 528.84375
+  },
+  "missing": [],
+  "errors": [],
+  "production_business_writes": false,
+  "passed": true
+}
