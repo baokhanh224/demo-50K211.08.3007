@@ -60,7 +60,14 @@ test("Products: required fields, expiry, CRUD, filters, pagination, drawer and p
     await expect(page.getByLabel("Từ khóa", { exact: true })).toHaveValue(prefix); await expect(page.locator(".product-list-footer")).toContainText("Hiển thị 11-11 / 11 sản phẩm");
     await expect(row.locator("td").nth(5)).toHaveText("18.000đ"); await expect(row.locator("td").nth(8)).toHaveText(`02/01/${year}`);
     await row.locator("td").nth(2).click(); const drawer = page.getByRole("dialog", { name: "Chi tiết sản phẩm", exact: true });
-    const box = await drawer.boundingBox(); expect(box!.x + box!.width).toBe(1440); expect(box!.width).toBe(460);
+    const box = await drawer.boundingBox(); expect(box!.x + box!.width).toBe(1440); expect(box!.width).toBe(480);
+    await expect(drawer.locator(".modal-head")).toHaveCSS("background-color", "rgb(16, 58, 155)");
+    expect((await drawer.locator(".modal-head").boundingBox())!.height).toBe(90);
+    const pair = drawer.locator("dl>div").first();
+    expect((await pair.locator("dd").boundingBox())!.x - (await pair.locator("dt").boundingBox())!.x).toBe(142);
+    expect((await pair.locator("dd").boundingBox())!.y).toBe((await pair.locator("dt").boundingBox())!.y);
+    const footer = (await drawer.locator(".product-drawer-footer").boundingBox())!;
+    expect(footer.y + footer.height).toBe(927);
     for (const text of ["Mô tả sau sửa", "Đơn vị tính", "Giá bán", "18.000đ", `02/01/${year}`]) await expect(drawer).toContainText(text);
     await expect(drawer.getByText("Lịch sử giá bán", { exact: true })).toHaveCount(0); await capture(page, "drawer"); await drawer.getByRole("button", { name: "Đóng", exact: true }).last().click();
     await page.getByRole("button", { name: "Cập nhật giá bán", exact: true }).click(); const price = page.getByRole("dialog", { name: "Cập nhật giá bán", exact: true });

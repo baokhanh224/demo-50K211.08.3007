@@ -192,7 +192,7 @@ export default function Products() {
     {deleting && <ProductConfirm kind="delete" busy={busy} onClose={() => setDeleting(false)} onConfirm={remove} />}
     {detail && <Modal title="Chi tiết sản phẩm" className="product-drawer" overlayClassName="product-drawer-overlay" dismissOnBackdrop onClose={() => setDetail(null)}><dl>{[
       ["Mã sản phẩm", detail.id], ["Tên sản phẩm", detail.name], ["Danh mục", detail.category], ["Đơn vị tính", detail.base_unit], ["Giá nhập", money(detail.reference_cost)], ["Giá bán", money(detail.units.find((u: any) => u.factor === 1)?.price)], ["Tồn kho", detail.stock], ["Hạn sử dụng", detail.expiry ? date(detail.expiry) : "—"], ["Mô tả", detail.description || "—"],
-    ].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl><Button onClick={() => setDetail(null)}>Đóng</Button></Modal>}
+    ].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl><div className="product-drawer-footer"><Button onClick={() => setDetail(null)}>Đóng</Button></div></Modal>}
     {toast && <SupplierToast text={toast.text} error={toast.error} onClose={() => setToast(null)} />}
   </div>;
 }
