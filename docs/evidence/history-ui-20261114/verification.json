@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-14",
+  "figma_nodes": [
+    "336:3261",
+    "336:3566",
+    "336:3409",
+    "336:4159"
+  ],
+  "viewport": [
+    1440,
+    927
+  ],
+  "filter_card": {
+    "x": 273,
+    "y": 211,
+    "width": 1112,
+    "height": 195
+  },
+  "list_card": {
+    "y": 425,
+    "min_height": 443
+  },
+  "load_error_toast": {
+    "x": 1104,
+    "y": 109,
+    "width": 283,
+    "height": 56
+  },
+  "production_build": true,
+  "playwright_passed": 2,
+  "playwright_failed": 0,
+  "checks": [
+    "invoice filter",
+    "date validation",
+    "empty result",
+    "one-shot real local load failure",
+    "retain previous result on failure",
+    "dismiss toast",
+    "retry success",
+    "invoice detail opens",
+    "sale UI regression",
+    "static assets decoded"
+  ],
+  "production_business_writes": false
+}

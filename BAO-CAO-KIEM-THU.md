@@ -209,3 +209,9 @@ Kiểm tra công khai sau triển khai commit `3b85a58`: Vercel `Deployment has 
 Đã bỏ tiêu đề riêng của ô tên danh mục mới, đặt input ngay dưới bộ chọn Danh mục; Enter ghi nhận chip tạm, ẩn input và không submit form. Danh mục chỉ lưu vào CSDL khi Lưu nhà cung cấp. Bộ lọc danh mục chính có vùng cuộn.
 
 Đã thay kiểm tra dừng ở lỗi đầu tiên bằng kiểm tra tổng hợp dùng chung giữa form/API. `npm run build`, `npm run typecheck` và `tests/suppliers.spec.ts`: **3/3 đạt** trên production build cục bộ. Đã thử cả form thêm và sửa: đủ 3 lỗi bỏ trống, đủ 3 lỗi sai/trùng, vị trí input cách bộ chọn 4px, không có tiêu đề riêng; Enter không tạo request ghi hay bản ghi. API trực tiếp cũng trả đủ 3 lỗi với HTTP 400. Kiểm tra thêm/sửa/xóa/chặn xóa cũ vẫn đạt. Bằng chứng: `docs/evidence/supplier-category-20261114/`. Không ghi dữ liệu nghiệp vụ trên production.
+
+## UC6.4 — lịch sử bán hàng theo ảnh/Figma, 14/11/2026
+
+Đã tách bộ lọc và danh sách thành hai khung, sửa kích thước/vị trí, sidebar, nút Tìm kiếm có icon, bảng không badge màu và toast lỗi góc trên phải có icon/×. Giữ kết quả đã tải khi truy vấn lại bị lỗi; tìm kiếm thành công tiếp theo cập nhật lại bình thường. Dữ liệu thật, không chèn hóa đơn mẫu. Đã đối chiếu bốn frame và dùng icon gốc.
+
+`npm run build` thành công; Playwright `tests/sales-history-ui.spec.ts` và `tests/sale-ui.spec.ts`: **2 đạt, 0 lỗi** trên production build cục bộ. Kiểm tra bộ lọc (273,211) 1112×195, danh sách y=425, toast tải lỗi (1104,109) 283×56, tìm mã, ngày sai, rỗng, lỗi tải một lần, giữ dòng, đóng lỗi/thử lại, mở chi tiết. Không viết dữ liệu nghiệp vụ production. Số đo và ảnh ở `docs/evidence/history-ui-20261114/`; chi tiết nguồn ở `docs/uc6-history-figma.md`.

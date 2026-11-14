@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
 import { money, date, datetime, iso } from "@/lib/format";
+import "./sales-history.css";
 export default function SalesHistory({ operation = "history" }: any) {
   const { refresh, notify, confirm } = useApp();
   const cancelKey = useRef(crypto.randomUUID());
@@ -22,17 +23,13 @@ export default function SalesHistory({ operation = "history" }: any) {
     e?.preventDefault();
     setError("");
     try {
-      setRows(
-        await api("query", {
-          scope: "sales-history",
-          invoice_id: q,
-          phone,
-          from: iso(from),
-          to: iso(to),
-        }),
-      );
+      const result = await api("query", {
+        scope: "sales-history", invoice_id: q, phone, from: iso(from), to: iso(to),
+      });
+      setRows(result);
+      if (operation === "history" && !result.length) setError("Không tìm thấy hóa đơn phù hợp");
     } catch (e: any) {
-      setRows([]);
+      if (operation !== "history") setRows([]);
       setError(e.message);
     }
   }
@@ -142,16 +139,8 @@ export default function SalesHistory({ operation = "history" }: any) {
       : operation === "return"
         ? "Xử lý đổi/trả hàng"
         : "Tra cứu lịch sử bán hàng";
-  return (
-    <>
-      <h1>{title}</h1>
-      <section className="card">
-        <h2>
-          {operation === "cancel"
-            ? "Chọn hóa đơn cần hủy"
-            : "Danh sách hóa đơn"}
-        </h2>
-        <form className="filters" onSubmit={search}>
+  const filters = (
+        <form className={operation === "history" ? "history-filters" : "filters"} onSubmit={search}>
           <Field label="Mã hóa đơn" placeholder="Nhập mã hóa đơn" value={q} onChange={(e:any) => setQ(e.target.value)} />
           <Field label="Số điện thoại khách hàng" placeholder="Nhập số điện thoại" value={phone} onChange={(e:any) => setPhone(e.target.value)} />
           <Field
@@ -167,11 +156,25 @@ export default function SalesHistory({ operation = "history" }: any) {
             onChange={(e: any) => setTo(e.target.value)}
           />
           <Button variant="primary" type="submit">
-            Tìm kiếm
+            {operation === "history" && <img src="/figma/history-search.svg" width="18" height="18" alt="" />}Tìm kiếm
           </Button>
         </form>
-        <Notice text={error} />
+  );
+  return (
+    <>
+      <div className={operation === "history" ? "sales-history-page" : undefined}>
+      <h1>{title}</h1>
+      {operation === "history" && <section className="history-filter-card">{filters}</section>}
+      <section className={operation === "history" ? "history-list-card" : "card"}>
+        <h2>
+          {operation === "cancel"
+            ? "Chọn hóa đơn cần hủy"
+            : "Danh sách hóa đơn"}
+        </h2>
+        {operation !== "history" && filters}
+        {operation !== "history" && <Notice text={error} />}
         <table>
+          {operation === "history" && <colgroup>{[177,249,201,174,159,116].map((w,i)=><col key={i} style={{width:`${w/1076*100}%`}} />)}</colgroup>}
           <thead>
             <tr>
               <th>Mã hóa đơn</th>
@@ -212,10 +215,12 @@ export default function SalesHistory({ operation = "history" }: any) {
             ))}
           </tbody>
         </table>
-        {!rows.length && !error && (
+        {!rows.length && (!error || (operation === "history" && error === "Không tìm thấy hóa đơn phù hợp")) && (
           <Empty text="Không tìm thấy hóa đơn phù hợp" />
         )}
       </section>
+      {operation === "history" && error && <div className={`history-error-toast ${error === "Không tìm thấy hóa đơn phù hợp" ? "history-empty-toast" : error === "Khoảng thời gian không hợp lệ" ? "history-range-toast" : ""}`} role="alert"><span className="history-alert-icon"><img src="/figma/history-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
+      </div>
       {detail && (
         <Modal
           wide
