@@ -24,7 +24,7 @@ export async function api(path: string, data?: any) {
 }
 export const AppContext = createContext<any>(null);
 export const useApp = () => useContext(AppContext);
-export function Icon({ name, size, report = false }: { name: string; size?: number; report?: boolean }) {
+export function Icon({ name, size, report = false, suppliers = false }: { name: string; size?: number; report?: boolean; suppliers?: boolean }) {
   const sizes: Record<string, number> = {
     reportBusiness: 16,
     reportInventory: 16,
@@ -60,10 +60,11 @@ export function Icon({ name, size, report = false }: { name: string; size?: numb
     report: "683e4",
   };
   const reportIds: Record<string,string> = {sale:"ed836",product:"90b50",customer:"626f0",supplier:"886ee",stock:"82580",report:"c47d3"};
+  const supplierIds: Record<string,string> = {sale:"3629c",product:"8e59d",customer:"82312",supplier:"54556",stock:"8af9c",report:"ac77e"};
   const s = size || sizes[name] || 20;
   return (
     <img
-      src={"/figma/" + (report ? reportIds[name] || ids[name] : ids[name]) + ".svg"}
+      src={"/figma/" + (suppliers ? supplierIds[name] || ids[name] : report ? reportIds[name] || ids[name] : ids[name]) + ".svg"}
       width={s}
       height={s}
       alt=""

@@ -4,7 +4,7 @@ Bản demo tiếng Việt cho Chủ cửa hàng. Next.js 16 + TypeScript + Postg
 
 - Sau đăng nhập mở **Tạo giao dịch bán hàng**. Có **Đăng xuất**.
 - Mã nguồn GitHub: https://github.com/baokhanh224/demo-50K211.08.3007 (repository công khai, mã nguồn tại thư mục gốc, nhánh `main`).
-- Website công khai: https://quynh-nhu-demo.vercel.app/ . Kết quả kiểm tra và giới hạn phiên bản xem `BAO-CAO-KIEM-THU.md`.
+- Website công khai: https://tap-hoa-quynh-nhu.vercel.app/ . Kết quả kiểm tra và giới hạn phiên bản xem `BAO-CAO-KIEM-THU.md`.
 
 ## Chạy từ đầu
 
@@ -255,3 +255,7 @@ Kiểm tra kết nối Vercel với repository mới.
 Theo frame Figma 336:329: tên sản phẩm dùng placeholder “Chưa chọn sản phẩm” màu #94a3b8 như “Nhập số lượng”; có thể nhập để tìm/chọn sản phẩm. Chỉ dữ liệu sản phẩm đã chọn mới dùng để tính giá/tồn và thêm giỏ, không dùng chữ tự nhập làm hồ sơ sản phẩm. Giá và tồn để trống khi chưa chọn. Nhập lại tên/từ khóa bỏ lựa chọn cũ để tránh giá/tồn bị giữ sai.
 
 Thông báo Không tìm thấy sản phẩm có nút đóng, SVG gốc Figma, rộng 320px cao 56px tại góc khung thanh toán. Đơn vị/giá/tồn/số lượng, giỏ, khách hàng tùy chọn và nút Tìm được bố trí theo frame. Thêm nhanh khách hàng vẫn có sau khi tra cứu không tìm thấy. Style chỉ áp dụng trong màn hình bán hàng; các bộ chọn nhập hàng giữ hành vi cũ. Không thay công thức hoặc API bán hàng, xuất kho hay VietQR.
+
+## Cập nhật UC2 theo Figma — 14/11/2026
+
+Quản lý nhà cung cấp có bộ lọc/dropdown, chọn dòng, trang kết quả, phân trang **6 dòng/trang**, drawer chi tiết và form thêm/sửa theo các frame UC2. Phân trang này theo yêu cầu giao diện mới, thay phần ghi chú trước đây “không phân trang” riêng đối với nhà cung cấp; các danh sách khác giữ nguyên. Chi tiết đối chiếu và cách lấy icon: `docs/uc2-figma.md`. Kiểm thử riêng bằng `npx playwright test tests/suppliers.spec.ts` trên CSDL thử. Không chạy kịch bản ghi dữ liệu trên production.

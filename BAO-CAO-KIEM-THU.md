@@ -189,3 +189,15 @@ Trên Vercel thực, làm chậm phản hồi validate-receipt-line 1.500ms bằ
 ### Lịch chọn ngày báo cáo kinh doanh
 
 Đã triển khai custom calendar theo Figma 304:2866/304:2632: input170×40, popup276×312 dưới input6px, tuầnT2–CN, tô hai đầu/khoảng, chuyểntháng và chọnngày ngoài tháng. Typecheck/build và các bước QA UI local/public (range, năm mới, năm nhuận, Escape, không mở hai popup, API nhận đúng ngày, range lỗi) đạt; deploy c77ff0e success. Không sửa hàm tính báo cáo hoặc dữ liệu nghiệp vụ. Thay đổi được ghi trong nguồn component report-date.tsx, có ảnh/chứng cứ JSON.
+
+## UC2 — giao diện nhà cung cấp, 14/11/2026
+
+Tiếp tục bản TypeScript/Next.js tại `main`, không dùng nhánh Python. Đọc 27 frame UC2 và đối chiếu screenshot/design context. Đã sửa danh sách, trạng thái không nền và đúng màu, chọn dòng, dropdown lọc trong khung, phân trang 6 dòng, kính lúp trắng, xóa từ khóa, kết quả rỗng, drawer phải, form thêm/sửa, thông báo và xác nhận theo yêu cầu. Các câu lỗi/thành công tiếp tục lấy nguyên văn từ API/nghiệp vụ.
+
+Đã chạy `npm run build` (gồm kiểm tra TypeScript) và Playwright trên production server cục bộ: `tests/suppliers.spec.ts`, `tests/sale-ui.spec.ts`, `tests/uc3.spec.ts`: **5 đạt, 0 lỗi**. Kiểm tra form 600×528,86 / 600×599,09; drawer rộng 460, cao viewport; hủy 340×201,84; xóa 420×231. Kiểm tra 1440×900 và không tràn trang ở 1280×900, 1920×900. Tất cả icon ở các trạng thái chụp đều tải được.
+
+Kịch bản UC2 thao tác thật trên PostgreSQL cục bộ: thêm NCC, kiểm tra bỏ trống/sai số điện thoại, sửa trạng thái/địa chỉ, xóa NCC vừa tạo và chặn xóa NCC đã có phiếu nhập. Bản ghi thử được dọn; không reset dữ liệu. Kịch bản giao diện riêng có fixture 7 NCC trong browser để kiểm tra trang 2; không đưa fixture vào dữ liệu ứng dụng.
+
+Lỗi đã sửa khi kiểm tra: chọn “Khác” cần đóng dropdown để ô nhập mới không bị che; cố định kích thước xác nhận theo Figma; tránh CSS form chung ghi đè; xử lý dropdown có nội dung dài bằng khung co giãn; sau thêm mở đúng trang có NCC mới. CSDL thử từng dừng và đã được khởi động lại; không liên quan CSDL Neon chính.
+
+Bằng chứng: `docs/evidence/suppliers-20261114/`; đối chiếu frame/icon: `docs/uc2-figma.md`, `docs/supplier-assets.json`. Không khẳng định trùng tuyệt đối mọi pixel khi số lượng/nội dung bản ghi khác dữ liệu mẫu Figma. Không kiểm tra ghi/xóa dữ liệu nghiệp vụ trên production.

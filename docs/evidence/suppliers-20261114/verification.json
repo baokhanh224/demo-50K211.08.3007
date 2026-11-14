@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-14",
+  "stack": "TypeScript / Next.js",
+  "figma_page": "1:3",
+  "figma_frames_read": 27,
+  "production_build": true,
+  "playwright_passed": 5,
+  "playwright_failed": 0,
+  "suite": [
+    "suppliers: layout, pagination, selection, empty, drawer, forms, validation",
+    "suppliers: real local create/update/delete and blocked delete",
+    "sale-ui",
+    "uc3: filters, results, export",
+    "uc3: calendar, multiselect, failure states"
+  ],
+  "form_add": [
+    600,
+    528.86
+  ],
+  "form_edit": [
+    600,
+    599.09
+  ],
+  "drawer_width": 460,
+  "cancel_confirmation": [
+    340,
+    201.84
+  ],
+  "delete_confirmation": [
+    420,
+    231
+  ],
+  "screenshots": [
+    "add.png",
+    "added.png",
+    "cancel.png",
+    "categories.png",
+    "category-error.png",
+    "delete-blocked.png",
+    "delete-confirm.png",
+    "deleted.png",
+    "detail.png",
+    "edit-status.png",
+    "edit.png",
+    "empty.png",
+    "filters.png",
+    "list.png",
+    "selected.png",
+    "updated.png"
+  ],
+  "production_business_writes": false
+}

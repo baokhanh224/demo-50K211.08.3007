@@ -11,6 +11,7 @@ import {
   useApp,
   useForm,
 } from "./ui";
+import Suppliers, { SupplierForm } from "./suppliers";
 import { money, datetime } from "@/lib/format";
 const config: any = {
   products: {
@@ -35,7 +36,10 @@ const config: any = {
     name: "Tên khách hàng",
   },
 };
-export default function Masters({ kind }: any) {
+export default function Masters(props: any) {
+  return props.kind === "suppliers" ? <Suppliers /> : <OtherMasters {...props} />;
+}
+function OtherMasters({ kind }: any) {
   const { data, refresh, notify, confirm } = useApp();
   const c = config[kind];
   const [q, setQ] = useState("");
@@ -430,7 +434,10 @@ export default function Masters({ kind }: any) {
     </>
   );
 }
-export function MasterForm({ kind, item, onClose, onSaved }: any) {
+export function MasterForm(props: any) {
+  return props.kind === "suppliers" ? <SupplierForm {...props} /> : <OtherMasterForm {...props} />;
+}
+function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
   const { data, refresh, notify, confirm } = useApp();
   const c = config[kind];
   const initial =
