@@ -2,7 +2,7 @@
 :root{--sidebar-width:250px;--app-header-height:90px;}
 body .main{margin-left:var(--sidebar-width);}
 .sidebar.app-sidebar{position:fixed;top:var(--app-header-height);left:0;bottom:0;width:var(--sidebar-width);padding:20px 10px 37px 10px;background:#c3d9fb;display:flex;flex-direction:column;overflow:hidden;z-index:10;}
-.app-sidebar>nav{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-gutter:stable;}
+.app-sidebar>nav{flex:1;min-height:0;overflow:clip;}
 .app-sidebar .nav-group{margin:0 0 8px;}
 .app-sidebar .nav-item{display:flex;align-items:center;gap:12px;height:48px;min-height:48px;padding:14px;color:#1e3a8a;border-radius:10px;font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;}
 .app-sidebar .nav-item>.icon{display:block;width:20px;height:20px;flex:0 0 20px;object-fit:contain;}

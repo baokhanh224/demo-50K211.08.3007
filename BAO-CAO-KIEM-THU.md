@@ -221,3 +221,7 @@ Kiểm tra công khai sau triển khai commit `3b85a58`: Vercel `Deployment has 
 Theo yêu cầu mới, thay các kích thước sidebar riêng của từng trang bằng `app/sidebar.css` dùng chung: rộng 250px, icon 20px, hàng 48px, khoảng cách và trạng thái chọn thống nhất. Giữ nhóm menu đang mở khi chuyển trang; menu cuộn riêng và Đăng xuất ở cuối. Cài đặt demo vẫn mở qua biểu tượng tài khoản trên header. Các số đo sidebar ở báo cáo cũ được thay bằng quy tắc chung này.
 
 Production build thành công. Playwright: **8/8 đạt**, gồm kiểm tra sidebar trên 14 view, icon/nhãn/kích thước/vị trí nhất quán, menu đang mở khi chuyển trang, footer khi chiều cao màn hình 600px; hồi quy bán hàng, lịch sử, nhà cung cấp, báo cáo và lịch. Kiểm thử nghiệp vụ dùng CSDL cục bộ.
+
+### Điều chỉnh theo phản hồi: bỏ cuộn thanh bên
+
+Đã bỏ vùng cuộn và phần chừa chỗ scrollbar của menu bằng `overflow: clip`. Menu không cuộn bằng chuột hoặc thay đổi scrollTop; giữ căn chỉnh chung và vị trí Đăng xuất. Production build đạt; kiểm thử sidebar trên 14 view đạt, có xác nhận không cuộn ở viewport cao 600px.
