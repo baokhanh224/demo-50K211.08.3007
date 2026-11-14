@@ -1,4 +1,4 @@
-/* Figma UC6.1, node 336:329, native design size 1440 × 927. */
+/* Figma UC6.1, node 336:170, native design size 1440 × 927. */
 .main:has(.sale-layout) {
 
   padding: 28px 24px 46px 29px;
@@ -20,11 +20,12 @@
 .sale-main > .product-search {
   margin: 0 0 16px;
 }
-.sale-main > .product-search .field {
-  width: 290px;
+.sale-screen .sale-main > .product-search .field {
+  width: 100%;
   gap: 5px;
 }
-.sale-main > .product-search input {
+.sale-screen .sale-main > .product-search input {
+  border-color: #e2e8f0;
   height: 38px;
   border-radius: 8px;
   font-size: 13px;
@@ -352,4 +353,21 @@ body:has(.sale-layout) .global-search input::placeholder {
 }
 .sale-layout .sale-placeholder {
   appearance: none;
+}
+
+/* Scope corrections to UC6.1; the shared return layout keeps its existing styles. */
+.main:has(.sale-screen) {
+  padding-left: 24px;
+}
+.sale-screen .payment-card > h3 {
+  padding-top: 16px;
+}
+/* Keep numeric headings and values on the same left edge, as in UC6.1. */
+.sale-screen .cart tbody td {
+  text-align: left;
+}
+/* The base button rule must not hide the selected payment method. */
+.sale-screen .payment-method .btn.chosen {
+  border-color: #103a9b;
+  background: #eef3fd;
 }

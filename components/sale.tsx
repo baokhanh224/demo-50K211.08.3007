@@ -108,6 +108,10 @@ export default function Sale() {
   }
   async function pay() {
     if (lock.current) return;
+    if (!cart.length) {
+      setPaymentError("Chưa có sản phẩm trong giỏ hàng");
+      return;
+    }
     lock.current = true;
     setBusy(true);
     setPaymentError("");
@@ -143,10 +147,12 @@ export default function Sale() {
     }
   }
   return (
-    <div className="sale-layout">
+    <div className="sale-layout sale-screen">
       <div className="sale-main">
         <h1>Tạo giao dịch bán hàng</h1>
         <ProductPicker
+          label="Tìm kiếm sản phẩm"
+          placeholder="Quét mã vạch hoặc nhập tên sản phẩm"
           clearOnNotFound
           externalQuery={externalQuery}
           onSelect={choose}
@@ -318,6 +324,7 @@ export default function Sale() {
             <Button
               key={m}
               variant={method === m ? "chosen" : ""}
+              aria-pressed={method === m}
               onClick={() => {
                 setMethod(m);
                 setConfirmed(false);
@@ -443,8 +450,8 @@ export default function Sale() {
           onClick={pay}
           disabled={
             busy ||
-            !cart.length ||
-            (method === "Chuyển khoản" && (!qrLoaded || !!qrError || !qr))
+            (cart.length > 0 &&
+              method === "Chuyển khoản" && (!qrLoaded || !!qrError || !qr))
           }
         >
           Hoàn tất thanh toán
