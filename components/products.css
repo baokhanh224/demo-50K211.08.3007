@@ -55,14 +55,33 @@
 .product-list-footer .btn[aria-current=page]{background:#103a9b;color:white;border-color:#103a9b;}
 .product-page-gap{padding:0 5px;}
 .product-form-overlay,.product-drawer-overlay{background:rgba(15,23,42,.45);}
-.modal.product-form{width:640px;max-height:calc(100vh - 56px);padding:22px;}
-.product-form .modal-head,.product-price-form .modal-head{margin-bottom:22px;}
-.product-form .modal-head h2,.product-price-form .modal-head h2{font-size:20px;font-weight:600;}
+.modal.product-form{width:680px;max-height:none;padding:0;border:0;border-radius:14px;overflow:visible;box-shadow:0 10px 28px #00000029;}
+.product-form .modal-head{padding:20px 24px 16px;border-bottom:1px solid #e2e8f0;}
+.product-form .product-form-grid{padding:20px 24px;}
+.product-form .modal-head h2{font-size:18px;font-weight:700;color:#103a9b;}
+.product-form .modal-head .close{padding:0;height:20px;width:20px;font-size:0;background:transparent url(/figma/456b3.svg) center/20px 20px no-repeat;}
+.product-form input,.product-form textarea,.product-form .product-select>button{border-radius:8px;border-color:#e2e8f0;}
+.product-form .has-error input,.product-form .has-error.product-select>button{border-color:#dc2626;}
+.product-form textarea::placeholder{color:#94a3b8;}
+.product-form .field>label{font-weight:500;color:#0f172a;line-height:16px;}
+.product-form .actions{padding:16px 24px;border-top:1px solid #e2e8f0;gap:10px;}
+.product-form .actions .btn{min-width:0;padding:0 16px;border-radius:8px;}
+.product-form .product-expiry-input{position:relative;}
+.product-form .product-expiry-input>input{padding-right:40px;}
+.product-expiry-calendar{position:absolute;right:12px;top:0;height:40px;width:16px;display:flex;align-items:center;}
+.product-form .product-expiry-calendar input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;padding:0;}
+.products-page .product-select-menu,.product-form .product-select-menu,.product-drawer{scrollbar-width:none;}
+.products-page .product-select-menu::-webkit-scrollbar,.product-form .product-select-menu::-webkit-scrollbar,.product-drawer::-webkit-scrollbar{display:none;}
+.product-form .modal-head{margin:0;}
+.product-price-form .modal-head{margin-bottom:22px;}
+.product-price-form .modal-head h2{font-size:20px;font-weight:600;}
 .product-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 .product-form .field,.product-price-form .field{gap:6px;}
-.product-form .field>label,.product-price-form .field>label{font-size:13px;line-height:19px;}
+.product-form .field>label,.product-price-form .field>label{font-size:13px;}
+.product-price-form .field>label{line-height:19px;}
 .product-form input,.product-price-form input{width:100%;height:40px;font-size:13px;}
-.product-form textarea{height:76px;width:100%;font-size:13px;}
+.product-form textarea{height:88px;min-height:88px;width:100%;font-size:13px;resize:none;scrollbar-width:none;}
+.product-form textarea::-webkit-scrollbar{display:none;}
 .product-full{grid-column:1/-1;}
 .product-input-wrap{position:relative;}
 .product-input-wrap.currency input{padding-right:35px;}
@@ -72,8 +91,10 @@
 .product-input-lock{position:absolute;right:12px;top:0;height:40px;display:flex;align-items:center;pointer-events:none;}
 .currency .product-input-lock{right:34px;}
 .product-hint{font-size:11px;line-height:16px;color:#64748b;}
-.product-form .actions,.product-price-form .actions{margin-top:24px;}
-.product-form .actions .btn,.product-price-form .actions .btn{min-width:88px;height:40px;font-size:13px;}
+.product-form .actions{margin-top:0;}
+.product-price-form .actions{margin-top:24px;}
+.product-form .actions .btn{height:40px;font-size:13px;}
+.product-price-form .actions .btn{min-width:88px;height:40px;font-size:13px;}
 .modal.product-price-form{width:520px;padding:24px;}
 .product-price-identity{background:#eef3fd;padding:12px;border-radius:7px;color:#103a9b;font-size:14px;margin:0 0 20px;}
 .product-price-form>.product-form-grid{margin-bottom:20px;}
@@ -98,3 +119,5 @@
 .product-drawer dd{font-size:14px;color:#0f172a;margin:0;overflow-wrap:anywhere;white-space:pre-wrap;}
 @media(max-width:1000px){.product-controls{flex-wrap:wrap;}.product-search-input{width:320px;}.product-actions{width:100%;}}
 @media(max-width:650px){.product-form-grid{grid-template-columns:1fr;}.product-full{grid-column:auto;}.product-list-footer{align-items:flex-start;flex-direction:column;}}
+
+@media(max-height:800px){.product-form .modal-head{padding:12px 24px;}.product-form .product-form-grid{padding:12px 24px;gap:12px 16px;}.product-form .actions{padding:12px 24px;}.product-form textarea{height:72px;min-height:72px;}}

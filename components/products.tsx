@@ -31,7 +31,7 @@ function ProductSelect({ label, value, options, onChange, placeholder, inline = 
     }}>
     {!inline && <label id={id + "-label"} htmlFor={id}>{label}{required && <span className="required" aria-hidden="true"> *</span>}</label>}
     <button id={id} ref={trigger} type="button" aria-label={label} aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} aria-haspopup="listbox" aria-expanded={open} aria-controls={id + "-options"} className={!value ? "product-placeholder" : ""} onClick={() => setOpen(!open)}>
-      <span>{inline && <span className="product-select-prefix">{label}: </span>}{choices.find(o => String(o.value) === String(value))?.label || placeholder}</span><Asset name="b4dfe" size={14} />
+      <span>{inline && <span className="product-select-prefix">{label}: </span>}{choices.find(o => String(o.value) === String(value))?.label || placeholder}</span><Asset name={inline ? "b4dfe" : "c969b"} size={inline ? 14 : 16} />
     </button>
     {open && <div className="product-select-menu" id={id + "-options"} role="listbox" aria-label={label}>
       {choices.map(o => <button type="button" role="option" key={o.value} aria-selected={String(o.value) === String(value)} onClick={() => { onChange(o.value); setOpen(false); trigger.current?.focus(); }}><span>{o.label}</span>{String(o.value) === String(value) && <Asset name="47eaa" size={13} />}</button>)}
@@ -41,11 +41,25 @@ function ProductSelect({ label, value, options, onChange, placeholder, inline = 
 }
 function LockedField({ label, value, currency = false, hint }: any) {
   const id = useId();
-  return <div className="field"><label htmlFor={id}>{label}</label><div className={`product-input-wrap locked ${currency ? "currency" : ""}`}><input id={id} aria-label={label} value={value} readOnly /><span className="product-input-lock"><Asset name="32909" size={15} /></span>{currency && <span className="product-currency">đ</span>}</div>{hint && <small className="product-hint">{hint}</small>}</div>;
+  return <div className="field"><label htmlFor={id}>{label}</label><div className={`product-input-wrap locked ${currency ? "currency" : ""}`}><input id={id} aria-label={label} value={value} readOnly /><span className="product-input-lock"><Asset name="47a76" /></span>{currency && <span className="product-currency">đ</span>}</div>{hint && <small className="product-hint">{hint}</small>}</div>;
 }
 function MoneyField({ label, value, onChange, error, placeholder = "0" }: any) {
   const id = useId();
   return <div className={`field ${error ? "has-error" : ""}`}><label htmlFor={id}>{label}<span className="required" aria-hidden="true"> *</span></label><div className="product-input-wrap currency"><input id={id} aria-label={label} aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} inputMode="decimal" placeholder={placeholder} value={value} onChange={onChange} /><span className="product-currency">đ</span></div>{error && <p className="field-error" id={id + "-error"} role="alert">{error}</p>}</div>;
+}
+function ProductExpiryField({ value, onChange, error, today }: any) {
+  const id = useId();
+  const normalized = productExpiry(value);
+  return <div className={`field product-full product-expiry ${error ? "has-error" : ""}`}>
+    <label htmlFor={id}>Hạn sử dụng (nếu có)</label>
+    <div className="product-expiry-input">
+      <input id={id} aria-label="Hạn sử dụng (nếu có)" aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} placeholder="dd/mm/yyyy" inputMode="numeric" value={value} onChange={e => onChange(e.target.value)} />
+      <span className="product-expiry-calendar"><Asset name="65f50" />
+        <input type="date" aria-label="Chọn hạn sử dụng" min={today} value={/^\d{4}-\d{2}-\d{2}$/.test(normalized) ? normalized : ""} onClick={e => e.currentTarget.showPicker?.()} onChange={e => onChange(e.target.value ? date(e.target.value) : "")} />
+      </span>
+    </div>
+    {error && <p className="field-error" id={id + "-error"} role="alert">{error} Nhập ngày theo dd/mm/yyyy, từ {date(today)} trở đi.</p>}
+  </div>;
 }
 function ProductConfirm({ kind, onClose, onConfirm, busy = false }: any) {
   const deletion = kind === "delete", warning = kind === "warning", destructive = deletion || kind === "cancel-edit";
@@ -90,7 +104,7 @@ export function ProductForm({ item = {}, onClose, onSaved, onNotice }: any) {
           <ProductSelect label="Đơn vị tính" required value={f.form.base_unit} onChange={(v: string) => f.set("base_unit", v)} placeholder="Chọn đơn vị tính" options={units.map(u => ({ value: u, label: u }))} error={f.errors.base_unit} />
           <MoneyField label="Giá nhập" value={f.form.reference_cost} onChange={(e: any) => f.set("reference_cost", e.target.value)} error={f.errors.reference_cost} />
           {item.id ? <LockedField label="Giá bán" value={money(f.form.price).replace(/đ$/, "")} currency hint="Dùng chức năng Cập nhật giá bán để thay đổi giá" /> : <MoneyField label="Giá bán" value={f.form.price} onChange={(e: any) => f.set("price", e.target.value)} error={f.errors.price} />}
-          <Field label="Hạn sử dụng (không bắt buộc)" placeholder="dd/mm/yyyy" value={f.form.expiry} onChange={(e: any) => f.set("expiry", e.target.value)} error={f.errors.expiry} />
+          <ProductExpiryField value={f.form.expiry} onChange={(value: string) => f.set("expiry", value)} error={f.errors.expiry} today={data.today} />
           <div className="product-full"><Field label="Mô tả"><textarea placeholder="Nhập mô tả sản phẩm" value={f.form.description} onChange={e => f.set("description", e.target.value)} /></Field></div>
         </div>
         <div className="actions"><Button disabled={f.busy} onClick={close}>Hủy</Button><Button variant="primary" type="submit" disabled={f.busy}>Lưu</Button></div>
