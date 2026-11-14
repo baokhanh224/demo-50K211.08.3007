@@ -231,3 +231,9 @@ Production build thành công. Playwright: **8/8 đạt**, gồm kiểm tra side
 Đã chuyển xem trước từ modal chi tiết thành màn hình riêng, khung 733×557 tại (476,212), bảng kẻ ô và nút phía dưới. Hộp xác nhận hủy440×250 tại (500,350), icon gốc Figma và nút đỏ; Quay lại/Escape giữ bản xem trước, Xác nhận trở về danh sách. Toast lỗi hóa đơn đã hủy290×56, toast thành công245×56, có nút đóng; hóa đơn bị hủy không được in, lỗi máy in có thể thử lại. Dữ liệu thật và kiểm tra server giữ nguyên; không sửa service.ts/route.ts.
 
 Production build thành công; Playwright **4/4 đạt**: hai test in mới và hồi quy Bán hàng/Lịch sử bán hàng. Đã kiểm tra trạng thái hủy sau khi xem trước, PDF/print media và nội dung PDF (không lẫn header/sidebar/nút). Lỗi được mô phỏng trong trình duyệt, window.print thay bằng bộ đếm; không gửi tới máy in thật hoặc ghi dữ liệu nghiệp vụ production. Chi tiết kích thước, nguồn asset và giới hạn xác nhận in vật lý: `docs/uc6-print-figma.md`.
+
+## UC6.3 — trang Hủy hóa đơn, 14/11/2026
+
+Đối chiếu frame336:2359: khung1110×644 tại (274,215), chỉ tìm mã, bốn cột dữ liệu, nút Hủy xanh, mã và trạng thái không badge màu; toast lỗi390×56 tại (997,107) có icon gốc và×. Kết quả được giữ khi thao tác/tải bị lỗi. Giữ nguyên API và nghiệp vụ, form lý do hiện có.
+
+Production build thành công, Playwright **5/5 đạt** gồm kiểm tra hủy đã tồn tại trên CSDL thử, tìm mã/rỗng, form lý do/quay lại, dữ liệu không đổi, giữ dòng khi tải lỗi; hồi quy Bán hàng/In hóa đơn/Lịch sử bán hàng. Không xác nhận hủy dữ liệu thật trên production. Chi tiết: `docs/uc6-cancel-figma.md`.

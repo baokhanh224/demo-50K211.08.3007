@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
 import { money, date, datetime, iso } from "@/lib/format";
 import "./sales-history.css";
+import "./cancel-invoice.css";
 import InvoicePrint from "./invoice-print";
 export default function SalesHistory({ operation = "history" }: any) {
   const { refresh, notify } = useApp();
@@ -30,7 +31,7 @@ export default function SalesHistory({ operation = "history" }: any) {
       setRows(result);
       if (operation === "history" && !result.length) setError("Không tìm thấy hóa đơn phù hợp");
     } catch (e: any) {
-      if (operation !== "history") setRows([]);
+      if (operation === "return") setRows([]);
       setError(e.message);
     }
   }
@@ -127,7 +128,12 @@ export default function SalesHistory({ operation = "history" }: any) {
       : operation === "return"
         ? "Xử lý đổi/trả hàng"
         : "Tra cứu lịch sử bán hàng";
-  const filters = (
+  const filters = operation === "cancel" ? (
+    <form className="cancel-invoice-filters" onSubmit={search}>
+      <input aria-label="Mã hóa đơn" placeholder="Nhập mã hóa đơn" value={q} onChange={e => setQ(e.target.value)} />
+      <Button variant="primary" type="submit">Tìm kiếm</Button>
+    </form>
+  ) : (
         <form className={operation === "history" ? "history-filters" : "filters"} onSubmit={search}>
           <Field label="Mã hóa đơn" placeholder="Nhập mã hóa đơn" value={q} onChange={(e:any) => setQ(e.target.value)} />
           <Field label="Số điện thoại khách hàng" placeholder="Nhập số điện thoại" value={phone} onChange={(e:any) => setPhone(e.target.value)} />
@@ -150,24 +156,25 @@ export default function SalesHistory({ operation = "history" }: any) {
   );
   return (
     <>
-      <div className={operation === "history" ? "sales-history-page" : undefined}>
+      <div className={operation === "history" ? "sales-history-page" : operation === "cancel" ? "cancel-invoice-page" : undefined}>
       <h1>{title}</h1>
       {operation === "history" && <section className="history-filter-card">{filters}</section>}
-      <section className={operation === "history" ? "history-list-card" : "card"}>
+      <section className={operation === "history" ? "history-list-card" : operation === "cancel" ? "cancel-invoice-card" : "card"}>
         <h2>
           {operation === "cancel"
             ? "Chọn hóa đơn cần hủy"
             : "Danh sách hóa đơn"}
         </h2>
         {operation !== "history" && filters}
-        {operation !== "history" && <Notice text={error} />}
+        {operation === "return" && <Notice text={error} />}
         <table>
+          {operation === "cancel" && <colgroup>{[198,254,226,261,131].map((width,i)=><col key={i} style={{width:`${width/1070*100}%`}} />)}</colgroup>}
           {operation === "history" && <colgroup>{[177,249,201,174,159,116].map((w,i)=><col key={i} style={{width:`${w/1076*100}%`}} />)}</colgroup>}
           <thead>
             <tr>
               <th>Mã hóa đơn</th>
               <th>Ngày giờ bán</th>
-              <th>Khách hàng</th>
+              {operation !== "cancel" && <th>Khách hàng</th>}
               <th className="num">Tổng tiền</th>
               <th>Trạng thái</th>
               <th></th>
@@ -178,7 +185,7 @@ export default function SalesHistory({ operation = "history" }: any) {
               <tr key={r.id} className="clickable" onClick={() => open(r.id)}>
                 <td className="code">{r.id}</td>
                 <td>{datetime(r.created_at)}</td>
-                <td>{r.customer_name || "—"}</td>
+                {operation !== "cancel" && <td>{r.customer_name || "—"}</td>}
                 <td className="num">{money(r.total)}</td>
                 <td>
                   <Badge tone={r.status === "Đã hủy" ? "red" : "green"}>
@@ -207,6 +214,7 @@ export default function SalesHistory({ operation = "history" }: any) {
           <Empty text="Không tìm thấy hóa đơn phù hợp" />
         )}
       </section>
+      {operation === "cancel" && error && <div className="cancel-invoice-error-toast" role="alert"><span className="cancel-invoice-alert"><img src="/figma/print-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       {operation === "history" && error && <div className={`history-error-toast ${error === "Không tìm thấy hóa đơn phù hợp" ? "history-empty-toast" : error === "Khoảng thời gian không hợp lệ" ? "history-range-toast" : ""}`} role="alert"><span className="history-alert-icon"><img src="/figma/history-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       </div>
       {detail && (
