@@ -1,6 +1,6 @@
 /* Figma UC6.1, node 336:329, native design size 1440 × 927. */
 .main:has(.sale-layout) {
-  margin-left: 245px;
+
   padding: 28px 24px 46px 29px;
 }
 .sale-layout {
@@ -318,41 +318,6 @@ body:has(.sale-layout) .global-search input {
 body:has(.sale-layout) .global-search input::placeholder {
   color: #64748b;
 }
-body:has(.sale-layout) .sidebar .nav-group {
-  margin-bottom: 11px;
-}
-body:has(.sale-layout) .sidebar .subnav {
-  margin: 12px 5px 13px 17px;
-  gap: 5px;
-}
-body:has(.sale-layout) .sidebar .subnav a {
-  height: 39px;
-  padding: 12px 14px;
-  font-size: 11px;
-}
-body:has(.sale-layout) .sidebar .nav-item {
-  font-size: 14px;
-  padding-left: 18px;
-  gap: 12px;
-}
-body:has(.sale-layout) .sidebar .nav-group:first-child .chevron img {
-  content: url("/figma/sale-chevron.svg");
-}
-body:has(.sale-layout) .sidebar-bottom button:first-child {
-  display: none;
-}
-body:has(.sale-layout) .sidebar-bottom {
-  padding: 0 10px;
-  position: absolute;
-  bottom: 37px;
-  left: 12px;
-}
-body:has(.sale-layout) .sidebar-bottom button:last-child {
-  margin: 0;
-  height: 35px;
-  padding: 14px 0 0;
-  border-color: #103a9b;
-}
 @media (max-width: 1100px) {
   .sale-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -371,30 +336,9 @@ body:has(.sale-layout) .sidebar-bottom button:last-child {
 .sale-layout .cart tbody td:nth-child(5) {
   padding-right: 42px;
 }
-body:has(.sale-layout) .sidebar nav {
-  width: 220px;
-}
-body:has(.sale-layout) .sidebar .nav-group:first-child {
-  margin-bottom: 4px;
-}
-body:has(.sale-layout) .sidebar .subnav {
-  margin-right: 4px;
-  margin-bottom: 0;
-}
-body:has(.sale-layout) .sidebar .subnav a {
-  font-size: 12px;
-}
 .sale-layout .payment-card {
   padding-left: 16px;
   padding-right: 18px;
-}
-
-body:has(.sale-layout)
-  .sidebar
-  .nav-group:first-child:has(.subnav)
-  .chevron
-  img {
-  transform: none;
 }
 .sale-layout .checkout:disabled {
   opacity: 1;

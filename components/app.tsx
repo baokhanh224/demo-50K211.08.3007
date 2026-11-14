@@ -59,11 +59,12 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
   const [view, setView] = useState("sale");
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({sale:true});
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   useEffect(() => {
     const menu = menus.find(m => m.items.some(([id]) => id === view));
-    if(menu) setExpanded(menu.items.length > 1 ? {[menu.icon]:true} : {});
-  }, [view]);
+    if (authenticated && menu && menu.items.length > 1)
+      setExpanded(old => old[menu.icon] ? old : {...old, [menu.icon]:true});
+  }, [view, authenticated]);
   const [toast, setToast] = useState("");
   const [confirmation, setConfirmation] = useState<any>(null);
   const [error, setError] = useState("");
@@ -193,8 +194,8 @@ export default function App() {
           </button>
         </div>
       </header>
-      <aside className="sidebar">
-        <nav>
+      <aside className="sidebar app-sidebar">
+        <nav aria-label="Điều hướng chính">
           {menus.map((menu) => {
             const active = menu.items.some(([id]) => id === view);
             return (
@@ -206,9 +207,11 @@ export default function App() {
                     if (view === menu.items[0][0] && menu.items.length > 1) setExpanded(old => ({...old, [menu.icon]: !old[menu.icon]}));
                     else {navigate(menu.items[0][0]);setExpanded(old => ({...old,[menu.icon]:true}));}
                   }}
+                  aria-expanded={menu.items.length > 1 ? !!expanded[menu.icon] : undefined}
+                  aria-current={view === menu.items[0][0] ? "page" : undefined}
                   className={"nav-item " + (active ? "active" : "")}
                 >
-                  <Icon name={menu.icon} suppliers={view === "suppliers"} report={["reports", "stock-report"].includes(view)} />
+                  <Icon name={menu.icon} />
                   <span>{menu.label}</span>
                   {menu.items.length > 1 && (
                     <span className="chevron" aria-hidden="true">
@@ -228,7 +231,7 @@ export default function App() {
                           navigate(id);
                         }}
                       >
-                        {["reports", "stock-report"].includes(view) && menu.icon === "report" && <Icon name={id === "reports" ? "reportBusiness" : "reportInventory"} />}
+                        {menu.icon === "report" && <Icon name={id === "reports" ? "reportBusiness" : "reportInventory"} />}
                         {name}
                       </a>
                     ))}

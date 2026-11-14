@@ -137,77 +137,6 @@ small,
   font-size: 12px;
   opacity: 0.8;
 }
-.sidebar {
-  position: fixed;
-  top: 90px;
-  left: 0;
-  bottom: 0;
-  width: 245px;
-  background: var(--nav);
-  padding: 19px 12px;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  overflow-y: auto;
-}
-.nav-group {
-  margin-bottom: 10px;
-}
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 42px;
-  padding: 10px 16px;
-  color: #1e3a8a;
-  border-radius: 7px;
-  font-size: 14px;
-}
-.nav-item.active {
-  background: #e3edfd;
-  font-weight: 600;
-}
-.nav-item:hover {
-  background: #e3edfd;
-}
-.chevron {
-  margin-left: auto;
-}
-.subnav {
-  margin: 10px 5px 12px 13px;
-  display: grid;
-  gap: 8px;
-}
-.subnav a {
-  display: block;
-  background: white;
-  padding: 12px 14px;
-  border-radius: 6px;
-  font-size: 12px;
-}
-.subnav a.selected {
-  background: #e3edfd;
-  font-weight: 600;
-}
-.sidebar-bottom {
-  margin-top: auto;
-  padding: 20px 10px 0;
-}
-.sidebar-bottom button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border: 0;
-  background: none;
-  color: #1e3a8a;
-  font-size: 13px;
-  margin: 14px 0;
-}
-.sidebar-bottom button:last-child {
-  border-top: 1px solid #6384bf;
-  padding-top: 16px;
-  width: 134px;
-}
 .main {
   margin: 90px 0 0 245px;
   padding: 28px 25px 40px 30px;
@@ -810,9 +739,6 @@ tbody tr.clickable:hover {
   margin: 0 0 8px;
 }
 @media (max-width: 1200px) {
-  .sidebar {
-    width: 220px;
-  }
   .main {
     margin-left: 220px;
     padding-left: 22px;
@@ -836,10 +762,6 @@ tbody tr.clickable:hover {
   .header .brand {
     width: 200px;
   }
-  .nav-item {
-    padding: 10px 12px;
-    font-size: 13px;
-  }
   .product-info-bottom .field {
     width: 160px;
   }
@@ -855,10 +777,6 @@ tbody tr.clickable:hover {
   .brand strong {
     font-size: 18px;
   }
-  .sidebar {
-    top: 74px;
-    width: 190px;
-  }
   .main {
     margin: 74px 0 0 190px;
     padding: 22px 16px;
@@ -868,10 +786,6 @@ tbody tr.clickable:hover {
   }
   .payment-card {
     min-height: 500px;
-  }
-  .nav-item {
-    font-size: 12px;
-    gap: 8px;
   }
   .global-search {
     width: 40vw;
@@ -999,9 +913,6 @@ tbody tr.clickable:hover {
   max-width: 100%;
   padding: 9px 7px;
 }
-.nav-item.active .chevron .icon {
-  transform: rotate(180deg);
-}
 
 .customer-actions { margin-top:16px; gap:10px; }
 .payment-customer h3 { font-size:16px; margin-bottom:8px; }
@@ -1124,15 +1035,7 @@ tbody tr.clickable:hover {
 .customer-delete .modal-head h2 { text-align:left; }
 .customer-confirm .actions .btn { display:flex; align-items:flex-start; justify-content:center; padding-top:9px; }
 .customer-cancel-add .confirm-text { top:146px; }
-body:has(.customer-list-card) .sidebar { width:256px; padding:20px 16px 37px; }
-.main:has(.customer-list-card) { margin-left:256px; padding-left:22px; }
-body:has(.customer-list-card) .nav-group { margin-bottom:8px; }
-body:has(.customer-list-card) .nav-item { height:48px; min-height:48px; padding:14px; border-radius:10px; font-weight:500; }
-body:has(.customer-list-card) .nav-item.active { font-weight:600; }
-body:has(.customer-list-card) .chevron { display:none; }
-body:has(.customer-list-card) .sidebar-bottom { padding:0 6px; }
-body:has(.customer-list-card) .sidebar-bottom button:first-child { display:none; }
-body:has(.customer-list-card) .sidebar-bottom button:last-child { height:35px; padding:14px 0 0; margin:0; width:134px; border-color:#103a9b; font-size:13px; }
+.main:has(.customer-list-card) {  padding-left:22px; }
 
 /* Figma report calendar 304:2866 / 304:3003. */
 .report-date { position:relative; width:170px; flex:0 0 170px; gap:6px; }

@@ -1,5 +1,5 @@
 /* UC6.4: frames 336:3261 / 336:3566, native viewport 1440 × 927. */
-.main:has(.sales-history-page){margin-left:245px;padding:38px 55px 59px 28px;}
+.main:has(.sales-history-page){padding:38px 55px 59px 28px;}
 .sales-history-page>h1{height:48px;display:flex;align-items:center;margin:0 0 35px;padding-left:4px;font-size:25px;line-height:30px;font-weight:600;}
 .history-filter-card,.history-list-card{background:#fff;border:1px solid #dee6f0;border-radius:8px;box-shadow:none;}
 .history-filter-card{height:195px;margin-bottom:19px;padding:18px 21px 25px 16px;}
@@ -28,21 +28,8 @@
 .history-alert-icon{display:flex;align-items:center;justify-content:center;width:19px;height:26px;flex:none;}
 .history-error-toast>span:nth-child(2){flex:1;}
 .history-error-toast button{border:0;background:none;padding:0;flex:none;width:17px;height:26px;color:#d8272b;font-size:18px;line-height:26px;font-weight:600;}
-body:has(.sales-history-page) .sidebar{width:245px;padding:19px 12px;}
-body:has(.sales-history-page) .sidebar nav{width:220px;}
-body:has(.sales-history-page) .nav-group{margin-bottom:11px;}
-body:has(.sales-history-page) .nav-group:first-child{margin-bottom:4px;}
-body:has(.sales-history-page) .nav-item{height:42px;min-height:42px;padding:10px 16px 10px 18px;gap:12px;font-size:14px;}
-body:has(.sales-history-page) .subnav{margin:12px 4px 0 17px;gap:5px;}
-body:has(.sales-history-page) .subnav a{height:39px;padding:12px 14px;font-size:12px;line-height:15px;}
-body:has(.sales-history-page) .subnav a.selected{background:#b9d3fa;}
-body:has(.sales-history-page) .nav-group:first-child .chevron img{content:url('/figma/history-chevron.svg');transform:none;}
-body:has(.sales-history-page) .sidebar-bottom{position:absolute;bottom:37px;left:12px;padding:0 10px;}
-body:has(.sales-history-page) .sidebar-bottom button:first-child{display:none;}
-body:has(.sales-history-page) .sidebar-bottom button:last-child{margin:0;height:35px;padding:14px 0 0;border-color:#103a9b;}
 @media(max-width:1200px){.main:has(.sales-history-page){padding-right:24px;}.history-filters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px;}.history-filter-card{height:auto;min-height:195px;padding-bottom:24px;}.history-list-card{overflow-x:auto;}.history-list-card table{min-width:860px;}.history-error-toast{right:24px;}}
 
 .history-list-card>.empty{text-align:left;padding:22px 12px 0;font-size:12px;line-height:24px;font-weight:500;color:#0f172a;}
 .history-error-toast.history-empty-toast{width:294px;top:108px;}
 .history-error-toast.history-range-toast{width:278px;top:105px;}
-body:has(.sales-history-page) .nav-group:not(:first-child) .chevron{display:none;}

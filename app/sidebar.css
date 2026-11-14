@@ -1,0 +1,25 @@
+/* One sidebar for every view; page components must not override navigation. */
+:root{--sidebar-width:250px;--app-header-height:90px;}
+body .main{margin-left:var(--sidebar-width);}
+.sidebar.app-sidebar{position:fixed;top:var(--app-header-height);left:0;bottom:0;width:var(--sidebar-width);padding:20px 10px 37px 10px;background:#c3d9fb;display:flex;flex-direction:column;overflow:hidden;z-index:10;}
+.app-sidebar>nav{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-gutter:stable;}
+.app-sidebar .nav-group{margin:0 0 8px;}
+.app-sidebar .nav-item{display:flex;align-items:center;gap:12px;height:48px;min-height:48px;padding:14px;color:#1e3a8a;border-radius:10px;font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;}
+.app-sidebar .nav-item>.icon{display:block;width:20px;height:20px;flex:0 0 20px;object-fit:contain;}
+.app-sidebar .nav-item>span:not(.chevron){min-width:0;}
+.app-sidebar .nav-item.active{background:#e3edfd;font-weight:600;}
+.app-sidebar .nav-item:hover{background:#e3edfd;}
+.app-sidebar .nav-item:focus-visible,.app-sidebar .subnav a:focus-visible{outline:2px solid #103a9b;outline-offset:-2px;}
+.app-sidebar .chevron{display:flex;align-items:center;margin-left:auto;width:16px;height:16px;flex:0 0 16px;}
+.app-sidebar .chevron .icon{display:block;content:normal;width:16px;height:16px;transform:none;}
+.app-sidebar [aria-expanded=true] .chevron .icon{transform:rotate(180deg);}
+.app-sidebar .subnav{display:grid;gap:6px;margin:8px 0 0 14px;}
+.app-sidebar .subnav a{display:flex;align-items:center;gap:8px;min-height:36px;padding:9px 12px;border:0;border-radius:6px;background:white;color:#1e3a8a;font-size:12px;line-height:18px;font-weight:400;}
+.app-sidebar .subnav a.selected{background:#b9d3fa;font-weight:600;}
+.app-sidebar .subnav .icon{width:16px;height:16px;flex:0 0 16px;}
+.app-sidebar .sidebar-bottom{position:static;flex:none;margin-top:20px;padding:0 6px;width:auto;}
+.app-sidebar .sidebar-bottom button{display:flex;align-items:center;gap:10px;border:0;background:transparent;color:#1e3a8a;font-size:13px;line-height:20px;margin:0;padding:0;}
+.app-sidebar .sidebar-bottom button:first-child{display:none;}
+.app-sidebar .sidebar-bottom button:last-child{border-top:1px solid #103a9b;padding:14px 0 0;width:134px;height:35px;}
+.app-sidebar .sidebar-bottom .icon{width:20px;height:20px;flex:0 0 20px;}
+@media(max-width:900px){:root{--sidebar-width:220px;--app-header-height:74px;}.app-sidebar .nav-item{font-size:12px;}}

@@ -4,6 +4,7 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "./globals.css";
+import "./sidebar.css";
 export const metadata: Metadata = {
   title: "Tạp hóa Quỳnh Như | Quản lý bán hàng",
   description: "Hệ thống quản lý bán hàng tạp hóa Quỳnh Như",

@@ -2,66 +2,9 @@
 body:has(.reports-page) {
   background: #f4f4f4;
 }
-body:has(.reports-page) .sidebar {
-  width: 220px;
-  padding: 32px 16px 28px;
-}
 .main:has(.reports-page) {
-  margin-left: 220px;
+
   padding: 24px;
-}
-body:has(.reports-page) .nav-group {
-  margin: 0 0 6px;
-}
-body:has(.reports-page) .nav-item {
-  height: 40px;
-  min-height: 40px;
-  padding: 0 12px;
-  gap: 10px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 400;
-}
-body:has(.reports-page) .nav-item.active {
-  background: #b9d3f3;
-  font-weight: 400;
-}
-body:has(.reports-page) .chevron {
-  display: none;
-}
-body:has(.reports-page) .subnav {
-  margin: 6px 0 0;
-  gap: 6px;
-}
-body:has(.reports-page) .subnav a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 36px;
-  padding: 0 10px;
-  font-size: 12px;
-  font-weight: 400;
-  border: 0;
-  border-radius: 8px;
-  background: white;
-  white-space: nowrap;
-}
-body:has(.reports-page) .subnav a.selected {
-  color: #103a9b;
-}
-body:has(.reports-page) .sidebar-bottom {
-  padding: 0 6px;
-}
-body:has(.reports-page) .sidebar-bottom button:first-child {
-  display: none;
-}
-body:has(.reports-page) .sidebar-bottom button:last-child {
-  width: 134px;
-  height: 36px;
-  margin: 0;
-  padding: 14px 0 0;
-  border-color: #103a9b;
-  font-size: 13px;
 }
 .reports-page {
   display: flex;
@@ -837,22 +780,6 @@ body:has(.reports-page) .sidebar-bottom button:last-child {
 .report-revenue-details .report-chart {
   height: 270px;
 }
-body:has(.reports-page) .nav-item.active {
-  background: #bfd6f5;
-}
-body:has(.reports-page) .subnav a {
-  padding: 0 8px;
-}
-body:has(.reports-page) .sidebar-bottom {
-  position: absolute;
-  left: 12px;
-  bottom: 37px;
-  padding: 0 10px;
-  width: 154px;
-}
-body:has(.reports-page) .sidebar-bottom button:last-child {
-  width: 134px;
-}
 @media (max-width: 1100px) {
   .report-revenue-details {
     grid-template-columns: minmax(0, 1fr);
@@ -883,9 +810,6 @@ body:has(.reports-page) .global-search input {
 }
 body:has(.reports-page) .global-search input::placeholder {
   color: #64748b;
-}
-body:has(.reports-page) .sidebar-bottom button:last-child {
-  height: 35px;
 }
 .reports-page .btn.primary,
 .report-dialog .btn.primary {

@@ -215,3 +215,9 @@ Kiểm tra công khai sau triển khai commit `3b85a58`: Vercel `Deployment has 
 Đã tách bộ lọc và danh sách thành hai khung, sửa kích thước/vị trí, sidebar, nút Tìm kiếm có icon, bảng không badge màu và toast lỗi góc trên phải có icon/×. Giữ kết quả đã tải khi truy vấn lại bị lỗi; tìm kiếm thành công tiếp theo cập nhật lại bình thường. Dữ liệu thật, không chèn hóa đơn mẫu. Đã đối chiếu bốn frame và dùng icon gốc.
 
 `npm run build` thành công; Playwright `tests/sales-history-ui.spec.ts` và `tests/sale-ui.spec.ts`: **2 đạt, 0 lỗi** trên production build cục bộ. Kiểm tra bộ lọc (273,211) 1112×195, danh sách y=425, toast tải lỗi (1104,109) 283×56, tìm mã, ngày sai, rỗng, lỗi tải một lần, giữ dòng, đóng lỗi/thử lại, mở chi tiết. Không viết dữ liệu nghiệp vụ production. Số đo và ảnh ở `docs/evidence/history-ui-20261114/`; chi tiết nguồn ở `docs/uc6-history-figma.md`.
+
+## Đồng nhất thanh bên — 14/11/2026
+
+Theo yêu cầu mới, thay các kích thước sidebar riêng của từng trang bằng `app/sidebar.css` dùng chung: rộng 250px, icon 20px, hàng 48px, khoảng cách và trạng thái chọn thống nhất. Giữ nhóm menu đang mở khi chuyển trang; menu cuộn riêng và Đăng xuất ở cuối. Cài đặt demo vẫn mở qua biểu tượng tài khoản trên header. Các số đo sidebar ở báo cáo cũ được thay bằng quy tắc chung này.
+
+Production build thành công. Playwright: **8/8 đạt**, gồm kiểm tra sidebar trên 14 view, icon/nhãn/kích thước/vị trí nhất quán, menu đang mở khi chuyển trang, footer khi chiều cao màn hình 600px; hồi quy bán hàng, lịch sử, nhà cung cấp, báo cáo và lịch. Kiểm thử nghiệp vụ dùng CSDL cục bộ.

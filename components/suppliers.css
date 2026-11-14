@@ -1,15 +1,7 @@
 /* UC2, Figma page 1:3. Keep every rule scoped to suppliers. */
-.main:has(.supplier-page){margin-left:256px;padding:24px;}
+.main:has(.supplier-page){padding:24px;}
 .supplier-page{color:#1e293b;}
 .supplier-page>h1{font-size:22px;line-height:27px;font-weight:700;margin:0 0 16px;}
-body:has(.supplier-page) .sidebar{width:256px;padding:20px 16px 37px;}
-body:has(.supplier-page) .nav-group{margin-bottom:8px;}
-body:has(.supplier-page) .nav-item{height:48px;min-height:48px;padding:14px;border-radius:10px;font-weight:500;}
-body:has(.supplier-page) .nav-item.active{font-weight:600;}
-body:has(.supplier-page) .chevron{display:none;}
-body:has(.supplier-page) .sidebar-bottom{padding:0 6px;}
-body:has(.supplier-page) .sidebar-bottom button:first-child{display:none;}
-body:has(.supplier-page) .sidebar-bottom button:last-child{height:35px;padding:14px 0 0;margin:0;width:134px;border-color:#103a9b;font-size:13px;}
 .supplier-list-card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:20px;box-shadow:none;min-width:0;}
 .supplier-page .btn,.supplier-form .btn,.supplier-confirm .btn,.supplier-drawer .btn{min-height:0;display:inline-flex;justify-content:center;align-items:center;gap:6px;height:36.84px;border:1px solid #cbd5e1;border-radius:6px;padding:7px 14px 8.84px;font-size:13px;line-height:19px;font-weight:600;color:#1e293b;background:#fff;}
 .supplier-page .btn.primary,.supplier-form .btn.primary,.supplier-confirm .btn.primary{background:#17409a;border-color:#17409a;color:#fff;}
