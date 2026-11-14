@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
 import { money, date, datetime, iso } from "@/lib/format";
 import "./sales-history.css";
+import InvoicePrint from "./invoice-print";
 export default function SalesHistory({ operation = "history" }: any) {
-  const { refresh, notify, confirm } = useApp();
+  const { refresh, notify } = useApp();
   const cancelKey = useRef(crypto.randomUUID());
   const [q, setQ] = useState("");
   const [phone, setPhone] = useState("");
@@ -97,25 +98,12 @@ export default function SalesHistory({ operation = "history" }: any) {
       else setError(e.message);
     }
   }
-  async function printPreview() {
+  function printPreview() {
     setCancelError("");
-    try {
-      const i = await api("action", { action: "print-preview", id: detail.id });
-      setDetail(i);
-      setMode("print");
-    } catch (e: any) {
-      setCancelError(e.message);
-    }
+    setMode("print");
   }
-  async function print() {
-    try {
-      await api("action", { action: "print", id: detail.id });
-      window.print();
-      notify("In hóa đơn thành công");
-    } catch (e: any) {
-      setCancelError(e.message);
-    }
-  }
+  if (detail && mode === "print")
+    return <InvoicePrint invoice={detail} onClose={() => { setDetail(null); setMode("detail"); setCancelError(""); }} />;
   if (returning)
     return (
       <ReturnForm
@@ -224,27 +212,10 @@ export default function SalesHistory({ operation = "history" }: any) {
       {detail && (
         <Modal
           wide
-          title={mode === "print" ? "Xem trước hóa đơn" : "Chi tiết hóa đơn"}
-          onClose={() => {
-            if (mode === "print")
-              confirm("Bạn có chắc chắn muốn hủy in hóa đơn không?", () => {
-                setDetail(null);
-                setMode("detail");
-              });
-            else {
-              setDetail(null);
-              setCancelError("");
-            }
-          }}
+          title="Chi tiết hóa đơn"
+          onClose={() => { setDetail(null); setCancelError(""); }}
         >
-          <div className={mode === "print" ? "print-sheet" : ""}>
-            {mode === "print" && (
-              <div className="print-brand">
-                <p>TIỆM TẠP HÓA</p>
-                <h2>Quỳnh Như</h2>
-                <p>HÓA ĐƠN BÁN HÀNG</p>
-              </div>
-            )}
+          <div>
             <div className="detail-meta">
               <div>
                 <small>Mã hóa đơn</small>
@@ -306,8 +277,7 @@ export default function SalesHistory({ operation = "history" }: any) {
               </p>
             )}
           </div>
-          {mode === "detail" && (
-            <>
+          <>
               <details className="no-print">
                 <summary>Phân bổ xuất kho</summary>
                 <table style={{ marginTop: 16 }}>
@@ -388,33 +358,11 @@ export default function SalesHistory({ operation = "history" }: any) {
                   ))}
                 </div>
               )}
-            </>
-          )}
+          </>
           <div className="no-print">
             <Notice text={cancel ? "" : cancelError} />
           </div>
           <div className="actions">
-            {mode === "print" ? (
-              <>
-                <Button
-                  onClick={() =>
-                    confirm(
-                      "Bạn có chắc chắn muốn hủy in hóa đơn không?",
-                      () => {
-                        setDetail(null);
-                        setMode("detail");
-                      },
-                    )
-                  }
-                >
-                  Hủy
-                </Button>
-                <Button variant="primary" onClick={print}>
-                  In hóa đơn
-                </Button>
-              </>
-            ) : (
-              <>
                 <Button
                   onClick={() => {
                     setDetail(null);
@@ -435,8 +383,6 @@ export default function SalesHistory({ operation = "history" }: any) {
                 <Button variant="primary" onClick={printPreview}>
                   In hóa đơn
                 </Button>
-              </>
-            )}
           </div>
         </Modal>
       )}

@@ -225,3 +225,9 @@ Production build thành công. Playwright: **8/8 đạt**, gồm kiểm tra side
 ### Điều chỉnh theo phản hồi: bỏ cuộn thanh bên
 
 Đã bỏ vùng cuộn và phần chừa chỗ scrollbar của menu bằng `overflow: clip`. Menu không cuộn bằng chuột hoặc thay đổi scrollTop; giữ căn chỉnh chung và vị trí Đăng xuất. Production build đạt; kiểm thử sidebar trên 14 view đạt, có xác nhận không cuộn ở viewport cao 600px.
+
+## UC6.2 — In hóa đơn theo Figma, 14/11/2026
+
+Đã chuyển xem trước từ modal chi tiết thành màn hình riêng, khung 733×557 tại (476,212), bảng kẻ ô và nút phía dưới. Hộp xác nhận hủy440×250 tại (500,350), icon gốc Figma và nút đỏ; Quay lại/Escape giữ bản xem trước, Xác nhận trở về danh sách. Toast lỗi hóa đơn đã hủy290×56, toast thành công245×56, có nút đóng; hóa đơn bị hủy không được in, lỗi máy in có thể thử lại. Dữ liệu thật và kiểm tra server giữ nguyên; không sửa service.ts/route.ts.
+
+Production build thành công; Playwright **4/4 đạt**: hai test in mới và hồi quy Bán hàng/Lịch sử bán hàng. Đã kiểm tra trạng thái hủy sau khi xem trước, PDF/print media và nội dung PDF (không lẫn header/sidebar/nút). Lỗi được mô phỏng trong trình duyệt, window.print thay bằng bộ đếm; không gửi tới máy in thật hoặc ghi dữ liệu nghiệp vụ production. Chi tiết kích thước, nguồn asset và giới hạn xác nhận in vật lý: `docs/uc6-print-figma.md`.

@@ -1,0 +1,45 @@
+/* UC6.2: 336:4315 / 336:1615 / 336:1769 / 336:2071, 1440 × 927. */
+.main:has(.invoice-print-page){padding:38px 32px 60px 27px;}
+.invoice-print-page>h1{display:flex;align-items:center;height:48px;margin:0 0 36px;font-size:25px;line-height:30px;font-weight:600;}
+.invoice-print-sheet{width:733px;max-width:100%;min-height:557px;margin:0 auto;padding:20px 24px 28px 22px;background:white;border:1px solid #dee6f0;border-radius:8px;color:#0f172a;}
+.invoice-print-brand h2{height:35px;margin:0 0 0 222px;font-size:19px;line-height:35px;font-weight:600;white-space:nowrap;}
+.invoice-print-brand>p{height:30px;margin:0 0 0 251px;font-size:16px;line-height:30px;font-weight:600;white-space:nowrap;}
+.invoice-print-meta{margin:21px 0 26px 7px;}
+.invoice-print-meta>p{margin:0;height:30px;line-height:30px;font-size:14px;}
+.invoice-print-meta>p+p{margin-top:5px;}
+.invoice-print-sheet table{width:100%;table-layout:fixed;border-collapse:collapse;border:1px solid #b2bfd1;}
+.invoice-print-sheet th,.invoice-print-sheet td{border:1px solid #b2bfd1;text-align:left;padding:0 10px;vertical-align:middle;overflow-wrap:anywhere;}
+.invoice-print-sheet th{height:43px;background:#eff3f8;font-size:13px;line-height:18px;font-weight:600;color:#334155;}
+.invoice-print-sheet td{height:51px;font-size:14px;line-height:20px;font-weight:400;}
+.invoice-print-sheet th:nth-child(2),.invoice-print-sheet td:nth-child(2){text-align:center;}
+.invoice-print-total{margin:7px 9px 0 6px;min-height:36px;line-height:36px;text-align:right;font-size:19px;font-weight:600;}
+.invoice-print-method{margin:10px 9px 0 6px;min-height:30px;line-height:30px;text-align:right;font-size:14px;}
+.invoice-print-actions{display:flex;justify-content:center;gap:32px;margin-top:31px;}
+.invoice-print-actions .btn{width:110px;height:40px;min-height:0;padding:0;border:1px solid #dee6f0;border-radius:6px;font-size:13px;line-height:20px;font-weight:600;background:white;color:#103a9b;}
+.invoice-print-actions .btn.primary{width:145px;background:#103a9b;border-color:#103a9b;color:white;}
+.invoice-print-actions .btn.primary:disabled{background:#e3e8f0;border-color:#e3e8f0;color:#949ead;opacity:1;}
+.invoice-print-toast{position:fixed;z-index:80;top:107px;right:53px;width:290px;min-height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid #ffa4a4;border-radius:9px;background:#fef2f2;color:#d8272b;font-size:13px;line-height:17px;font-weight:500;}
+.invoice-print-alert,.invoice-print-tick{display:flex;align-items:center;justify-content:center;width:19px;height:26px;flex:none;}
+.invoice-print-tick{font-size:17px;font-weight:700;}
+.invoice-print-toast>span:nth-child(2){flex:1;min-width:0;}
+.invoice-print-toast button{border:0;background:none;padding:0;width:17px;height:26px;flex:none;font-size:18px;line-height:26px;font-weight:600;color:inherit;}
+.invoice-print-toast.success{right:24px;width:245px;background:#e9fff1;border-color:#86efac;color:#148447;}
+.invoice-print-overlay{background:rgba(15,31,59,.42);z-index:90;}
+.modal.invoice-print-confirm{position:relative;width:440px;height:250px;padding:0;overflow:hidden;border:1px solid #e5e7eb;border-radius:14px;box-shadow:none;transform:translateY(11.5px);}
+.invoice-print-confirm .modal-head{position:absolute;top:76px;left:19px;right:19px;height:32px;margin:0;justify-content:center;}
+.invoice-print-confirm .modal-head h2{font-size:18px;font-weight:600;line-height:32px;text-align:center;}
+.invoice-print-warning{position:absolute;top:13px;left:190px;width:56px;height:56px;}
+.invoice-print-warning span{position:absolute;top:10px;left:0;width:56px;height:38px;line-height:32px;text-align:center;color:#e02b2b;font-size:26px;font-weight:700;}
+.invoice-print-confirm>p{position:absolute;top:119px;left:19px;right:19px;height:52px;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;line-height:20px;}
+.invoice-print-confirm .actions{position:absolute;top:192px;left:70px;margin:0;display:flex;gap:16px;}
+.invoice-print-confirm .actions .btn{height:40px;min-height:0;width:135px;padding:0;border:2px solid #d9e2ef;border-radius:6px;background:white;color:#103a9b;font-size:13px;font-weight:600;}
+.invoice-print-confirm .actions .btn.danger{width:145px;border-color:#d92126;background:#d92126;color:white;}
+@media(max-width:1100px){.invoice-print-brand h2,.invoice-print-brand>p{margin-left:0;text-align:center;}.invoice-print-sheet{padding-right:22px;}}
+@media(max-width:600px){.invoice-print-sheet th,.invoice-print-sheet td{padding:6px 4px;font-size:12px;}.invoice-print-brand h2{font-size:16px;}.invoice-print-brand>p{font-size:13px;}.invoice-print-confirm .actions{left:16px;right:16px;justify-content:center;}.invoice-print-warning{left:calc(50% - 28px);}}
+@media print{
+  .main:has(.invoice-print-page){display:block!important;margin:0!important;padding:0!important;min-height:0!important;}
+  .invoice-print-page>h1,.invoice-print-actions,.invoice-print-toast,.invoice-print-overlay{display:none!important;}
+  .invoice-print-sheet{width:100%;max-width:none;min-height:0;margin:0;padding:16px;border:0;border-radius:0;}
+  .invoice-print-brand h2,.invoice-print-brand>p{margin-left:0;text-align:center;}
+  .invoice-print-sheet tr{break-inside:avoid;}
+}
