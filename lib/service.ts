@@ -1,3 +1,4 @@
+import { productCategoryNames, productErrors, productExpiry } from "./product-validation";
 import { supplierErrors } from "./supplier-validation";
 import {
   db,
@@ -104,9 +105,11 @@ export async function lots() {
   );
 }
 export async function bootstrap() {
+  const categories = await all("SELECT * FROM category ORDER BY id");
   return {
     today: day(),
-    categories: await all("SELECT * FROM category ORDER BY id"),
+    categories,
+    product_categories: categories.filter(c => productCategoryNames.includes(c.name)).sort((a,b) => productCategoryNames.indexOf(a.name)-productCategoryNames.indexOf(b.name)),
     products: await products(),
     suppliers: await suppliers(),
     customers: await all("SELECT * FROM customer ORDER BY id"),
@@ -115,18 +118,15 @@ export async function bootstrap() {
 }
 export async function saveProduct(d: any) {
   const edit = !!d.id;
-  required(d, [
-    "name",
-    "category_id",
-    "base_unit",
-    "reference_cost",
-    ...(edit ? [] : ["price"]),
-  ]);
-  const fields: Record<string, string> = {};
-  for (const k of ["reference_cost", ...(edit ? [] : ["price"])])
-    if (!positive(d[k])) fields[k] = "Dữ liệu không hợp lệ!";
-  if (!(await one("SELECT id FROM category WHERE id=?", Number(d.category_id))))
-    fields.category_id = "Dữ liệu không hợp lệ!";
+  if (edit) {
+    const existing = await one("SELECT * FROM product WHERE id=?", d.id);
+    if (!existing) fail("Sản phẩm không tồn tại!");
+    d = { ...existing, ...d };
+  }
+  const fields = productErrors(d, day());
+  const categoryId = Number(d.category_id);
+  const category = Number.isSafeInteger(categoryId) && categoryId > 0 ? await one("SELECT id,name FROM category WHERE id=?", categoryId) : null;
+  if (!category || !productCategoryNames.includes(category.name)) fields.category_id = fields.category_id || "Dữ liệu không hợp lệ!";
   if (!integer(d.min_stock ?? 0) || Number(d.min_stock ?? 0) < 0)
     fields.min_stock = "Dữ liệu không hợp lệ!";
   const extras = d.units || [];
@@ -151,7 +151,7 @@ export async function saveProduct(d: any) {
     const id = d.id || (await code("SP"));
     if (edit) {
       await run(
-        "UPDATE product SET name=?,category_id=?,barcode=?,base_unit=?,reference_cost=?,average_cost=CASE WHEN EXISTS(SELECT 1 FROM receipt_line WHERE product_id=?) THEN average_cost ELSE ? END,min_stock=?,expiry_managed=?,description=? WHERE id=?",
+        "UPDATE product SET name=?,category_id=?,barcode=?,base_unit=?,reference_cost=?,average_cost=CASE WHEN EXISTS(SELECT 1 FROM receipt_line WHERE product_id=?) THEN average_cost ELSE ? END,min_stock=?,expiry_managed=?,description=?,expiry=? WHERE id=?",
         d.name.trim(),
         Number(d.category_id),
         d.barcode?.trim() || "",
@@ -162,6 +162,7 @@ export async function saveProduct(d: any) {
         Number(d.min_stock || 0),
         d.expiry_managed ? 1 : 0,
         d.description?.trim() || "",
+        productExpiry(d.expiry) || null,
         id,
       );
       const base = await one(
@@ -186,7 +187,7 @@ export async function saveProduct(d: any) {
       }
     } else {
       await run(
-        "INSERT INTO product(id,name,category_id,barcode,base_unit,reference_cost,average_cost,min_stock,expiry_managed,description) VALUES (?,?,?,?,?,?,?,?,?,?)",
+        "INSERT INTO product(id,name,category_id,barcode,base_unit,reference_cost,average_cost,min_stock,expiry_managed,description,expiry) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
         id,
         d.name.trim(),
         Number(d.category_id),
@@ -197,6 +198,7 @@ export async function saveProduct(d: any) {
         Number(d.min_stock || 0),
         d.expiry_managed ? 1 : 0,
         d.description?.trim() || "",
+        productExpiry(d.expiry) || null,
       );
       for (const u of [
         { name: d.base_unit, factor: 1, price: d.price },
@@ -242,11 +244,11 @@ export async function updatePrice(d: any) {
   if (!positive(d.price))
     fail("Giá bán không hợp lệ!", { price: "Giá bán không hợp lệ!" });
   const u = await one(
-    "SELECT u.*,p.average_cost FROM unit u JOIN product p ON p.id=u.product_id WHERE u.id=?",
+    "SELECT u.*,p.reference_cost FROM unit u JOIN product p ON p.id=u.product_id WHERE u.id=?",
     Number(d.unit_id),
   );
   if (!u) fail("Sản phẩm không tồn tại!");
-  if (Number(d.price) < u.average_cost * u.factor && !d.confirmed)
+  if (Number(d.price) < u.reference_cost * u.factor && !d.confirmed)
     return { warning: "Giá bán thấp hơn giá nhập. Bạn có muốn tiếp tục?" };
   return await transaction(async () => {
     await run(

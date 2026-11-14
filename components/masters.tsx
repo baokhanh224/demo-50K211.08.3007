@@ -12,6 +12,7 @@ import {
   useForm,
 } from "./ui";
 import Suppliers, { SupplierForm } from "./suppliers";
+import Products, { ProductForm } from "./products";
 import { money, datetime } from "@/lib/format";
 const config: any = {
   products: {
@@ -37,7 +38,7 @@ const config: any = {
   },
 };
 export default function Masters(props: any) {
-  return props.kind === "suppliers" ? <Suppliers /> : <OtherMasters {...props} />;
+  return props.kind === "products" ? <Products /> : props.kind === "suppliers" ? <Suppliers /> : <OtherMasters {...props} />;
 }
 function OtherMasters({ kind }: any) {
   const { data, refresh, notify, confirm } = useApp();
@@ -435,7 +436,7 @@ function OtherMasters({ kind }: any) {
   );
 }
 export function MasterForm(props: any) {
-  return props.kind === "suppliers" ? <SupplierForm {...props} /> : <OtherMasterForm {...props} />;
+  return props.kind === "products" ? <ProductForm {...props} /> : props.kind === "suppliers" ? <SupplierForm {...props} /> : <OtherMasterForm {...props} />;
 }
 function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
   const { data, refresh, notify, confirm } = useApp();

@@ -15,8 +15,10 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
   await page
     .getByLabel("Tên sản phẩm", { exact: true })
     .fill("Sản phẩm kiểm tra");
-  await page.getByLabel("Danh mục", { exact: true }).last().selectOption("1");
-  await page.getByLabel("Đơn vị tính", { exact: true }).fill("Gói");
+  await page.getByRole("dialog", {name:"Thêm sản phẩm",exact:true}).getByRole("button",{name:"Danh mục",exact:true}).click();
+  await page.getByRole("option", {name:"Sữa",exact:true}).click();
+  await page.getByRole("button", {name:"Đơn vị tính",exact:true}).click();
+  await page.getByRole("option", {name:"Gói",exact:true}).click();
   await page.getByLabel("Giá nhập", { exact: true }).fill("1000");
   await page.getByLabel("Giá bán", { exact: true }).fill("0");
   await page.getByRole("button", { name: "Lưu", exact: true }).click();
@@ -28,6 +30,8 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
   await expect(
     page.getByText("Thêm sản phẩm thành công!", { exact: true }),
   ).toBeVisible();
+  await page.getByLabel("Từ khóa",{exact:true}).fill("Sản phẩm kiểm tra");
+  await page.getByRole("button",{name:"Tìm kiếm",exact:true}).click();
   const row = page.locator("tbody tr").filter({ hasText: "Sản phẩm kiểm tra" });
   await row.getByRole("checkbox").check();
   await page
@@ -95,7 +99,8 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
     .getByLabel("Tên nhà cung cấp", { exact: true })
     .fill("Nhà cung cấp kiểm tra");
   await page.getByLabel("Số điện thoại", { exact: true }).fill("0912345000");
-  await page.getByLabel("Khác", { exact: true }).check();
+  await page.getByRole("dialog", {name:"Thêm nhà cung cấp",exact:true}).getByRole("button", {name:"Danh mục",exact:true}).click();
+  await page.getByLabel("Khác", { exact: true }).click();
   await page.getByRole("button", { name: "Lưu", exact: true }).click();
   await expect(
     page.getByText("Vui lòng nhập tên danh mục mới!", { exact: true }),
@@ -109,7 +114,8 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
       exact: true,
     }),
   ).toBeVisible();
-  await page.getByLabel("Khác", { exact: true }).uncheck();
+  await page.getByRole("dialog", {name:"Thêm nhà cung cấp",exact:true}).getByRole("button", {name:"Danh mục",exact:true}).click();
+  await page.getByLabel("Khác", { exact: true }).click();
   await page.getByRole("button", { name: "Lưu", exact: true }).click();
   await expect(
     page.getByText("Thêm nhà cung cấp thành công!", { exact: true }),
@@ -146,7 +152,7 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
     .click();
   await page.getByRole("cell", { name: "HD0001", exact: true }).click();
   await page.getByRole("button", { name: "In hóa đơn", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "Xem trước hóa đơn", exact: true })).toBeVisible();
+  await expect(page.locator(".invoice-print-page")).toBeVisible();
   await page.getByRole("button", { name: "In hóa đơn", exact: true }).click();
   await expect(
     page.getByText("Không thể kết nối hoặc gửi yêu cầu đến máy in", {

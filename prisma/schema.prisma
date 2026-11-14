@@ -141,6 +141,7 @@ model product {
   average_cost   Float
   min_stock      Int            @default(0)
   expiry_managed Int            @default(0)
+  expiry         String?
   description    String         @default("")
   invoice_line   invoice_line[]
   movement       movement[]

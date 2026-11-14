@@ -259,3 +259,7 @@ Thông báo Không tìm thấy sản phẩm có nút đóng, SVG gốc Figma, r�
 ## Cập nhật UC2 theo Figma — 14/11/2026
 
 Quản lý nhà cung cấp có bộ lọc/dropdown, chọn dòng, trang kết quả, phân trang **6 dòng/trang**, drawer chi tiết và form thêm/sửa theo các frame UC2. Phân trang này theo yêu cầu giao diện mới, thay phần ghi chú trước đây “không phân trang” riêng đối với nhà cung cấp; các danh sách khác giữ nguyên. Chi tiết đối chiếu và cách lấy icon: `docs/uc2-figma.md`. Kiểm thử riêng bằng `npx playwright test tests/suppliers.spec.ts` trên CSDL thử. Không chạy kịch bản ghi dữ liệu trên production.
+
+### Cập nhật quản lý sản phẩm theo đặc tả
+
+Giao diện sản phẩm hiện nằm ở `components/products.tsx` và `components/products.css`; backend dùng `lib/service.ts`, kiểm tra ngày/giá trong `lib/product-validation.ts`. Khi kéo bản mới về máy, chạy `npm run db:init` trước khi khởi động để áp dụng migration thêm hạn sử dụng và danh mục chuẩn. Chi tiết22 mục, quy tắc giá nhập, dữ liệu cũ và kiểm thử: [docs/products-spec.md](docs/products-spec.md).

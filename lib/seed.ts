@@ -58,10 +58,13 @@ export async function seedData() {
         await run("INSERT INTO account VALUES (?,?,?)", "TK0001", username, passwordHash(password));
       }
       for (const name of [
-        "Sữa & đồ uống",
-        "Mì & thực phẩm",
+        "Sữa",
+        "Mì ăn liền",
+        "Nước uống",
+        "Bánh mì",
         "Bánh kẹo",
-        "Gia dụng",
+        "Gia vị",
+        "Khác",
       ])
         await run("INSERT INTO category(name) VALUES (?)", name);
       const sup = await saveSupplier({
@@ -111,10 +114,10 @@ export async function seedData() {
             { name: "Thùng", factor: 30, price: 110000 },
           ],
         ],
-        ["Bánh quy Cosy", 3, "Gói", 12000, 18000, 5, true, "8934684012345", []],
+        ["Bánh quy Cosy", 5, "Gói", 12000, 18000, 5, true, "8934684012345", []],
         [
           "Nước suối Lavie",
-          1,
+          3,
           "Chai",
           3500,
           6000,
@@ -123,10 +126,10 @@ export async function seedData() {
           "8934588123456",
           [{ name: "Thùng", factor: 24, price: 130000 }],
         ],
-        ["Muối I-ốt", 2, "Gói", 4000, 6000, 5, false, "8934588234567", []],
+        ["Muối I-ốt", 6, "Gói", 4000, 6000, 5, false, "8934588234567", []],
         [
           "Nước rửa chén Sunlight",
-          4,
+          7,
           "Chai",
           20000,
           28000,
@@ -135,7 +138,7 @@ export async function seedData() {
           "8934588345678",
           [],
         ],
-        ["Kẹo bạc hà", 3, "Gói", 5000, 8000, 2, false, "8934588456789", []],
+        ["Kẹo bạc hà", 5, "Gói", 5000, 8000, 2, false, "8934588456789", []],
       ];
       for (const [
         name,
