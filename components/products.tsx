@@ -154,17 +154,17 @@ export default function Products() {
   return <div className="products-page">
     <h1>Quản lý sản phẩm</h1>
     <section className="product-management-card">
-      <div className="product-heading"><h2>Danh sách sản phẩm</h2><div className="row product-actions">
-        <Button variant="primary" onClick={() => setForm({})}><Asset name="9fda3" />Thêm sản phẩm</Button>
-        <Button disabled={!selected} onClick={() => setForm(selected)}><Asset name="b3751" />Sửa</Button>
-        <Button disabled={!selected} variant="danger" onClick={() => setDeleting(true)}><Asset name="a04e9" />Xóa</Button>
-        <Button disabled={!selected} onClick={() => setPrice(selected)}><Asset name="dbe96" />Cập nhật giá bán</Button>
-      </div></div>
       <form className="product-controls" onSubmit={search}>
         <div className="product-search-input"><Asset name="35b85" /><input aria-label="Từ khóa" placeholder="Tìm theo mã hoặc tên sản phẩm..." value={q} onChange={e => setQ(e.target.value)} />{q && <button type="button" aria-label="Xóa từ khóa" onClick={() => { setQ(""); setAppliedQ(""); setPage(1); setSelectedId(""); }}>×</button>}</div>
         <ProductSelect label="Danh mục" inline placeholder="Tất cả" value={category} onChange={(v: string) => { setCategory(String(v)); setAppliedQ(q.trim()); setPage(1); setSelectedId(""); }} options={categories.map((c: any) => ({ value: c.id, label: c.name }))} />
         <Button variant="primary" type="submit"><Asset name="bb29d" />Tìm kiếm</Button>
       </form>
+      <div className="row product-actions">
+        <Button variant="primary" onClick={() => setForm({})}><Asset name="9fda3" />Thêm sản phẩm</Button>
+        <Button disabled={!selected} onClick={() => setForm(selected)}><Asset name="b3751" />Sửa</Button>
+        <Button disabled={!selected} variant="danger" onClick={() => setDeleting(true)}><Asset name="a04e9" />Xóa</Button>
+        <Button disabled={!selected} onClick={() => setPrice(selected)}><Asset name="dbe96" />Cập nhật giá bán</Button>
+      </div>
       {total ? <div className="product-table-wrap"><table><thead><tr><th></th><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Danh mục</th><th>Đơn vị</th><th>Giá nhập</th><th>Giá bán</th><th>Tồn kho</th><th>Hạn sử dụng</th></tr></thead><tbody>
         {rows.map((p: any) => <tr key={p.id} className={selectedId === p.id ? "selected" : ""} onClick={() => setDetail(p)}>
           <td onClick={e => e.stopPropagation()}><input type="checkbox" aria-label={`Chọn ${p.id}`} checked={selectedId === p.id} onChange={() => setSelectedId(selectedId === p.id ? "" : p.id)} /></td>

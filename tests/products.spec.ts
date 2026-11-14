@@ -103,3 +103,21 @@ test("Products: concurrent deletion closes edit form, refreshes list and display
     await edit.getByRole("button", { name: "Lưu", exact: true }).click(); await expect(edit).toHaveCount(0); await expect(page.locator(".supplier-toast-error")).toContainText("Sản phẩm không tồn tại!"); await expect(page.locator(".product-list-footer")).toContainText("Hiển thị 0 / 0 sản phẩm"); await expect(page.getByLabel("Từ khóa", { exact: true })).toHaveValue(r.id); await capture(page, "edit-missing");
   } finally { await cleanup(page, prefix); }
 });
+
+
+test("Products: Figma list controls, actions and table keep their own rows", async ({ page }) => {
+  await login(page); await page.setViewportSize({ width: 1440, height: 900 });
+  const card = page.locator(".product-management-card");
+  const controls = (await card.locator(".product-controls").boundingBox())!;
+  const search = (await card.locator(".product-search-input").boundingBox())!;
+  const actions = (await card.locator(".product-actions").boundingBox())!;
+  const table = (await card.locator(".product-table-wrap").boundingBox())!;
+  expect(search.width).toBe(320); expect(search.height).toBe(40);
+  expect(actions.y - controls.y).toBe(56); expect(table.y - actions.y).toBe(56);
+  expect(await card.locator(".product-table-wrap").evaluate(e => e.scrollWidth <= e.clientWidth)).toBe(true);
+  await expect(card.getByRole("heading")).toHaveCount(0);
+  await card.getByRole("button", { name: "Danh mục", exact: true }).click();
+  await expect(card.getByRole("option", { name: "Tất cả", exact: true })).toHaveAttribute("aria-selected", "true");
+  await expect(card.locator(".product-select-menu")).toHaveCSS("overflow-y", "auto");
+  await capture(page, "list-layout-category");
+});
