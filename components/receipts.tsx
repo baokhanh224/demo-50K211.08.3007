@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef, useId } from "react";
 import { api, Button, Field, Notice, Empty, useApp } from "./ui";
 import ProductPicker from "./picker";
+import { SupplierToast } from "./suppliers";
 import { money, date, iso, today } from "@/lib/format";
 import { receiptPriceDigits, receiptPriceInputValue, receiptUnitPrice } from "@/lib/receipt-money";
 import "./receipts.css";
@@ -47,9 +48,20 @@ export default function Receipts() {
   const [lines, setLines] = useState<any[]>([]);
   const [errors, setErrors] = useState<any>({});
   const [error, setError] = useState("");
+  const [validationNotice, setValidationNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const key = useRef(crypto.randomUUID());
   const lock = useRef(false);
+  function showError(e: any) {
+    if (["Số lượng nhập và giá nhập phải lớn hơn 0", "Hạn sử dụng phải sau ngày nhập hàng"].includes(e.message)) {
+      setValidationNotice(e.message);
+      setError("");
+      setErrors({});
+    } else {
+      setError(e.message);
+      setErrors(e.fields || {});
+    }
+  }
   function choose(p: any) {
     setProduct(p);
     setUnit(String(p.units[0].id));
@@ -58,12 +70,14 @@ export default function Receipts() {
     setExpiry("");
     setErrors({});
     setError("");
+    setValidationNotice("");
   }
   async function add() {
     if (lock.current) return;
     lock.current = true;
     setBusy(true);
     setError("");
+    setValidationNotice("");
     setErrors({});
     const l = {
       product_id: product?.id || "",
@@ -87,8 +101,7 @@ export default function Receipts() {
       setQuantity("");
       setExpiry("");
     } catch (e: any) {
-      setErrors(e.fields);
-      setError(e.message);
+      showError(e);
     } finally {
       lock.current = false;
       setBusy(false);
@@ -100,6 +113,7 @@ export default function Receipts() {
     setBusy(true);
     setErrors({});
     setError("");
+    setValidationNotice("");
     try {
       const r = await api("action", {
         action: "receipt",
@@ -118,8 +132,7 @@ export default function Receipts() {
       setExpiry("");
       key.current = crypto.randomUUID();
     } catch (e: any) {
-      setError(e.message);
-      setErrors(e.fields || {});
+      showError(e);
     } finally {
       lock.current = false;
       setBusy(false);
@@ -135,6 +148,7 @@ export default function Receipts() {
   return (
     <div className="receipts-page">
       <h1>Nhập hàng</h1>
+      {validationNotice && <SupplierToast error text={validationNotice} onClose={() => setValidationNotice("")} />}
       <section className="card receipt-info-card">
         <h2>Thông tin phiếu nhập</h2>
         <div className="receipt-info-row">
