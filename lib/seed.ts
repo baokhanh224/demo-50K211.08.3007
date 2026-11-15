@@ -20,6 +20,7 @@ export async function seedData() {
         "return_ticket",
         "invoice_line",
         "invoice",
+        "payment_intent",
         "customer",
         "adjustment_line",
         "adjustment",

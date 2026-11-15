@@ -1,4 +1,3 @@
-import { paymentQr } from "@/lib/payment-qr";
 import { reportData, exportSnapshot } from "@/lib/reports";
 import { excel, pdf } from "@/lib/export";
 import { NextResponse } from "next/server";
@@ -46,8 +45,7 @@ async function handler(
       }
       if (path === "payment-qr" && request.method === "POST") {
         const d = await request.json();
-        const quote = await service.quoteCart(d);
-        return NextResponse.json(paymentQr(quote.total, d.reference || ""), {
+        return NextResponse.json(await service.createPaymentQr(d), {
           headers: { "Cache-Control": "no-store" },
         });
       }

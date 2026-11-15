@@ -141,6 +141,10 @@ export default function Sale() {
       key.current = crypto.randomUUID();
     } catch (e: any) {
       setPaymentError(e.message);
+      if (method === "Chuyển khoản" && e.message.startsWith("Số tiền thanh toán đã thay đổi")) {
+        setConfirmed(false);
+        setQrRetry(n => n + 1);
+      }
     } finally {
       lock.current = false;
       setBusy(false);
@@ -383,6 +387,7 @@ export default function Sale() {
               ) : null}
               {qr && !qrError && (
                 <div className="small">
+                  {qr.bankName && <p>Ngân hàng: {qr.bankName}</p>}
                   <p>
                     <strong>{qr.name}</strong> · {qr.account}
                   </p>

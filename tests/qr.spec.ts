@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
-test('QR follows cart amount and resets transfer confirmation after editing cart', async ({page}) => {
+import {installTrustedTransport} from './public-transport';
+test('QR follows cart amount and resets transfer confirmation after editing cart', async ({page,context}) => {
+  if(process.env.BASE_URL?.startsWith('https:'))await installTrustedTransport(context);
+  await page.setViewportSize({width:1440,height:927});
   // Cloud Chromium does not trust the environment's proxy CA. curl uses the
   // supplied trusted CA, preserving TLS validation for the actual VietQR response.
   await page.route('https://img.vietqr.io/**', async (route) => {
@@ -21,12 +24,17 @@ test('QR follows cart amount and resets transfer confirmation after editing cart
   await expect(image).toBeVisible();
   let src=await image.getAttribute('src');
   expect(new URL(src!).searchParams.get('amount')).toBe('18000');
+  const content = new URL(src!).searchParams.get('addInfo');
+  expect(content).toMatch(/^HD\d{4,}$/);
+  expect(new URL(src!).pathname).toBe('/image/970423-56789222279-qr_only.png');
+  await expect(page.locator('.qr')).toContainText('HKD NGUYEN DANG HOE');
   const confirmation=page.getByRole('checkbox',{name:'Đã nhận đủ tiền chuyển khoản'});
   await expect(confirmation).toBeEnabled();
   await confirmation.check();
   await page.getByLabel('Số lượng bán', {exact:true}).fill('1');
   await page.getByRole('button', {name:'Hoàn tất chọn sản phẩm',exact:true}).click();
   await expect(image).toHaveAttribute('src', /amount=36000/);
+  expect(new URL((await image.getAttribute('src'))!).searchParams.get('addInfo')).toBe(content);
   await expect(confirmation).not.toBeChecked();
   await expect(confirmation).toBeEnabled();
   // Switching back to cash hides the QR, without writing any invoice.

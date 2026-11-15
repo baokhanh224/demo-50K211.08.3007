@@ -1,3 +1,4 @@
+import { paymentQr } from "./payment-qr";
 import { sortCategories } from "./categories";
 import { productErrors, productExpiry } from "./product-validation";
 import { supplierErrors } from "./supplier-validation";
@@ -684,6 +685,26 @@ export async function quoteCart(d: any) {
   }
   return { lines, total: lines.reduce((s: number, l: any) => s + l.total, 0) };
 }
+// Reserve an invoice number without recording a sale or reducing inventory.
+// The same request key keeps its number through cart edits and final checkout.
+export async function createPaymentQr(d: any) {
+  const key = String(d.reference || "");
+  if (!/^[a-zA-Z0-9-]{1,64}$/.test(key)) fail("Mã giao dịch không hợp lệ");
+  const owner = requestContext.getStore()?.token || "cli";
+  return transaction(async () => {
+    await one("SELECT pg_advisory_xact_lock(hashtextextended(?::text,0))::text", "invoice:" + key);
+    if (await one("SELECT id FROM invoice WHERE request_key=?", key)) fail("Giao dịch đã hoàn tất. Vui lòng tạo giao dịch mới");
+    const quote = await quoteCart(d);
+    paymentQr(quote.total, "HD0000"); // Validate recipient/amount before reserving a number.
+    let intent = await one("SELECT * FROM payment_intent WHERE request_key=?", key);
+    if (intent && intent.owner_token !== owner) fail("Mã giao dịch không hợp lệ");
+    if (!intent) {
+      intent = { invoice_id: await code("HD") };
+      await run("INSERT INTO payment_intent(request_key,invoice_id,owner_token,amount,created_at) VALUES (?,?,?,?,?)", key, intent.invoice_id, owner, quote.total, now());
+    } else await run("UPDATE payment_intent SET amount=? WHERE request_key=?", quote.total, key);
+    return paymentQr(quote.total, intent.invoice_id);
+  });
+}
 async function allocate(
   l: any,
   invoiceLine: number | null,
@@ -757,7 +778,11 @@ export async function checkout(d: any) {
       !(await one("SELECT id FROM customer WHERE id=?", d.customer_id))
     )
       fail("Không tìm thấy khách hàng");
-    const id = await code("HD"),
+    const intent = await one("SELECT * FROM payment_intent WHERE request_key=?", d.request_key);
+    if (intent && intent.owner_token !== (requestContext.getStore()?.token || "cli")) fail("Mã giao dịch không hợp lệ");
+    if (d.method === "Chuyển khoản" && (!intent || Number(intent.amount) !== total))
+      fail("Số tiền thanh toán đã thay đổi. Vui lòng tạo lại mã QR và xác nhận tiền nhận được");
+    const id = intent?.invoice_id || await code("HD"),
       time = now(),
       cash = d.method === "Tiền mặt" ? Number(d.cash) : total;
     await run(
@@ -804,6 +829,7 @@ export async function checkout(d: any) {
         base_unit: p.base_unit,
         min_stock: p.min_stock,
       }));
+    await run("DELETE FROM payment_intent WHERE request_key=?", d.request_key);
     return { id, message: "Bán hàng thành công", warnings };
   });
 }

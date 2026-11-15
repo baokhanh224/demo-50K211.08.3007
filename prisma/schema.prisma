@@ -296,3 +296,11 @@ model unit {
 
   @@unique([product_id, name])
 }
+
+model payment_intent {
+  request_key String @id
+  invoice_id String @unique
+  owner_token String
+  amount Float
+  created_at String
+}
