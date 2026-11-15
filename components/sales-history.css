@@ -33,3 +33,5 @@
 .history-error-toast.history-range-toast{width:278px;top:105px;}
 
 .history-list-card tbody td:last-child{text-align:center;vertical-align:middle;}
+
+.returns-page td.code{color:#000;}

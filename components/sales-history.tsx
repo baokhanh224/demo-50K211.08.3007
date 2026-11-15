@@ -159,7 +159,7 @@ export default function SalesHistory({ operation = "history" }: any) {
   );
   return (
     <>
-      <div className={operation === "history" ? "sales-history-page" : operation === "cancel" ? "cancel-invoice-page" : undefined}>
+      <div className={operation === "history" ? "sales-history-page" : operation === "cancel" ? "cancel-invoice-page" : "returns-page"}>
       <h1>{title}</h1>
       {operation === "history" && <section className="history-filter-card">{filters}</section>}
       <section className={operation === "history" ? "history-list-card" : operation === "cancel" ? "cancel-invoice-card" : "card"}>
