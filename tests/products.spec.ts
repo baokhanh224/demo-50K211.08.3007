@@ -18,6 +18,13 @@ async function cleanup(page: any, prefix: string) { for (const p of (await boots
 
 test("Products: required fields, expiry, CRUD, filters, pagination, drawer and price dialogs", async ({ page }) => {
   await login(page); const prefix = "QA-spec-" + Date.now(); const data = await bootstrap(page);
+  for (const name of ["Sửa", "Xóa", "Cập nhật giá bán"]) {
+    const button = page.locator(".product-actions").getByRole("button", { name, exact: true });
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveCSS("background-color", "rgb(241, 245, 249)");
+    await expect(button).toHaveCSS("color", "rgb(148, 163, 184)");
+  }
+
   expect(data.product_categories.map((c: any) => c.name)).toEqual(["Sữa", "Mì ăn liền", "Nước uống", "Bánh mì", "Bánh kẹo", "Gia vị", "Khác"]);
   const category = data.product_categories.find((c: any) => c.name === "Sữa"); const year = Number(data.today.slice(0, 4)) + 1;
   try {
@@ -49,8 +56,21 @@ test("Products: required fields, expiry, CRUD, filters, pagination, drawer and p
     const row = page.locator(".product-management-card tbody tr"); await expect(row).toHaveCount(1);
     const id = (await row.getByRole("checkbox").getAttribute("aria-label"))!.replace("Chọn ", "");
     await row.getByRole("checkbox").check(); await expect(row).toHaveCSS("background-color", "rgb(227, 237, 253)");
+    const actions = page.locator(".product-actions");
+    for (const name of ["Thêm sản phẩm", "Cập nhật giá bán"]) {
+      await expect(actions.getByRole("button", { name, exact: true })).toHaveCSS("background-color", "rgb(16, 58, 155)");
+      await expect(actions.getByRole("button", { name, exact: true })).toHaveCSS("color", "rgb(255, 255, 255)");
+    }
+    await expect(actions.getByRole("button", { name: "Sửa", exact: true })).toHaveCSS("border-color", "rgb(16, 58, 155)");
+    await expect(actions.getByRole("button", { name: "Xóa", exact: true })).toHaveCSS("color", "rgb(220, 38, 38)");
+
     await page.getByRole("button", { name: "Sửa", exact: true }).click(); const edit = page.getByRole("dialog", { name: "Sửa sản phẩm", exact: true });
     await expect(edit.getByLabel("Giá bán", { exact: true })).toHaveAttribute("readonly", "");
+    const lockedPrice = edit.locator(".locked.currency");
+    const currencyBox = (await lockedPrice.locator(".product-currency").boundingBox())!;
+    const lockBox = (await lockedPrice.locator(".product-input-lock").boundingBox())!;
+    expect(currencyBox.x + currencyBox.width).toBeLessThan(lockBox.x);
+
     await expect(edit.getByText("Dùng chức năng Cập nhật giá bán để thay đổi giá", { exact: true })).toBeVisible();
     await expect(edit.locator(".product-input-lock img")).toHaveCount(2);
     await edit.getByLabel("Giá nhập", { exact: true }).fill("18000"); await edit.getByPlaceholder("dd/mm/yyyy", { exact: true }).fill(`02/01/${year}`); await edit.getByLabel("Mô tả", { exact: true }).fill("Mô tả sau sửa");
@@ -71,10 +91,16 @@ test("Products: required fields, expiry, CRUD, filters, pagination, drawer and p
     for (const text of ["Mô tả sau sửa", "Đơn vị tính", "Giá bán", "18.000đ", `02/01/${year}`]) await expect(drawer).toContainText(text);
     await expect(drawer.getByText("Lịch sử giá bán", { exact: true })).toHaveCount(0); await capture(page, "drawer"); await drawer.getByRole("button", { name: "Đóng", exact: true }).last().click();
     await page.getByRole("button", { name: "Cập nhật giá bán", exact: true }).click(); const price = page.getByRole("dialog", { name: "Cập nhật giá bán", exact: true });
-    await expect(price.locator(".product-price-identity")).toContainText(id + " - "); await expect(price.getByLabel("Giá nhập", { exact: true })).toHaveValue("18.000"); await expect(price.locator(".product-input-lock img")).toHaveCount(2);
+    await expect(price.locator("h2")).toHaveCSS("color", "rgb(16, 58, 155)"); await expect(price.locator(".product-price-identity")).toContainText(id + " - "); await expect(price.getByLabel("Giá nhập", { exact: true })).toHaveValue("18.000"); await expect(price.locator(".product-input-lock img")).toHaveCount(2);
     await price.getByRole("button", { name: "Lưu", exact: true }).click(); await expect(price.getByRole("alert")).toContainText("Không được để trống!");
     await price.getByPlaceholder("Nhập giá bán mới", { exact: true }).fill("17000"); await price.getByRole("button", { name: "Lưu", exact: true }).click(); const warning = page.getByRole("dialog", { name: "Cảnh báo", exact: true });
-    await expect(warning.locator(".yellow")).toBeVisible(); await capture(page, "price-warning"); await warning.getByRole("button", { name: "Quay lại", exact: true }).click(); await expect(price.getByLabel("Giá bán mới", { exact: true })).toHaveValue("17000");
+    await expect(warning.locator(".yellow")).toBeVisible();
+    expect((await warning.boundingBox())!.width).toBe(420);
+    expect((await warning.boundingBox())!.height).toBeLessThanOrEqual(250);
+    await expect(warning.locator(".yellow img")).toHaveAttribute("src", "/figma/7d3fc.svg");
+    const warningIcon = (await warning.locator(".yellow img").boundingBox())!;
+    expect(warningIcon.width).toBe(26); expect(warningIcon.height).toBe(26);
+ await capture(page, "price-warning"); await warning.getByRole("button", { name: "Quay lại", exact: true }).click(); await expect(price.getByLabel("Giá bán mới", { exact: true })).toHaveValue("17000");
     await price.getByRole("button", { name: "Lưu", exact: true }).click(); await warning.getByRole("button", { name: "Tiếp tục", exact: true }).click(); await expect(price).toHaveCount(0); await expect(row.locator("td").nth(6)).toHaveText("17.000đ");
     await page.getByRole("button", { name: "Cập nhật giá bán", exact: true }).click(); await price.getByLabel("Giá bán mới", { exact: true }).fill("19000"); await price.getByRole("button", { name: "Hủy", exact: true }).click();
     await expect(confirm.getByRole("button", { name: "Xác nhận", exact: true })).toHaveCSS("background-color", "rgb(16, 58, 155)"); await confirm.getByRole("button", { name: "Xác nhận", exact: true }).click(); await expect(price).toHaveCount(0);
