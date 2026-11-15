@@ -20,6 +20,7 @@ test("sale success has circular check, dismiss button and payment panel width", 
   await page.locator(".sale-main > .product-search .suggestions button").filter({ hasText: product.id }).click();
   await page.getByLabel("Số lượng bán", { exact: true }).fill("1");
   await page.getByRole("button", { name: "Hoàn tất chọn sản phẩm", exact: true }).click();
+  await expect(page.locator(".cart tbody tr")).toHaveCount(1);
   await page.getByLabel("Tiền khách đưa", { exact: true }).fill(String(product.units[0].price));
   await page.getByRole("button", { name: "Hoàn tất thanh toán", exact: true }).click();
   const toast = page.locator(".sale-success-toast");
