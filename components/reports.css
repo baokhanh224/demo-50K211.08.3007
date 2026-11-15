@@ -237,6 +237,17 @@ body:has(.reports-page) {
   background: #eff6ff;
   border-color: #103a9b;
 }
+.report-quick button[aria-pressed="true"],
+.report-quick button[aria-pressed="true"]:hover {
+  background: #103a9b;
+  border-color: #103a9b;
+  color: white;
+}
+.report-quick > .report-quick-range {
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 500;
+}
 .report-ranking-criteria {
   display: flex;
   gap: 24px;

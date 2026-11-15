@@ -11,6 +11,7 @@ export default function Reports({ stock = false }: { stock?: boolean }) {
   const [type, setType] = useState(stock ? "Xuất – nhập – tồn" : "");
   const [from, setFrom] = useState(""),
     [to, setTo] = useState("");
+  const [activeQuick, setActiveQuick] = useState("");
   const [picker, setPicker] = useState<
     "from" | "to" | "type" | "products" | null
   >(null);
@@ -71,6 +72,7 @@ export default function Reports({ stock = false }: { stock?: boolean }) {
       b.setUTCDate(0);
     }
     clear();
+    setActiveQuick(label);
     setFrom(date(a.toISOString()));
     setTo(date(b.toISOString()));
     setPicker(null);
@@ -119,6 +121,7 @@ export default function Reports({ stock = false }: { stock?: boolean }) {
                 value={from}
                 onChange={(v: string) => {
                   clear();
+                  setActiveQuick("");
                   setFrom(v);
                 }}
                 from={from}
@@ -135,6 +138,7 @@ export default function Reports({ stock = false }: { stock?: boolean }) {
                 value={to}
                 onChange={(v: string) => {
                   clear();
+                  setActiveQuick("");
                   setTo(v);
                 }}
                 from={from}
@@ -166,10 +170,11 @@ export default function Reports({ stock = false }: { stock?: boolean }) {
               "Tháng này",
               "Tháng trước",
             ].map((x) => (
-              <button type="button" key={x} onClick={() => quick(x)}>
+              <button type="button" key={x} aria-pressed={activeQuick === x} onClick={() => quick(x)}>
                 {x}
               </button>
             ))}
+            {activeQuick && <span className="report-quick-range" role="status">✓ Đã tự động xác định: {from} – {to}</span>}
           </div>
           {type === "Sản phẩm bán chạy/chậm" && (
             <div
