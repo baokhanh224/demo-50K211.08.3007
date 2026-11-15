@@ -63,7 +63,17 @@ test("Adjustments: Figma layout, selection editors, numeric save payload and can
   await expect.poll(() => saves.length).toBe(1);
   expect(saves[0].lines).toEqual([{ lot_id: 1, quantity: "10" }, { lot_id: 2, quantity: "7" }]);
   expect(saves[0].reason).toBe("Kiểm kê thực tế");
-  await expect(second.getByRole("alert")).toHaveText("Số lượng điều chỉnh không hợp lệ");
+  const toast = root.locator(".supplier-toast-error");
+  await expect(toast).toHaveText("Số lượng điều chỉnh không hợp lệ×");
+  const toastBox = (await toast.boundingBox())!;
+  expect(toastBox.y).toBe(108); expect(toastBox.x + toastBox.width).toBe(1416);
+  await expect(toast).toHaveCSS("background-color", "rgb(254, 242, 242)");
+  await expect(toast).toHaveCSS("color", "rgb(185, 28, 28)");
+  await expect(second.getByRole("alert")).toHaveCount(0);
+  await expect(second.getByLabel("Số lượng tồn mới", { exact: true })).toHaveValue("7");
+  await page.screenshot({ path: "test-results/adjustments/invalid-toast.png" });
+  await toast.getByRole("button", { name: "Đóng thông báo", exact: true }).click();
+  await expect(toast).toHaveCount(0);
   await root.getByLabel("Từ khóa", { exact: true }).fill("zz-empty");
   await root.getByRole("button", { name: "Tìm kiếm", exact: true }).click();
   await expect(root).toContainText("Không tìm thấy sản phẩm phù hợp");

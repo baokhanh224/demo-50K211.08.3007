@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useId } from "react";
 import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
 import { date, today } from "@/lib/format";
 import "./adjustments.css";
+import { SupplierToast } from "./suppliers";
 function lotStatus(l: any) {
   if (!l.remaining) return "Hết hàng";
   if (l.expiry && l.expiry < today()) return "Đã hết hạn";
@@ -164,7 +165,6 @@ export function Adjustments() {
   const [quantities, setQuantities] = useState<Record<string, string>>({});
   const [reason, setReason] = useState("");
   const [error, setError] = useState("");
-  const [errors, setErrors] = useState<any>({});
   const [busy, setBusy] = useState(false);
   const key = useRef(crypto.randomUUID());
   async function search(e?: React.FormEvent) {
@@ -185,7 +185,6 @@ export function Adjustments() {
     if (busy) return;
     setBusy(true);
     setError("");
-    setErrors({});
     try {
       const r = await api("action", {
         action: "adjust",
@@ -204,7 +203,6 @@ export function Adjustments() {
       await search();
     } catch (e: any) {
       setError(e.message);
-      setErrors(e.fields || {});
     } finally {
       setBusy(false);
     }
@@ -215,13 +213,13 @@ export function Adjustments() {
   const selected = rows.filter(r => r.id in quantities);
   return <div className="adjustments-page">
     <h1>Điều chỉnh tồn kho</h1>
+    {error && <SupplierToast error text={error} onClose={() => setError("")} />}
     <section className="card adjustment-search-card">
       <h2>Tìm sản phẩm</h2>
       <form className="adjustment-search-form" onSubmit={search}>
         <div className="adjustment-search-input"><img src="/figma/7b2e8.svg" width="16" height="16" alt="" /><input aria-label="Từ khóa" value={q} placeholder="Tìm theo mã hoặc tên sản phẩm" onChange={e => setQ(e.target.value)} /></div>
         <Button type="submit" variant="primary"><img src="/figma/86d1d.svg" width="18" height="18" alt="" />Tìm kiếm</Button>
       </form>
-      <Notice text={error && !Object.keys(errors).length ? error : ""} />
     </section>
     <section className="card adjustment-lots-card">
       <h2>Tồn kho theo chi tiết phiếu nhập</h2>
@@ -241,16 +239,15 @@ export function Adjustments() {
         </table></div>
       </div>)}
       {!rows.length && <Empty text="Không tìm thấy sản phẩm phù hợp" />}
-      <Notice text={errors.lines} />
     </section>
     <section className="card adjustment-details-card">
       <h2>Thông tin điều chỉnh</h2>
       <div className="adjustment-edit-content">
         <div className="adjustment-edit-rows">{(selected.length ? selected : [null]).map(r => <div className="adjustment-edit-row" role="group" aria-label={r ? "Điều chỉnh " + adjustmentLotCode(r.id) : "Chưa chọn chi tiết"} key={r?.id ?? "empty"}>
           <AdjustmentLotField value={r ? adjustmentLotCode(r.id) : ""} />
-          <Field label="Số lượng tồn mới" placeholder="Nhập số lượng" inputMode="numeric" value={r ? quantities[r.id] : ""} disabled={!r} error={r ? errors["line_" + r.id] : undefined} onChange={(e: any) => r && setQuantities({ ...quantities, [r.id]: e.target.value })} />
+          <Field label="Số lượng tồn mới" placeholder="Nhập số lượng" inputMode="numeric" value={r ? quantities[r.id] : ""} disabled={!r} onChange={(e: any) => r && setQuantities({ ...quantities, [r.id]: e.target.value })} />
         </div>)}</div>
-        <Field label="Lý do điều chỉnh" placeholder="Nhập lý do điều chỉnh" value={reason} onChange={(e: any) => setReason(e.target.value)} error={errors.reason} />
+        <Field label="Lý do điều chỉnh" placeholder="Nhập lý do điều chỉnh" value={reason} onChange={(e: any) => setReason(e.target.value)} />
       </div>
     </section>
     <div className="actions adjustment-page-actions"><Button disabled={busy} onClick={() => setCancelOpen(true)}>Hủy</Button><Button variant="primary" disabled={busy} onClick={save}>Lưu</Button></div>
