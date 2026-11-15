@@ -5,6 +5,7 @@ import { money, date, datetime, iso } from "@/lib/format";
 import "./sales-history.css";
 import "./cancel-invoice.css";
 import InvoicePrint from "./invoice-print";
+import InvoiceDetail from "./invoice-detail";
 export default function SalesHistory({ operation = "history" }: any) {
   const { refresh, notify } = useApp();
   const cancelKey = useRef(crypto.randomUUID());
@@ -219,7 +220,8 @@ export default function SalesHistory({ operation = "history" }: any) {
       {operation === "cancel" && error && <div className="cancel-invoice-error-toast" role="alert"><span className="cancel-invoice-alert"><img src="/figma/print-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       {operation === "history" && error && <div className={`history-error-toast ${error === "Không tìm thấy hóa đơn phù hợp" ? "history-empty-toast" : error === "Khoảng thời gian không hợp lệ" ? "history-range-toast" : ""}`} role="alert"><span className="history-alert-icon"><img src="/figma/history-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       </div>
-      {detail && (
+      {detail && operation === "history" && <InvoiceDetail invoice={detail} error={cancelError} onClose={() => { setDetail(null); setCancelError(""); }} onReturn={() => requestReturn(detail.id)} onPrint={printPreview} />}
+      {detail && operation !== "history" && (
         <Modal
           wide
           title="Chi tiết hóa đơn"

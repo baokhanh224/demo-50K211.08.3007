@@ -1,0 +1,25 @@
+.invoice-detail-overlay { background: transparent; padding: 90px 24px 0 250px; }
+.invoice-detail-overlay::before { content: ""; position: absolute; inset: 90px 0 0 250px; background: rgba(248,250,255,.82); }
+.modal.invoice-detail { position: relative; z-index: 1; width: 786px; max-width: 100%; min-height: 652px; max-height: calc(100dvh - 130px); padding: 26px; border: 1px solid #dee6f0; border-radius: 8px; box-shadow: none; color: #0f172a; }
+.invoice-detail .modal-head { margin: 0 90px 32px 0; }
+.invoice-detail .modal-head h2 { font-size: 22px; line-height: 28px; font-weight: 600; }
+.invoice-detail-close { position: absolute; top: 28px; right: 24px; width: 66px; height: 24px; padding: 0; border: 1px solid #334155; border-radius: 4px; background: white; color: #0f172a; font: inherit; font-size: 12px; cursor: pointer; }
+.invoice-detail-close:focus-visible { outline: 2px solid #103a9b; outline-offset: 2px; }
+.invoice-detail-meta { display: flex; flex-direction: column; gap: 14px; }
+.invoice-detail-meta p { margin: 0; font-size: 14px; line-height: 20px; overflow-wrap: anywhere; }
+.invoice-detail-table { margin: 36px -8px 0; overflow-x: auto; }
+.invoice-detail-table table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.invoice-detail-table th, .invoice-detail-table td { border: 1px solid #c3d1e5; padding: 10px; text-align: left; vertical-align: middle; overflow-wrap: anywhere; font-size: 13px; line-height: 18px; }
+.invoice-detail-table th { height: 46px; font-weight: 600; background: #eef3fd; color: #334155; }
+.invoice-detail-table td { height: 54px; font-weight: 400; color: #0f172a; background: white; }
+.invoice-detail-table th:nth-child(2), .invoice-detail-table td:nth-child(2) { text-align: center; }
+.invoice-detail-summary { text-align: right; }
+.invoice-detail-summary p { margin: 20px 0 0; font-size: 14px; line-height: 20px; }
+.invoice-detail-summary .invoice-detail-total { margin-top: 28px; font-size: 18px; line-height: 24px; font-weight: 600; }
+.invoice-detail-summary .invoice-detail-total + p { margin-top: 24px; }
+.invoice-detail-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.invoice-detail-actions .btn { width: 184px; height: 40px; min-height: 40px; padding: 0 12px; border: 1px solid #103a9b; border-radius: 6px; color: #103a9b; background: white; font-size: 13px; font-weight: 500; }
+.invoice-detail-actions .btn.primary { background: #103a9b; color: white; }
+@media(max-width:900px) { .invoice-detail-overlay { padding: 20px; } .invoice-detail-overlay::before { inset: 0; } .modal.invoice-detail { min-height: 0; max-height: calc(100dvh - 40px); } }
+@media(max-width:520px) { .modal.invoice-detail { padding: 20px; } .invoice-detail-actions .btn { width: auto; flex: 1; } .invoice-detail-table th,.invoice-detail-table td { padding: 6px; font-size: 11px; } }
+.invoice-detail-table tbody tr:last-child td { border-bottom: 1px solid #c3d1e5; }
