@@ -137,7 +137,7 @@ test("Sản phẩm, khách hàng, nhà cung cấp, cảnh báo và in", async ({
     .getByRole("link", { name: "Tra cứu tồn kho", exact: true })
     .click();
   await page
-    .getByLabel("Trạng thái", { exact: true })
+    .getByLabel("Trạng thái cảnh báo", { exact: true })
     .selectOption("Đã hết hạn");
   await page.getByRole("button", { name: "Tìm kiếm", exact: true }).click();
   await expect(

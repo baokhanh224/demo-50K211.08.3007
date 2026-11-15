@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect, useRef, useId } from "react";
-import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
+import { api, Button, Field, Notice, Empty, Modal, useApp } from "./ui";
 import { date, today } from "@/lib/format";
 import "./adjustments.css";
+import "./inventory.css";
 import { SupplierToast } from "./suppliers";
 function lotStatus(l: any) {
   if (!l.remaining) return "Hết hàng";
@@ -14,143 +15,65 @@ function lotStatus(l: any) {
   return "Bình thường";
 }
 export function Inventory() {
-  const { navigate } = useApp();
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState("Tất cả");
   const [applied, setApplied] = useState("Tất cả");
   const [rows, setRows] = useState<any[]>([]);
   const [error, setError] = useState("");
+  const [errorVisible, setErrorVisible] = useState(false);
   async function search(e?: React.FormEvent) {
     e?.preventDefault();
     setError("");
-    setApplied(filter);
+    setErrorVisible(false);
     try {
-      setRows(await api("query", { scope: "inventory", q, filter }));
+      const result = await api("query", { scope: "inventory", q, filter });
+      setRows(result);
+      setApplied(filter);
     } catch (e: any) {
       setRows([]);
+      setApplied(filter);
       setError(e.message);
+      setErrorVisible(true);
     }
   }
-  useEffect(() => {
-    search();
-  }, []);
+  useEffect(() => { search(); }, []);
   const byLot = ["Sắp hết hạn", "Đã hết hạn"].includes(applied);
-  return (
-    <>
-      <h1>Tra cứu tồn kho và cảnh báo</h1>
-      <section className="card">
-        <h2>Tra cứu tồn kho</h2>
-        <form className="filters" onSubmit={search}>
-          <div className="field search">
-            <input
-              aria-label="Từ khóa"
-              placeholder="Tên sản phẩm, mã sản phẩm hoặc mã vạch"
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-            />
-          </div>
-          <Field label="Trạng thái">
-            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-              {[
-                "Tất cả",
-                "Dưới mức cảnh báo tồn kho",
-                "Sắp hết hạn",
-                "Đã hết hạn",
-              ].map((x) => (
-                <option key={x}>{x}</option>
-              ))}
-            </select>
-          </Field>
-          <Button variant="primary" type="submit">
-            Tìm kiếm
-          </Button>
-        </form>
-        <Notice text={error} />
-        <table>
-          <thead>
-            <tr>
-              <th>Mã sản phẩm</th>
-              <th>Tên sản phẩm</th>
-              {byLot ? (
-                <>
-                  <th>Mã phiếu nhập</th>
-                  <th>Chi tiết phiếu nhập</th>
-                  <th>Hạn sử dụng</th>
-                  <th className="num">Số lượng còn</th>
-                </>
-              ) : (
-                <>
-                  <th>Đơn vị tính</th>
-                  <th className="num">Số lượng tồn</th>
-                  <th className="num">Có thể bán</th>
-                  <th className="num">Mức tồn tối thiểu</th>
-                </>
-              )}
-              <th>Trạng thái</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r: any) => (
-              <tr key={r.id}>
-                <td className="code">{r.product_id || r.id}</td>
-                <td>{r.product_name || r.name}</td>
-                {byLot ? (
-                  <>
-                    <td>{r.receipt_id}</td>
-                    <td>#{r.id}</td>
-                    <td>{date(r.expiry)}</td>
-                    <td className="num">
-                      {r.remaining} {r.base_unit}
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td>{r.base_unit}</td>
-                    <td className="num">{r.stock}</td>
-                    <td className="num">{r.sellable}</td>
-                    <td className="num">{r.min_stock}</td>
-                  </>
-                )}
-                <td>
-                  <Badge
-                    tone={
-                      byLot
-                        ? r.expiry < today()
-                          ? "red"
-                          : "orange"
-                        : r.stock <= r.min_stock
-                          ? "orange"
-                          : "green"
-                    }
-                  >
-                    {byLot
-                      ? lotStatus(r)
-                      : r.stock <= r.min_stock
-                        ? "Dưới mức cảnh báo tồn kho"
-                        : "Bình thường"}
-                  </Badge>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {!rows.length && !error && (
-          <Empty text="Không tìm thấy sản phẩm phù hợp" />
-        )}
-        <div className="table-footer">
-          {rows.length} {byLot ? "chi tiết phiếu nhập" : "sản phẩm"}
-        </div>
-      </section>
-      <div className="actions">
-        <Button onClick={() => navigate("adjustments")}>
-          Điều chỉnh tồn kho
-        </Button>
-        <Button variant="primary" onClick={() => navigate("receipts")}>
-          Nhập hàng
-        </Button>
-      </div>
-    </>
-  );
+  const products = byLot
+    ? [...new Set(rows.map(r => r.product_id))].map(id => ({
+        id,
+        name: rows.find(r => r.product_id === id)?.product_name,
+        stock: rows.filter(r => r.product_id === id).reduce((sum, r) => sum + Number(r.remaining), 0),
+        status: applied,
+      }))
+    : rows.map(r => ({ id: r.id, name: r.name, stock: r.stock, status: r.stock <= r.min_stock ? "Dưới mức cảnh báo" : "Bình thường" }));
+  return <div className="inventory-page">
+    <h1>Tra cứu tồn kho</h1>
+    {error && errorVisible && <SupplierToast error text={error} onClose={() => setErrorVisible(false)} />}
+    <section className="card inventory-filter-card">
+      <h2>Điều kiện tra cứu</h2>
+      <form className="inventory-filters" onSubmit={search}>
+        <Field label="Tên sản phẩm hoặc mã sản phẩm" placeholder="Nhập từ khóa tìm kiếm" value={q} onChange={(e: any) => setQ(e.target.value)} />
+        <Field label="Trạng thái cảnh báo"><select value={filter} onChange={e => setFilter(e.target.value)}>
+          {["Tất cả", "Dưới mức cảnh báo tồn kho", "Sắp hết hạn", "Đã hết hạn"].map(x => <option key={x} value={x}>{x === "Dưới mức cảnh báo tồn kho" ? "Dưới mức cảnh báo" : x}</option>)}
+        </select></Field>
+        <Button variant="primary" type="submit"><img src="/figma/09fd1.svg" width="18" height="18" alt="" />Tìm kiếm</Button>
+      </form>
+    </section>
+    <section className="card inventory-results-card">
+      <h2>Kết quả tồn kho</h2>
+      <div className="table-wrap inventory-main-table"><table>
+        <thead><tr><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Số lượng tồn</th><th>Trạng thái</th></tr></thead>
+        <tbody>{products.map(r => <tr key={r.id}><td>{r.id}</td><td>{r.name}</td><td>{r.stock}</td><td>{r.status}</td></tr>)}</tbody>
+      </table></div>
+      {!rows.length && !error && <Empty text="Không tìm thấy sản phẩm phù hợp" />}
+      {byLot && rows.length > 0 && <><div className="inventory-lot-spacer" /><div className="inventory-lot-details" role="group" aria-label="Chi tiết cảnh báo hạn sử dụng">
+        <div className="table-wrap"><table>
+          <thead><tr><th>Mã phiếu nhập</th><th>Hạn sử dụng</th><th>Số lượng còn</th><th>Trạng thái</th></tr></thead>
+          <tbody>{rows.map(r => <tr key={r.id}><td>{r.receipt_id}</td><td>{date(r.expiry)}</td><td>{r.remaining}</td><td className={applied === "Đã hết hạn" ? "inventory-expired" : "inventory-expiring"}>{lotStatus(r)}</td></tr>)}</tbody>
+        </table></div>
+      </div></>}
+    </section>
+  </div>;
 }
 function adjustmentLotCode(id: number) { return "CTN" + String(id).padStart(3, "0"); }
 function AdjustmentLotField({ value }: { value: string }) {
