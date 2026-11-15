@@ -974,7 +974,9 @@ tbody tr.clickable:hover {
 .customer-list-controls .row { gap:10px; }
 .customer-list-controls .card-head .btn { padding:0; border-radius:7px; width:96px; }
 .customer-list-controls .card-head .btn.primary { width:205px; }
-.customer-list-controls .btn:disabled { opacity:1; background:#f1f5f9; color:#98a7ba; border-color:#dce3eb; }
+.customer-list-controls .card-head .btn:not(:disabled):not(.primary):not(.danger) { background:white; border-color:#103a9b; color:#103a9b; }
+.customer-list-controls .card-head .btn.danger:not(:disabled) { background:white; border-color:#dc2626; color:#dc2626; }
+.customer-list-controls .btn:disabled { opacity:1; background:#f1f5f9; color:#94a3b8; border-color:#e2e8f0; }
 .customer-list-card .table-wrap { flex:1; }
 .customer-list-card table { table-layout:fixed; }
 .customer-list-card th:first-child { width:38px; }

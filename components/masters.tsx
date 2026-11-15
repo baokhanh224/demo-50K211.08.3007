@@ -111,10 +111,10 @@ function OtherMasters({ kind }: any) {
               {kind !== "customers" ? <img src={kind === "suppliers" ? "/figma/a3829.svg" : "/figma/9fda3.svg"} width="16" height="16" alt="" /> : <img src="/figma/1cd29.svg" width="16" height="16" alt="" />}Thêm {c.singular}
             </Button>
             <Button disabled={!selected} onClick={() => setForm(selected)}>
-              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/390c0.svg" : "/figma/b3751.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src="/figma/8ebed.svg" width="16" height="16" alt="" />}Sửa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/390c0.svg" : "/figma/b3751.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src={selected ? "/figma/ce333.svg" : "/figma/8ebed.svg"} width="16" height="16" alt="" />}Sửa
             </Button>
             <Button disabled={!selected} variant="danger" onClick={remove}>
-              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f8244.svg" : "/figma/a04e9.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src="/figma/d1421.svg" width="16" height="16" alt="" />}Xóa
+              {kind !== "customers" && <img src={kind === "suppliers" ? "/figma/f8244.svg" : "/figma/a04e9.svg"} width="16" height="16" alt="" />}{kind === "customers" && <img src={selected ? "/figma/4d950.svg" : "/figma/d1421.svg"} width="16" height="16" alt="" />}Xóa
             </Button>
             {kind === "products" && (
               <Button disabled={!selected} onClick={() => setPrice(selected)}>
