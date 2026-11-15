@@ -1,8 +1,41 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useId } from "react";
 import { api, Button, Field, Notice, Empty, useApp } from "./ui";
 import ProductPicker from "./picker";
 import { money, date, iso, today } from "@/lib/format";
+import { receiptPriceDigits, receiptPriceInputValue, receiptUnitPrice } from "@/lib/receipt-money";
+import "./receipts.css";
+
+function ReceiptPriceField({ value, onChange, error }: any) {
+  const id = useId(), input = useRef<HTMLInputElement>(null);
+  return <div className={`field ${error ? "has-error" : ""}`}>
+    <label htmlFor={id}>Giá nhập</label>
+    <input ref={input} id={id} aria-label="Giá nhập" aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} inputMode="numeric" placeholder="0đ" value={receiptPriceInputValue(value)}
+      onKeyDown={e => {
+        const node = e.currentTarget, pos = node.selectionStart ?? 0;
+        if (node.selectionEnd !== pos) return;
+        if (e.key === "Backspace" && /[.đ]/.test(node.value[pos - 1] || " ")) node.setSelectionRange(pos - 1, pos - 1);
+        if (e.key === "Delete" && node.value[pos] === ".") node.setSelectionRange(pos + 1, pos + 1);
+      }}
+      onChange={e => {
+        const next = receiptPriceDigits(e.target.value);
+        if (next === null) return;
+        const digitsBefore = e.target.value.slice(0, e.target.selectionStart ?? 0).replace(/\D/g, "").length;
+        onChange(next);
+        requestAnimationFrame(() => {
+          const node = input.current;
+          if (!node || document.activeElement !== node) return;
+          let position = 0, count = 0;
+          while (position < node.value.length && count < digitsBefore) {
+            if (/\d/.test(node.value[position])) count++;
+            position++;
+          }
+          node.setSelectionRange(position, position);
+        });
+      }} />
+    {error && <p id={id + "-error"} className="field-error" role="alert">{error}</p>}
+  </div>;
+}
 export default function Receipts() {
   const { data, refresh, notify, confirm, navigate } = useApp();
   const [supplier, setSupplier] = useState("");
@@ -20,7 +53,7 @@ export default function Receipts() {
   function choose(p: any) {
     setProduct(p);
     setUnit(String(p.units[0].id));
-    setPrice(String(p.average_cost * p.units[0].factor));
+    setPrice(receiptUnitPrice(p, p.units[0]));
     setQuantity("");
     setExpiry("");
     setErrors({});
@@ -100,12 +133,12 @@ export default function Receipts() {
     else navigate("receipt-history");
   }
   return (
-    <>
+    <div className="receipts-page">
       <h1>Nhập hàng</h1>
-      <section className="card">
+      <section className="card receipt-info-card">
         <h2>Thông tin phiếu nhập</h2>
-        <div className="row between">
-          <div style={{ width: 380 }}>
+        <div className="receipt-info-row">
+          <div className="receipt-supplier">
             <Field label="Nhà cung cấp" error={errors.supplier_id}>
               <select
                 value={supplier}
@@ -123,10 +156,10 @@ export default function Receipts() {
               </select>
             </Field>
           </div>
-          <span>Ngày nhập: {date(today())}</span>
+          <span className="receipt-date">Ngày nhập: {date(today())}</span>
         </div>
       </section>
-      <section className="card">
+      <section className="card receipt-entry-card">
         <h2>Nhập sản phẩm</h2>
         <div className="receipt-input-grid">
           <ProductPicker onSelect={choose} error={errors.product_id} />
@@ -138,7 +171,7 @@ export default function Receipts() {
                 const u = product?.units.find(
                   (x: any) => x.id === Number(e.target.value),
                 );
-                if (u) setPrice(String(product.average_cost * u.factor));
+                if (u) setPrice(receiptUnitPrice(product, u));
               }}
             >
               <option value="">Chọn đơn vị nhập</option>
@@ -156,13 +189,7 @@ export default function Receipts() {
             onChange={(e: any) => setQuantity(e.target.value)}
             error={errors.quantity}
           />
-          <Field
-            label="Giá nhập"
-            inputMode="decimal"
-            value={price}
-            onChange={(e: any) => setPrice(e.target.value)}
-            error={errors.price}
-          />
+          <ReceiptPriceField value={price} onChange={setPrice} error={errors.price} />
           <Field
             label="Hạn sử dụng"
             placeholder="dd/mm/yyyy"
@@ -173,11 +200,11 @@ export default function Receipts() {
           />
         </div>
         <Notice text={error && !Object.keys(errors).length ? error : ""} />
-        <div className="actions" style={{ marginTop: 10 }}>
+        <div className="actions receipt-add-actions">
           <Button onClick={add} disabled={busy}>Thêm sản phẩm</Button>
         </div>
       </section>
-      <section className="card" style={{ minHeight: 270 }}>
+      <section className="card receipt-lines-card">
         <h2>Danh sách sản phẩm nhập</h2>
         <div className="table-wrap">
           <table>
@@ -240,13 +267,13 @@ export default function Receipts() {
         </div>
       </section>
       {error === "Không thể lưu phiếu nhập" && <Notice text={error} />}
-      <div className="actions">
+      <div className="actions receipt-page-actions">
         <Button onClick={cancel}>Hủy</Button>
         <Button variant="primary" onClick={save} disabled={busy}>
           Lưu phiếu nhập
         </Button>
       </div>
-    </>
+    </div>
   );
 }
 export function ReceiptHistory() {

@@ -1,0 +1,69 @@
+import { test, expect } from "@playwright/test";
+import fs from "node:fs";
+import { installTrustedTransport } from "./public-transport";
+import { receiptPriceInputValue, receiptUnitPrice } from "../lib/receipt-money";
+
+test("Receipt input formats VND, preserves numeric draft totals and save payload", async ({ page, context }) => {
+  if (process.env.BASE_URL?.startsWith("https:")) await installTrustedTransport(context);
+  await page.setViewportSize({ width: 1440, height: 927 });
+  await page.goto("/");
+  await page.getByLabel("Tên đăng nhập", { exact: true }).fill(process.env.DEMO_USERNAME!);
+  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+  await expect(page.locator(".sidebar")).toBeVisible();
+  const data = await page.evaluate(async () => (await fetch("/api/bootstrap")).json());
+  await page.getByRole("link", { name: "Quản lý tồn kho", exact: true }).click();
+  await expect(page.locator(".receipts-page")).toBeVisible();
+  const product = data.products.find((p: any) => p.expiry_managed) || data.products[0];
+  await page.getByLabel("Nhà cung cấp", { exact: true }).selectOption(String(data.suppliers[0].id));
+  await page.getByLabel("Tìm kiếm sản phẩm", { exact: true }).fill(product.id);
+  await page.locator(".suggestions button").filter({ hasText: product.id }).click();
+  const price = page.getByLabel("Giá nhập", { exact: true });
+  await expect(price).toHaveValue(receiptPriceInputValue(receiptUnitPrice(product, product.units[0])));
+  const unit = product.units.at(-1);
+  await page.getByLabel("Đơn vị nhập", { exact: true }).selectOption(String(unit.id));
+  await expect(price).toHaveValue(receiptPriceInputValue(receiptUnitPrice(product, unit)));
+  await price.fill(""); await price.pressSequentially("600000", { delay: 30 });
+  await expect(price).toHaveValue("600.000đ");
+  await price.press("End"); await price.press("Backspace");
+  await expect(price).toHaveValue("60.000đ");
+  await price.press("0"); await expect(price).toHaveValue("600.000đ");
+  await page.getByLabel("Số lượng nhập", { exact: true }).fill("2");
+  if (product.expiry_managed) await page.getByLabel("Hạn sử dụng", { exact: true }).fill("31/12/2099");
+  const validated = page.waitForRequest(r => r.url().endsWith("/api/action") && r.postDataJSON()?.action === "validate-receipt-line");
+  await page.getByRole("button", { name: "Thêm sản phẩm", exact: true }).click();
+  expect((await validated).postDataJSON().price).toBe("600000");
+  const rows = page.locator(".receipt-lines-card tbody tr");
+  await expect(rows).toHaveCount(1);
+  await expect(rows.first().locator("td").nth(3)).toHaveText("600.000đ");
+  await expect(rows.first().locator("td").nth(5)).toHaveText("1.200.000đ");
+  await price.fill("15.000đ");
+  await page.getByLabel("Số lượng nhập", { exact: true }).fill("4");
+  if (product.expiry_managed) await page.getByLabel("Hạn sử dụng", { exact: true }).fill("30/12/2099");
+  await page.getByRole("button", { name: "Thêm sản phẩm", exact: true }).click();
+  await expect(rows).toHaveCount(2);
+  await expect(page.locator(".receipt-lines-card .total-row strong")).toHaveText("1.260.000đ");
+  for (const [selector, y, height] of [[".receipt-info-card", 170, 118], [".receipt-entry-card", 305, 183], [".receipt-lines-card", 507, 268]] as const) {
+    const box = (await page.locator(selector).boundingBox())!;
+    expect(box.y).toBe(y); expect(box.height).toBe(height);
+  }
+  const inputBoxes = await page.locator(".receipt-input-grid input,.receipt-input-grid select").evaluateAll(nodes => nodes.map(n => n.getBoundingClientRect().toJSON()));
+  expect(Math.max(...inputBoxes.map(b => b.y)) - Math.min(...inputBoxes.map(b => b.y))).toBeLessThanOrEqual(1);
+  for (let i = 2; i <= 5; i++) {
+    await expect(page.locator(".receipt-lines-card th").nth(i)).toHaveCSS("text-align", "left");
+    await expect(rows.first().locator("td").nth(i)).toHaveCSS("text-align", "left");
+  }
+  fs.mkdirSync("test-results/receipts", { recursive: true });
+  await page.screenshot({ path: "test-results/receipts/two-lines.png" });
+  let saved: any;
+  await page.route("**/api/action", async route => {
+    if (route.request().postDataJSON()?.action !== "receipt") return route.continue();
+    saved = route.request().postDataJSON();
+    await route.fulfill({ status: 400, json: { error: "Kiểm tra payload, không lưu dữ liệu" } });
+  });
+  await page.getByRole("button", { name: "Lưu phiếu nhập", exact: true }).click();
+  await expect.poll(() => saved?.lines?.length).toBe(2);
+  expect(saved.lines.map((l: any) => l.price)).toEqual(["600000", "15000"]);
+  expect(saved.lines.map((l: any) => l.quantity)).toEqual(["2", "4"]);
+  expect(saved.lines[0].unit_id).toBe(String(unit.id));
+});
