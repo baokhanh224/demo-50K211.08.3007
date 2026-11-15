@@ -1,0 +1,179 @@
+/* Shared dimensions only. Screen-specific colors, typography and behavior stay local. */
+.main:has(.products-page),
+.main:has(.supplier-page),
+.main:has(.customer-list-card) {
+  --management-control-height: 40px;
+  --management-search-width: 320px;
+  --management-gap: 16px;
+  --management-control-gap: 10px;
+  padding: 24px;
+}
+.main .products-page > h1,
+.main .supplier-page > h1,
+.main:has(.customer-list-card) > h1 {
+  font-size: 22px;
+  line-height: 27px;
+  margin: 0 0 var(--management-gap);
+}
+.main .product-management-card,
+.main .supplier-list-card,
+.main .customer-list-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  min-height: 600px;
+  padding: 20px;
+  margin: 0;
+  border-width: 1px;
+  border-style: solid;
+}
+.main .product-management-card { border-color: transparent; }
+.main .product-controls,
+.main .supplier-filters,
+.main .customer-list-controls .filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--management-control-gap);
+  min-height: var(--management-control-height);
+  margin: 0 0 var(--management-gap);
+}
+.main .customer-list-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+}
+.main .product-search-input,
+.main .supplier-search,
+.main .customer-list-controls .search {
+  flex: 0 0 var(--management-search-width);
+  width: var(--management-search-width);
+  max-width: 100%;
+  min-width: 0;
+  height: var(--management-control-height);
+}
+.main .supplier-search input,
+.main .customer-list-controls .search input { height: 40px; }
+.main .supplier-search > img,
+.main .customer-list-controls .search img { left: 12px; top: 12px; }
+.main .supplier-search > button { top: 13px; }
+.main .supplier-search input,
+.main .customer-list-controls .search input { padding-left: 36px; }
+.main .product-controls > .btn,
+.main .supplier-filters > .btn,
+.main .customer-list-controls .filters > .btn {
+  width: 112px;
+  flex: 0 0 112px;
+  padding: 0 12px;
+}
+.main .product-controls > .btn,
+.main .supplier-filters > .btn,
+.main .customer-list-controls .btn,
+.main .product-actions .btn,
+.main .supplier-toolbar .btn,
+.main .product-controls .product-select-inline > button,
+.main .supplier-inline-select > button {
+  height: var(--management-control-height);
+  min-height: var(--management-control-height);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.main .product-controls .product-select-inline,
+.main .supplier-inline-select {
+  width: 156px;
+  min-width: 156px;
+  max-width: 156px;
+  flex: 0 0 156px;
+}
+.main .product-actions,
+.main .supplier-toolbar,
+.main .customer-list-controls .card-head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--management-control-gap);
+  min-height: 40px;
+  margin: 0 0 var(--management-gap);
+}
+.main .customer-list-controls .row { gap: var(--management-control-gap); }
+.main .product-actions .btn,
+.main .supplier-toolbar .btn,
+.main .customer-list-controls .card-head .btn {
+  width: 80px;
+  padding-left: 12px;
+  padding-right: 12px;
+  flex-shrink: 0;
+}
+.main .product-actions .btn:first-child,
+.main .supplier-toolbar .btn:first-child,
+.main .customer-list-controls .card-head .btn:first-child { width: 180px; }
+.main .product-actions .btn:last-child { width: 180px; }
+/* Preserve the customer's existing subheading in the free space beside actions. */
+.main .customer-list-card > h2 {
+  position: absolute;
+  top: 77px;
+  left: 20px;
+  margin: 0;
+  line-height: 40px;
+}
+.main .customer-list-card .table-wrap { flex: none; border: 1px solid transparent; }
+.main .product-management-card table,
+.main .supplier-list-card table,
+.main .customer-list-card table { width: 100%; table-layout: fixed; }
+.main .product-management-card th,
+.main .supplier-list-card th,
+.main .customer-list-card th {
+  height: 44px;
+  padding: 0 12px;
+  vertical-align: middle;
+  text-align: left;
+}
+.main .product-management-card td,
+.main .supplier-list-card td,
+.main .customer-list-card td,
+.main .supplier-table-wrap tbody tr:last-child td {
+  height: 48px;
+  padding: 4px 12px;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+.main .customer-list-card tbody tr { height: 48px; }
+.main .product-management-card th:first-child,
+.main .customer-list-card th:first-child { width: 40px; }
+.main .supplier-table-wrap col:first-child { width: 40px !important; }
+.main .product-management-card td:first-child,
+.main .supplier-list-card td:first-child,
+.main .customer-list-card td:first-child { text-align: center; }
+.main .product-management-card th:nth-child(n+6):nth-child(-n+8),
+.main .product-management-card td:nth-child(n+6):nth-child(-n+8) { text-align: right; }
+.main .product-list-footer,
+.main .supplier-footer,
+.main .customer-list-card .table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 46px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.main .product-list-footer .btn,
+.main .supplier-footer .btn {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  padding: 0 8px;
+}
+@media (max-width: 1100px) {
+  .main .customer-list-card > h2 { position: static; line-height: 24px; margin-bottom: 16px; }
+}
+@media (max-width: 600px) {
+  .main .product-search-input,
+  .main .supplier-search,
+  .main .customer-list-controls .search { flex-basis: 100%; width: 100%; }
+  .main .customer-list-controls .card-head .row { flex-wrap: wrap; justify-content: flex-end; }
+}

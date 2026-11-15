@@ -9,6 +9,7 @@ import Masters from "./masters";
 import { SupplierToast } from "./suppliers";
 import Receipts, { ReceiptHistory } from "./receipts";
 import { date, today } from "@/lib/format";
+import "./management-layout.css";
 const menus = [
   {
     icon: "sale",
