@@ -29,7 +29,17 @@ test("management screens share dimensions across navigation and selection", asyn
     expect(rects.title).toMatchObject({ x: 274, y: 114, height: 27 });
     expect(rects.card).toMatchObject({ x: 274, y: 157, width: 1142 });
     expect(rects.card.height).toBeGreaterThanOrEqual(600);
-    expect(rects.search).toEqual({ x: 295, y: 178, width: 320, height: 40 });
+    expect(rects.search).toEqual({ x: 295, y: 178, width: 360, height: 40 });
+    if (name === "Quản lý khách hàng") {
+      await page.evaluate(() => document.fonts.ready);
+      const textFits = await page.locator(".customer-list-controls .search input").evaluate((input: HTMLInputElement) => {
+        const style = getComputedStyle(input), context = document.createElement("canvas").getContext("2d")!;
+        context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const available = input.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        return context.measureText(input.placeholder).width <= available;
+      });
+      expect(textFits).toBe(true);
+    }
     expect(rects.head).toMatchObject({ x: 296, y: 291, height: 44 });
     const search = page.locator(".product-controls > .btn,.supplier-filters > .btn,.customer-list-controls .filters > .btn");
     expect(await search.boundingBox()).toMatchObject({ width: 112, height: 40 });

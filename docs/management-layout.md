@@ -9,7 +9,7 @@ Các quy tắc chỉ áp dụng cho danh sách; giữ nguyên biểu mẫu, hộ
 | Lề nội dung / đệm khung | 24px / 20px |
 | Tiêu đề trang | 27px chiều cao dòng; cách khung 16px |
 | Khung danh sách | Rộng theo vùng nội dung; cao tối thiểu 600px, tự tăng theo dữ liệu |
-| Ô tìm kiếm | 320 × 40px |
+| Ô tìm kiếm | 360 × 40px |
 | Nút tìm kiếm | 112 × 40px |
 | Thêm / Sửa / Xóa / Cập nhật giá | Rộng 180 / 80 / 80 / 180px, cao 40px |
 | Bộ lọc | Rộng 156px, cao 40px |

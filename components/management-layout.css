@@ -3,7 +3,7 @@
 .main:has(.supplier-page),
 .main:has(.customer-list-card) {
   --management-control-height: 40px;
-  --management-search-width: 320px;
+  --management-search-width: 360px;
   --management-gap: 16px;
   --management-control-gap: 10px;
   padding: 24px;
