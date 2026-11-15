@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { api, Button, Field, Notice, Empty, Badge, useApp } from "./ui";
+import { useState, useEffect, useRef, useId } from "react";
+import { api, Button, Field, Notice, Empty, Badge, Modal, useApp } from "./ui";
 import { date, today } from "@/lib/format";
+import "./adjustments.css";
 function lotStatus(l: any) {
   if (!l.remaining) return "Hết hàng";
   if (l.expiry && l.expiry < today()) return "Đã hết hạn";
@@ -150,9 +151,15 @@ export function Inventory() {
     </>
   );
 }
+function adjustmentLotCode(id: number) { return "CTN" + String(id).padStart(3, "0"); }
+function AdjustmentLotField({ value }: { value: string }) {
+  const id = useId();
+  return <div className="field"><label htmlFor={id}>Chi tiết phiếu nhập đã chọn</label><div className="adjustment-locked-input"><input id={id} aria-label="Chi tiết phiếu nhập đã chọn" value={value} placeholder="Chưa chọn chi tiết" readOnly /><img src="/figma/74fe3.svg" width="15" height="15" alt="" /></div></div>;
+}
 export function Adjustments() {
-  const { refresh, notify, confirm, navigate } = useApp();
+  const { refresh, notify, navigate } = useApp();
   const [q, setQ] = useState("");
+  const [cancelOpen, setCancelOpen] = useState(false);
   const [rows, setRows] = useState<any[]>([]);
   const [quantities, setQuantities] = useState<Record<string, string>>({});
   const [reason, setReason] = useState("");
@@ -202,129 +209,57 @@ export function Adjustments() {
       setBusy(false);
     }
   }
-  return (
-    <>
-      <h1>Điều chỉnh tồn kho</h1>
-      <section className="card">
-        <h2>Tìm sản phẩm cần điều chỉnh</h2>
-        <form className="filters" onSubmit={search}>
-          <div className="field search">
-            <input
-              aria-label="Từ khóa"
-              value={q}
-              placeholder="Tên sản phẩm, mã sản phẩm hoặc mã vạch"
-              onChange={(e) => setQ(e.target.value)}
-            />
-          </div>
-          <Button type="submit" variant="primary">
-            Tìm kiếm
-          </Button>
-        </form>
-        <Notice text={error && !Object.keys(errors).length ? error : ""} />
-        <div className="row" style={{ flexWrap: "wrap", marginBottom: 20 }}>
-          {[...new Set(rows.map((r) => r.product_id))].map((id) => (
-            <div className="summary" key={id}>
-              <strong>
-                {rows.find((r) => r.product_id === id)?.product_name}
-              </strong>
-              <div className="small muted">
-                Tổng tồn kho hiện tại:{" "}
-                {rows
-                  .filter((r) => r.product_id === id)
-                  .reduce((s, r) => s + r.remaining, 0)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <h3>Số lượng còn theo từng chi tiết phiếu nhập</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Chọn</th>
-              <th>Sản phẩm</th>
-              <th>Mã phiếu nhập</th>
-              <th>Chi tiết phiếu nhập</th>
-              <th>Hạn sử dụng</th>
-              <th className="num">Số lượng đã nhập</th>
-              <th className="num">Số lượng còn</th>
-              <th>Số lượng thực tế</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r: any) => (
-              <tr key={r.id}>
-                <td>
-                  <input
-                    style={{ height: 16 }}
-                    aria-label={"Chọn chi tiết " + r.id}
-                    type="checkbox"
-                    checked={r.id in quantities}
-                    onChange={(e) =>
-                      setQuantities((prev) => {
-                        const next = { ...prev };
-                        if (e.target.checked) next[r.id] = String(r.remaining);
-                        else delete next[r.id];
-                        return next;
-                      })
-                    }
-                  />
-                </td>
-                <td>
-                  {r.product_name}
-                  <small className="muted" style={{ display: "block" }}>
-                    {r.product_id}
-                  </small>
-                </td>
-                <td>{r.receipt_id}</td>
-                <td>#{r.id}</td>
-                <td>{date(r.expiry)}</td>
-                <td className="num">{r.original_quantity}</td>
-                <td className="num">
-                  {r.remaining} {r.base_unit}
-                </td>
-                <td style={{ width: 180 }}>
-                  <Field
-                    label={"Số lượng thực tế #" + r.id}
-                    value={quantities[r.id] ?? ""}
-                    disabled={!(r.id in quantities)}
-                    inputMode="numeric"
-                    error={errors["line_" + r.id]}
-                    onChange={(e: any) =>
-                      setQuantities({ ...quantities, [r.id]: e.target.value })
-                    }
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {!rows.length && <Empty text="Không tìm thấy sản phẩm phù hợp" />}
-        <Notice text={errors.lines} />
-      </section>
-      <section className="card">
-        <Field label="Lý do điều chỉnh" error={errors.reason}>
-          <textarea
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-          />
-        </Field>
-      </section>
-      <div className="actions">
-        <Button
-          onClick={() =>
-            confirm("Bạn có chắc chắn muốn hủy điều chỉnh tồn kho không?", () =>
-              navigate("inventory"),
-            )
-          }
-        >
-          Hủy
-        </Button>
-        <Button variant="primary" disabled={busy} onClick={save}>
-          Lưu
-        </Button>
+  const groups = [...new Set(rows.map(r => r.product_id))].map(id => ({
+    id, rows: rows.filter(r => r.product_id === id),
+  }));
+  const selected = rows.filter(r => r.id in quantities);
+  return <div className="adjustments-page">
+    <h1>Điều chỉnh tồn kho</h1>
+    <section className="card adjustment-search-card">
+      <h2>Tìm sản phẩm</h2>
+      <form className="adjustment-search-form" onSubmit={search}>
+        <div className="adjustment-search-input"><img src="/figma/7b2e8.svg" width="16" height="16" alt="" /><input aria-label="Từ khóa" value={q} placeholder="Tìm theo mã hoặc tên sản phẩm" onChange={e => setQ(e.target.value)} /></div>
+        <Button type="submit" variant="primary"><img src="/figma/86d1d.svg" width="18" height="18" alt="" />Tìm kiếm</Button>
+      </form>
+      <Notice text={error && !Object.keys(errors).length ? error : ""} />
+    </section>
+    <section className="card adjustment-lots-card">
+      <h2>Tồn kho theo chi tiết phiếu nhập</h2>
+      {groups.map(group => <div className="adjustment-lot-group" key={group.id}>
+        <p className="adjustment-product-summary">{group.rows[0].product_name}  -  Tổng tồn kho: {group.rows.reduce((sum, r) => sum + r.remaining, 0)}</p>
+        <div className="table-wrap"><table>
+          <thead><tr><th>Chọn</th><th>Mã chi tiết nhập</th><th>Mã phiếu nhập</th><th>Hạn sử dụng</th><th>Số lượng còn</th></tr></thead>
+          <tbody>{group.rows.map(r => <tr key={r.id}>
+            <td><input aria-label={"Chọn chi tiết " + r.id} type="checkbox" checked={r.id in quantities} onChange={e => setQuantities(prev => {
+              const next = { ...prev };
+              if (e.target.checked) next[r.id] = String(r.remaining);
+              else delete next[r.id];
+              return next;
+            })} /></td>
+            <td>{adjustmentLotCode(r.id)}</td><td>{r.receipt_id}</td><td>{date(r.expiry)}</td><td>{r.remaining}</td>
+          </tr>)}</tbody>
+        </table></div>
+      </div>)}
+      {!rows.length && <Empty text="Không tìm thấy sản phẩm phù hợp" />}
+      <Notice text={errors.lines} />
+    </section>
+    <section className="card adjustment-details-card">
+      <h2>Thông tin điều chỉnh</h2>
+      <div className="adjustment-edit-content">
+        <div className="adjustment-edit-rows">{(selected.length ? selected : [null]).map(r => <div className="adjustment-edit-row" role="group" aria-label={r ? "Điều chỉnh " + adjustmentLotCode(r.id) : "Chưa chọn chi tiết"} key={r?.id ?? "empty"}>
+          <AdjustmentLotField value={r ? adjustmentLotCode(r.id) : ""} />
+          <Field label="Số lượng tồn mới" placeholder="Nhập số lượng" inputMode="numeric" value={r ? quantities[r.id] : ""} disabled={!r} error={r ? errors["line_" + r.id] : undefined} onChange={(e: any) => r && setQuantities({ ...quantities, [r.id]: e.target.value })} />
+        </div>)}</div>
+        <Field label="Lý do điều chỉnh" placeholder="Nhập lý do điều chỉnh" value={reason} onChange={(e: any) => setReason(e.target.value)} error={errors.reason} />
       </div>
-    </>
-  );
+    </section>
+    <div className="actions adjustment-page-actions"><Button disabled={busy} onClick={() => setCancelOpen(true)}>Hủy</Button><Button variant="primary" disabled={busy} onClick={save}>Lưu</Button></div>
+    {cancelOpen && <Modal title="Xác nhận" onClose={() => setCancelOpen(false)} showClose={false} className="adjustment-cancel" overlayClassName="adjustment-cancel-overlay">
+      <div className="adjustment-cancel-icon"><img src="/figma/a32c7.svg" width="26" height="26" alt="" /></div>
+      <p>Bạn có chắc chắn muốn hủy điều chỉnh tồn kho không?</p>
+      <div className="actions"><Button onClick={() => setCancelOpen(false)}>Quay lại</Button><Button variant="danger" onClick={() => { setCancelOpen(false); navigate("inventory"); }}>Xác nhận</Button></div>
+    </Modal>}
+  </div>;
 }
 export function Settings() {
   const { data, refresh, notify, confirm } = useApp();
