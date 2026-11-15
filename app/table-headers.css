@@ -1,0 +1,20 @@
+:root {
+  --table-heading-background: #edf3fc;
+  --table-heading-color: #0f172a;
+  --table-heading-font-size: 13px;
+  --table-heading-font-weight: 600;
+}
+
+/* Shared screen presentation; preserve column text, geometry and alignment. */
+@media screen {
+  body .main table > thead > tr > th,
+  body .main .sale-layout table > thead > tr > th {
+    background-color: var(--table-heading-background);
+    color: var(--table-heading-color);
+    font-family: Inter, Arial, sans-serif;
+    font-size: var(--table-heading-font-size);
+    font-weight: var(--table-heading-font-weight);
+    font-style: normal;
+    line-height: 18px;
+  }
+}
