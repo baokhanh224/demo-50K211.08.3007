@@ -291,7 +291,7 @@ export default function App() {
           <Sale />
         )}
       </main>
-      {toast && (toast.includes("nhà cung cấp") ? <SupplierToast text={toast} onClose={() => setToast("")} /> : (
+      {toast && ((toast.includes("nhà cung cấp") || toast === "Nhập hàng thành công") ? <SupplierToast text={toast} successIcon={toast === "Nhập hàng thành công" ? "8b27f" : undefined} onClose={() => setToast("")} /> : (
         <div className={"toast " + (toast.includes("khách hàng") ? "customer-toast" : "")} role="status">
           {toast.includes("khách hàng") ? <img src="/figma/8b27f.svg" width="18" height="18" alt="" /> : <span aria-hidden="true">✓ </span>}
           <span>{toast}</span>

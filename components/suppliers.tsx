@@ -8,9 +8,9 @@ const statuses = ["Đang hợp tác", "Ngừng hợp tác"];
 function Asset({ file, size, ...props }: any) {
   return <img src={`/figma/${file}.svg`} width={size} height={size} alt="" {...props} />;
 }
-export function SupplierToast({ text, error = false, onClose }: any) {
+export function SupplierToast({ text, error = false, onClose, successIcon = "b066b" }: any) {
   return <div className={`supplier-toast ${error ? "supplier-toast-error" : ""}`} role={error ? "alert" : "status"}>
-    <Asset file={error ? "2d146" : "b066b"} size={error ? 18 : 16} />
+    <Asset file={error ? "2d146" : successIcon} size={error || successIcon === "8b27f" ? 18 : 16} />
     <span>{text}</span><button type="button" aria-label="Đóng thông báo" onClick={onClose}>×</button>
   </div>;
 }

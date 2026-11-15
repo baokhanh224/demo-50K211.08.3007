@@ -66,6 +66,18 @@ test("Receipt input formats VND, preserves numeric draft totals and save payload
   expect(saved.lines.map((l: any) => l.price)).toEqual(["600000", "15000"]);
   expect(saved.lines.map((l: any) => l.quantity)).toEqual(["2", "4"]);
   expect(saved.lines[0].unit_id).toBe(String(unit.id));
+  await expect(page.getByRole("button", { name: "Lưu phiếu nhập", exact: true })).toBeEnabled();
+  await page.route("**/api/action", async route => {
+    if (route.request().postDataJSON()?.action !== "receipt") return route.fallback();
+    await route.fulfill({ json: { message: "Nhập hàng thành công" } });
+  });
+  await page.getByRole("button", { name: "Lưu phiếu nhập", exact: true }).click();
+  const success = page.locator(".supplier-toast:not(.supplier-toast-error)");
+  await expect(success).toContainText("Nhập hàng thành công");
+  await expect(success.locator("img")).toHaveAttribute("src", "/figma/8b27f.svg");
+  expect((await success.boundingBox())!.y).toBe(108);
+  await success.getByRole("button", { name: "Đóng thông báo", exact: true }).click();
+  await expect(success).toHaveCount(0);
 });
 
 test("Receipt quantity/price and expiry errors appear as dismissible corner notifications", async ({ page, context }) => {
