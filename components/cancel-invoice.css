@@ -24,3 +24,5 @@
 .cancel-invoice-error-toast button{border:0;background:none;padding:0;flex:none;width:17px;height:26px;font-size:18px;line-height:26px;font-weight:600;color:inherit;}
 @media(max-width:1200px){.main:has(.cancel-invoice-page){padding-right:24px;}.cancel-invoice-card{overflow-x:auto;}.cancel-invoice-card table{min-width:850px;}.cancel-invoice-error-toast{right:24px;}}
 @media(max-width:700px){.cancel-invoice-filters{flex-wrap:wrap;}.cancel-invoice-filters input{max-width:100%;}}
+
+.cancel-reason-form .field > label { font-weight: 700; }

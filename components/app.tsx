@@ -151,6 +151,7 @@ export default function App() {
         </form>
       </div>
     );
+  const circularSuccess = ["Nhập hàng thành công", "Hủy hóa đơn thành công"].includes(toast);
   const context = { data, refresh, navigate, notify: setToast, confirm };
   return (
     <AppContext.Provider value={context}>
@@ -291,7 +292,7 @@ export default function App() {
           <Sale />
         )}
       </main>
-      {toast && ((toast.includes("nhà cung cấp") || toast === "Nhập hàng thành công") ? <SupplierToast text={toast} successIcon={toast === "Nhập hàng thành công" ? "8b27f" : undefined} onClose={() => setToast("")} /> : (
+      {toast && ((toast.includes("nhà cung cấp") || circularSuccess) ? <SupplierToast text={toast} successIcon={circularSuccess ? "8b27f" : undefined} onClose={() => setToast("")} /> : (
         <div className={"toast " + (toast.includes("khách hàng") ? "customer-toast" : "")} role="status">
           {toast.includes("khách hàng") ? <img src="/figma/8b27f.svg" width="18" height="18" alt="" /> : <span aria-hidden="true">✓ </span>}
           <span>{toast}</span>

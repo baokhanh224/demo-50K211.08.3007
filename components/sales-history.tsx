@@ -401,6 +401,7 @@ export default function SalesHistory({ operation = "history" }: any) {
       {cancel && (
         <Modal
           title="Nhập lý do hủy hóa đơn"
+          className="cancel-reason-form"
           onClose={() => {
             setCancel(null);
             setCancelError("");
@@ -410,7 +411,7 @@ export default function SalesHistory({ operation = "history" }: any) {
             Hóa đơn: {cancel.id}
           </p>
           <Field
-            label={<strong>Lý do hủy hóa đơn</strong>}
+            label="Lý do hủy hóa đơn"
             error={
               cancelError === "Vui lòng nhập lý do hủy hóa đơn"
                 ? cancelError
