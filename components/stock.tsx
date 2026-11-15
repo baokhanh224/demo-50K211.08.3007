@@ -158,24 +158,33 @@ function AdjustmentLotField({ value }: { value: string }) {
   return <div className="field"><label htmlFor={id}>Chi tiết phiếu nhập đã chọn</label><div className="adjustment-locked-input"><input id={id} aria-label="Chi tiết phiếu nhập đã chọn" value={value} placeholder="Chưa chọn chi tiết" readOnly /><img src="/figma/74fe3.svg" width="15" height="15" alt="" /></div></div>;
 }
 export function Adjustments() {
-  const { refresh, notify, navigate } = useApp();
+  const { refresh, navigate } = useApp();
   const [q, setQ] = useState("");
   const [cancelOpen, setCancelOpen] = useState(false);
   const [rows, setRows] = useState<any[]>([]);
   const [quantities, setQuantities] = useState<Record<string, string>>({});
   const [reason, setReason] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(() => setSuccess(""), 6500);
+    return () => clearTimeout(timer);
+  }, [success]);
   const [busy, setBusy] = useState(false);
   const key = useRef(crypto.randomUUID());
   async function search(e?: React.FormEvent) {
     e?.preventDefault();
     setError("");
+    setSuccess("");
     try {
       setRows(await api("query", { scope: "adjustments", q }));
       setQuantities({});
+      return true;
     } catch (e: any) {
       setRows([]);
       setError(e.message);
+      return false;
     }
   }
   useEffect(() => {
@@ -185,6 +194,7 @@ export function Adjustments() {
     if (busy) return;
     setBusy(true);
     setError("");
+    setSuccess("");
     try {
       const r = await api("action", {
         action: "adjust",
@@ -196,11 +206,10 @@ export function Adjustments() {
         })),
       });
       await refresh();
-      notify(r.message);
       setQuantities({});
       setReason("");
       key.current = crypto.randomUUID();
-      await search();
+      if (await search()) setSuccess(r.message);
     } catch (e: any) {
       setError(e.message);
     } finally {
@@ -213,7 +222,7 @@ export function Adjustments() {
   const selected = rows.filter(r => r.id in quantities);
   return <div className="adjustments-page">
     <h1>Điều chỉnh tồn kho</h1>
-    {error && <SupplierToast error text={error} onClose={() => setError("")} />}
+    {(error || success) && <SupplierToast error={!!error} text={error || success} onClose={() => { setError(""); setSuccess(""); }} />}
     <section className="card adjustment-search-card">
       <h2>Tìm sản phẩm</h2>
       <form className="adjustment-search-form" onSubmit={search}>

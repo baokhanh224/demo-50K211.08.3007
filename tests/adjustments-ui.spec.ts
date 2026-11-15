@@ -9,6 +9,7 @@ test("Adjustments: Figma layout, selection editors, numeric save payload and can
     { id: 2, product_id: "SP0001", product_name: "Sữa Milo", receipt_id: "PN0002", expiry: "2027-01-05", remaining: 8, original_quantity: 10, base_unit: "Hộp" },
   ];
   const searches: any[] = [], saves: any[] = [];
+  let successfulSave = false;
   await page.route("**/api/query", async route => {
     const payload = route.request().postDataJSON();
     if (payload?.scope !== "adjustments") return route.fallback();
@@ -19,6 +20,11 @@ test("Adjustments: Figma layout, selection editors, numeric save payload and can
     const payload = route.request().postDataJSON();
     if (payload?.action !== "adjust") return route.fallback();
     saves.push(payload);
+    if (successfulSave) {
+      for (const line of payload.lines) lots.find(l => l.id === line.lot_id)!.remaining = Number(line.quantity);
+      await route.fulfill({ json: { message: "Điều chỉnh tồn kho thành công" } });
+      return;
+    }
     await route.fulfill({ status: 400, json: { error: "Số lượng điều chỉnh không hợp lệ", fields: { line_2: "Số lượng điều chỉnh không hợp lệ" } } });
   });
   await page.setViewportSize({ width: 1440, height: 927 });
@@ -74,6 +80,22 @@ test("Adjustments: Figma layout, selection editors, numeric save payload and can
   await page.screenshot({ path: "test-results/adjustments/invalid-toast.png" });
   await toast.getByRole("button", { name: "Đóng thông báo", exact: true }).click();
   await expect(toast).toHaveCount(0);
+  successfulSave = true;
+  await root.getByRole("button", { name: "Lưu", exact: true }).click();
+  const success = root.locator(".supplier-toast:not(.supplier-toast-error)");
+  await expect(success).toHaveText("Điều chỉnh tồn kho thành công×");
+  await expect(success).toHaveAttribute("role", "status");
+  await expect(success).toHaveCSS("background-color", "rgb(240, 253, 244)");
+  await expect(success).toHaveCSS("color", "rgb(21, 128, 61)");
+  await expect(success.locator("img")).toHaveAttribute("src", "/figma/b066b.svg");
+  const successBox = (await success.boundingBox())!;
+  expect(successBox.y).toBe(108); expect(successBox.x + successBox.width).toBe(1416);
+  await expect(root.locator(".adjustment-product-summary")).toContainText("Tổng tồn kho: 17");
+  await expect(page.locator(".toast")).toHaveCount(0);
+  await page.screenshot({ path: "test-results/adjustments/success-toast.png" });
+  await success.getByRole("button", { name: "Đóng thông báo", exact: true }).click();
+  await expect(success).toHaveCount(0);
+
   await root.getByLabel("Từ khóa", { exact: true }).fill("zz-empty");
   await root.getByRole("button", { name: "Tìm kiếm", exact: true }).click();
   await expect(root).toContainText("Không tìm thấy sản phẩm phù hợp");
