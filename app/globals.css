@@ -1067,3 +1067,11 @@ tbody tr.clickable:hover {
 .report-calendar-days button.endpoint { background:#103a9b; color:white; border-radius:17px; font-weight:600; }
 .report-calendar-days button:hover:not(.endpoint) { background:#eaf1fc; }
 .report-date-input input:focus { outline:none; }
+
+/* Shared identifier color across customer, product and supplier screens. */
+.btn.link.entity-code,
+.product-management-card td .btn.link.entity-code,
+.supplier-code-link.entity-code,
+.customer-detail-info > div:first-child dd,
+.product-drawer dl > div:first-child dd,
+.supplier-drawer dl > div:first-child dd { color: #000; }

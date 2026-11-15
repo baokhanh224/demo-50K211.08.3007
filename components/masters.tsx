@@ -232,7 +232,7 @@ function OtherMasters({ kind }: any) {
                   </td>
                   <td>
                     <button
-                      className="btn link"
+                      className="btn link entity-code"
                       onClick={(e) => {
                         e.stopPropagation();
                         showDetail(r);
