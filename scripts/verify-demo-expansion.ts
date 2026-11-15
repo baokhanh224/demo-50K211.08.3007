@@ -8,7 +8,7 @@ async function snapshot(){return Object.fromEntries(await Promise.all(tables.map
 async function main(){
  const before=await snapshot();
  if(process.env.DEMO_BACKUP_PATH)writeFileSync(process.env.DEMO_BACKUP_PATH,JSON.stringify(before),{mode:0o600});
- if(process.argv.includes('--snapshot-only')){console.log('Snapshot saved',Object.fromEntries(Object.entries(before).map(([t,rows])=>[t,rows.length])));return;}
+ if(process.argv.includes('--snapshot-only')){console.log('Snapshot saved',Object.fromEntries(Object.entries(before).map(([t,rows])=>[t,(rows as any[]).length])));return;}
  const plan=await demoDataPlan();console.log('Before',JSON.stringify(plan));
  const result=await expandDemoData((category,added)=>console.log(category,JSON.stringify(added)));
  const after=await snapshot();
