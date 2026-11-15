@@ -12,11 +12,11 @@ test("UC6.3 cancel list, real cancelled-invoice toast, search and retained resul
   await page.getByRole("link", { name: "Hủy hóa đơn", exact: true }).click();
   const card = page.locator(".cancel-invoice-card"), rows = card.locator("tbody tr");
   await expect(rows.first()).toBeVisible();
-  expect(await card.boundingBox()).toEqual({ x: 274, y: 215, width: 1110, height: 644 });
+  expect(await card.boundingBox()).toEqual({ x: 274, y: 157, width: 1110, height: 644 });
   const search = page.getByRole("textbox", { name: "Mã hóa đơn", exact: true });
-  expect(await search.boundingBox()).toEqual({ x: 291, y: 280, width: 300, height: 40 });
-  expect(await page.getByRole("button", { name: "Tìm kiếm", exact: true }).boundingBox()).toEqual({ x: 603, y: 280, width: 110, height: 40 });
-  expect(await card.locator("thead").boundingBox()).toEqual({ x: 291, y: 360, width: 1070, height: 48 });
+  expect(await search.boundingBox()).toEqual({ x: 291, y: 222, width: 300, height: 40 });
+  expect(await page.getByRole("button", { name: "Tìm kiếm", exact: true }).boundingBox()).toEqual({ x: 603, y: 222, width: 110, height: 40 });
+  expect(await card.locator("thead").boundingBox()).toEqual({ x: 291, y: 302, width: 1070, height: 48 });
   expect(await card.locator("th").allTextContents()).toEqual(["Mã hóa đơn", "Ngày giờ bán", "Tổng tiền", "Trạng thái", ""]);
   await expect(page.locator(".cancel-invoice-filters input")).toHaveCount(1);
   await expect(rows.first().locator(".code")).toHaveCSS("color", "rgb(15, 23, 42)");

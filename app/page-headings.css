@@ -1,0 +1,30 @@
+/* Every screen title starts at the same inset and scrolls with page content. */
+@media screen {
+  body .main.app-main {
+    margin-top: var(--app-header-height);
+    padding-top: 24px;
+    padding-left: 24px;
+  }
+  body .main.app-main h1 {
+    position: static;
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin: 0 0 16px;
+    transform: none;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+  body .main.app-main .report-page-heading {
+    height: auto;
+    min-height: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  body .main.app-main .report-page-heading h1 { margin-bottom: 0; }
+  body .supplier-toast.sale-success-toast { top: var(--app-header-height); }
+}

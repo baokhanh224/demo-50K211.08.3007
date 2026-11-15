@@ -44,7 +44,7 @@ test("Inventory: Figma filters/table, expiry details, empty state and dismissibl
   await expect(root.locator(".inventory-main-table th")).toHaveText(["Mã sản phẩm", "Tên sản phẩm", "Số lượng tồn", "Trạng thái"]);
   await expect(rows.nth(1).locator("td").last()).toHaveText("Dưới mức cảnh báo");
   await expect(root.locator(".badge")).toHaveCount(0);
-  for (const [selector, y, height] of [[".inventory-filter-card", 170, 170], [".inventory-results-card", 359, 474]] as const) {
+  for (const [selector, y, height] of [[".inventory-filter-card", 157, 170], [".inventory-results-card", 346, 474]] as const) {
     const box = (await root.locator(selector).boundingBox())!;
     expect(box.y).toBe(y); expect(box.height).toBe(height);
   }

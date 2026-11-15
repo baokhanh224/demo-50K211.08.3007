@@ -260,7 +260,7 @@ export default function App() {
           </button>
         </div>
       </aside>
-      <main className="main">
+      <main className="main app-main">
         {["products", "suppliers", "customers"].includes(view) ? (
           <Masters key={view} kind={view} />
         ) : view === "receipts" ? (

@@ -32,9 +32,9 @@ test("UC6.2 page, cancel confirmation, successful print and printable document",
   const print = page.locator(".invoice-print-actions").getByRole("button", { name: "In hóa đơn", exact: true });
   await expect(print).toBeEnabled();
   await expect(page.locator(".invoice-print-sheet")).toContainText(invoice.id);
-  expect(await page.locator(".invoice-print-sheet").boundingBox()).toEqual({ x: 476, y: 212, width: 733, height: 557 });
-  expect(await page.locator(".invoice-print-actions").getByRole("button", { name: "Hủy", exact: true }).boundingBox()).toEqual({ x: 699, y: 800, width: 110, height: 40 });
-  expect(await print.boundingBox()).toEqual({ x: 841, y: 800, width: 145, height: 40 });
+  expect(await page.locator(".invoice-print-sheet").boundingBox()).toEqual({ x: 474.5, y: 157, width: 733, height: 557 });
+  expect(await page.locator(".invoice-print-actions").getByRole("button", { name: "Hủy", exact: true }).boundingBox()).toEqual({ x: 697.5, y: 745, width: 110, height: 40 });
+  expect(await print.boundingBox()).toEqual({ x: 839.5, y: 745, width: 145, height: 40 });
   await capture(page, "preview");
   await page.locator(".invoice-print-actions").getByRole("button", { name: "Hủy", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Hủy in hóa đơn?", exact: true });

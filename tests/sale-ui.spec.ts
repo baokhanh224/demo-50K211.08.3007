@@ -56,13 +56,13 @@ test("UC6.1: placeholder, chọn sản phẩm và toast theo Figma", async ({
   const box = await toast.boundingBox();
   expect(box?.width).toBe(320);
   expect(box?.height).toBe(56);
-  expect(box?.y).toBe(106);
+  expect(box?.y).toBe(102);
   await expect(page.locator(".sale-product-card")).toHaveJSProperty(
     "offsetHeight",
     224,
   );
-  expect((await page.locator(".sale-product-card").boundingBox())?.y).toBe(252);
-  expect((await page.locator(".cart").boundingBox())?.y).toBe(495);
+  expect((await page.locator(".sale-product-card").boundingBox())?.y).toBe(240);
+  expect((await page.locator(".cart").boundingBox())?.y).toBe(483);
   await page
     .locator(".sale-layout img")
     .evaluateAll((a) =>

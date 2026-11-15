@@ -44,7 +44,7 @@ test("Adjustments: Figma layout, selection editors, numeric save payload and can
   await expect(root.getByLabel("Chi tiết phiếu nhập đã chọn", { exact: true })).toHaveAttribute("readonly", "");
   await root.getByLabel("Số lượng tồn mới", { exact: true }).fill("10");
   await root.getByLabel("Lý do điều chỉnh", { exact: true }).fill("Kiểm kê thực tế");
-  for (const [selector, y, height] of [[".adjustment-search-card", 170, 123], [".adjustment-lots-card", 309, 270], [".adjustment-details-card", 597, 183]] as const) {
+  for (const [selector, y, height] of [[".adjustment-search-card", 157, 123], [".adjustment-lots-card", 296, 270], [".adjustment-details-card", 584, 183]] as const) {
     const box = (await root.locator(selector).boundingBox())!;
     expect(box.y).toBe(y); expect(box.height).toBe(height);
   }

@@ -43,7 +43,7 @@ test("Receipt input formats VND, preserves numeric draft totals and save payload
   await page.getByRole("button", { name: "Thêm sản phẩm", exact: true }).click();
   await expect(rows).toHaveCount(2);
   await expect(page.locator(".receipt-lines-card .total-row strong")).toHaveText("1.260.000đ");
-  for (const [selector, y, height] of [[".receipt-info-card", 170, 118], [".receipt-entry-card", 305, 183], [".receipt-lines-card", 507, 268]] as const) {
+  for (const [selector, y, height] of [[".receipt-info-card", 157, 118], [".receipt-entry-card", 292, 183], [".receipt-lines-card", 494, 268]] as const) {
     const box = (await page.locator(selector).boundingBox())!;
     expect(box.y).toBe(y); expect(box.height).toBe(height);
   }
