@@ -13,7 +13,7 @@ test("shared categories in products, suppliers and reports; only supplier Other 
   await expect(page.locator(".sidebar")).toBeVisible();
   const data = await page.evaluate(async () => (await fetch("/api/bootstrap")).json());
   expect(data.product_categories).toEqual(data.categories);
-  const custom = { id: 987654, name: "Đồ đông lạnh đồng bộ" };
+  const custom = { id: 987654, name: "Đồ đông lạnh và thực phẩm chế biến dành cho gia đình có tên danh mục rất dài" };
   const categories = sortCategories([...data.categories, custom]);
   const otherId = categories.find(c => c.name === "Khác")!.id;
   const supplier = data.suppliers[0];
@@ -24,7 +24,18 @@ test("shared categories in products, suppliers and reports; only supplier Other 
   await page.getByRole("link", { name: "Quản lý sản phẩm", exact: true }).click();
   await page.locator(".product-controls").getByRole("button", { name: "Danh mục", exact: true }).click();
   await expect(page.locator(".product-controls [role=option]")).toHaveText(["Tất cả", ...names]);
-  await page.locator(".product-controls").getByRole("button", { name: "Danh mục", exact: true }).click();
+  await page.locator(".product-controls").getByRole("option", { name: custom.name, exact: true }).click();
+  const categoryButton = page.locator(".product-controls").getByRole("button", { name: "Danh mục", exact: true });
+  await expect(categoryButton).toHaveAttribute("title", custom.name);
+  await expect(categoryButton.locator(".product-select-value")).toHaveCSS("text-overflow", "ellipsis");
+  const geometry = await categoryButton.evaluate(el => {
+    const box = el.getBoundingClientRect(), arrow = el.querySelector("img")!.getBoundingClientRect();
+    const text = el.querySelector(".product-select-value")!;
+    return { contained: el.scrollWidth <= el.clientWidth, arrowContained: arrow.right <= box.right, truncated: text.scrollWidth > text.clientWidth };
+  });
+  expect(geometry).toEqual({ contained: true, arrowContained: true, truncated: true });
+  await categoryButton.click();
+  await page.locator(".product-controls").getByRole("option", { name: "Tất cả", exact: true }).click();
   await page.getByRole("button", { name: "Thêm sản phẩm", exact: true }).click();
   const product = page.getByRole("dialog", { name: "Thêm sản phẩm", exact: true });
   await product.getByRole("button", { name: "Danh mục", exact: true }).click();

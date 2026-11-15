@@ -19,6 +19,7 @@ function ProductSelect({ label, value, options, onChange, placeholder, inline = 
   }, []);
   useEffect(() => { if (open) ref.current?.querySelector<HTMLElement>('[role="option"][aria-selected="true"]')?.focus(); }, [open]);
   const choices = [{ value: "", label: placeholder }, ...options];
+  const selectedLabel = choices.find(o => String(o.value) === String(value))?.label || placeholder;
   return <div className={`field product-select ${inline ? "product-select-inline" : ""} ${error ? "has-error" : ""}`} ref={ref}
     onKeyDown={e => {
       if (e.key === "Escape" && open) { e.preventDefault(); e.stopPropagation(); setOpen(false); trigger.current?.focus(); }
@@ -31,8 +32,8 @@ function ProductSelect({ label, value, options, onChange, placeholder, inline = 
       }
     }}>
     {!inline && <label id={id + "-label"} htmlFor={id}>{label}{required && <span className="required" aria-hidden="true"> *</span>}</label>}
-    <button id={id} ref={trigger} type="button" aria-label={label} aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} aria-haspopup="listbox" aria-expanded={open} aria-controls={id + "-options"} className={!value ? "product-placeholder" : ""} onClick={() => setOpen(!open)}>
-      <span>{inline && <span className="product-select-prefix">{label}: </span>}{choices.find(o => String(o.value) === String(value))?.label || placeholder}</span><Asset name={inline ? "b4dfe" : "c969b"} size={inline ? 14 : 16} />
+    <button id={id} ref={trigger} type="button" title={selectedLabel} aria-label={label} aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} aria-haspopup="listbox" aria-expanded={open} aria-controls={id + "-options"} className={!value ? "product-placeholder" : ""} onClick={() => setOpen(!open)}>
+      {inline && <span className="product-select-prefix">{label}: </span>}<span className="product-select-value">{selectedLabel}</span><Asset name={inline ? "b4dfe" : "c969b"} size={inline ? 14 : 16} />
     </button>
     {open && <div className="product-select-menu" id={id + "-options"} role="listbox" aria-label={label}>
       {choices.map(o => <button type="button" role="option" key={o.value} aria-selected={String(o.value) === String(value)} onClick={() => { onChange(o.value); setOpen(false); trigger.current?.focus(); }}><span>{o.label}</span>{String(o.value) === String(value) && <Asset name="47eaa" size={13} />}</button>)}

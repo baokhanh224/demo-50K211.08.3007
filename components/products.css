@@ -143,3 +143,10 @@
 .product-form-overlay:has(~ .product-price-warning-overlay){background:rgba(0,0,0,.4);}
 .overlay.product-price-warning-overlay{background:rgba(0,0,0,.5);}
 .product-price-warning .actions .btn{height:40px;min-height:40px;min-width:0;}
+
+/* Keep long selected values and dropdown options inside their controls. */
+.product-select>button>.product-select-value{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.product-select>button>img,.product-select-menu button>img{flex:none;}
+.product-controls .product-select-inline>button>.product-select-prefix{flex:none;font-weight:400;color:#64748b;}
+.product-select-menu{right:auto;width:max-content;min-width:100%;max-width:min(320px,calc(100vw - 48px));}
+.product-select-menu button>span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:left;}
