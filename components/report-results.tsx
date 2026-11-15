@@ -2,6 +2,7 @@
 import { date, money, number } from "@/lib/format";
 import { ReportIcon } from "./report-picker";
 export function ReportPlaceholder({ stock, busy, error, empty }: any) {
+  const isEmpty = !!empty && !busy && !error;
   const icon = busy
     ? "report-busy"
     : error
@@ -20,15 +21,15 @@ export function ReportPlaceholder({ stock, busy, error, empty }: any) {
       : 32;
   return (
     <section
-      className="report-placeholder"
+      className={`report-placeholder${isEmpty ? " report-empty-state" : ""}`}
       aria-busy={busy}
       role={error ? "alert" : "status"}
     >
-      <ReportIcon
+      {isEmpty ? <span className="report-empty-icon"><ReportIcon name={icon} size={size} /></span> : <ReportIcon
         name={icon}
         size={size}
         className={busy ? "report-spinning" : ""}
-      />
+      />}
       <p className={error ? "report-error-copy" : ""}>
         {busy
           ? stock
