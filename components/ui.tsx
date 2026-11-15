@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import DateInput from "./date-input";
 export async function api(path: string, data?: any) {
   const r = await fetch("/api/" + path, {
     method: data === undefined ? "GET" : "POST",
@@ -77,9 +78,11 @@ export function Field({
   error,
   children,
   required: needed,
+  dateInput = false,
   ...props
 }: any) {
   const id = useId();
+  const Input = dateInput ? DateInput : "input";
   return (
     <div className={"field " + (error ? "has-error" : "")}>
       <label htmlFor={id}>
@@ -99,7 +102,7 @@ export function Field({
           "aria-describedby": error ? id + "-error" : undefined,
         })
       ) : (
-        <input
+        <Input
           id={id}
           aria-invalid={!!error}
           aria-label={label}

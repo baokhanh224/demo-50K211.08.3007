@@ -192,6 +192,7 @@ export default function Receipts() {
           <ReceiptPriceField value={price} onChange={setPrice} error={errors.price} />
           <Field
             label="Hạn sử dụng"
+            dateInput
             placeholder="dd/mm/yyyy"
             value={expiry}
             disabled={!product?.expiry_managed}
@@ -321,12 +322,14 @@ export function ReceiptHistory() {
           <Field
             label="Từ ngày"
             value={from}
+            dateInput
             placeholder="dd/mm/yyyy"
             onChange={(e: any) => setFrom(e.target.value)}
           />
           <Field
             label="Đến ngày"
             value={to}
+            dateInput
             placeholder="dd/mm/yyyy"
             onChange={(e: any) => setTo(e.target.value)}
           />

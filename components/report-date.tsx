@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
+import DateInput from "./date-input";
 import { date, iso, today } from "@/lib/format";
 function parse(value: string) {
   const key = iso(value);
@@ -34,7 +35,7 @@ export default function ReportDate({ label, value, onChange, from, to, open, onO
   }}>
     <label htmlFor={id}>{label}</label>
     <div className={"report-date-input" + (open ? " is-open" : "")}>
-      <input id={id} ref={input} aria-label={label} value={value} placeholder="dd/mm/yyyy"
+      <DateInput id={id} ref={input} aria-label={label} value={value} placeholder="dd/mm/yyyy"
         autoComplete="off" onChange={e => onChange(e.target.value)} onClick={onOpen}
         aria-expanded={open} aria-controls={open ? id + "-calendar" : undefined} aria-haspopup="dialog"
         onKeyDown={e => {

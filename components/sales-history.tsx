@@ -139,12 +139,14 @@ export default function SalesHistory({ operation = "history" }: any) {
           <Field label="Số điện thoại khách hàng" placeholder="Nhập số điện thoại" value={phone} onChange={(e:any) => setPhone(e.target.value)} />
           <Field
             label="Từ ngày"
+            dateInput
             placeholder="dd/mm/yyyy"
             value={from}
             onChange={(e: any) => setFrom(e.target.value)}
           />
           <Field
             label="Đến ngày"
+            dateInput
             placeholder="dd/mm/yyyy"
             value={to}
             onChange={(e: any) => setTo(e.target.value)}

@@ -5,6 +5,7 @@ import { SupplierToast } from "./suppliers";
 import { date, money } from "@/lib/format";
 import { productCategoryNames, productErrors, productExpiry, productUnitNames } from "@/lib/product-validation";
 import "./products.css";
+import DateInput from "./date-input";
 
 function Asset({ name, size = 16 }: { name: string; size?: number }) {
   return <img src={`/figma/${name}.svg`} width={size} height={size} alt="" />;
@@ -53,7 +54,7 @@ function ProductExpiryField({ value, onChange, error, today }: any) {
   return <div className={`field product-full product-expiry ${error ? "has-error" : ""}`}>
     <label htmlFor={id}>Hạn sử dụng (nếu có)</label>
     <div className="product-expiry-input">
-      <input id={id} aria-label="Hạn sử dụng (nếu có)" aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} placeholder="dd/mm/yyyy" inputMode="numeric" value={value} onChange={e => onChange(e.target.value)} />
+      <DateInput id={id} aria-label="Hạn sử dụng (nếu có)" aria-invalid={!!error} aria-describedby={error ? id + "-error" : undefined} placeholder="dd/mm/yyyy" inputMode="numeric" value={value} onChange={e => onChange(e.target.value)} />
       <span className="product-expiry-calendar"><Asset name="65f50" />
         <input type="date" aria-label="Chọn hạn sử dụng" min={today} value={/^\d{4}-\d{2}-\d{2}$/.test(normalized) ? normalized : ""} onClick={e => e.currentTarget.showPicker?.()} onChange={e => onChange(e.target.value ? date(e.target.value) : "")} />
       </span>
