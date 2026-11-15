@@ -375,3 +375,6 @@ body:has(.sale-layout) .global-search input::placeholder {
   border-color: #103a9b;
   background: #eef3fd;
 }
+.sale-screen .sale-main > .product-search > .suggestions {
+  width: 100%;
+}
