@@ -407,10 +407,10 @@ export default function SalesHistory({ operation = "history" }: any) {
           }}
         >
           <p>
-            Hóa đơn: <strong>{cancel.id}</strong>
+            Hóa đơn: {cancel.id}
           </p>
           <Field
-            label="Lý do hủy hóa đơn"
+            label={<strong>Lý do hủy hóa đơn</strong>}
             error={
               cancelError === "Vui lòng nhập lý do hủy hóa đơn"
                 ? cancelError
