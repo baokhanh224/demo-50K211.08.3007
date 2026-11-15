@@ -1,6 +1,7 @@
 "use client";
 import { date, money, number } from "@/lib/format";
 import { ReportIcon } from "./report-picker";
+import { chartScale } from "@/lib/chart-scale";
 export function ReportPlaceholder({ stock, busy, error, empty }: any) {
   const isEmpty = !!empty && !busy && !error;
   const icon = busy
@@ -58,13 +59,8 @@ function Chart({ report, profit }: any) {
   const values = report.trend.flatMap((r: any) =>
     profit ? [r.revenue, r.cost] : [r.revenue],
   );
-  const max = Math.max(1, ...values),
-    min = Math.min(0, ...values);
-  const unit = 10 ** Math.floor(Math.log10(Math.max(max, Math.abs(min)) / 3));
-  const step = Math.ceil(max / 3 / unit) * unit;
-  const upper = step * 3,
-    lower = min < 0 ? -Math.ceil(Math.abs(min) / unit) * unit : 0,
-    span = upper - lower;
+  const { upper, span, ticks } = chartScale(values);
+  const labelEvery = Math.max(1, Math.ceil(report.trend.length / 8));
   const points = report.trend.map((r: any, i: number) => ({
     x: ((i + 0.5) / report.trend.length) * 568,
     y: ((upper - r.revenue) / span) * 240,
@@ -90,19 +86,11 @@ function Chart({ report, profit }: any) {
       </div>
       <div className="report-chart">
         <div className="report-chart-axis">
-          {[upper, upper - span / 3, upper - (span * 2) / 3, lower].map(
-            (v, i) => (
-              <span key={i} style={{ top: `${(i * 100) / 3}%` }}>
-                {compact(v)}
-              </span>
-            ),
-          )}
+          {ticks.map((v: number) => <span key={v} style={{ top: `${((upper - v) / span) * 100}%` }}>{compact(v)}</span>)}
         </div>
         <div className="report-plot">
           <div className="report-grid-lines">
-            {[0, 1, 2, 3].map((i) => (
-              <i key={i} style={{ top: `${(i * 100) / 3}%` }} />
-            ))}
+            {ticks.map((v: number) => <i key={v} style={{ top: `${((upper - v) / span) * 100}%` }} />)}
           </div>
           <div className="report-zero" style={{ top: zero + "%" }} />
           {!profit && (
@@ -125,33 +113,18 @@ function Chart({ report, profit }: any) {
                 strokeWidth="2"
                 vectorEffect="non-scaling-stroke"
               />
-              {points.map((p: any, i: number) => (
-                <circle
-                  key={i}
-                  cx={p.x}
-                  cy={p.y}
-                  r="3"
-                  fill="white"
-                  stroke="#103a9b"
-                  strokeWidth="1.5"
-                  vectorEffect="non-scaling-stroke"
-                >
-                  <title>
-                    {date(report.trend[i].day)}:{" "}
-                    {money(report.trend[i].revenue)}
-                  </title>
-                </circle>
-              ))}
             </svg>
           )}
-          <div className="report-chart-columns">
-            {report.trend.map((r: any) => (
+          {!profit && points.map((p: any, i: number) => <span key={report.trend[i].day} className="report-revenue-point" style={{ left: `${p.x / 568 * 100}%`, top: `${p.y / 240 * 100}%` }} title={`${date(report.trend[i].day)}: ${money(report.trend[i].revenue)}`} />)}
+          <div className="report-chart-columns" style={{ gridTemplateColumns: `repeat(${report.trend.length || 1}, minmax(0, 1fr))` }}>
+            {report.trend.map((r: any, index: number) => (
               <div className="report-chart-day" key={r.day}>
                 {(profit ? [r.revenue, r.cost] : []).map(
                   (v: number, i: number) => (
                     <div
                       key={i}
                       className={`report-chart-bar ${i ? "cost" : ""}`}
+                      data-negative={v < 0}
                       style={{
                         height: `${(Math.abs(v) / span) * 100}%`,
                         top: `${v >= 0 ? ((upper - v) / span) * 100 : zero}%`,
@@ -160,7 +133,7 @@ function Chart({ report, profit }: any) {
                     />
                   ),
                 )}
-                <span>{date(r.day).slice(0, 5)}</span>
+                <span style={{ visibility: index === report.trend.length - 1 || (index % labelEvery === 0 && report.trend.length - 1 - index >= labelEvery) ? "visible" : "hidden" }} title={date(r.day)}>{date(r.day).slice(0, 5)}</span>
               </div>
             ))}
           </div>

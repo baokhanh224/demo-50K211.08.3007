@@ -397,14 +397,14 @@ body:has(.reports-page) {
 .report-chart {
   position: relative;
   height: 296px;
-  padding: 0 0 28px 40px;
+  padding: 12px 12px 34px 76px;
 }
 .report-chart-axis {
   position: absolute;
   left: 0;
-  top: 0;
-  bottom: 28px;
-  width: 32px;
+  top: 12px;
+  bottom: 34px;
+  width: 64px;
 }
 .report-chart-axis span {
   position: absolute;
@@ -427,15 +427,14 @@ body:has(.reports-page) {
   background: #e5e7eb;
 }
 .report-chart-columns {
-  display: flex;
+  display: grid;
   position: relative;
   height: 100%;
-  justify-content: space-around;
-  gap: 8px;
+  gap: 0;
 }
 .report-chart-day {
   flex: 1;
-  min-width: 35px;
+  min-width: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -444,10 +443,10 @@ body:has(.reports-page) {
 }
 .report-chart-bar {
   position: absolute;
-  width: min(36%, 33px);
+  width: min(34%, 40px);
   background: #103a9b;
   border-radius: 4px 4px 0 0;
-  left: calc(50% - min(36%, 33px) - 2px);
+  left: calc(50% - min(34%, 40px) - 2px);
 }
 .report-chart-bar:only-of-type {
   left: 50%;
@@ -915,3 +914,10 @@ body:has(.reports-page) .global-search input::placeholder {
 .report-export-dialog .report-dialog-close {
   outline: none;
 }
+
+.report-chart-card .report-result-title { flex-wrap:wrap; row-gap:8px; }
+.report-chart-card .report-result-title h2 { flex:1 1 220px; }
+.report-chart-card .report-legend { flex-wrap:wrap; gap:12px; }
+.report-chart-axis span { white-space:nowrap; font-variant-numeric:tabular-nums; line-height:14px; }
+.report-revenue-point { position:absolute; z-index:2; width:7px; height:7px; border:1.5px solid #103a9b; border-radius:50%; background:white; transform:translate(-50%,-50%); }
+.report-chart-bar[data-negative=true] { border-radius:0 0 4px 4px; }
