@@ -64,7 +64,7 @@ function ProductExpiryField({ value, onChange, error, today }: any) {
 }
 function ProductConfirm({ kind, onClose, onConfirm, busy = false }: any) {
   const deletion = kind === "delete", warning = kind === "warning", destructive = deletion || kind === "cancel-edit";
-  return <Modal title={deletion ? "Xóa sản phẩm" : warning ? "Cảnh báo" : "Xác nhận"} onClose={busy ? undefined : onClose} showClose={false} className={`product-confirm ${deletion ? "product-delete-confirm" : warning ? "product-price-warning" : ""}`} overlayClassName="product-confirm-overlay">
+  return <Modal title={deletion ? "Xóa sản phẩm" : warning ? "Cảnh báo" : "Xác nhận"} onClose={busy ? undefined : onClose} showClose={false} className={`product-confirm ${deletion ? "product-delete-confirm" : warning ? "product-price-warning" : ""}`} overlayClassName={`product-confirm-overlay${warning ? " product-price-warning-overlay" : ""}`}>
     <div className={`product-confirm-icon ${deletion ? "red" : warning ? "yellow" : "blue"}`}>{warning ? <Asset name="7d3fc" size={26} /> : <Asset name={deletion ? "9c6f5" : "5eead"} size={deletion ? 26 : 22} />}</div>
     <p>{deletion ? "Bạn có chắc chắn muốn xóa sản phẩm này?" : warning ? "Giá bán thấp hơn giá nhập. Bạn có muốn tiếp tục?" : kind === "cancel-price" ? "Bạn có chắc chắn muốn hủy cập nhật giá bán không?" : kind === "cancel-edit" ? "Bạn có chắc chắn muốn hủy sửa sản phẩm không?" : "Bạn có chắc chắn muốn hủy thêm sản phẩm không?"}</p>
     <div className="actions"><Button disabled={busy} onClick={onClose}>Quay lại</Button><Button disabled={busy} variant={destructive ? "danger" : "primary"} onClick={onConfirm}>{warning ? "Tiếp tục" : "Xác nhận"}</Button></div>
