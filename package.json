@@ -8,6 +8,7 @@
     "start": "next start --hostname 0.0.0.0",
     "db:init": "node scripts/migrate.mjs",
     "db:seed": "tsx scripts/seed.ts",
+    "db:demo:expand": "tsx scripts/expand-demo.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/business.test.ts",
     "test:ui": "playwright test",
