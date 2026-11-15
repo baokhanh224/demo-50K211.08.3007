@@ -23,3 +23,9 @@
 @media(max-width:900px) { .invoice-detail-overlay { padding: 20px; } .invoice-detail-overlay::before { inset: 0; } .modal.invoice-detail { min-height: 0; max-height: calc(100dvh - 40px); } }
 @media(max-width:520px) { .modal.invoice-detail { padding: 20px; } .invoice-detail-actions .btn { width: auto; flex: 1; } .invoice-detail-table th,.invoice-detail-table td { padding: 6px; font-size: 11px; } }
 .invoice-detail-table tbody tr:last-child td { border-bottom: 1px solid #c3d1e5; }
+
+.invoice-detail-actions .btn.danger { background:white; color:#dc2626; border-color:#dc2626; }
+.invoice-detail-audit { margin-top:24px; font-size:13px; }
+.invoice-detail-audit summary { cursor:pointer; }
+.invoice-detail-audit .no-print { overflow-x:auto; }
+@media(max-width:640px) { .invoice-detail-actions { flex-wrap:wrap; } }

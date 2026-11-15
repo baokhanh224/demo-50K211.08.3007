@@ -220,75 +220,16 @@ export default function SalesHistory({ operation = "history" }: any) {
       {operation === "cancel" && error && <div className="cancel-invoice-error-toast" role="alert"><span className="cancel-invoice-alert"><img src="/figma/print-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       {operation === "history" && error && <div className={`history-error-toast ${error === "Không tìm thấy hóa đơn phù hợp" ? "history-empty-toast" : error === "Khoảng thời gian không hợp lệ" ? "history-range-toast" : ""}`} role="alert"><span className="history-alert-icon"><img src="/figma/history-alert.svg" width="18" height="18" alt="" /></span><span>{error}</span><button type="button" aria-label="Đóng thông báo" onClick={() => setError("")}>×</button></div>}
       </div>
-      {detail && operation === "history" && <InvoiceDetail invoice={detail} error={cancelError} onClose={() => { setDetail(null); setCancelError(""); }} onReturn={() => requestReturn(detail.id)} onPrint={printPreview} />}
-      {detail && operation !== "history" && (
-        <Modal
-          wide
-          title="Chi tiết hóa đơn"
-          onClose={() => { setDetail(null); setCancelError(""); }}
-        >
-          <div>
-            <div className="detail-meta">
-              <div>
-                <small>Mã hóa đơn</small>
-                <strong>{detail.id}</strong>
-              </div>
-              <div>
-                <small>Ngày giờ bán</small>
-                {datetime(detail.created_at)}
-              </div>
-              <div>
-                <small>Khách hàng</small>
-                {detail.customer_name
-                  ? `${detail.customer_name} (${detail.customer_phone})`
-                  : "—"}
-              </div>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Sản phẩm</th>
-                  <th className="num">SL</th>
-                  <th className="num">Đơn giá</th>
-                  <th className="num">Thành tiền</th>
-                </tr>
-              </thead>
-              <tbody>
-                {detail.lines.map((l: any) => (
-                  <tr key={l.id}>
-                    <td>{l.product_name} ({l.unit_name})</td>
-                    <td className="num">{l.quantity}</td>
-                    <td className="num">{money(l.price)}</td>
-                    <td className="num">{money(l.total)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="total-row">
-              <span>Tổng tiền</span>
-              <strong>{money(detail.total)}</strong>
-            </div>
-            <p>Phương thức thanh toán: {detail.method}</p>
-            {detail.method === "Tiền mặt" && (
-              <p>
-                Tiền khách đưa: {money(detail.cash)} · Tiền thừa:{" "}
-                {money(detail.change)}
-              </p>
-            )}
-            <p>
-              Trạng thái:{" "}
-              <Badge tone={detail.status === "Đã hủy" ? "red" : "green"}>
-                {detail.status}
-              </Badge>
-            </p>
-            {detail.cancelled_at && (
-              <p>
-                Lý do hủy hóa đơn: {detail.cancel_reason}
-                <br />
-                Thời gian hủy: {datetime(detail.cancelled_at)}
-              </p>
-            )}
-          </div>
+      {detail && <InvoiceDetail
+        invoice={detail}
+        error={cancel ? "" : cancelError}
+        onClose={() => { setDetail(null); setCancelError(""); }}
+        onReturn={() => requestReturn(detail.id)}
+        onPrint={printPreview}
+        onCancel={operation !== "history" ? () => requestCancel(detail.id) : undefined}
+        showExtraInfo={operation !== "history"}
+      >
+        {operation !== "history" && (
           <>
               <details className="no-print">
                 <summary>Phân bổ xuất kho</summary>
@@ -371,33 +312,8 @@ export default function SalesHistory({ operation = "history" }: any) {
                 </div>
               )}
           </>
-          <div className="no-print">
-            <Notice text={cancel ? "" : cancelError} />
-          </div>
-          <div className="actions">
-                <Button
-                  onClick={() => {
-                    setDetail(null);
-                    setCancelError("");
-                  }}
-                >
-                  Đóng
-                </Button>
-                <Button
-                  variant="danger"
-                  onClick={() => requestCancel(detail.id)}
-                >
-                  Hủy
-                </Button>
-                <Button onClick={() => requestReturn(detail.id)}>
-                  Đổi/trả hàng
-                </Button>
-                <Button variant="primary" onClick={printPreview}>
-                  In hóa đơn
-                </Button>
-          </div>
-        </Modal>
-      )}
+        )}
+      </InvoiceDetail>}
       {cancel && (
         <Modal
           title="Nhập lý do hủy hóa đơn"

@@ -3,7 +3,7 @@ import { Button, Modal, Notice } from "./ui";
 import { datetime, money } from "@/lib/format";
 import "./invoice-detail.css";
 
-export default function InvoiceDetail({ invoice, error, onClose, onReturn, onPrint }: any) {
+export default function InvoiceDetail({ invoice, error, onClose, onReturn, onPrint, onCancel, showExtraInfo = false, children }: any) {
   return <Modal title="Chi tiết hóa đơn" className="invoice-detail" overlayClassName="invoice-detail-overlay" showClose={false} onClose={onClose}>
     <button type="button" className="invoice-detail-close" onClick={onClose}>Đóng</button>
     <div className="invoice-detail-meta">
@@ -22,8 +22,11 @@ export default function InvoiceDetail({ invoice, error, onClose, onReturn, onPri
       <p className="invoice-detail-total">Tổng tiền: {money(invoice.total)}</p>
       <p>Phương thức thanh toán: {invoice.method}</p>
       <p>Trạng thái: {invoice.status}</p>
+      {showExtraInfo && invoice.method === "Tiền mặt" && <p>Tiền khách đưa: {money(invoice.cash)} · Tiền thừa: {money(invoice.change)}</p>}
+      {showExtraInfo && invoice.cancelled_at && <p>Lý do hủy hóa đơn: {invoice.cancel_reason}<br />Thời gian hủy: {datetime(invoice.cancelled_at)}</p>}
     </div>
+    {children && <div className="invoice-detail-audit">{children}</div>}
     <Notice text={error} />
-    <div className="invoice-detail-actions"><Button onClick={onReturn}>Đổi/trả hàng</Button><Button variant="primary" onClick={onPrint}>In hóa đơn</Button></div>
+    <div className="invoice-detail-actions">{onCancel && <Button variant="danger" onClick={onCancel}>Hủy</Button>}<Button onClick={onReturn}>Đổi/trả hàng</Button><Button variant="primary" onClick={onPrint}>In hóa đơn</Button></div>
   </Modal>;
 }
