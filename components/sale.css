@@ -20,6 +20,10 @@
 .sale-main > .product-search {
   margin: 0 0 16px;
 }
+.sale-screen .sale-main > .product-search {
+  width: 480px;
+  max-width: 100%;
+}
 .sale-screen .sale-main > .product-search .field {
   width: 100%;
   gap: 5px;
