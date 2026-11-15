@@ -11,7 +11,7 @@ import {
   useApp,
   useForm,
 } from "./ui";
-import Suppliers, { SupplierForm } from "./suppliers";
+import Suppliers, { SupplierForm, SupplierToast } from "./suppliers";
 import Products, { ProductForm } from "./products";
 import { money, datetime } from "@/lib/format";
 import CustomerDetail from "./customer-detail";
@@ -442,6 +442,7 @@ function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
           new_category: "",
         };
   const f = useForm(initial);
+  const [validationNotice, setValidationNotice] = useState("");
   const changed = JSON.stringify(initial) !== JSON.stringify(f.form);
   function cancel() {
     let msg = "Bạn có chắc chắn muốn hủy không?";
@@ -465,6 +466,7 @@ function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
     e.preventDefault();
     if (f.busy) return;
     f.setBusy(true);
+    setValidationNotice("");
     try {
       const r = await api("action", { action: "save-" + kind, ...f.form });
       await refresh();
@@ -472,12 +474,17 @@ function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
       onSaved?.({ ...f.form, id: r.id });
       onClose();
     } catch (e: any) {
-      f.caught(e);
+      if (kind === "customers" && !item.id && e.message === "Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại") {
+        setValidationNotice(e.message);
+        f.setError("");
+        f.setErrors({});
+      } else f.caught(e);
     } finally {
       f.setBusy(false);
     }
   }
   return (
+    <>
     <Modal
       title={kind === "customers" && item.id ? "Sửa thông tin khách hàng" : (item.id ? "Sửa " : "Thêm ") + c.singular}
       className={kind === "customers" ? "customer-form " + (item.id ? "customer-edit-form" : "customer-add-form") : ""}
@@ -722,6 +729,8 @@ function OtherMasterForm({ kind, item, onClose, onSaved }: any) {
         </div>
       </form>
     </Modal>
+    {validationNotice && <SupplierToast error text={validationNotice} onClose={() => setValidationNotice("")} />}
+    </>
   );
 }
 function PriceForm({ product, onClose }: any) {

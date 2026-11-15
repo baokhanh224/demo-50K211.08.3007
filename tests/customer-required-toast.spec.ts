@@ -1,0 +1,32 @@
+import { test, expect } from "@playwright/test";
+import { installTrustedTransport } from "./public-transport";
+
+test("missing customer name or phone uses dismissible viewport corner error", async ({ page, context }) => {
+  if (process.env.BASE_URL?.startsWith("https:")) await installTrustedTransport(context);
+  await page.setViewportSize({ width: 1440, height: 927 });
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: "Đăng nhập", exact: true })).toBeEnabled();
+  await page.getByLabel("Tên đăng nhập", { exact: true }).fill(process.env.DEMO_USERNAME!);
+  await page.getByLabel("Mật khẩu", { exact: true }).fill(process.env.DEMO_PASSWORD!);
+  await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+  await expect(page.locator(".sidebar")).toBeVisible();
+  await page.getByRole("link", { name: "Quản lý khách hàng", exact: true }).click();
+  await page.getByRole("button", { name: "Thêm khách hàng", exact: true }).click();
+  const form = page.getByRole("dialog", { name: "Thêm khách hàng", exact: true });
+  const toast = page.locator(".supplier-toast-error");
+  const message = "Vui lòng nhập đầy đủ Tên khách hàng và Số điện thoại";
+  const save = form.getByRole("button", { name: "Lưu", exact: true });
+  await save.click(); await expect(toast).toContainText(message);
+  const box = (await toast.boundingBox())!;
+  expect(box.y).toBe(108); expect(box.x + box.width).toBe(1416);
+  await expect(toast.locator("img")).toHaveAttribute("src", "/figma/2d146.svg");
+  await expect(form.getByText(message, { exact: true })).toHaveCount(0);
+  await toast.getByRole("button", { name: "Đóng thông báo", exact: true }).click();
+  await expect(toast).toHaveCount(0); await expect(form).toBeVisible();
+  await form.getByLabel("Tên khách hàng", { exact: true }).fill("Nguyễn Minh Anh");
+  await save.click(); await expect(toast).toContainText(message);
+  await expect(form.getByLabel("Tên khách hàng", { exact: true })).toHaveValue("Nguyễn Minh Anh");
+  await form.getByLabel("Tên khách hàng", { exact: true }).fill("");
+  await form.getByLabel("Số điện thoại", { exact: true }).fill("0901234567");
+  await save.click(); await expect(toast).toContainText(message);
+});
