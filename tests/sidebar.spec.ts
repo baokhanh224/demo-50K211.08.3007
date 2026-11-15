@@ -1,6 +1,8 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs';
-test('Shared sidebar: fixed geometry and icons across every page, stable expanded menus and pinned logout',async({page})=>{
+import {installTrustedTransport} from './public-transport';
+test('Shared sidebar: fixed geometry and icons across every page, stable expanded menus and pinned logout',async({page,context})=>{
+ if(process.env.BASE_URL?.startsWith('https:'))await installTrustedTransport(context);
  await page.setViewportSize({width:1440,height:927});await page.goto('/');await page.getByLabel('Tên đăng nhập',{exact:true}).fill(process.env.DEMO_USERNAME!);await page.getByLabel('Mật khẩu',{exact:true}).fill(process.env.DEMO_PASSWORD!);await page.getByRole('button',{name:'Đăng nhập',exact:true}).click();await expect(page.locator('.sidebar')).toBeVisible();
  const views=['sale','products','customers','suppliers','receipts','inventory','adjustments','receipt-history','sales-history','cancel-invoice','returns','reports','stock-report','settings'];let reference:any;
  for(const view of views){
@@ -15,6 +17,6 @@ test('Shared sidebar: fixed geometry and icons across every page, stable expande
  await page.goto('/?view=sale');await expect(page.locator('.app-sidebar .subnav')).toBeVisible();
  const before=await page.getByRole('link',{name:'Quản lý sản phẩm',exact:true}).boundingBox();await page.getByRole('link',{name:'Quản lý sản phẩm',exact:true}).click();await expect(page.locator('.app-sidebar .subnav')).toBeVisible();const after=await page.getByRole('link',{name:'Quản lý sản phẩm',exact:true}).boundingBox();expect(after).toEqual(before);
  await page.getByRole('link',{name:'Quản lý khách hàng',exact:true}).click();await expect(page.locator('.app-sidebar .subnav')).toBeVisible();
- await page.setViewportSize({width:1440,height:600});const footer=await page.locator('.sidebar-bottom').boundingBox();await expect(page.locator('.app-sidebar>nav')).toHaveCSS('overflow-y','clip');await page.locator('.app-sidebar>nav').evaluate(el=>el.scrollTop=el.scrollHeight);expect(await page.locator('.app-sidebar>nav').evaluate(el=>el.scrollTop)).toBe(0);expect(await page.locator('.sidebar-bottom').boundingBox()).toEqual(footer);expect(footer!.y+footer!.height).toBeLessThanOrEqual(600);
+ await page.setViewportSize({width:1440,height:600});const footer=await page.locator('.sidebar-bottom').boundingBox();const nav=page.locator('.app-sidebar>nav');await expect(nav).toHaveCSS('overflow-y','auto');await expect(nav).toHaveCSS('scrollbar-width','none');const windowY=await page.evaluate(()=>window.scrollY);await nav.hover();await page.mouse.wheel(0,600);await expect.poll(()=>nav.evaluate(el=>el.scrollTop)).toBeGreaterThan(0);expect(await nav.evaluate(el=>el.clientWidth===el.getBoundingClientRect().width)).toBe(true);expect(await page.evaluate(()=>window.scrollY)).toBe(windowY);expect(await page.locator('.sidebar-bottom').boundingBox()).toEqual(footer);expect(footer!.y+footer!.height).toBeLessThanOrEqual(600);
  fs.mkdirSync('test-results/sidebar',{recursive:true});await page.screenshot({path:'test-results/sidebar/short-height.png'});await page.setViewportSize({width:1440,height:927});await page.screenshot({path:'test-results/sidebar/unified.png'});
 });
