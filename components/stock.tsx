@@ -19,21 +19,25 @@ export function Inventory() {
   const [filter, setFilter] = useState("Tất cả");
   const [applied, setApplied] = useState("Tất cả");
   const [rows, setRows] = useState<any[]>([]);
-  const [error, setError] = useState("");
-  const [errorVisible, setErrorVisible] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [noticeVisible, setNoticeVisible] = useState(false);
   async function search(e?: React.FormEvent) {
     e?.preventDefault();
-    setError("");
-    setErrorVisible(false);
+    setNotice("");
+    setNoticeVisible(false);
     try {
       const result = await api("query", { scope: "inventory", q, filter });
       setRows(result);
       setApplied(filter);
+      if (!result.length) {
+        setNotice("Không tìm thấy sản phẩm phù hợp");
+        setNoticeVisible(true);
+      }
     } catch (e: any) {
       setRows([]);
       setApplied(filter);
-      setError(e.message);
-      setErrorVisible(true);
+      setNotice(e.message);
+      setNoticeVisible(true);
     }
   }
   useEffect(() => { search(); }, []);
@@ -48,7 +52,7 @@ export function Inventory() {
     : rows.map(r => ({ id: r.id, name: r.name, stock: r.stock, status: r.stock <= r.min_stock ? "Dưới mức cảnh báo" : "Bình thường" }));
   return <div className="inventory-page">
     <h1>Tra cứu tồn kho</h1>
-    {error && errorVisible && <SupplierToast error text={error} onClose={() => setErrorVisible(false)} />}
+    {notice && noticeVisible && <SupplierToast error text={notice} onClose={() => setNoticeVisible(false)} />}
     <section className="card inventory-filter-card">
       <h2>Điều kiện tra cứu</h2>
       <form className="inventory-filters" onSubmit={search}>
@@ -65,7 +69,6 @@ export function Inventory() {
         <thead><tr><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Số lượng tồn</th><th>Trạng thái</th></tr></thead>
         <tbody>{products.map(r => <tr key={r.id}><td>{r.id}</td><td>{r.name}</td><td>{r.stock}</td><td>{r.status}</td></tr>)}</tbody>
       </table></div>
-      {!rows.length && !error && <Empty text="Không tìm thấy sản phẩm phù hợp" />}
       {byLot && rows.length > 0 && <><div className="inventory-lot-spacer" /><div className="inventory-lot-details" role="group" aria-label="Chi tiết cảnh báo hạn sử dụng">
         <div className="table-wrap"><table>
           <thead><tr><th>Mã phiếu nhập</th><th>Hạn sử dụng</th><th>Số lượng còn</th><th>Trạng thái</th></tr></thead>
