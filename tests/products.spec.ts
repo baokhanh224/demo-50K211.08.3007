@@ -25,7 +25,8 @@ test("Products: required fields, expiry, CRUD, filters, pagination, drawer and p
     await expect(button).toHaveCSS("color", "rgb(148, 163, 184)");
   }
 
-  expect(data.product_categories.map((c: any) => c.name)).toEqual(["Sữa", "Mì ăn liền", "Nước uống", "Bánh mì", "Bánh kẹo", "Gia vị", "Khác"]);
+  expect(data.product_categories).toEqual(data.categories);
+  expect(data.categories.map((c: any) => c.name)).toEqual(expect.arrayContaining(["Sữa", "Mì ăn liền", "Nước uống", "Bánh mì", "Bánh kẹo", "Gia vị", "Khác"]));
   const category = data.product_categories.find((c: any) => c.name === "Sữa"); const year = Number(data.today.slice(0, 4)) + 1;
   try {
     await page.getByLabel("Từ khóa", { exact: true }).fill(prefix); await choose(page.locator(".product-controls"), "Danh mục", "Sữa");

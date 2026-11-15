@@ -3,7 +3,7 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { api, Button, Field, Modal, Notice, useApp, useForm } from "./ui";
 import { SupplierToast } from "./suppliers";
 import { date, money } from "@/lib/format";
-import { productCategoryNames, productErrors, productExpiry, productUnitNames } from "@/lib/product-validation";
+import { productErrors, productExpiry, productUnitNames } from "@/lib/product-validation";
 import "./products.css";
 import DateInput from "./date-input";
 
@@ -77,7 +77,7 @@ export function ProductForm({ item = {}, onClose, onSaved, onNotice }: any) {
   const f = useForm(initial), saving = useRef(false);
   const [cancelOpen, setCancelOpen] = useState(false);
   const changed = JSON.stringify(initial) !== JSON.stringify(f.form);
-  const categories = data.product_categories || data.categories.filter((c: any) => productCategoryNames.includes(c.name));
+  const categories = data.categories || data.product_categories || [];
   const units = Array.from(new Set([...productUnitNames, ...(item.base_unit ? [item.base_unit] : [])]));
   function close() { if (saving.current) return; if (changed) setCancelOpen(true); else onClose(); }
   async function save(e: React.FormEvent) {
@@ -153,7 +153,7 @@ export default function Products() {
   const [deleting, setDeleting] = useState(false), [busy, setBusy] = useState(false), [toast, setToast] = useState<any>(null);
   const deletingRef = useRef(false);
   useEffect(() => { if (toast && !toast.error) { const timer = setTimeout(() => setToast(null), 6500); return () => clearTimeout(timer); } }, [toast]);
-  const categories = data.product_categories || data.categories.filter((c: any) => productCategoryNames.includes(c.name));
+  const categories = data.categories || data.product_categories || [];
   const filtered = useMemo(() => data.products.filter((p: any) => (!category || String(p.category_id) === String(category)) && [p.id, p.name].some(v => String(v).toLocaleLowerCase("vi").includes(appliedQ.toLocaleLowerCase("vi")))), [data.products, category, appliedQ]);
   const total = filtered.length, pages = Math.max(1, Math.ceil(total / 10)), currentPage = Math.min(page, pages), start = (currentPage - 1) * 10;
   const rows = filtered.slice(start, start + 10), selected = filtered.find((p: any) => p.id === selectedId);

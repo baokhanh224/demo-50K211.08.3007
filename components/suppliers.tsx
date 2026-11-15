@@ -56,6 +56,7 @@ function CategoryPicker({ form, set, error, validate }: any) {
     document.addEventListener("mousedown", close); return () => document.removeEventListener("mousedown", close);
   }, []);
   const selected = data.categories.filter((c: any) => form.category_ids.includes(c.id));
+  const existingOther = selected.find((c: any) => c.name === "Khác");
   return <div className="supplier-category-field supplier-full">
     <label id={id}>Danh mục</label>
     <div className="supplier-category-picker" ref={ref} onKeyDown={e => { if (e.key === "Escape" && open) { e.stopPropagation(); setOpen(false); } }}>
@@ -63,8 +64,8 @@ function CategoryPicker({ form, set, error, validate }: any) {
         <span className="supplier-category-chips">{!selected.length && !form.other ? <span className="supplier-placeholder">Chọn một hoặc nhiều danh mục</span> : <>{selected.map((c: any) => <span className="supplier-chip" key={c.id}>{c.name}</span>)}{form.other && <span className="supplier-chip">{committed ? form.new_category.trim() : "Khác"}</span>}</>}</span><Asset file="68810" size={14} />
       </button>
       {open && <div className="supplier-category-menu" role="dialog" aria-label="Chọn danh mục">
-        {data.categories.filter((c: any) => form.id || c.name !== "Khác").map((c: any) => <label className="supplier-category-option" key={c.id}><input type="checkbox" checked={form.category_ids.includes(c.id)} onChange={e => set("category_ids", e.target.checked ? [...form.category_ids, c.id] : form.category_ids.filter((id: number) => id !== c.id))} />{c.name === "Khác" ? "Khác (có sẵn)" : c.name}</label>)}
-        <label className="supplier-category-option"><input type="checkbox" checked={form.other} onChange={e => { set("other", e.target.checked); set("new_category", ""); setCommitted(false); setOpen(false); }} />Khác</label>
+        {data.categories.filter((c: any) => c.name !== "Khác").map((c: any) => <label className="supplier-category-option" key={c.id}><input type="checkbox" checked={form.category_ids.includes(c.id)} onChange={e => set("category_ids", e.target.checked ? [...form.category_ids, c.id] : form.category_ids.filter((id: number) => id !== c.id))} />{c.name}</label>)}
+        <label className="supplier-category-option"><input type="checkbox" checked={form.other || !!existingOther} onChange={e => { if (!e.target.checked && existingOther) set("category_ids", form.category_ids.filter((id: number) => id !== existingOther.id)); set("other", e.target.checked); set("new_category", ""); setCommitted(false); setOpen(false); }} />Khác</label>
       </div>}
     </div>
     {form.other && !committed && <div className="supplier-new-category">

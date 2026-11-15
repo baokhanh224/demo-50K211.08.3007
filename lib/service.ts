@@ -1,4 +1,5 @@
-import { productCategoryNames, productErrors, productExpiry } from "./product-validation";
+import { sortCategories } from "./categories";
+import { productErrors, productExpiry } from "./product-validation";
 import { supplierErrors } from "./supplier-validation";
 import {
   db,
@@ -105,11 +106,11 @@ export async function lots() {
   );
 }
 export async function bootstrap() {
-  const categories = await all("SELECT * FROM category ORDER BY id");
+  const categories = sortCategories(await all("SELECT * FROM category ORDER BY id"));
   return {
     today: day(),
     categories,
-    product_categories: categories.filter(c => productCategoryNames.includes(c.name)).sort((a,b) => productCategoryNames.indexOf(a.name)-productCategoryNames.indexOf(b.name)),
+    product_categories: categories, // Compatibility for older clients; same shared catalog.
     products: await products(),
     suppliers: await suppliers(),
     customers: await all("SELECT * FROM customer ORDER BY id"),
@@ -126,7 +127,7 @@ export async function saveProduct(d: any) {
   const fields = productErrors(d, day());
   const categoryId = Number(d.category_id);
   const category = Number.isSafeInteger(categoryId) && categoryId > 0 ? await one("SELECT id,name FROM category WHERE id=?", categoryId) : null;
-  if (!category || !productCategoryNames.includes(category.name)) fields.category_id = fields.category_id || "Dữ liệu không hợp lệ!";
+  if (!category) fields.category_id = fields.category_id || "Dữ liệu không hợp lệ!";
   if (!integer(d.min_stock ?? 0) || Number(d.min_stock ?? 0) < 0)
     fields.min_stock = "Dữ liệu không hợp lệ!";
   const extras = d.units || [];
