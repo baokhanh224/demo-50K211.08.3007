@@ -14,6 +14,7 @@ import {
 import Suppliers, { SupplierForm } from "./suppliers";
 import Products, { ProductForm } from "./products";
 import { money, datetime } from "@/lib/format";
+import CustomerDetail from "./customer-detail";
 const config: any = {
   products: {
     title: "Quản lý sản phẩm",
@@ -283,7 +284,8 @@ function OtherMasters({ kind }: any) {
         <MasterForm kind={kind} item={form} onClose={() => setForm(null)} />
       )}
       {price && <PriceForm product={price} onClose={() => setPrice(null)} />}
-      {detail && (
+      {detail && kind === "customers" && <CustomerDetail customer={detail} onClose={() => setDetail(null)} />}
+      {detail && kind !== "customers" && (
         <Modal
           title={"Thông tin " + c.singular}
           wide
@@ -395,35 +397,6 @@ function OtherMasters({ kind }: any) {
                 </table>
               ) : (
                 <Empty text="Chưa có lịch sử thay đổi giá bán" />
-              )}
-            </>
-          )}
-          {kind === "customers" && (
-            <>
-              <h3>Lịch sử mua hàng</h3>
-              {detail.invoices?.length ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Mã hóa đơn</th>
-                      <th>Ngày giờ bán</th>
-                      <th className="num">Tổng tiền</th>
-                      <th>Trạng thái</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {detail.invoices.map((i: any) => (
-                      <tr key={i.id}>
-                        <td>{i.id}</td>
-                        <td>{datetime(i.created_at)}</td>
-                        <td className="num">{money(i.total)}</td>
-                        <td>{i.status}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <Empty text="Chưa có lịch sử mua hàng" />
               )}
             </>
           )}

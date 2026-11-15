@@ -1,0 +1,63 @@
+.customer-detail-overlay {
+  justify-content: flex-end;
+  padding: 90px 48px 0 274px;
+  background: transparent;
+}
+.customer-detail-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 90px 0 0 250px;
+  background: rgba(15, 23, 42, .28);
+}
+.modal.customer-detail {
+  position: relative;
+  z-index: 1;
+  width: 1060px;
+  max-width: 100%;
+  height: 650px;
+  max-height: calc(100dvh - 138px);
+  padding: 26px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: none;
+  color: #0f172a;
+}
+.customer-detail .modal-head { margin: 0 80px 32px 0; }
+.customer-detail .modal-head h2 { font-size: 20px; font-weight: 600; line-height: 28px; }
+.customer-detail-close {
+  position: absolute;
+  top: 22px;
+  right: 46px;
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
+  color: #0f172a;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.customer-detail-close:focus-visible { outline: 2px solid #103a9b; outline-offset: 2px; border-radius: 4px; }
+.customer-detail-info { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; row-gap: 30px; margin: 0; }
+.customer-detail-info dt { margin: 0 0 6px; font-size: 13px; line-height: 18px; }
+.customer-detail-info dd { margin: 0; font-size: 14px; line-height: 20px; overflow-wrap: anywhere; }
+.customer-purchase-history { margin-top: 82px; }
+.customer-purchase-history h3 { margin: 0 0 20px; font-size: 18px; font-weight: 600; line-height: 25px; }
+.customer-purchase-history table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.customer-purchase-history th, .customer-purchase-history td { padding: 18px; text-align: left; font-size: 14px; font-weight: 400; border: 0; overflow-wrap: anywhere; }
+.customer-purchase-history th { background: #edf3fd; padding-top: 16px; padding-bottom: 16px; font-size: 12px; }
+.customer-purchase-history th:first-child { border-radius: 7px 0 0 7px; }
+.customer-purchase-history th:last-child { border-radius: 0 7px 7px 0; }
+.customer-purchase-history tbody tr:first-child td { padding-top: 40px; }
+.customer-purchase-history tbody tr { background: white; }
+.customer-purchase-history .customer-history-empty { text-align: center; color: #64748b; }
+@media (max-width: 900px) {
+  .customer-detail-overlay { padding: 20px; justify-content: center; }
+  .modal.customer-detail { height: 650px; max-height: calc(100dvh - 40px); }
+  .customer-detail-close { right: 20px; }
+}
+@media (max-width: 520px) {
+  .modal.customer-detail { padding: 20px; }
+  .customer-detail-info { column-gap: 16px; }
+  .customer-purchase-history { margin-top: 40px; }
+  .customer-purchase-history th, .customer-purchase-history td { padding: 10px 6px; font-size: 11px; }
+}
