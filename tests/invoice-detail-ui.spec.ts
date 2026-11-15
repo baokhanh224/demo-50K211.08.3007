@@ -36,7 +36,7 @@ test("invoice detail matches reference and keeps close, return and print preview
   fs.mkdirSync("test-results/invoice-detail", { recursive: true });
   await page.screenshot({ path: "test-results/invoice-detail/detail.png" });
   await dialog.getByRole("button", { name: "Đóng", exact: true }).click(); await expect(dialog).toHaveCount(0);
-  await open(); await page.keyboard.press("Escape"); await expect(dialog).toHaveCount(0);
+  await open(); await expect(dialog).toBeVisible(); await page.keyboard.press("Escape"); await expect(dialog).toHaveCount(0);
   await open(); await dialog.getByRole("button", { name: "Đổi/trả hàng", exact: true }).click();
   await expect(dialog).toContainText("Không thể đổi/trả hóa đơn này"); expect(returns).toBe(1);
   await dialog.getByRole("button", { name: "In hóa đơn", exact: true }).click();
