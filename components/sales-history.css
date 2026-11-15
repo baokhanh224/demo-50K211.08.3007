@@ -22,8 +22,7 @@
 .history-list-card .badge{padding:0;border:0;border-radius:0;background:none;color:#0f172a;font-size:13px;line-height:18px;font-weight:400;}
 .history-list-card tbody tr.clickable:hover{background:#f8fafc;}
 .history-list-card .btn.tiny{height:40px;width:91px;min-height:0;border:1px solid #dee6f0;border-radius:8px;background:white;color:#103a9b;padding:0 11px;text-align:left;justify-content:flex-start;font-size:14px;font-weight:600;}
-.history-list-card tbody tr:not(:first-child) .btn{opacity:0;}
-.history-list-card tbody tr:hover .btn,.history-list-card tbody tr:focus-within .btn{opacity:1;}
+.history-list-card tbody tr .btn{opacity:1;}
 .history-error-toast{position:fixed;z-index:80;top:109px;right:53px;width:283px;height:56px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 13px 10px 15px;border:1px solid var(--notification-error-border);border-radius:9px;background:var(--notification-error-bg);color:var(--notification-error-text);font-size:13px;line-height:17px;font-weight:500;}
 .history-alert-icon{display:flex;align-items:center;justify-content:center;width:19px;height:26px;flex:none;}
 .history-error-toast>span:nth-child(2){flex:1;}

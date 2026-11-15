@@ -21,6 +21,8 @@ test("invoice detail matches reference and keeps close, return and print preview
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await expect(page.locator(".sidebar")).toBeVisible();
   await page.getByRole("link", { name: "Tra cứu lịch sử bán hàng", exact: true }).click();
+  await expect(page.locator(".history-list-card tbody tr .btn").first()).toBeVisible();
+  for (const button of await page.locator(".history-list-card tbody tr .btn").all()) await expect(button).toHaveCSS("opacity", "1");
   const open = () => page.locator(".history-list-card tbody tr").first().getByRole("button", { name: "Xem", exact: true }).click();
   await open();
   const dialog = page.getByRole("dialog", { name: "Chi tiết hóa đơn", exact: true });
